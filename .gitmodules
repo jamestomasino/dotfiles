@@ -1,0 +1,9 @@
+[submodule "git"]
+	path = git
+	url = git@github.com:jamestomasino/git-scripts.git
+[submodule "vim"]
+	path = vim
+	url = git@github.com:jamestomasino/vimrc-local.git
+[submodule "bash"]
+	path = bash
+	url = git@github.com:jamestomasino/bash-scripts.git

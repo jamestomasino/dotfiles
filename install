@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Install spf13-vim
+sh <(curl https://j.mp/spf13-vim3 -L)
+
+# Recursively map dotfiles to home directory
+while IFS= read -d $'\0' -r file ; do
+	b=$(basename $file)
+	c="$HOME/$b"
+	d="$PWD/$file"
+	if [ -L $c ]; then
+		rm $c
+	fi
+	if [ -f $c ]; then
+		echo "Found file '$c'. Aborting."
+	else
+		ln -s "$d" "$c"
+	fi
+done < <(find . -type f \( -iname ".*" ! -iname ".git" ! -iname ".gitmodules" \) -print0)
