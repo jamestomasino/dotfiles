@@ -12,7 +12,9 @@ while IFS= read -d $'\0' -r file ; do
 		rm $c
 	fi
 	if [ -f $c ]; then
-		echo "Found file '$c'. Aborting."
+		echo "Found file '$c'. Overwriting."
+        rm -f "$c"
+		ln -s "$d" "$c"
 	else
 		ln -s "$d" "$c"
 	fi
