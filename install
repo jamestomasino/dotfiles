@@ -1,9 +1,12 @@
 #!/bin/bash
 
 # Install spf13-vim
+echo "Installing spf13-vim."
 sh <(curl https://j.mp/spf13-vim3 -L)
 
+
 # Recursively map dotfiles to home directory
+echo "Installing dotfiles"
 while IFS= read -d $'\0' -r file ; do
 	b=$(basename $file)
 	c="$HOME/$b"
@@ -12,12 +15,16 @@ while IFS= read -d $'\0' -r file ; do
 		rm $c
 	fi
 	if [ -f $c ]; then
-		echo "Found file '$c'. Overwriting."
-        rm -f "$c"
-		ln -s "$d" "$c"
+		echo "Existing file found: '$c'. Ignoring file."
 	else
 		ln -s "$d" "$c"
 	fi
 done < <(find . -type f \( -iname ".*" ! -iname ".git" ! -iname ".gitmodules" \) -print0)
 
+# Load up new bash profile
+echo "Loading Bash Profile"
 source ~/.bash_profile
+
+# Update Local Vim Settings
+echo "Updating local vim setings"
+vim +BundleInstall! +BundleClean +q
