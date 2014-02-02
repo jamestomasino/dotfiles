@@ -16,4 +16,3 @@ while IFS= read -d $'\0' -r file ; do
 done < <(find . -type f \( -iname ".*" ! -iname ".git" ! -iname ".gitmodules" \) -print0)
 
 source ~/.bash_profile
-vimupdate
