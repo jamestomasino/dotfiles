@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Install spf13-vim
-echo "Installing spf13-vim."
-sh <(curl https://j.mp/spf13-vim3 -L)
-
-
 # Recursively map dotfiles to home directory
 echo "Installing dotfiles"
 while IFS= read -d $'\0' -r file ; do
@@ -15,11 +10,17 @@ while IFS= read -d $'\0' -r file ; do
 		rm $c
 	fi
 	if [ -f $c ]; then
-		echo "Existing file found: '$c'. Ignoring file."
+		echo "Existing file found: '$c'. Skipping file."
 	else
 		ln -s "$d" "$c"
 	fi
 done < <(find . -type f \( -iname ".*" ! -iname ".git" ! -iname ".gitmodules" \) -print0)
+
+
+if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
+	git clone https://github.com/gmarik/vundle.git "$HOME/.vim/bundle/vundle"
+	vim -u "$HOME/.vimrc.bundles" +BundleInstall! +BundleClean +qall
+fi
 
 # Load up new bash profile
 echo "Loading Bash Profile"
@@ -27,4 +28,4 @@ source ~/.bash_profile
 
 # Update Local Vim Settings
 echo "Updating local vim setings"
-vim +BundleInstall! +BundleClean +q
+vim +BundleInstall! +BundleClean +qall
