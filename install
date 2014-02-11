@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# Get Path to script folder
 DIR="$( cd "$( dirname "$0" )" && pwd )"
+# Fix path in case of symlinks
+DIR=$(cd "$DIR" && pwd -P)
 
-# Check for .dotfiles file and add simlink
+# Check for .dotfiles file and add symlink
 dotfiles="$HOME/.dotfiles"
 if [ -L $dotfiles ]; then
 	rm $dotfiles
