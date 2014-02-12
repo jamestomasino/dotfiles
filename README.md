@@ -8,8 +8,16 @@ Nothing, really. Some aliases might not work without certain things installed, b
 
 ### Install ###
 
-    ./install
+From cloned git repo folder:
 
+    $ ./install
+
+### Update ###
+
+From anywhere:
+
+    $ shellupdate
+   
 ### Credits ####
 
 Most stuff is original, but a lot of the aliases and functions are ripped off from around the web. If you notice your idea in my repo somewhere and want credit, send me a note. Once I'm done rolling my eyes, I'll post a link or something.
