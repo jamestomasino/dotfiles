@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get Path to script folder
 DIR="$( cd "$( dirname "$0" )" && pwd )"
@@ -8,18 +8,19 @@ DIR=$(cd "$DIR" && pwd -P)
 # Check for .dotfiles file and add symlink
 dotfiles="$HOME/.dotfiles"
 if [ -L $dotfiles ]; then
+	echo "Removing existing $dotfiles symlink"
 	rm $dotfiles
 fi
 if [ -d $dotfiles ]; then
-	echo "Found existing .dotfiles folder. Skipping directory."
+	echo "Found existing $dotfiles folder. Skipping directory."
 else
+	echo "Linking $DIR => $dotfiles"
 	ln -s "$DIR" "$dotfiles"
 fi
 
 # Recursively map dotfiles to home directory
-echo "Installing dotfiles"
+echo "Installing individual dotfiles..."
 while IFS= read -d $'\0' -r file ; do
-	echo -n "Installing: $file - "
 	b=$(basename $file)
 	c="$HOME/$b"
 	d="$file"
@@ -27,12 +28,17 @@ while IFS= read -d $'\0' -r file ; do
 		rm $c
 	fi
 	if [ -f $c ]; then
-		echo "Skip."
+		echo "Kept existing:\t$d"
 	else
 		ln -s "$d" "$c"
-		echo "Success."
+		echo "Link created:\t$d"
 	fi
 done < <(find "$DIR" -type f \( -iname ".*" ! -iname ".git" ! -iname ".gitmodules" ! -iname "*.swp" \) -print0)
+
+# Throw in a .localrc if needed
+if [ ! -e $HOME/.localrc ]; then
+	echo -e "# This is your own .localrc file for your SUPER SECRET STUFF" > $HOME/.localrc
+fi
 
 # Load up new bash profile
 echo "Loading Bash Profile"
