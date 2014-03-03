@@ -28,10 +28,10 @@ while IFS= read -d $'\0' -r file ; do
 		rm $c
 	fi
 	if [ -f $c ]; then
-		echo "Kept existing:\t$d"
+		echo -e "Kept existing:\t$d"
 	else
 		ln -s "$d" "$c"
-		echo "Link created:\t$d"
+		echo -e "Link created:\t$d"
 	fi
 done < <(find "$DIR" -type f \( -iname ".*" ! -iname ".git" ! -iname ".gitmodules" ! -iname "*.swp" \) -print0)
 
