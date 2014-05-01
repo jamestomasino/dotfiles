@@ -1,0 +1,47 @@
+set nocompatible
+set background=dark
+
+if has('win32') || has('win64')
+    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+
+    if has("multi_byte")
+        set termencoding=cp850
+        set encoding=utf-8
+        setglobal fileencoding=utf-8
+        set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+    endif
+endif
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+
+Bundle 'tpope/vim-surround'
+Bundle 'kien/ctrlp.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'elzr/vim-json'
+Bundle 'pangloss/vim-javascript'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'sjl/gundo.vim'
+Bundle 'AndrewRadev/sideways.vim'
+Bundle 'tomtom/quickfixsigns_vim'
+Bundle 'orenhe/pylint.vim'
+Bundle 'nvie/vim-flake8'
+Bundle 'bling/vim-airline'
+Bundle 'wakatime/vim-wakatime'
+Bundle 'jamestomasino/twilight256.vim'
+Bundle 'vim-scripts/twilight'
+Bundle 'mbbill/undotree'
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'jamestomasino/vim-writingsyntax'
+
+let g:spf13_no_fastTabs = 1
+let g:spf13_no_easyWindows = 1
+
+" vim: set sw=4 ts=4 sts=4 et tw=78 nospell:

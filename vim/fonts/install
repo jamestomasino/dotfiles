@@ -1,0 +1,6 @@
+#!/bin/bash
+mkdir ~/.fonts/
+mkdir ~/.fonts.conf.d/
+cp *.otf ~/.fonts/
+cp *.conf ~/.fonts.conf.d/
+fc-cache -vf ~/.fonts
