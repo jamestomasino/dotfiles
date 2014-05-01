@@ -15,7 +15,7 @@ alias mkdir='mkdir -p'
 
 # update scripts
 alias systemupdate='sudo softwareupdate -i -a; brew update; brew upgrade'
-alias shellupdate='cd ~/.dotfiles && git pull && git pullall && cd - && ~/.dotfiles/install && reload && clear'
+alias shellupdate='cd ~/.dotfiles && git pull && cd - && ~/.dotfiles/install && reload && clear'
 
 # tools
 alias browserstack="java -jar ~/bin/BrowserStackTunnel.jar 8vlzgcB58bVTdLITt514 localhost,80,0"
