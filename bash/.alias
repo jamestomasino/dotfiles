@@ -59,6 +59,7 @@ alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles -bool fals
 alias showdeskicons="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias hidedeskicons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
 
 # julia language
 alias julia="exec '/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia'"

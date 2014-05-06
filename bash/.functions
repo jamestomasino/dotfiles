@@ -238,3 +238,20 @@ function hr() {
 old() {
     mv "$1"{,.old}
 }
+
+# Note taking functions
+nls() {
+	: ${NOTE_DIR:?"NOTE_DIR ENV Var not set"}
+	ls -c $NOTE_DIR | grep "$*"
+}
+
+n() {
+	: ${NOTE_DIR:?"NOTE_DIR ENV Var not set"}
+	if [ $# -eq 0 ]
+		then
+			nls
+	else
+		$EDITOR $NOTE_DIR/"$*".txt
+	fi
+}
+

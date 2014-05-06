@@ -18,6 +18,7 @@ export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node"
 export ANDROID_HOME="$HOME/android/android-sdk-macosx"
 export TODO="$HOME/Dropbox/todo.txt"
+export NOTE_DIR="$HOME/Dropbox/Documents/Work/GSW/notes"
 
 # colors
 export DIRECTORY_COLOR="\033[38;05;222m"
