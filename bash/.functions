@@ -147,7 +147,19 @@ function gituntracked() {
 	echo "${u}"
 }
 
-#!/bin/bash
+function gittreestatus() {
+	if [ $# -eq 0 ]; then
+		for i in $(find . -type d -maxdepth 1)
+		do
+			cd "$i" && echo -e $(pwd) "${STAGED_COLOR}$(gitstaged)${MODIFIED_COLOR}$(gitmodified)${UNTRACKED_COLOR}$(gituntracked)${RESET_COLOR}" && cd - > /dev/null
+		done
+	else
+		for i in $(find $1 -type d -maxdepth 1)
+		do
+			cd "$i" && echo -e $(pwd) "${STAGED_COLOR}$(gitstaged)${MODIFIED_COLOR}$(gitmodified)${UNTRACKED_COLOR}$(gituntracked)${RESET_COLOR}" && cd - > /dev/null
+		done
+	fi
+}
 
 gitpullall() {
   REMOTES="$@";
