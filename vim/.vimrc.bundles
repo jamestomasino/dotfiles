@@ -44,6 +44,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-commentary'
 Bundle 'craigemery/vim-autotag'
+Bundle 'majutsushi/tagbar'
 
 let g:spf13_no_fastTabs = 1
 let g:spf13_no_easyWindows = 1
