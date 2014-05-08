@@ -240,6 +240,7 @@ set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 set noexpandtab
 set noerrorbells
 set colorcolumn=80
+set tags=./tags,tags;$HOME
 
 " map
 map <C-J> <C-W>j<C-W>_
