@@ -1,1 +1,47 @@
+--totals=yes
+--recurse=yes
+--tag-relative=yes
+--links=no
+
+--exclude=.svn
 --exclude=.git
+--exclude=*.git*
+--exclude=*.min.js
+--exclude=*.pyc
+--exclude=*.pyo
+--exclude=.DS_Store
+--exclude=*.md
+--exclude=*.mkd
+--exclude=js
+--exclude=css
+
+--langdef=js
+--langmap=js:.js
+--regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/o,object/
+--regex-js=/([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/f,function/
+--regex-js=/function[ \t]+([A-Za-z0-9._$]+)[ \t]*([^)])/\1/f,function/
+--regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/a,array/
+--regex-js=/([^= ]+)[ \t]*=[ \t]*[^"]'[^']*/\1/s,string/
+--regex-js=/([^= ]+)[ \t]*=[ \t]*[^']"[^"]*/\1/s,string/
+--regex-js=/([^= ]+)[ \t]*=[ \t]*[\-]*[0-9]+/\1/n,number/
+--regex-js=/([^= ]+)[ \t]*=[ \t]*(true|false)/\1/b,boolean/
+
+--langdef=css
+--langmap=css:.css
+--regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/#\1/c,class,classes/
+--regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/.\1/i,id,ids/
+--regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
+--regex-css=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
+
+--langdef=scss
+--langmap=scss:.scss
+--regex-scss=/^[ \t]*([^\t {][^{]{1,100})(\t| )*{/| \1/d,definition/
+--langdef=sass
+--langmap=sass:.scss
+--regex-sass=/@mixin[ ]*([^ ({]+)/\1/m,mixin/
+
+--PHP-kinds=+cf-v
+--regex-PHP=/(abstract)?\s+class\s+([^ ]+)/\2/c,class,classes/
+--regex-PHP=/(static|abstract|public|protected|private)\s+function\s+(\&\s+)?([^ (]+)/\3/f,function,functions/
+--regex-PHP=/interface\s+([^ ]+)/\1/i,interface,interfaces/
+--regex-PHP=/\$([a-zA-Z_][a-zA-Z0-9_]*)/\1/v/
