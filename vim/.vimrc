@@ -258,7 +258,7 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 map <Leader>= <C-w>=
 map <leader>W :call WordProcessorMode()<CR>
-map <leader>T :TagbarToggle<CR>
+map <leader>tt :TagbarToggle<CR>
 map zl zL
 map zh zH
 map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
