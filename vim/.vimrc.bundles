@@ -23,7 +23,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hail2u/vim-css3-syntax'
@@ -40,6 +39,10 @@ Bundle 'mbbill/undotree'
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'jamestomasino/vim-writingsyntax'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-unimpared'
+Bundle 'tpope/vim-commentary'
 
 let g:spf13_no_fastTabs = 1
 let g:spf13_no_easyWindows = 1
