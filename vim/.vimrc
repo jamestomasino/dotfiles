@@ -90,10 +90,9 @@ function! s:RunShellCommand(cmdline)
     call setline(2, substitute(a:cmdline, '.', '=', 'g'))
     execute 'silent $read !' . escape(a:cmdline, '%#')
     setlocal nomodifiable
-    1
 endfunction
 
-function! g:fixTabStops()
+function! g:FixTabStops()
 	set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 endfunction
 
@@ -303,7 +302,7 @@ nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>ge :Gedit<CR>
 nnoremap <silent> <leader>gi :Git add -p %<CR>
 nnoremap <silent> <leader>gg :SignifyToggle<CR>
-nnoremap <leader>tf :call g:fixTabStops()<CR>
+nnoremap <leader>tf :call g:FixTabStops()<CR>
 nnoremap Y y$
 nnoremap <leader>gu :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
