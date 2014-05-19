@@ -1,1 +1,1 @@
-0 * * * * ~/bin/tmux-session save > /dev/null
+0 * * * * /Users/james.tomasino/bin/tmux-session save > /dev/null

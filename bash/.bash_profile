@@ -91,9 +91,9 @@ if [ -f "$HOME/bin/.git-flow-completion.sh" ] ; then
     source $HOME/bin/.git-flow-completion.sh
 fi
 
-# allow for .bash_local overrides
-if [ -f "$HOME/.bash_local" ] ; then
-    . ~/.bash_local
+# perlbrew
+if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
+    source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
 ###############################################################################
@@ -120,4 +120,8 @@ if [ -f "$HOME/.bashrc" ] ; then
     . ~/.bashrc
 fi
 
+# allow for .bash_local overrides
+if [ -f "$HOME/.bash_local" ] ; then
+    . ~/.bash_local
+fi
 # vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
