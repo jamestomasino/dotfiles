@@ -1,0 +1,1 @@
+0 * * * * ~/bin/tmux-session save > /dev/null
