@@ -59,3 +59,7 @@ shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s nocaseglob
+
+# use vim on the command line
+set -o vi
+

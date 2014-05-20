@@ -1,5 +1,5 @@
 # environment
-if [ -f "$HOME/.functions" ]; then
+if [ -f "$HOME/.environment" ]; then
     . $HOME/.environment
 fi
 
@@ -35,26 +35,7 @@ if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
     source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
-###############################################################################
-##################################### scripts #################################
-###############################################################################
-
-# use vim on the command line
-set -o vi
-
-# display todo list
-todo
-
-###############################################################################
-##################################### prompt ##################################
-###############################################################################
-
-PS1="\[$DIRECTORY_COLOR\]\w \[$GIT_COLOR\]\$(parse_git_branch)\[$STAGED_COLOR\]\$(gitstaged)\[$MODIFIED_COLOR\]\$(gitmodified)\[$UNTRACKED_COLOR\]\$(gituntracked)\[$RESET_COLOR\]\n\[$USER_COLOR\]\u\[$RESET_COLOR\]@\[$HOST_COLOR\]\h\[$PROMPT_COLOR\]→ \[$RESET_COLOR\]"
-
-###############################################################################
-##################################### bashrc ##################################
-###############################################################################
-
+# bashrc
 if [ -f "$HOME/.bashrc" ] ; then
     . ~/.bashrc
 fi
@@ -63,5 +44,12 @@ fi
 if [ -f "$HOME/.bash_local" ] ; then
     . ~/.bash_local
 fi
+
+# scripts
+if [ -f "$HOME/.scripts" ]; then
+    . $HOME/.scripts
+fi
+
+PS1="\[$DIRECTORY_COLOR\]\w \[$GIT_COLOR\]\$(parse_git_branch)\[$STAGED_COLOR\]\$(gitstaged)\[$MODIFIED_COLOR\]\$(gitmodified)\[$UNTRACKED_COLOR\]\$(gituntracked)\[$RESET_COLOR\]\n\[$USER_COLOR\]\u\[$RESET_COLOR\]@\[$HOST_COLOR\]\h\[$PROMPT_COLOR\]→ \[$RESET_COLOR\]"
 
 # vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
