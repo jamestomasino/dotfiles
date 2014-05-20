@@ -27,12 +27,12 @@ fi
 
 # git flow completion
 if [ -f "$HOME/bin/.git-flow-completion.sh" ] ; then
-    source $HOME/bin/.git-flow-completion.sh
+    . $HOME/bin/.git-flow-completion.sh
 fi
 
 # perlbrew
 if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
-    source $HOME/perl5/perlbrew/etc/bashrc
+    . $HOME/perl5/perlbrew/etc/bashrc
 fi
 
 # bashrc
