@@ -52,6 +52,3 @@ fi
 # Update Local Vim Settings
 echo "Updating local vim setings"
 vim +BundleInstall! +BundleClean +qall
-
-# Use local crontab
-crontab ~/.crontab
