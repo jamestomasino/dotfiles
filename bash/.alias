@@ -5,7 +5,7 @@
 # basic shell aliases
 alias lsd='ls -Gl | grep "^d"'
 alias lsort='echo "========== Newest ==========" && ls -At1 && echo "========== Oldest =========="'
-alias reload="source ~/.bash_profile"
+alias reload="source ~/.bash_profile && clear"
 alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
