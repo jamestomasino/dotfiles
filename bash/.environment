@@ -17,7 +17,7 @@ export CLICOLOR=1
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node"
 export ANDROID_HOME="$HOME/android/android-sdk-macosx"
-export TODO="$HOME/Dropbox/todo.txt"
+export TODO="$HOME/Dropbox/Todo/personal.txt"
 export NOTE_DIR="$HOME/Dropbox/Documents/Work/GSW/notes"
 
 # colors
