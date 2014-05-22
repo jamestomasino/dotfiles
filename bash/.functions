@@ -23,7 +23,7 @@ function todo {
 	if echo $TERM | grep -Fq screen && test $TMUX ; then
 		sessname=$(tmux display -p '#S')
 		todopath=$(dirname $TODO)
-		TODOFILE=$todopath/$sessname
+		TODOFILE=$todopath/$sessname".txt"
 	else
 		TODOFILE=$TODO
 	fi
