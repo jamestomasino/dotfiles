@@ -18,7 +18,7 @@ function trimspace() {
 function todo {
 	: ${TODO:?"TODO ENV Var not set"}
 
-	if echo $TERM | grep -Fq screen && test $TERM ; then
+	if echo $TERM | grep -Fq screen && test $TMUX ; then
 		sessname=$(tmux display -p '#S')
 		todopath=$(dirname $TODO)
 		TODOFILE=$todopath/$sessname
