@@ -17,21 +17,30 @@ function trimspace() {
 # basic todo list
 function todo {
 	: ${TODO:?"TODO ENV Var not set"}
+
+	if echo $TERM | grep -Fq screen && test $TERM ; then
+		sessname=$(tmux display -p '#S')
+		todopath=$(dirname $TODO)
+		TODOFILE=$todopath/$sessname
+	else
+		TODOFILE=$TODO
+	fi
+
 	case "$1" in
 		"-a")
-			echo "${*:2}" >> $TODO
+			echo "${*:2}" >> $TODOFILE
 			;;
 		"-d")
 			re='^[0-9]+$'
 			if ! [[ "$2" =~ $re ]] ; then
-				sed -i "" -e "/$2/d" $TODO
+				sed -i "" -e "/$2/d" $TODOFILE
 			else
-				sed -i "" -e "$2d" $TODO
+				sed -i "" -e "$2d" $TODOFILE
 			fi
 			;;
 	esac
-	if [ -f "$TODO" ] ; then
-		cat $TODO | awk '{ print NR, "-", $0 }'
+	if [ -f "$TODOFILE" ] ; then
+		cat $TODOFILE | awk '{ print NR, "-", $0 }'
 	fi
 }
 
