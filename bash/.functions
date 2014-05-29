@@ -35,9 +35,9 @@ function todo {
 		"-d")
 			re='^[0-9]+$'
 			if ! [[ "$2" =~ $re ]] ; then
-				sed -i "" -e "/$2/d" $TODOFILE
+				sed -i "" -e "/$2/d" $TODOFILE 2> /dev/null
 			else
-				sed -i "" -e "$2d" $TODOFILE
+				sed -i "" -e "$2d" $TODOFILE 2> /dev/null
 			fi
 			;;
 	esac
