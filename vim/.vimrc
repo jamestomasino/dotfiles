@@ -198,7 +198,9 @@ let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --c
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/',
                      \ 'path_html': '~/Dropbox/wiki_html/',
                      \ 'syntax': 'markdown', 'ext': '.md',
-                     \ 'auto_export': 0}]
+                     \ 'custom_wiki2html': '~/.vim/bundle/vimwiki_md2html/md2html.py',
+                     \ 'css_file': '~/.vim/bundle/vimwiki_md2html/style.css',
+                     \ 'auto_export': 1}]
 
 " sets
 setglobal nobomb
