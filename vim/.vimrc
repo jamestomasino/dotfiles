@@ -195,10 +195,10 @@ let g:syntastic_python_checkers=['flake8', 'pylint']
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = { 'dir':  '\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': s:ctrlp_fallback }
-let g:vimwiki_list = [{'path': '~/Dropbox/wiki/',
-                     \ 'path_html': '~/Dropbox/wiki_html/',
+let g:vimwiki_list = [{'path': '~/Dropbox/wiki',
+                     \ 'path_html': '~/Dropbox/wiki_html',
                      \ 'syntax': 'markdown', 'ext': '.md',
-                     \ 'custom_wiki2html': '~/.vim/bundle/vimwiki_md2html/md2html.sh',
+                     \ 'custom_wiki2html': '~/.vim/bundle/vimwiki_md2html/md2html.py',
                      \ 'css_file': '~/.vim/bundle/vimwiki_md2html/style.css',
                      \ 'auto_export': 1}]
 
@@ -208,7 +208,7 @@ set nobomb
 set background=dark         " Assume a dark background
 set mouse=a                 " Automatically enable mouse usage
 set mousehide               " Hide the mouse cursor while typing
-set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
+set shortmess+=aoOtTI          " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set virtualedit=onemore             " Allow for cursor beyond last character
 set history=1000                    " Store a ton of history (default is 20)
