@@ -46,6 +46,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'craigemery/vim-autotag'
 Bundle 'majutsushi/tagbar'
 Bundle 'rking/ag.vim'
+Bundle 'vim-scripts/vimwiki'
 
 let g:spf13_no_fastTabs = 1
 let g:spf13_no_easyWindows = 1
