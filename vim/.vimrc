@@ -195,6 +195,7 @@ let g:syntastic_python_checkers=['flake8', 'pylint']
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = { 'dir':  '\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': s:ctrlp_fallback }
+let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Dropbox/wiki_html/'}]
 
 " sets
 setglobal nobomb
