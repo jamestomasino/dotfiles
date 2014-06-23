@@ -198,7 +198,7 @@ let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --c
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/',
                      \ 'path_html': '~/Dropbox/wiki_html/',
                      \ 'syntax': 'markdown', 'ext': '.md',
-                     \ 'custom_wiki2html': '~/.vim/bundle/vimwiki_md2html/md2html.py',
+                     \ 'custom_wiki2html': '~/.vim/bundle/vimwiki_md2html/md2html.sh',
                      \ 'css_file': '~/.vim/bundle/vimwiki_md2html/style.css',
                      \ 'auto_export': 1}]
 
