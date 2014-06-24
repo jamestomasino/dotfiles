@@ -199,7 +199,7 @@ let g:vimwiki_list = [{'path': '~/Dropbox/wiki',
                      \ 'path_html': '~/Dropbox/Public/wiki',
                      \ 'syntax': 'markdown', 'ext': '.md',
                      \ 'custom_wiki2html': '~/.vim/bundle/vimwiki_md2html/md2html.py',
-                     \ 'css_file': '~/.vim/bundle/vimwiki_md2html/style.css',
+                     \ 'css_file': 'http://wiki.tomasino.org/style.css',
                      \ 'auto_export': 1}]
 
 " sets
