@@ -425,4 +425,8 @@ command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q
 command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
 
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
 " vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
