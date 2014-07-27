@@ -7,7 +7,7 @@ exists() { type -t "$1" > /dev/null 2>&1; }
 
 # Helper to clean vars
 function trimspace() {
-	echo ${@//[[:blank:]]/}
+	echo "${@//[[:blank:]]/}"
 }
 
 ################################################################################
@@ -16,13 +16,13 @@ function trimspace() {
 
 # basic todo list
 function todo {
-	: ${TODO:?"TODO ENV Var not set"}
+	: "${TODO:?'TODO ENV Var not set'}"
 
 	# If we are in a tmux session, name the file with the session name
 	# If not in tmux, use the full $TODO env var for path/file
-	if echo $TERM | grep -Fq screen && test $TMUX ; then
+	if echo "$TERM" | grep -Fq screen && test "$TMUX" ; then
 		sessname=$(tmux display -p '#S')
-		todopath=$(dirname $TODO)
+		todopath=$(dirname "$TODO")
 		TODOFILE=$todopath/$sessname".txt"
 	else
 		TODOFILE=$TODO
@@ -30,19 +30,19 @@ function todo {
 
 	case "$1" in
 		"-a")
-			echo "${*:2}" >> $TODOFILE
+			echo "${*:2}" >> "$TODOFILE"
 			;;
 		"-d")
 			re='^[0-9]+$'
 			if ! [[ "$2" =~ $re ]] ; then
-				sed -i "" -e "/$2/d" $TODOFILE 2> /dev/null
+				sed -i "" -e "/$2/d" "$TODOFILE" 2> /dev/null
 			else
-				sed -i "" -e "$2d" $TODOFILE 2> /dev/null
+				sed -i "" -e "$2d" "$TODOFILE" 2> /dev/null
 			fi
 			;;
 	esac
 	if [ -f "$TODOFILE" ] ; then
-		cat $TODOFILE | awk '{ print NR, "-", $0 }'
+		cat "$TODOFILE" | awk '{ print NR, "-", $0 }'
 	fi
 }
 
@@ -51,14 +51,14 @@ function todos {
 	#local m=$(trimspace $(git diff --numstat 2> /dev/null | wc -l))
 	LOCAL_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
 	LOCAL_DIR=${LOCAL_DIR:-.}
-	find ${LOCAL_DIR} -type f -exec grep -H -n '(TODO|FIX(ME)?):' {} \; 2> /dev/null 
+	find "${LOCAL_DIR}" -type f -exec grep -H -n '(TODO|FIX(ME)?):' {} \; 2> /dev/null 
 }
 
 # jump to root folder of git repo
 function cdroot {
 	LOCAL_DIR=$(git rev-parse --show-toplevel)
 	LOCAL_DIR=${LOCAL_DIR:-.}
-	cd $LOCAL_DIR
+	cd "$LOCAL_DIR"
 }
 
 # json formatting / highlighting
@@ -127,7 +127,7 @@ function parse_git_branch {
 
 # Return number of staged files in folder
 function gitstaged() {
-	local s=$(trimspace $(git diff --cached --numstat 2> /dev/null | wc -l))
+	local s=$(trimspace "$(git diff --cached --numstat 2> /dev/null | wc -l)" )
 	if [ "0" == "${s}" ]; then
 		s=""
 	else
@@ -138,7 +138,7 @@ function gitstaged() {
 
 # Return number of modified files in folder
 function gitmodified() {
-	local m=$(trimspace $(git diff --numstat 2> /dev/null | wc -l))
+	local m=$(trimspace "$(git diff --numstat 2> /dev/null | wc -l)" )
 	if [ "0" == "${m}" ]; then
 		m=""
 	else
@@ -149,7 +149,7 @@ function gitmodified() {
 
 # Return number of untracked files in folder
 function gituntracked() {
-	local u=$(trimspace $(git ls-files --exclude-standard --others 2> /dev/null | wc -l))
+	local u=$(trimspace "$(git ls-files --exclude-standard --others 2> /dev/null | wc -l)" )
 	if [ "0" == "${u}" ]; then
 		u=""
 	else
@@ -162,12 +162,12 @@ function gittreestatus() {
 	if [ $# -eq 0 ]; then
 		for i in $(find . -type d -maxdepth 1)
 		do
-			cd "$i" && echo -e $(pwd) "${STAGED_COLOR}$(gitstaged)${MODIFIED_COLOR}$(gitmodified)${UNTRACKED_COLOR}$(gituntracked)${RESET_COLOR}" && cd - > /dev/null
+			cd "$i" && echo -e "$(pwd)" "${STAGED_COLOR}$(gitstaged)${MODIFIED_COLOR}$(gitmodified)${UNTRACKED_COLOR}$(gituntracked)${RESET_COLOR}" && cd - > /dev/null
 		done
 	else
-		for i in $(find $1 -type d -maxdepth 1)
+		for i in $(find "$1" -type d -maxdepth 1)
 		do
-			cd "$i" && echo -e $(pwd) "${STAGED_COLOR}$(gitstaged)${MODIFIED_COLOR}$(gitmodified)${UNTRACKED_COLOR}$(gituntracked)${RESET_COLOR}" && cd - > /dev/null
+			cd "$i" && echo -e "$(pwd)" "${STAGED_COLOR}$(gitstaged)${MODIFIED_COLOR}$(gitmodified)${UNTRACKED_COLOR}$(gituntracked)${RESET_COLOR}" && cd - > /dev/null
 		done
 	fi
 }
@@ -180,25 +180,25 @@ gitpullall() {
   REMOTES=$(echo "$REMOTES" | xargs -n1 echo)
   CLB=$(git branch -l|awk '/^\*/{print $2}');
   echo "$REMOTES" | while read REMOTE; do
-    git remote update $REMOTE
-    git remote show $REMOTE -n \
+    git remote update "$REMOTE"
+    git remote show "$REMOTE" -n \
     | awk '/merges with remote/{print $5" "$1}' \
     | while read line; do
       RB=$(echo "$line"|cut -f1 -d" ");
       ARB="refs/remotes/$REMOTE/$RB";
       LB=$(echo "$line"|cut -f2 -d" ");
       ALB="refs/heads/$LB";
-      NBEHIND=$(( $(git rev-list --count $ALB..$ARB 2>/dev/null) +0));
-      NAHEAD=$(( $(git rev-list --count $ARB..$ALB 2>/dev/null) +0));
+      NBEHIND=$(( $(git rev-list --count "$ALB".."$ARB" 2>/dev/null) +0));
+      NAHEAD=$(( $(git rev-list --count "$ARB".."$ALB" 2>/dev/null) +0));
       if [ "$NBEHIND" -gt 0 ]; then
         if [ "$NAHEAD" -gt 0 ]; then
           echo " branch $LB is $NBEHIND commit(s) behind and $NAHEAD commit(s) ahead of $REMOTE/$RB. could not be fast-forwarded";
         elif [ "$LB" = "$CLB" ]; then
           echo " branch $LB was $NBEHIND commit(s) behind of $REMOTE/$RB. fast-forward merge";
-          git merge -q $ARB;
+          git merge -q "$ARB";
         else
           echo " branch $LB was $NBEHIND commit(s) behind of $REMOTE/$RB. reseting local branch to remote";
-          git branch -l -f $LB -t $ARB >/dev/null;
+          git branch -l -f "$LB" -t "$ARB" >/dev/null;
         fi
       fi
     done
@@ -210,8 +210,8 @@ function swap() {
     local TMPFILE=tmp.$$
 
     [ $# -ne 2 ] && echo "swap: 2 arguments needed" && return 1
-    [ ! -e $1 ] && echo "swap: $1 does not exist" && return 1
-    [ ! -e $2 ] && echo "swap: $2 does not exist" && return 1
+    [ ! -e "$1" ] && echo "swap: $1 does not exist" && return 1
+    [ ! -e "$2" ] && echo "swap: $2 does not exist" && return 1
 
     mv "$1" $TMPFILE
     mv "$2" "$1"
@@ -220,19 +220,19 @@ function swap() {
 
 # Use the right extraction method based on file extension
 function extract() {
-    if [ -f $1 ] ; then
+    if [ -f "$1" ] ; then
         case $1 in
-            *.tar.bz2)   tar xvjf $1     ;;
-            *.tar.gz)    tar xvzf $1     ;;
-            *.bz2)       bunzip2 $1      ;;
-            *.rar)       unrar x $1      ;;
-            *.gz)        gunzip $1       ;;
-            *.tar)       tar xvf $1      ;;
-            *.tbz2)      tar xvjf $1     ;;
-            *.tgz)       tar xvzf $1     ;;
-            *.zip)       unzip $1        ;;
-            *.Z)         uncompress $1   ;;
-            *.7z)        7z x $1         ;;
+            *.tar.bz2)   tar xvjf "$1"     ;;
+            *.tar.gz)    tar xvzf "$1"     ;;
+            *.bz2)       bunzip2 "$1"      ;;
+            *.rar)       unrar x "$1"      ;;
+            *.gz)        gunzip "$1"       ;;
+            *.tar)       tar xvf "$1"      ;;
+            *.tbz2)      tar xvjf "$1"     ;;
+            *.tgz)       tar xvzf "$1"     ;;
+            *.zip)       unzip "$1"        ;;
+            *.Z)         uncompress "$1"   ;;
+            *.7z)        7z x "$1"         ;;
             *)           echo "'$1' cannot be extracted via >extract<" ;;
         esac
     else
@@ -244,12 +244,12 @@ function extract() {
 function hr() {
 	set -f
 	if [[ -n $1 ]]; then
-		space_character=$( echo $1 | head -c 1)
+		space_character=$( echo "$1" | head -c 1)
 	else
 		space_character='='
 	fi
 	
-	for i in $(seq 1 $(tput cols));
+	for i in $(seq 1 "$(tput cols)");
 	do
 		echo -n "${space_character}";
 	done
@@ -264,17 +264,17 @@ old() {
 
 # Note taking functions
 nls() {
-	: ${NOTE_DIR:?"NOTE_DIR ENV Var not set"}
-	ls -c $NOTE_DIR | grep "$*"
+	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
+	ls -c "$NOTE_DIR" | grep "$*"
 }
 
 n() {
-	: ${NOTE_DIR:?"NOTE_DIR ENV Var not set"}
+	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
 	if [ $# -eq 0 ]
 		then
 			nls
 	else
-		$EDITOR $NOTE_DIR/"$*".txt
+		$EDITOR "$NOTE_DIR"/"$*".txt
 	fi
 }
 
