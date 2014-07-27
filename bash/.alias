@@ -32,7 +32,6 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to 
 alias cl="fc -e -| pbcopy" # copy output of last command to clipboard
 alias cpwd='pwd|tr -d "\n"|pbcopy' # copy working directory path to clipboard
 alias chess='cd ~ && /Applications/Chess.app/Contents/Resources/sjeng.ChessEngine && rm *.lrn && cd -'
-alias userlist='cat /etc/passwd | grep "^[A-Za-z]" | awk -F ":" "{ print \$1 }"'
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption.local -x'
@@ -46,7 +45,6 @@ alias gap="git add -p"
 # tmux
 alias tmux='tmux -2'
 alias t='tmux attach || tmux-session restore && tmux attach || tmux new'
-alias kts='tmux ls | awk "{print $1}" | sed "s/://g" | xargs -I{} tmux kill-session -t {}'
 
 # ip addresses
 alias flushdns='dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
