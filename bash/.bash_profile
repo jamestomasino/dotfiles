@@ -1,6 +1,6 @@
-# environment
-if [ -f "$HOME/.environment" ]; then
-    . $HOME/.environment
+# bashrc
+if [ -f "$HOME/.bashrc" ] ; then
+    . ~/.bashrc
 fi
 
 # functions
@@ -30,20 +30,6 @@ if [ -f "$HOME/bin/.git-flow-completion.sh" ] ; then
     . $HOME/bin/.git-flow-completion.sh
 fi
 
-# perlbrew
-if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
-    . $HOME/perl5/perlbrew/etc/bashrc
-fi
-
-# bashrc
-if [ -f "$HOME/.bashrc" ] ; then
-    . ~/.bashrc
-fi
-
-# allow for .bash_local overrides
-if [ -f "$HOME/.bash_local" ] ; then
-    . ~/.bash_local
-fi
 
 # scripts
 if [ -f "$HOME/.scripts" ]; then
