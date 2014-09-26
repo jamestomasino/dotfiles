@@ -395,12 +395,15 @@ if has('gui_running')
     set guifont=Meslo\ LG\ S\ for\ Powerline
     set encoding=utf-8
     set transparency=0
-    colorscheme twilight
+    syntax enable
+    set background=dark
+    colorscheme solarized
 else
     let g:indent_guides_enable_on_vim_startup = 0
-    set background=dark
     set t_Co=256
-    colorscheme twilight256
+    syntax enable
+    set background=dark
+    colorscheme solarized
 endif
 
 if has('clipboard')
