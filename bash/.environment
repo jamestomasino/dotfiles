@@ -11,14 +11,15 @@ export HISTIGNORE=""
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
-#export DYLD_FORCE_FLAT_NAMESPACE=1 # fix for brew macvim on mavericks
 
 # path vars
+export DROPBOX_PATH="$HOME/sync/Dropbox"
+export SPIDEROAK_PATH="$HOME/sync/spideroak"
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node"
 export ANDROID_HOME="$HOME/android/android-sdk-macosx"
-export TODO="$HOME/Dropbox/Todo/personal.txt"
-export NOTE_DIR="$HOME/Dropbox/Documents/Work/GSW/notes"
+export TODO="$DROPBOX_PATH/Todo/personal.txt"
+export NOTE_DIR="$DROPBOX_PATH/Documents/Work/GSW/notes"
 
 # colors
 export DIRECTORY_COLOR="\033[38;05;222m"
