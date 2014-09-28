@@ -18,3 +18,5 @@ if [ -f "$HOME/.bash_local" ] ; then
     . "$HOME/.bash_local"
 fi
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
