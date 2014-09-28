@@ -13,8 +13,8 @@ export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
 
 # path vars
-export DROPBOX_PATH="$HOME/sync/Dropbox"
-export SPIDEROAK_PATH="$HOME/sync/spideroak"
+export DROPBOX_PATH="$HOME/Sites/sync/Dropbox"
+export SPIDEROAK_PATH="$HOME/Sites/sync/spideroak"
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node"
 export ANDROID_HOME="$HOME/android/android-sdk-macosx"
@@ -53,7 +53,6 @@ PATH=${PATH}:.
 PATH=${PATH}:${ANDROID_HOME}/tools
 PATH=${PATH}:${ANDROID_HOME}/platform-tools
 PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin
-PATH=${PATH}:~/.rvm/gems/ruby-1.9.3-p484/bin
 PATH=${PATH}:~/.rvm/bin
 
 # options
