@@ -172,6 +172,37 @@ au FileType python setlocal shiftwidth=4
 au BufReadPost setlocal nobomb
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+" Pencil / Writing Controls
+let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#textwidth = 74
+let g:pencil#joinspaces = 0
+let g:pencil#cursorwrap = 1
+let g:pencil#conceallevel = 3
+let g:pencil#concealcursor = 'c'
+let g:airline_section_x = '%{PencilMode()}'
+let g:pencil#softDetectSample = 20
+let g:pencil#softDetectThreshold = 130
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+                            \ | call lexical#init()
+                            \ | call litecorrect#init()
+                            \ | call textobj#quote#init()
+                            \ | call textobj#sentence#init()
+                            \ | setl spell spl=en_us fdl=4 noru nonu nornu
+                            \ | setl fdo+=search
+  autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
+                            \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
+                            \ | call litecorrect#init()
+                            \ | setl spell spl=en_us et sw=2 ts=2 noai
+  autocmd Filetype mail         call pencil#init({'wrap': 'hard', 'textwidth': 60})
+                            \ | call litecorrect#init()
+                            \ | setl spell spl=en_us et sw=2 ts=2 noai nonu nornu
+  autocmd Filetype html,xml     call pencil#init({'wrap': 'soft'})
+                            \ | call litecorrect#init()
+                            \ | setl spell spl=en_us et sw=2 ts=2
+augroup END
+
 " highlight
 highlight clear SignColumn      " SignColumn should match background
 highlight clear LineNr          " Current line number row will have same background color in relative mode
@@ -187,7 +218,7 @@ let maplocalleader = '_'
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
-let g:airline_theme='badwolf'
+let g:airline_theme = 'pencil'
 let g:airline_powerline_fonts=1
 let g:skipview_files = ['\[example pattern\]']
 let b:match_ignorecase = 1
@@ -397,13 +428,13 @@ if has('gui_running')
     set transparency=0
     syntax enable
     set background=dark
-    colorscheme solarized
+    colorscheme pencil
 else
     let g:indent_guides_enable_on_vim_startup = 0
     set t_Co=256
     syntax enable
     set background=dark
-    colorscheme solarized
+    colorscheme pencil
 endif
 
 if has('clipboard')
