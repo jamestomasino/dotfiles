@@ -22,7 +22,6 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 " Writing/Authoring Tools
 Bundle 'reedes/vim-pencil'
 Bundle 'tpope/vim-abolish'
-Bundle 'tommcdo/vim-exchange'
 Bundle 'junegunn/limelight.vim'
 Bundle 'junegunn/goyo.vim'
 Bundle 'tpope/vim-markdown'

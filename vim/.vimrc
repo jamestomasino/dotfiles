@@ -172,6 +172,44 @@ au FileType python setlocal shiftwidth=4
 au BufReadPost setlocal nobomb
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+" highlight
+highlight clear SignColumn      " SignColumn should match background
+highlight clear LineNr          " Current line number row will have same background color in relative mode
+
+" miscelanious settings
+filetype plugin indent on   " Automatically detect file types.
+syntax on                   " Syntax highlighting
+scriptencoding utf-8
+
+" General Lets
+let mapleader = ','
+let maplocalleader = '_'
+let g:skipview_files = ['\[example pattern\]']
+let b:match_ignorecase = 1
+
+" Indent Guides
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+" Airline
+let g:airline_theme = 'pencil'
+let g:airline_powerline_fonts=1
+
+" Ctrl-P
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = { 'dir':  '\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': s:ctrlp_fallback }
+
+" Syntaxastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_python_checkers=['flake8', 'pylint']
+let g:syntastic_html_tidy_exec = 'tidy5'
+
 " Pencil / Writing Controls
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 74
@@ -182,13 +220,16 @@ let g:pencil#concealcursor = 'c'
 let g:airline_section_x = '%{PencilMode()}'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
+
+" Replace spelling mistakes with first correction
+nnoremap <C-s> [s1z=<c-o>
+inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
                             \ | call lexical#init()
                             \ | call litecorrect#init()
-                            \ | call textobj#quote#init()
-                            \ | call textobj#sentence#init()
                             \ | setl spell spl=en_us fdl=4 noru nonu nornu
                             \ | setl fdo+=search
   autocmd Filetype git,gitsendemail,*commit*,*COMMIT*
@@ -202,44 +243,41 @@ augroup pencil
                             \ | call litecorrect#init()
                             \ | setl spell spl=en_us et sw=2 ts=2
 augroup END
+let g:limelight_default_coefficient = 0.5
 
-" highlight
-highlight clear SignColumn      " SignColumn should match background
-highlight clear LineNr          " Current line number row will have same background color in relative mode
+" Goyo
+function! s:goyo_enter()
+  silent !tmux set status off
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+  Limelight
+endfunction
 
-" miscelanious settings
-filetype plugin indent on   " Automatically detect file types.
-syntax on                   " Syntax highlighting
-scriptencoding utf-8
+function! s:goyo_leave()
+  silent !tmux set status on
+  set showmode
+  set showcmd
+  set scrolloff=5
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+  Limelight!
+endfunction
 
-" Lets
-let mapleader = ','
-let maplocalleader = '_'
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
-let g:airline_theme = 'pencil'
-let g:airline_powerline_fonts=1
-let g:skipview_files = ['\[example pattern\]']
-let b:match_ignorecase = 1
-let g:syntastic_python_checkers=['flake8', 'pylint']
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = { 'dir':  '\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': s:ctrlp_fallback }
-let g:vimwiki_list = [{'path': '~/Dropbox/wiki',
-                     \ 'path_html': '~/Dropbox/Public/wiki',
-                     \ 'syntax': 'markdown', 'ext': '.md',
-                     \ 'custom_wiki2html': '~/.vim/bundle/vimwiki_md2html/md2html.py',
-                     \ 'css_file': 'http://wiki.tomasino.org/style.css',
-                     \ 'auto_export': 1}]
-
-" Syntax Checking
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_html_tidy_exec = 'tidy5'
+autocmd! User GoyoEnter
+autocmd! User GoyoLeave
+autocmd  User GoyoEnter nested call <SID>goyo_enter()
+autocmd  User GoyoLeave nested call <SID>goyo_leave()
 
 " sets
 setglobal nobomb
@@ -285,9 +323,6 @@ set noexpandtab
 set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 " map
 map <C-J> <C-W>j<C-W>_
@@ -339,6 +374,7 @@ inoremap <right> <nop>
 nnoremap Y y$
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
+nnoremap <Leader>G :Goyo<CR>
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -412,11 +448,14 @@ endif
 if has('statusline')
     set laststatus=2
     set statusline=%<%f\                     " Filename
-    set statusline+=%w%h%m%r                 " Options
+    set statusline+=%w%h%m%r%{PencilMode()}\ " Options
     set statusline+=%{fugitive#statusline()} " Git Hotness
     set statusline+=\ [%{&ff}/%Y]            " Filetype
     set statusline+=\ [%{getcwd()}]          " Current dir
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
 endif
 
 if has("user_commands")
