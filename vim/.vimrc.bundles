@@ -33,8 +33,6 @@ Bundle 'reedes/vim-litecorrect'
 Bundle 'reedes/vim-wordy'
 Bundle 'reedes/vim-wheel'
 Bundle 'reedes/vim-thematic'
-Bundle 'reedes/vim-textobj-quote'
-Bundle 'reedes/vim-textobj-sentence'
 
 " Development Tools
 Bundle 'tpope/vim-surround'
@@ -47,6 +45,8 @@ Bundle 'mbbill/undotree'
 Bundle 'AndrewRadev/sideways.vim'
 Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'rking/ag.vim'
+Bundle 'tpope/vim-commentary'
+Bundle 'scrooloose/syntastic'
 
 " Styling
 Bundle 'bling/vim-airline'

@@ -233,6 +233,14 @@ let g:vimwiki_list = [{'path': '~/Dropbox/wiki',
                      \ 'css_file': 'http://wiki.tomasino.org/style.css',
                      \ 'auto_export': 1}]
 
+" Syntax Checking
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_tidy_exec = 'tidy5'
+
 " sets
 setglobal nobomb
 set nobomb
@@ -277,6 +285,9 @@ set noexpandtab
 set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " map
 map <C-J> <C-W>j<C-W>_
