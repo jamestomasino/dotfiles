@@ -201,6 +201,10 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = { 'dir':  '\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': s:ctrlp_fallback }
 
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
 " Syntaxastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -221,9 +225,9 @@ let g:airline_section_x = '%{PencilMode()}'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 
-" Replace spelling mistakes with first correction
-nnoremap <C-s> [s1z=<c-o>
-inoremap <C-s> <c-g>u<Esc>[s1z=`]A<c-g>u
+" Local vimrc loading
+let g:localvimrc_sandbox=0
+let g:localvimrc_ask=0
 
 augroup pencil
   autocmd!

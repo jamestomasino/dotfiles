@@ -18,6 +18,7 @@ call vundle#rc()
 " Vundle Support
 Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'embear/vim-localvimrc'
 
 " Writing/Authoring Tools
 Bundle 'reedes/vim-pencil'
@@ -46,6 +47,7 @@ Bundle 'tomtom/quickfixsigns_vim'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/syntastic'
+Bundle 'mattn/emmet-vim'
 
 " Styling
 Bundle 'bling/vim-airline'
