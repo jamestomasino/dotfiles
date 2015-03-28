@@ -18,6 +18,7 @@ call vundle#rc()
 " Vundle Support
 Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'krisajenkins/vim-projectlocal'
 
 " Writing/Authoring Tools
 Bundle 'reedes/vim-pencil'
