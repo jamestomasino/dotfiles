@@ -225,6 +225,10 @@ let g:airline_section_x = '%{PencilMode()}'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 
+" Local vimrc loading
+let g:localvimrc_sandbox=0
+let g:localvimrc_ask=0
+
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
