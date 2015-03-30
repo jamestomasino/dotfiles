@@ -204,6 +204,8 @@ let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files . --c
 " Emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+" allow jj in insert mode to complete Emmet calls
+imap jj <C-y>,
 
 " Syntaxastic
 let g:syntastic_always_populate_loc_list = 1
@@ -503,6 +505,9 @@ endif
 if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" rebalance buffers on resize
+autocmd VimResized * :wincmd =
 
 " commands
 call InitializeDirectories()
