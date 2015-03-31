@@ -51,7 +51,6 @@ Bundle 'mattn/emmet-vim'
 
 " Styling
 Bundle 'bling/vim-airline'
-Bundle 'altercation/vim-colors-solarized'
 
 let g:spf13_no_fastTabs = 1
 let g:spf13_no_easyWindows = 1
