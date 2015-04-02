@@ -2,8 +2,10 @@
 ##################################### aliases #################################
 ###############################################################################
 
+# conditional alias for ls (fixes osx issue)
+ls --color=auto &> /dev/null && alias ls='ls --color=auto' ||
+
 # basic shell aliases
-alias ls='ls --color=auto'
 alias lsd='ls -Gl | grep "^d"'
 alias lsort='echo "========== Newest ==========" && ls -At1 && echo "========== Oldest =========="'
 alias reload="source ~/.bash_profile && clear"
@@ -46,7 +48,7 @@ alias gap="git add -p"
 
 # tmux
 alias tmux='tmux -2'
-alias t='tmux attach || tmux-session restore && tmux attach || tmux new'
+alias t='tmux attach || tmux new'
 
 # ip addresses
 alias flushdns='dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
