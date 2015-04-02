@@ -51,6 +51,9 @@ fi
 
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 	git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+	if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+		tmux source-file "$HOME/.tmux.conf"
+	fi
 fi
 
 # Update Local Vim Settings
