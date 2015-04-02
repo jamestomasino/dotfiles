@@ -49,6 +49,10 @@ if [ ! -d "$HOME/.vim/bundle/vundle" ]; then
 	vim -u "$HOME/.vimrc.bundles" +BundleInstall! +BundleClean +qall
 fi
 
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+	git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+fi
+
 # Update Local Vim Settings
 echo "Updating local vim setings"
 vim +BundleInstall! +BundleClean +qall
