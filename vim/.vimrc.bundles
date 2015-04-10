@@ -48,6 +48,7 @@ Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'scrooloose/syntastic'
 Bundle 'mattn/emmet-vim'
+Bundle 'ajh17/VimCompletesMe'
 
 " Styling
 Bundle 'bling/vim-airline'
