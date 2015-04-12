@@ -172,6 +172,24 @@ au FileType python setlocal shiftwidth=4
 au BufReadPost setlocal nobomb
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+let g:thematic#themes = {
+\ 'apprentice'  :{'colorscheme': 'apprentice',
+\                 'laststatus': 1,
+\                 'airline-theme': 'tomorrow',
+\                 'background': 'dark',
+\                 'ruler': 1,
+\                },
+\ 'pencil_dark' :{'colorscheme': 'pencil',
+\                 'laststatus': 1,
+\                 'airline-theme': 'badwolf',
+\                 'background': 'dark',
+\                 'ruler': 1,
+\                },
+\ }
+
+nmap <leader>T <Plug>ThematicNext
+let g:thematic#theme_name = 'apprentice'
+
 " highlight
 highlight clear SignColumn      " SignColumn should match background
 highlight clear LineNr          " Current line number row will have same background color in relative mode
@@ -484,13 +502,13 @@ if has('gui_running')
     set transparency=0
     syntax enable
     set background=dark
-    colorscheme pencil
+    "colorscheme pencil
 else
     let g:indent_guides_enable_on_vim_startup = 0
     set t_Co=256
     syntax enable
     set background=dark
-    colorscheme pencil
+    "colorscheme pencil
 endif
 
 if has('clipboard')
