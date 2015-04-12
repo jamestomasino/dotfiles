@@ -359,6 +359,7 @@ map <right> <C-W>l<C-W>_
 " vmap
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
+vmap <Enter> <Plug>(EasyAlign)
 
 " imap
 imap [F $
