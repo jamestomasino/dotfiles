@@ -1,0 +1,71 @@
+if has("autocmd")
+
+    augroup general_buffer
+        au!
+        au BufReadPost setlocal nobomb
+        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+        au BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+    augroup END
+
+    augroup func_whitespace
+        au!
+        au FileType c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+    augroup END
+
+    augroup func_VimResized
+        au!
+        au VimResized * :wincmd =
+    augroup END
+
+    augroup type_gitcommit
+        au!
+        au FileType gitcommit call setpos('.', [0, 1, 1, 0])
+        au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    augroup END
+
+    augroup type_python
+        au!
+        au FileType python setlocal expandtab
+        au FileType python setlocal tabstop=4
+        au FileType python setlocal softtabstop=4
+        au FileType python setlocal shiftwidth=4
+    augroup END
+
+    augroup type_json
+        au!
+        au FileType json setlocal equalprg=python\ -m\ json.tool
+    augroup END
+
+    augroup pencil
+        au!
+        au FileType markdown,mkd call pencil#init()
+                    \ | call lexical#init()
+                    \ | call litecorrect#init()
+                    \ | setl spell spl=en_us fdl=4 noru nonu nornu
+                    \ | setl fdo+=search
+        au Filetype git,gitsendemail,*commit*,*COMMIT*
+                    \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
+                    \ | call litecorrect#init()
+                    \ | setl spell spl=en_us et sw=2 ts=2 noai
+        au Filetype mail         call pencil#init({'wrap': 'hard', 'textwidth': 60})
+                    \ | call litecorrect#init()
+                    \ | setl spell spl=en_us et sw=2 ts=2 noai nonu nornu
+        au Filetype html,xml     call pencil#init({'wrap': 'soft'})
+                    \ | call litecorrect#init()
+                    \ | setl spell spl=en_us et sw=2 ts=2
+    augroup END
+
+    augroup bundle_Goyo
+        au!
+        au  User GoyoEnter nested call <SID>goyo_enter()
+        au  User GoyoLeave nested call <SID>goyo_leave()
+    augroup END
+
+    augroup bundle_Emmet
+        au!
+        au FileType html,css EmmetInstall
+    augroup END
+
+endif
+
+" vim: set sw=4 ts=4 sts=4 et tw=78 nospell:

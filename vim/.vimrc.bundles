@@ -1,16 +1,3 @@
-set nocompatible
-set background=dark
-
-if has('win32') || has('win64')
-    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-    if has("multi_byte")
-        set termencoding=cp850
-        set encoding=utf-8
-        setglobal fileencoding=utf-8
-        set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
-    endif
-endif
-
 filetype off
 
 call plug#begin('~/.vim/plugged')
@@ -24,7 +11,13 @@ Plug 'junegunn/vim-easy-align'
 
 " Styling
 Plug 'romainl/Apprentice'
+Plug 'w0ng/vim-hybrid'
+Plug 'tomasr/molokai'
+Plug 'sickill/vim-monokai'
+Plug 'noahfrederick/vim-hemisu'
+Plug 'morhetz/gruvbox'
 Plug 'bling/vim-airline'
+Plug 'gosukiwi/vim-atom-dark'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'

@@ -1,0 +1,129 @@
+" map
+map <C-J> <C-W>j<C-W>_
+map <C-K> <C-W>k<C-W>_
+map <C-L> <C-W>l<C-W>_
+map <C-H> <C-W>h<C-W>_
+map <S-H> gT
+map <S-L> gt
+map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+map [F $
+map [H g0
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+map <Leader>= <C-w>=
+map <leader>W :call WordProcessorMode()<CR>
+map <leader>tt :TagbarToggle<CR>
+map zl zL
+map zh zH
+map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+map <F1> <Esc>
+map <up> <C-W>k<C-W>_
+map <down> <C-W>j<C-W>_
+map <left> <C-W>h<C-W>_
+map <right> <C-W>l<C-W>_
+
+" vmap
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
+vmap <Enter> <Plug>(EasyAlign)
+
+" imap
+imap [F $
+imap [H g0
+imap <F1> <Esc>
+imap jj <C-y>,
+
+
+" noremap
+noremap j gj
+noremap k gk
+
+" inoremap
+inoremap jk <Esc>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" nnoremap
+nnoremap Y y$
+nnoremap <Leader>G :Goyo<CR>
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
+nnoremap <silent> <leader>gr :Gread<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR>
+nnoremap <silent> <leader>ge :Gedit<CR>
+nnoremap <silent> <leader>gi :Git add -p %<CR>
+nnoremap <silent> <leader>gg :SignifyToggle<CR>
+nnoremap <leader>tf :call g:FixTabStops()<CR>
+nnoremap Y y$
+nnoremap <leader>gu :GundoToggle<CR>
+nnoremap <S-Left> :SidewaysLeft<cr>
+nnoremap <S-Right> :SidewaysRight<cr>
+nnoremap <C-Up> ddkP
+nnoremap <C-Down> ddp
+nnoremap gV `[v`]
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <space> za
+
+" Choose a color scheme with fzf
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':     'colo',
+\   'options':  '+m',
+\   'left':     20,
+\   'launcher': 'xterm -geometry 20x30 -e bash -ic %s'
+\ })<CR>
+
+" Use <Leader><Enter> to list buffer with fuzzy searching
+nnoremap <silent> <Leader><Enter> :call fzf#run({
+\   'source':  reverse(Buflist()),
+\   'sink':    function('Bufopen'),
+\   'options': '+m',
+\   'down':    len(Buflist()) + 2
+\ })<CR>
+
+" vnoremap
+vnoremap < <gv
+vnoremap > >gv
+vnoremap . :normal .<CR>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <right> <nop>
+vnoremap <left> <nop>
+vnoremap <Space> zf
+
+" cnoremap
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" cmap
+cmap Tabe tabe
+cmap w!! w !sudo tee % >/dev/null
+cmap cwd lcd %:p:h
+cmap cd. lcd %:p:h
+
+" nmap
+nmap <leader>f0 :set foldlevel=0<CR>
+nmap <leader>f1 :set foldlevel=1<CR>
+nmap <leader>f2 :set foldlevel=2<CR>
+nmap <leader>f3 :set foldlevel=3<CR>
+nmap <leader>f4 :set foldlevel=4<CR>
+nmap <leader>f5 :set foldlevel=5<CR>
+nmap <leader>f6 :set foldlevel=6<CR>
+nmap <leader>f7 :set foldlevel=7<CR>
+nmap <leader>f8 :set foldlevel=8<CR>
+nmap <leader>f9 :set foldlevel=9<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
+nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+nmap <leader>jt <Esc>:%!python -m json.tool<CR><Esc>:set filetype=json<CR>
+
+" vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 nospell:
