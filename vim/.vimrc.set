@@ -1,0 +1,165 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""" SETTINGS """""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" General Lets
+let mapleader = ','
+let maplocalleader = '_'
+let b:match_ignorecase = 1
+
+" miscelanious settings
+filetype plugin indent on       " Automatically detect file types.
+syntax on                       " Syntax highlighting
+scriptencoding utf-8
+
+" highlight
+highlight clear SignColumn      " SignColumn should match background
+highlight clear LineNr          " Current line number row will have same background color in relative mode
+
+" Indent Guides
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+" Airline
+let g:airline_theme = 'tomorrow'
+let g:airline_powerline_fonts=1
+
+" Emmet
+let g:user_emmet_install_global = 0
+
+" Syntaxastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_python_checkers=['flake8', 'pylint']
+let g:syntastic_html_tidy_exec = 'tidy5'
+
+" Pencil / Writing Controls
+let g:pencil#wrapModeDefault = 'soft'
+let g:pencil#textwidth = 74
+let g:pencil#joinspaces = 0
+let g:pencil#cursorwrap = 1
+let g:pencil#conceallevel = 3
+let g:pencil#concealcursor = 'c'
+let g:airline_section_x = '%{PencilMode()}'
+let g:pencil#softDetectSample = 20
+let g:pencil#softDetectThreshold = 130
+
+" Local vimrc loading
+let g:localvimrc_sandbox=0
+let g:localvimrc_ask=0
+
+
+let g:limelight_default_coefficient = 0.5
+
+
+" sets
+setglobal nobomb
+set nobomb
+set background=dark         " Assume a dark background
+set mouse=a                 " Automatically enable mouse usage
+set mousehide               " Hide the mouse cursor while typing
+set shortmess+=aoOtTI          " Abbrev. of messages (avoids 'hit enter')
+set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
+set virtualedit=onemore             " Allow for cursor beyond last character
+set history=1000                    " Store a ton of history (default is 20)
+set nospell                           " Spell checking on
+set hidden                          " Allow buffer switching without saving
+set backup                  " Backups are nice ...
+set tabpagemax=15               " Only show 15 tabs
+set showmode                    " Display the current mode
+set cursorline                  " Highlight current line
+set backspace=indent,eol,start  " Backspace for dummies
+set linespace=0                 " No extra spaces between rows
+set nu                          " Line numbers on
+set showmatch                   " Show matching brackets/parenthesis
+set incsearch                   " Find as you type search
+set hlsearch                    " Highlight search terms
+set winminheight=0              " Windows can be 0 line high
+set ignorecase                  " Case insensitive search
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+set nowrap                      " Do not wrap long lines
+set autoindent                  " Indent at the same level of the previous line
+set shiftwidth=4                " Use indents of 4 spaces
+set tabstop=4                   " An indentation every four columns
+set softtabstop=4               " Let backspace delete indent
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
+set fileencoding=utf-8
+set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+set noexpandtab
+set noerrorbells
+set colorcolumn=80
+set tags=./tags,tags;$HOME
+
+" conditional settings
+if has('persistent_undo')
+    set undofile                " So is persistent undo ...
+    set undolevels=1000         " Maximum number of changes that can be undone
+    set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+endif
+
+if has('cmdline_info')
+    set ruler                   " Show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+    set showcmd                 " Show partial commands in status line and selected characters/lines in visual mode
+endif
+
+if has('statusline')
+    set laststatus=2
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r%{PencilMode()}\ " Options
+    set statusline+=%{fugitive#statusline()} " Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+endif
+
+if has('clipboard')
+    if LINUX()
+        set clipboard=unnamedplus
+    else
+        set clipboard=unnamed
+    endif
+endif
+
+if has('gui_running')
+    set guioptions-=T
+    set lines=40
+    set guifont=Meslo\ LG\ S\ for\ Powerline
+    set encoding=utf-8
+    set transparency=0
+    syntax enable
+    set background=dark
+    colorscheme apprentice
+else
+    let g:indent_guides_enable_on_vim_startup = 0
+    set t_Co=256
+    syntax enable
+    set background=dark
+    colorscheme apprentice
+endif
+
+if WINDOWS()
+    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+    if has("multi_byte")
+        set termencoding=cp850
+        set encoding=utf-8
+        setglobal fileencoding=utf-8
+        set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
+    endif
+endif
+
+" vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
