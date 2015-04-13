@@ -8,11 +8,6 @@ if [ -f "$HOME/.zsh" ] ; then
     . "$HOME/.zsh"
 fi
 
-# FZF
-if [ -f ~/.fzf.bash ] ; then
-    . "$HOME/.fzf.bash"
-fi
-
 # functions
 if [ -f "$HOME/.functions" ] ; then
     . "$HOME/.functions"
