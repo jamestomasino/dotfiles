@@ -22,6 +22,7 @@ Plug 'noahfrederick/vim-hemisu'
 Plug 'morhetz/gruvbox'
 Plug 'bling/vim-airline'
 Plug 'gosukiwi/vim-atom-dark'
+Plug 'junegunn/seoul256.vim'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'
