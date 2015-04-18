@@ -23,11 +23,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 " Airline
 let g:airline_theme = 'tomorrow'
-let g:airline_powerline_fonts=0
 let g:airline_powerline_fonts = 0
-let g:tmuxline_powerline_separators = 0
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 
 " Emmet
 let g:user_emmet_install_global = 0
