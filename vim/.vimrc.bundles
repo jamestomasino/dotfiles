@@ -51,6 +51,7 @@ Plug 'tpope/vim-commentary'
 Plug 'scrooloose/syntastic'
 Plug 'mattn/emmet-vim'
 Plug 'ajh17/VimCompletesMe'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
