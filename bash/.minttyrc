@@ -1,14 +1,11 @@
-# INFO: http://mintty.googlecode.com/svn/trunk/docs/mintty.1.html#HEAD
-Transparency=2
-OpaqueWhenFocused=1
+Transparency=off
+OpaqueWhenFocused=no
 FontHeight=9
-BoldAsColour=1
+BoldAsColour=yes
 Columns=100
 Rows=40
-# Note: you need xterm-256color
 Term=xterm-256color
-CursorType=1
-
+CursorType=line
 ForegroundColour=197,200,198
 BackgroundColour=29,31,33
 CursorColour=253,157,79
@@ -28,3 +25,5 @@ Cyan=138,190,183
 BoldCyan=90,162,152
 White=197,200,198
 BoldWhite=255,255,255
+BoldAsFont=no
+CursorBlinks=no
