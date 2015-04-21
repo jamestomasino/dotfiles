@@ -36,6 +36,7 @@ alias cl="fc -e -| pbcopy" # copy output of last command to clipboard
 alias cpwd='pwd|tr -d "\n"|pbcopy' # copy working directory path to clipboard
 alias chess='cd ~ && /Applications/Chess.app/Contents/Resources/sjeng.ChessEngine && rm *.lrn && cd -'
 alias gempurge='gem uninstall -aIx'
+alias imagemagick='convert' # I always forget the name of the app for imagemagick
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption.local -x'
