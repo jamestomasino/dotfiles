@@ -11,6 +11,7 @@ export HISTIGNORE="clear:keybase*"
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
+export R_LIBS="$HOME/.rlib"
 
 # path vars
 export DROPBOX_PATH="$HOME/Sites/sync/Dropbox"
