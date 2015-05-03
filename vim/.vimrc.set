@@ -103,6 +103,9 @@ set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
 
+" Global abbreviations
+:iab <expr> dts strftime("%Y-%m-%d")
+
 " conditional settings
 if has('persistent_undo')
     set undofile                " So is persistent undo ...
