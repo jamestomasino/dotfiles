@@ -18,6 +18,11 @@ if [ -f "$HOME/.alias" ] ; then
     . "$HOME/.alias"
 fi
 
+# platform specific aliases
+if [ -f "$HOME/.platform" ] ; then
+    . "$HOME/.platform"
+fi
+
 # git-completion
 if exists brew; then
     if [ -f "$(brew --prefix)/etc/bash_completion" ] ; then

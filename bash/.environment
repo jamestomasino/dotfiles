@@ -11,6 +11,7 @@ export HISTIGNORE="clear:keybase*"
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
+export R_LIBS="$HOME/.rlib"
 
 # path vars
 export DROPBOX_PATH="$HOME/Sites/sync/Dropbox"
@@ -19,9 +20,10 @@ export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:/usr/bin/npm"
 export ANDROID_HOME="$HOME/android/android-sdk-macosx"
 export TODO="$DROPBOX_PATH/Todo/personal.txt"
-export NOTE_DIR="$SPIDEROAK_PATH/Documents/Work/GSW/notes"
+export NOTE_DIR="$DROPBOX_PATH/Work/GSW/notes"
 
 # colors
+[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color
 export DIRECTORY_COLOR="\033[38;05;222m"
 export GIT_COLOR="\033[38;05;172m"
 export STAGED_COLOR="\033[38;05;226m"
