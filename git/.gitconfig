@@ -65,7 +65,7 @@
 [alias]
 
 	# rollback
-	rollback = "!git reset $1; git reset --soft HEAD@{1}; git commit -m 'reverting to older revision $1'; git reset --hard; echo"
+	rollback = "!f() { git reset $1; git reset --soft HEAD@{1}; git commit -m 'reverting to older revision $1'; git reset --hard; }; f"
 
 	# get biggest file according to repo history
 	biggest = "!git rev-list --objects --all | grep `git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -1 | awk '{ print $1 }'`"
