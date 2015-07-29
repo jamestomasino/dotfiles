@@ -1,46 +1,98 @@
 [user]
 	name = James Tomasino
 	email = james@tomasino.org
-[http]
-	postBuffer = 524288000
+
+[github]
+	user = jamestomasino
+
 [core]
 	whitespace = trailing-space, space-before-tab, cr-at-eol
 	excludesfile = ~/.gitignore_global
 	editor = 'vim'
 	eol = native
 	autocrlf = input
+	pager = less -r
+	compression = 9
+	bigFileThreshold = 20m
+
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	interactive = auto
 	ui = auto
+
 [diff]
+	tool = vimdiff
+	renames = copies
 	mnemonicprefix = true
-	suppressBlankEmpty = true
-	tool = diffmerge
+	algorithm = patience
+
+[difftool]
+	prompt = false
+
 [merge]
 	stat = true
+	log = true
 	tool = fugitive
-[mergetool "fugitive"]
-	cmd = vim -f -c "Gdiff" "$MERGED"
-[mergetool "vimdiff3"]
-	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-[mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
-	trustExitCode = true
-[difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+
 [mergetool]
 	keepBackup = false
+	prompt = false
+
+[mergetool "fugitive"]
+	cmd = vim -f -c "Gdiff" "$MERGED"
+
+[mergetool "vimdiff3"]
+	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+
 [branch]
 	autosetupmerge = true
+
 [push]
-	default = tracking
+	default = simple
+
+[fetch]
+	prune = true
+
 [rerere]
 	enabled = true
+	autoupdate = true
+
+[rebase]
+	autosquash = true
+
 [advice]
 	statusHints = true
+
+[help]
+	autocorrect = true
+
+[http]
+	postBuffer = 524288000
+
+[gitflow "prefix"]
+	feature = feature-
+	release = release-
+	hotfix = hotfix-
+	support = support-
+	versiontag = v
+
+[url "https://github.com/"]
+	insteadOf = gh:
+
+[url "https://gist.github.com/"]
+	insteadOf = gist:
+
+[url "https://bitbucket.org/"]
+	insteadOf = bb:
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = auto
 
 [color "branch"]
 	current = yellow reverse
@@ -61,16 +113,16 @@
 	changed = green
 	untracked = cyan
 
-[github]
-	user = jamestomasino
-
 [alias]
 
 	# rollback
-	rollback = "!git reset $1; git reset --soft HEAD@{1}; git commit -m 'reverting to older revision $1'; git reset --hard; echo"
+	rollback = "!f() { git reset $1; git reset --soft HEAD@{1}; git commit -m 'reverting to older revision $1'; git reset --hard; }; f"
 
 	# get biggest file according to repo history
 	biggest = "!git rev-list --objects --all | grep `git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -1 | awk '{ print $1 }'`"
+
+	# remove a file or folder from git history. Will require a push -f
+	balefire = "!f() { git filter-branch --index-filter \"git rm -rf --cached --ignore-unmatch $1\" HEAD; rm -rf .git/refs/original/ ; git reflog expire --all ; git gc --aggressive --prune; }; f"
 
 	l = log --no-merges
 
@@ -190,15 +242,6 @@
 	# url of origin, about 99% of what I use git config --list for
 	cloneurl = config --get remote.origin.url
 
-	# needs python-bugzilla, and git-showbugs
-	openbugs = showbugs -s NEW,ASSIGNED,NEEDINFO,FAILS_QA,REOPENED,ON_DEV
-	closedbugs = showbugs -s PASSES_QA,VERIFIED,RELEASE_PENDING,CLOSED
-
-	# show a list of files with bug fixes in them, sorted by popularity of occurance
-	#  aka, list the buggy files
-	# FIXME: should probably make all the bug regex stuff scripts so it's easier to customize
-	buggyfiles = !"git log -M -C --format=\"format:%n\" --grep=\"^[[:digit:]]\\+:\" --name-only | grep .  | sort | uniq -c | sort -n"
-
 	# from https://github.com/cypher/dotfiles/blob/master/gitconfig
 	ls-ignored = ls-files --exclude-standard --ignored --others
 
@@ -207,18 +250,6 @@
 
 	# uh, don't do this. list authors by numbers of commits. probably needs a .mailmap
 	churners = shortlog -sn --
-	# this does the same thing, except slower...
-	#churners = !"git log -M -C  --no-color --format=\"%aN\" | sort | uniq -c | sort -n"
-
-
-	# burners: who last touched the most code according to annotate  see git-burners
-	# alias implementation just for reference
-	#burners = "!f() { for i in $(git ls-files) ; do git annotate -e $i ; done }; g() { f | awk '{print $2 }' | perl -pe 's/\\(\\<(.+@.+)\\>/\\1/' ; }; g"
-	#
-	# yeah, don't do this either. list authors by # of bug id's fixed
-	# I suppose the really mad could make "breakers" that figures out who commits code
-	# that breaks. I can save you the time, it was me. I broke it.
-	fixers = !"git log -M -C --format=\"format:%aN\" --grep=\"^[[:digit:]]\\+:\" | sort | uniq -c | sort -n"
 
 	# who reverts the most. Totally useless, but I like the name
 	poppers = !"git log -M -C --format=\"format:%aN\" --grep \"Revert\" | sort | uniq -c | sort -n"
@@ -226,17 +257,8 @@
 	# shorter alias
 	lsg = ls-github
 
-	# show which python classes have had the most commits
-	# external script
-	#buggyclasses = "!f() { git log -M -C -p  | pcregrep -o  \"@@.*@@\\sclass\\s(.*)\\(.*\\)\"  | cut -f5 -d\'@\' | sort | uniq -c | sort -n;}; f"
-
 	# ignore local changes to a  file
 	ignore = update-index --assume-unchanged
-
-	# http://sandofsky.com/blog/git-workflow.html
-	# merge code but not history to manually recommit
-	# for emergency use only
-	backrupt = merge --squash
 
 	# https://github.com/wadey/dotfiles/blob/master/gitconfig
 	# check if a branch has been merged into the current HEAD
@@ -279,12 +301,5 @@
 	# from http://blog.blindgaenger.net/advanced_git_aliases.html
 	alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ =  \\2/' | sort
 
-	# http://superuser.com/a/169696
-	# prettier than my version of this
-	#  doesn't really work, should probably use git for-each-ref 
-	#heads = !"git log origin/master.. --format='%Cred%h%Creset;%C(yellow)%an%Creset;%H;%Cblue%f%Creset' | git name-rev --stdin --always --name-only | column -t -s';'"
-
 	pconfig = config -f .git/config
 	up = "!git remote update -p; git merge --ff-only @{u}"
-
-
