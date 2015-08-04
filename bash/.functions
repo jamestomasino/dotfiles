@@ -269,7 +269,13 @@ old() {
 # Note taking functions
 nls() {
 	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
-	ls -c "$NOTE_DIR" | grep "$*"
+	ls -1 "$NOTE_DIR" | grep "$*" | sed -e 's/\..*$//'
+}
+
+_n() {
+	local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')
+	local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$lis" -- $cur) )
 }
 
 n() {
@@ -281,6 +287,7 @@ n() {
 		$EDITOR "$NOTE_DIR"/"$*".txt
 	fi
 }
+complete -F _n n
 
 # get battery level on osx
 battery() {
