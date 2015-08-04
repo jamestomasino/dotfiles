@@ -266,35 +266,27 @@ old() {
     mv "$1"{,.old}
 }
 
-# Note taking functions
-nls() {
-	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
-	ls -1 "$NOTE_DIR" | grep "$*" | sed -e 's/\..*$//'
-}
-
+# Note taking function and command completion
 _n() {
 	local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')
 	local cur=${COMP_WORDS[COMP_CWORD]}
 	COMPREPLY=( $(compgen -W "$lis" -- $cur) )
 }
-
 n() {
 	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
 	if [ $# -eq 0 ]
 		then
-			nls
-	else
-		$EDITOR "$NOTE_DIR"/"$*".txt
-	fi
-}
+			ls -1 "$NOTE_DIR" | grep "$*" | sed -e 's/\..*$//'
 
-nd() {
-	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
-	if [ $# -eq 0 ]
-		then
-			nls
 	else
-		rm "$NOTE_DIR"/"$*".txt
+		case "$1" in
+			"-d")
+				rm "$NOTE_DIR"/"$2".txt
+				;;
+			*)
+				$EDITOR "$NOTE_DIR"/"$*".txt
+				;;
+		esac
 	fi
 }
 complete -F _n n
