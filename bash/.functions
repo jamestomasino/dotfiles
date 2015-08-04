@@ -275,7 +275,7 @@ nls() {
 _n() {
 	local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')
 	local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "$lis" -- $cur) )
+	COMPREPLY=( $(compgen -W "$lis" -- $cur) )
 }
 
 n() {
@@ -285,6 +285,16 @@ n() {
 			nls
 	else
 		$EDITOR "$NOTE_DIR"/"$*".txt
+	fi
+}
+
+nd() {
+	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
+	if [ $# -eq 0 ]
+		then
+			nls
+	else
+		rm "$NOTE_DIR"/"$*".txt
 	fi
 }
 complete -F _n n
