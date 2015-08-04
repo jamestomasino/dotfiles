@@ -41,7 +41,7 @@
 	prompt = false
 
 [mergetool "fugitive"]
-	cmd = vim -f -c "Gdiff" "$MERGED"
+	cmd = vim -f -c "Gvdiff" "$MERGED"
 
 [mergetool "vimdiff3"]
 	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
