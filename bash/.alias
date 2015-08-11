@@ -76,3 +76,7 @@ alias hibernate='sh -c "dbus-send --type=method_call --dest=org.gnome.ScreenSave
 
 # julia language
 alias julia="exec '/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia'"
+
+# r language
+#
+alias knit="Rscript -e \"library(knitr); knit('$1')\""
