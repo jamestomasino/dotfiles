@@ -264,10 +264,10 @@ n() {
 	else
 		case "$1" in
 			"-d")
-				rm "$NOTE_DIR"/"$2".txt
+				rm "$NOTE_DIR"/"$2".md
 				;;
 			*)
-				$EDITOR "$NOTE_DIR"/"$*".txt
+				$EDITOR "$NOTE_DIR"/"$*".md
 				;;
 		esac
 	fi
