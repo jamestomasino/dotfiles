@@ -59,6 +59,13 @@ if has("autocmd")
                     \ | setl spell spl=en_us et sw=2 ts=2
     augroup END
 
+    augroup bundle_rmarkdown
+        au FileType Rmd setlocal expandtab
+        au FileType Rmd setlocal tabstop=4
+        au FileType Rmd setlocal softtabstop=4
+        au FileType Rmd setlocal shiftwidth=4
+    augroup END
+
     augroup bundle_Goyo
         au!
         au  User GoyoEnter nested call <SID>goyo_enter()
