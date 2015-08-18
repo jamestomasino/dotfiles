@@ -205,6 +205,11 @@ function swap() {
     mv $TMPFILE "$2"
 }
 
+# batch rename
+function change_all_extensions() {
+	for old in *."$1"; do mv $old `basename $old ."$1"`."$2"; done
+}
+
 # Use the right extraction method based on file extension
 function extract() {
     if [ -f "$1" ] ; then
@@ -264,10 +269,10 @@ n() {
 	else
 		case "$1" in
 			"-d")
-				rm "$NOTE_DIR"/"$2".txt
+				rm "$NOTE_DIR"/"$2".md
 				;;
 			*)
-				$EDITOR "$NOTE_DIR"/"$*".txt
+				$EDITOR "$NOTE_DIR"/"$*".md
 				;;
 		esac
 	fi
