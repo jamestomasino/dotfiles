@@ -1,1 +1,1 @@
-options(rpubs.upload.method = “internal”)
+options(rpubs.upload.method = "internal")
