@@ -47,16 +47,6 @@ if has("autocmd")
                     \ | call litecorrect#init()
                     \ | setl spell spl=en_us fdl=4 noru nonu nornu
                     \ | setl fdo+=search
-        au Filetype git,gitsendemail,*commit*,*COMMIT*
-                    \   call pencil#init({'wrap': 'hard', 'textwidth': 72})
-                    \ | call litecorrect#init()
-                    \ | setl spell spl=en_us et sw=2 ts=2 noai
-        au Filetype mail         call pencil#init({'wrap': 'hard', 'textwidth': 60})
-                    \ | call litecorrect#init()
-                    \ | setl spell spl=en_us et sw=2 ts=2 noai nonu nornu
-        au Filetype html,xml     call pencil#init({'wrap': 'soft'})
-                    \ | call litecorrect#init()
-                    \ | setl spell spl=en_us et sw=2 ts=2
     augroup END
 
     augroup bundle_rmarkdown
