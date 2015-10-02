@@ -35,7 +35,7 @@ Plug 'Lokaltog/vim-distinguished'
 Plug 'jordwalke/flatlandia'
 
 " Writing/Authoring Tools
-Plug 'reedes/vim-pencil', {'for': ['markdown','mkd','Rmd']}
+Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-abolish'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
