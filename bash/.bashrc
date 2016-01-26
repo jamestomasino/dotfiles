@@ -8,11 +8,6 @@ if [ -f "$HOME/perl5/perlbrew/etc/bashrc" ] ; then
     . "$HOME/perl5/perlbrew/etc/bashrc"
 fi
 
-# rvm paths
-if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
-    . "$HOME/.rvm/scripts/rvm"
-fi
-
 # FZF really wants to put this in this file
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -21,4 +16,6 @@ if [ -f "$HOME/.bash_local" ] ; then
     . "$HOME/.bash_local"
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
