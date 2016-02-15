@@ -1,0 +1,64 @@
+# Configs
+config defaultToCurrentScreen true
+# show icons & letters on all windows w/ Window Hints
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
+
+# Window Hints
+bind e:cmd hint ASDFGQWERTZXCVBN # use whatever keys you want
+
+# Monitor Aliases
+alias mon-laptop 1680x1050
+alias mon-left 1920x1080
+alias mon-right 1200x1600
+
+# General aliases
+alias hyper cmd;ctrl
+alias sox screenOriginX
+alias soy screenOriginY
+alias ssx screenSizeX
+alias ssy screenSizeY
+
+# Position aliases
+alias centered ${sox}+${ssx}/8;${soy}+${ssy}/8 ${ssx}/8*6;${ssy}/8*6
+alias fullscreen ${sox};${soy} ${ssx};${ssy}
+alias leftHalf ${sox};${soy} ${ssx}/2;${ssy}
+alias bottomHalf ${sox};${soy}+${ssy}/2 ${ssx};${ssy}/2
+alias topHalf ${sox};${soy} ${ssx};${ssy}/2
+alias rightHalf ${sox}+${ssx}/2;${soy} ${ssx}/2;${ssy}
+alias topLeftQuarter ${sox};${soy} ${ssx}/2;${ssy}/2
+alias topRightQuarter ${sox}+${ssx}/2;${soy} ${ssx}/2;${ssy}/2
+alias bottomLeftQuarter ${sox};${soy}+${ssy}/2 ${ssx}/2;${ssy}/2
+alias bottomRightQuarter ${sox}+${ssx}/2;${soy}+${ssy}/2 ${ssx}/2;${ssy}/2
+
+alias topThird ${sox};${soy} ${ssx};${ssy}/3
+alias leftThird ${sox};${soy} ${ssx}/3;${ssy}
+# oops, these don't snap to the bottom
+# they need some thinking I don't have time for right now....
+#alias bottomThird ${sox};${soy}+${ssy}/3 ${ssx};${ssy}/3
+#alias rightThird ${sox}+${ssx}/3;${soy} ${ssx}/3;${ssy}
+
+# Bindings
+bind g:${hyper} move ${centered}
+bind o:${hyper} move ${fullscreen}
+bind h:${hyper} move ${leftHalf}
+bind j:${hyper} move ${bottomHalf}
+bind k:${hyper} move ${topHalf}
+bind l:${hyper} move ${rightHalf}
+bind u:${hyper} move ${topLeftQuarter}
+bind i:${hyper} move ${topRightQuarter}
+bind n:${hyper} move ${bottomLeftQuarter}
+bind m:${hyper} move ${bottomRightQuarter}
+
+# One-Handed
+bind a:${hyper} move ${fullscreen}
+bind s:${hyper} move ${leftHalf}
+bind d:${hyper} move ${rightHalf}
+
+
+bind y:${hyper} move ${topThird}
+# bind r:${hyper} move ${bottomThird}
+bind t:${hyper} move ${leftThird}
+# bind f:${hyper} move ${rightThird}
+
