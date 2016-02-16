@@ -21,7 +21,7 @@ alias browser   'Google Chrome'
 alias terminal  'iTerm'
 
 # Window Hints
-bind e:cmd hint HTNSDFGCRLBMWVZ # use whatever keys you want
+bind e:${hyper}  hint HTNSDFGCRLBMWVZ # use whatever keys you want
 
 # Position aliases
 alias centered     move ${sox}+${ssx}/8;${soy}+${ssy}/8 ${ssx}/8*6;${ssy}/8*6
