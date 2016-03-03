@@ -74,11 +74,12 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \ })<CR>
 " }}}
 
-" cnoremap {{{
-cnoremap %% <C-R>=expand('%:h').'/'<CR>
+" Tags with FZF {{{
+nnoremap <silent> <Leader>t :BTags<CR>
 " }}}
 
 " File actions {{{
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
 nnoremap <Leader>ff :FZF<CR>
 nnoremap <Leader>fw :w<CR>
 nnoremap <Leader>fo :e %%
