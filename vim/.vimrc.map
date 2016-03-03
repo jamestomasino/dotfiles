@@ -56,6 +56,7 @@ map <Leader>ff :FZF<CR>
 map <Leader>fw :w<CR>
 map <Leader>fo :e %%
 map <Leader>ft :tabe %%
+map <leader>fq :q<cr>
 
 " System clipboard
 vmap <Leader>y "+y

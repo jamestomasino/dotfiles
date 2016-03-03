@@ -90,7 +90,7 @@ set nojoinspaces                " Prevents inserting two spaces after punctuatio
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
 set fileencoding=utf-8
-set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+set pastetoggle=<Leader>z
 set noexpandtab
 set noerrorbells
 set colorcolumn=80
