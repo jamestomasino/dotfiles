@@ -87,6 +87,19 @@ nnoremap <Leader>ft :tabe %%
 nnoremap <leader>fq :q<CR>
 " }}}
 
+" Diff conflict actions {{{
+nnoremap <Leader>cn ]cn                 " next conflict
+nnoremap <Leader>cN [c                  " prev conflict
+nnoremap <Leader>cc :diffupdate<CR>     " update diffs
+nnoremap <Leader>ch :diffget //2<CR>    " keep local contents (left)
+nnoremap <Leader>cl :diffget //3<CR>    " use merge contents (right)
+" }}}
+
+" Linting actions {{{
+nnoremap <Leader>ln :lnext<CR>
+nnoremap <Leader>lN :lprev<CR>
+" }}}
+
 " command mode helpers {{{
 cmap w!! w !sudo tee % >/dev/null
 cmap cd. lcd %:p:h

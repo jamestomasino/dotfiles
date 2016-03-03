@@ -43,7 +43,6 @@ Plug 'rking/ag.vim'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/syntastic'
 Plug 'ajh17/VimCompletesMe'
-Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
