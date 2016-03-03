@@ -62,11 +62,6 @@ if has("autocmd")
         au  User GoyoLeave nested call <SID>goyo_leave()
     augroup END
 
-    augroup bundle_Emmet
-        au!
-        au FileType html,css EmmetInstall
-    augroup END
-
 endif
 
 " vim: set sw=4 ts=4 sts=4 et tw=78 nospell:

@@ -20,6 +20,16 @@ function! IndentConvert(line1, line2, what, cols)
     call setpos('.', savepos)
 endfunction
 
+" toggle between number and relativenumber
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
 silent function! OSX()
     return has('macunix')
 endfunction

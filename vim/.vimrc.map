@@ -2,42 +2,58 @@
 """"""""""""""""""""""""""""""""""" MAPPINGS """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-" Tweak existing keys for more natural operation
+" Tweak existing keys for more natural operation {{{
 noremap j gj
 noremap k gk
 nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 vnoremap . :normal .<CR>
+" }}}
 
-" Delete and put with black hole register
+" Delete and put with black hole register {{{
 xnoremap <Leader>p "_dP
 nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
+" }}}
 
-" Plugin mappings
+" Plugin mappings {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gy :Goyo<CR>
-nnoremap <Leader>gu :GundoToggle<CR>
+nnoremap <Leader>u :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>
 vmap <Enter> <Plug>(EasyAlign)
+nnoremap <Leader>n :call ToggleNumber()<CR>
+" }}}
 
-" Move blocks up and down
+" Move blocks up and down {{{
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
+" }}}
 
-" Highlight recent visual selections
+" Highlight recent visual selections {{{
 nnoremap <Leader>V `[v`]
+" }}}
 
-" Fold selection
+" Fold selection {{{
 nnoremap <Leader><space> za
 vnoremap <Leader><Space> zf
+nnoremap <Leader>z0 :set foldlevel=0<CR>
+nnoremap <Leader>z1 :set foldlevel=1<CR>
+nnoremap <Leader>z2 :set foldlevel=2<CR>
+nnoremap <Leader>z3 :set foldlevel=3<CR>
+nnoremap <Leader>z4 :set foldlevel=4<CR>
+nnoremap <Leader>z5 :set foldlevel=5<CR>
+nnoremap <Leader>z6 :set foldlevel=6<CR>
+nnoremap <Leader>z7 :set foldlevel=7<CR>
+nnoremap <Leader>z8 :set foldlevel=8<CR>
+nnoremap <Leader>z9 :set foldlevel=9<CR>
+" }}}
 
-" Choose a color scheme with fzf
+" Choose a color scheme with fzf {{{
 nnoremap <silent> <Leader>C :call fzf#run({
 \   'source':
 \     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
@@ -47,28 +63,36 @@ nnoremap <silent> <Leader>C :call fzf#run({
 \   'left':     20,
 \   'launcher': 'xterm -geometry 20x30 -e bash -ic %s'
 \ })<CR>
+" }}}
 
-" Use <Leader><Enter> to list buffer with fuzzy searching
+" Use <Leader><Enter> to list buffer with fuzzy searching {{{
 nnoremap <silent> <Leader><Enter> :call fzf#run({
 \   'source':  reverse(Buflist()),
 \   'sink':    function('Bufopen'),
 \   'options': '+m',
 \   'down':    len(Buflist()) + 2
 \ })<CR>
+" }}}
 
-" File actions
+" cnoremap {{{
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+" }}}
+
+" File actions {{{
 nnoremap <Leader>ff :FZF<CR>
 nnoremap <Leader>fw :w<CR>
 nnoremap <Leader>fo :e %%
 nnoremap <Leader>ft :tabe %%
-nnoremap <leader>fq :q<cr>
+nnoremap <leader>fq :q<CR>
+" }}}
 
-" command mode helpers
+" command mode helpers {{{
 cmap w!! w !sudo tee % >/dev/null
 cmap cd. lcd %:p:h
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" }}}
 
-" clear search results
+" clear search results {{{
 nmap <silent> <Leader>/ :nohlsearch<CR>
+" }}}
 
-" vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 nospell:
+" vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 nospell foldmethod=marker:foldlevel=0

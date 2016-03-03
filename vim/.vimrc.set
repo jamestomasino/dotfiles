@@ -2,30 +2,35 @@
 """"""""""""""""""""""""""""""""""" SETTINGS """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" General Lets
+" General Lets {{{
 let mapleader = "\<Space>"
 let b:match_ignorecase = 1
+" }}}
 
-" miscelanious settings
+" miscelanious settings {{{
 filetype plugin indent on       " Automatically detect file types.
 syntax on                       " Syntax highlighting
 scriptencoding utf-8
+" }}}
 
-" highlight
+" highlight {{{
 highlight clear SignColumn      " SignColumn should match background
 highlight clear LineNr          " Current line number row will have same background color in relative mode
+" }}}
 
-" Indent Guides
+" Indent Guides {{{
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
+" }}}
 
-" Airline
+" Airline {{{
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+" }}}
 
-" Syntaxastic
+" Syntaxastic {{{
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -33,8 +38,9 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers=['flake8', 'pylint']
 let g:syntastic_html_tidy_exec = 'tidy5'
+" }}}
 
-" Pencil / Writing Controls
+" Pencil / Writing Controls {{{
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 74
 let g:pencil#joinspaces = 0
@@ -44,14 +50,18 @@ let g:pencil#concealcursor = 'c'
 let g:airline_section_x = '%{PencilMode()}'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
+" }}}
 
-" Local vimrc loading
+" Local vimrc loading {{{
 let g:localvimrc_sandbox=0
 let g:localvimrc_ask=0
+" }}}
 
+" Limelight {{{
 let g:limelight_default_coefficient = 0.5
+" }}}
 
-" sets
+" sets {{{
 setglobal nobomb
 set nobomb
 set background=dark         " Assume a dark background
@@ -59,6 +69,8 @@ set mouse=a                 " Automatically enable mouse usage
 set mousehide               " Hide the mouse cursor while typing
 set shortmess+=aoOtTI          " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
+set foldmethod=syntax
+set foldlevelstart=20
 set virtualedit=onemore             " Allow for cursor beyond last character
 set history=1000                    " Store a ton of history (default is 20)
 set nospell                           " Spell checking off
@@ -76,6 +88,8 @@ set hlsearch                    " Highlight search terms
 set winminheight=0              " Windows can be 0 line high
 set ignorecase                  " Case insensitive search
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set wildmenu
+set lazyredraw
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
@@ -95,23 +109,29 @@ set noexpandtab
 set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
+" }}}
 
-" Global abbreviations
+" Global abbreviations {{{
 :iab <expr> dts strftime("%Y-%m-%d")
+" }}}
 
-" conditional settings
+" conditional settings {{{
 if has('persistent_undo')
     set undofile                " So is persistent undo ...
     set undolevels=1000         " Maximum number of changes that can be undone
     set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 endif
+" }}}
 
+" CMDLine {{{
 if has('cmdline_info')
     set ruler                   " Show the ruler
     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
     set showcmd                 " Show partial commands in status line and selected characters/lines in visual mode
 endif
+" }}}
 
+" Statusline {{{
 if has('statusline')
     set laststatus=2
     set statusline=%<%f\                     " Filename
@@ -124,7 +144,9 @@ if has('statusline')
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
 endif
+" }}}
 
+" Clipboard {{{
 if has('clipboard')
     if LINUX()
         set clipboard=unnamedplus
@@ -132,7 +154,9 @@ if has('clipboard')
         set clipboard=unnamed
     endif
 endif
+" }}}
 
+" GUI {{{
 if has('gui_running')
     set guioptions-=T
     set lines=40
@@ -148,7 +172,9 @@ else
     set background=dark
     colorscheme apprentice
 endif
+" }}}
 
+" Windows {{{
 if WINDOWS()
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
     if has("multi_byte")
@@ -158,5 +184,6 @@ if WINDOWS()
         set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
     endif
 endif
+" }}}
 
-" vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
+" vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 nospell foldmethod=marker:foldlevel=0
