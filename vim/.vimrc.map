@@ -2,7 +2,6 @@
 """"""""""""""""""""""""""""""""""" MAPPINGS """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-vmap <Enter> <Plug>(EasyAlign)
 
 " Tweak existing keys for more natural operation
 noremap j gj
@@ -12,12 +11,18 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap . :normal .<CR>
 
+" Delete and put with black hole register
+xnoremap <Leader>p "_dP
+nnoremap <Leader>d "_d
+vnoremap <Leader>d "_d
+
 " Plugin mappings
-nnoremap <Leader>G :Goyo<CR>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>gu :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>
+vmap <Enter> <Plug>(EasyAlign)
 
 " Move blocks up and down
 vmap <C-Up> xkP`[V`]
@@ -26,7 +31,7 @@ nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
 
 " Highlight recent visual selections
-nnoremap gV `[v`]
+nnoremap <Leader>V `[v`]
 
 " Fold selection
 nnoremap <Leader><space> za
@@ -52,19 +57,11 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \ })<CR>
 
 " File actions
-map <Leader>ff :FZF<CR>
-map <Leader>fw :w<CR>
-map <Leader>fo :e %%
-map <Leader>ft :tabe %%
-map <leader>fq :q<cr>
-
-" System clipboard
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+nnoremap <Leader>ff :FZF<CR>
+nnoremap <Leader>fw :w<CR>
+nnoremap <Leader>fo :e %%
+nnoremap <Leader>ft :tabe %%
+nnoremap <leader>fq :q<cr>
 
 " command mode helpers
 cmap w!! w !sudo tee % >/dev/null
