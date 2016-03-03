@@ -3,8 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " General Lets
-let mapleader = ','
-let maplocalleader = '_'
+let mapleader = "\<Space>"
 let b:match_ignorecase = 1
 
 " miscelanious settings
@@ -22,13 +21,9 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
 " Airline
-let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-
-" Emmet
-let g:user_emmet_install_global = 0
 
 " Syntaxastic
 let g:syntastic_always_populate_loc_list = 1
@@ -54,9 +49,7 @@ let g:pencil#softDetectThreshold = 130
 let g:localvimrc_sandbox=0
 let g:localvimrc_ask=0
 
-
 let g:limelight_default_coefficient = 0.5
-
 
 " sets
 setglobal nobomb
@@ -68,7 +61,7 @@ set shortmess+=aoOtTI          " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set virtualedit=onemore             " Allow for cursor beyond last character
 set history=1000                    " Store a ton of history (default is 20)
-set nospell                           " Spell checking on
+set nospell                           " Spell checking off
 set hidden                          " Allow buffer switching without saving
 set backup                  " Backups are nice ...
 set tabpagemax=15               " Only show 15 tabs
