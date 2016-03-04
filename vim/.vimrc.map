@@ -17,7 +17,7 @@ nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
 set pastetoggle=<Leader>z
 " }}}
-
+"{{{
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>u :GundoToggle<CR>
