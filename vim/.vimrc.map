@@ -15,10 +15,10 @@ vnoremap . :normal .<CR>
 xnoremap <Leader>p "_dP
 nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
+set pastetoggle=<Leader>z
 " }}}
 
 " Plugin mappings {{{
-nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>u :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
@@ -34,6 +34,11 @@ nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
 " }}}
 
+" Create blank lines {{{
+nnoremap <silent> <Leader>o o<Esc>
+nnoremap <silent> <Leader>O O<Esc>
+" }}}
+
 " Highlight recent visual selections {{{
 nnoremap <Leader>V `[v`]
 " }}}
@@ -41,16 +46,6 @@ nnoremap <Leader>V `[v`]
 " Fold selection {{{
 nnoremap <Leader><space> za
 vnoremap <Leader><Space> zf
-nnoremap <Leader>z0 :set foldlevel=0<CR>
-nnoremap <Leader>z1 :set foldlevel=1<CR>
-nnoremap <Leader>z2 :set foldlevel=2<CR>
-nnoremap <Leader>z3 :set foldlevel=3<CR>
-nnoremap <Leader>z4 :set foldlevel=4<CR>
-nnoremap <Leader>z5 :set foldlevel=5<CR>
-nnoremap <Leader>z6 :set foldlevel=6<CR>
-nnoremap <Leader>z7 :set foldlevel=7<CR>
-nnoremap <Leader>z8 :set foldlevel=8<CR>
-nnoremap <Leader>z9 :set foldlevel=9<CR>
 " }}}
 
 " Choose a color scheme with fzf {{{
@@ -80,11 +75,10 @@ nnoremap <silent> <Leader>t :BTags<CR>
 
 " File actions {{{
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-nnoremap <Leader>ff :FZF<CR>
-nnoremap <Leader>fw :w<CR>
-nnoremap <Leader>fo :e %%
-nnoremap <Leader>ft :tabe %%
-nnoremap <leader>fq :q<CR>
+nnoremap <Leader>ff :FZF<CR>            " file search & open
+nnoremap <Leader>fw :w<CR>              " file save
+nnoremap <Leader>fs :w<CR>              " file save
+nnoremap <leader>fq :q<CR>              " file quit
 " }}}
 
 " Diff conflict actions {{{
@@ -96,8 +90,8 @@ nnoremap <Leader>cl :diffget //3<CR>    " use merge contents (right)
 " }}}
 
 " Linting actions {{{
-nnoremap <Leader>ln :lnext<CR>
-nnoremap <Leader>lN :lprev<CR>
+nnoremap <Leader>ln :lnext<CR>          " Next linting error
+nnoremap <Leader>lN :lprev<CR>          " Previous linting error
 " }}}
 
 " command mode helpers {{{
