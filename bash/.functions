@@ -62,7 +62,7 @@ function todos {
 	#local m=$(trimspace $(git diff --numstat 2> /dev/null | wc -l))
 	LOCAL_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
 	LOCAL_DIR=${LOCAL_DIR:-.}
-	find "${LOCAL_DIR}" -type f -exec grep -H -n '(TODO|FIX(ME)?):' {} \; 2> /dev/null 
+	find "${LOCAL_DIR}" -type f -exec grep -H -n '(TODO|FIX(ME)?):' {} \; 2> /dev/null
 }
 
 # jump to root folder of git repo
@@ -193,7 +193,7 @@ function gittreestatus() {
 }
 
 # Swap 2 filenames around, if they exist
-function swap() { 
+function swap() {
     local TMPFILE=tmp.$$
 
     [ $# -ne 2 ] && echo "swap: 2 arguments needed" && return 1
@@ -240,12 +240,10 @@ function hr() {
 	else
 		space_character='='
 	fi
-	
 	for i in $(seq 1 "$(tput cols)");
 	do
 		echo -n "${space_character}";
 	done
-
 	echo ""
 }
 
@@ -274,8 +272,8 @@ n() {
 			*)
 				$EDITOR "$NOTE_DIR"/"$*".md
 				;;
-		esac
-	fi
+			esac
+				fi
 }
 complete -F _n n
 
@@ -287,16 +285,14 @@ battery() {
 # c - browse chrome history
 c() {
 	local cols sep
-		cols=$(( COLUMNS / 3 ))
-		sep='{::}'
-
-		cp -f ~/Library/Application\ Support/Google/Chrome/Default/History /tmp/h
-
-		sqlite3 -separator $sep /tmp/h \
-		"select substr(title, 1, $cols), url
-		from urls order by last_visit_time desc" |
-		awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
-		fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs open
+	cols=$(( COLUMNS / 3 ))
+	sep='{::}'
+	cp -f ~/Library/Application\ Support/Google/Chrome/Default/History /tmp/h
+	sqlite3 -separator $sep /tmp/h \
+	"select substr(title, 1, $cols), url
+	from urls order by last_visit_time desc" |
+	awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+	fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs open
 }
 
 # fshow - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
@@ -370,3 +366,7 @@ z() {
     _z "$@"
   fi
 }
+
+# Sort by size
+sbs() { du -b --max-depth 1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", $1>=2**30? ($1/2**30, "G"): $1>=2**20? ($1/2**20, "M"): $1>=2**10? ($1/2**10, "K"): ($1, "")}e';}
+
