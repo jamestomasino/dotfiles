@@ -258,13 +258,20 @@ weight() {
 	if [ $# -eq 0 ]; then
 		tail -n 1 "$WEIGHT" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
 	else
-		local d=$(date '+%Y,%m,%d')
-		local l=$(sed -n "/$d/{=;}" "$WEIGHT")
-		if [ -z "$l" ]; then
-			echo "$d,$*" >> "$WEIGHT"
-		else
-			sed -i "$l c $d,$*" "$WEIGHT"
-		fi
+		case "$1" in
+			"-a")
+				cat "$WEIGHT" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
+				;;
+			*)
+				local d=$(date '+%Y,%m,%d')
+				local l=$(sed -n "/$d/{=;}" "$WEIGHT")
+				if [ -z "$l" ]; then
+					echo "$d,$*" >> "$WEIGHT"
+				else
+					sed -i "$l c $d,$*" "$WEIGHT"
+				fi
+				;;
+		esac
 	fi
 }
 
