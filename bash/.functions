@@ -253,7 +253,7 @@ old() {
 }
 
 # Weight tracking
-weigh() {
+weight() {
 	: "${WEIGHT:?'WEIGHT ENV var not set'}"
 	if [ $# -eq 0 ]; then
 		tail -n 1 "$WEIGHT"
