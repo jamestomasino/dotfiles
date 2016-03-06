@@ -256,7 +256,7 @@ old() {
 weight() {
 	: "${WEIGHT:?'WEIGHT ENV var not set'}"
 	if [ $# -eq 0 ]; then
-		tail -n 1 "$WEIGHT"
+		tail -n 1 "$WEIGHT" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
 	else
 		local d=$(date '+%Y,%m,%d')
 		local l=$(sed -n "/$d/{=;}" "$WEIGHT")
