@@ -252,6 +252,22 @@ old() {
     mv "$1"{,.old}
 }
 
+# Weight tracking
+weigh() {
+	: "${WEIGHT:?'WEIGHT ENV var not set'}"
+	if [ $# -eq 0 ]; then
+		tail -n 1 "$WEIGHT"
+	else
+		local d=$(date '+%Y,%m,%d')
+		local l=$(sed -n "/$d/{=;}" "$WEIGHT")
+		if [ -z "$l" ]; then
+			echo "$d,$*" >> "$WEIGHT"
+		else
+			sed -i "$l c $d,$*" "$WEIGHT"
+		fi
+	fi
+}
+
 # Note taking function and command completion
 _n() {
 	local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')
@@ -260,10 +276,8 @@ _n() {
 }
 n() {
 	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
-	if [ $# -eq 0 ]
-		then
-			ls -1 "$NOTE_DIR" | grep "$*" | sed -e 's/\..*$//'
-
+	if [ $# -eq 0 ]; then
+		ls -1 "$NOTE_DIR" | grep "$*" | sed -e 's/\..*$//'
 	else
 		case "$1" in
 			"-d")
@@ -272,8 +286,8 @@ n() {
 			*)
 				$EDITOR "$NOTE_DIR"/"$*".md
 				;;
-			esac
-				fi
+		esac
+	fi
 }
 complete -F _n n
 
