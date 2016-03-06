@@ -61,7 +61,8 @@ PATH=${PATH}:${ANDROID_HOME}/tools
 PATH=${PATH}:${ANDROID_HOME}/platform-tools
 PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin
 PATH=${PATH}:${HOME}/.node/bin
-PATH=${PATH}:${HOME}/.gem/bin:$PATH
+PATH=${PATH}:${HOME}/.gem/bin
+PATH=${PATH}:${HOME}/.rbenv/bin
 
 # options
 shopt -s cdspell
