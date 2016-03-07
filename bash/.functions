@@ -392,3 +392,8 @@ z() {
     _z "$@"
   fi
 }
+
+# calculator
+=() {
+	python -c "from math import *; print($@)"
+}
