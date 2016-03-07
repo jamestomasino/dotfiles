@@ -79,3 +79,6 @@ alias julia="exec '/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/ju
 
 # Look busy
 alias busy='cat /dev/urandom | hexdump -C | grep "ca fe"'
+
+# tron
+alias tron='ssh sshtron.zachlatta.com'
