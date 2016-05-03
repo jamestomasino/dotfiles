@@ -8,7 +8,7 @@ sudo apt-get install -y tmux=2.0-1~ppa1~t
 apt-get -y install vim git-core silversearcher-ag
 
 # Install FZF (drops some dotfiles in place which we'll clear)
-su -c "git clone --depth 1 https://github.com/junegunn/fzf.git /home/vagrant/.fzf --quiet" vagrant
+su -c "git clone --depth 1 https://github.com/junegunn/fzf.git /home/vagrant/.fzf > /dev/null 2>&1" vagrant
 su -c "cd /home/vagrant/.fzf && ./install" vagrant
 
 # Remove default dotfiles that may exist
