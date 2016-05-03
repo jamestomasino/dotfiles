@@ -26,5 +26,6 @@ fi
 if [ -f "/home/vagrant/.viminfo" ]; then 
 	rm "/home/vagrant/.viminfo"
 fi
-
-su -c "cd /home/vagrant/.dotfiles && ./install" vagrant
+su -c "git clone --depth 1 https://github.com/junegunn/fzf.git /home/vagrant/.fzf --quiet" vagrant
+su -c "cd /home/vagrant/.fzf && ./install" vagrant
+su -c "cd /home/vagrant/dotfiles && ./install" vagrant

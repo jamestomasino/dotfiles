@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure(2) do |config|
-  config.vm.synced_folder File.expand_path("~/.dotfiles"), "/home/vagrant/.dotfiles"
+  config.vm.synced_folder File.expand_path("~/.dotfiles"), "/home/vagrant/dotfiles"
   config.vm.synced_folder File.expand_path("~/bin"), "/home/vagrant/bin"
   config.vm.synced_folder File.expand_path("~/.vim"), "/home/vagrant/.vim"
   config.vm.synced_folder File.expand_path("~/.vimswap"), "/home/vagrant/.vimswap"
@@ -9,7 +9,6 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder File.expand_path("~/.vimviews"), "/home/vagrant/.vimviews"
   config.vm.synced_folder File.expand_path("~/.vimbackup"), "/home/vagrant/.vimbackup"
   config.vm.synced_folder File.expand_path("~/.tmux"), "/home/vagrant/.tmux"
-  config.vm.synced_folder File.expand_path("~/.fzf"), "/home/vagrant/.fzf"
   config.ssh.forward_agent = true
   config.vm.provision :shell, path: File.join(File.dirname(__FILE__), "scripts/provision")
 end
