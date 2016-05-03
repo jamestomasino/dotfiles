@@ -13,6 +13,9 @@ Plug 'reedes/vim-wheel'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-easy-align'
 
+" System
+Plug 'rkitover/vimpager'
+
 " Styling
 Plug 'romainl/Apprentice'
 Plug 'bling/vim-airline'

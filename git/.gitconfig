@@ -73,10 +73,10 @@
 	postBuffer = 524288000
 
 [gitflow "prefix"]
-	feature = feature-
-	release = release-
-	hotfix = hotfix-
-	support = support-
+	feature = feature/
+	release = release/
+	hotfix = hotfix/
+	support = support/
 	versiontag = v
 
 [url "https://github.com/"]
