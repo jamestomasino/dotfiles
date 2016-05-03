@@ -33,7 +33,7 @@ while IFS= read -d $'\0' -r file ; do
 		ln -s "$d" "$c"
 		echo -e "Link created:\t$d"
 	fi
-done < <(find "$DIR" \( -iname ".*" !-iname ".dotfiles" ! -iname ".gitignore" ! -iname ".git" ! -iname ".gitmodules" ! -iname "*.swp" \) -print0)
+done < <(find "$DIR" \( -iname ".*" ! -iname ".dotfiles" ! -iname ".gitignore" ! -iname ".git" ! -iname ".gitmodules" ! -iname "*.swp" \) -print0)
 
 # Throw in a .localrc if needed
 if [ ! -e $HOME/.localrc ]; then
