@@ -55,3 +55,27 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 		tmux source-file "$HOME/.tmux.conf"
 	fi
 fi
+
+# Vagrant configuration
+VAGRANT_DIR="$HOME/.vagrant.d"
+if [ ! -d "$VAGRANT_DIR" ]; then
+	mkdir -p "$VAGRANT_DIR/scripts"
+fi
+
+if [ -L "$VAGRANT_DIR/Vagrantfile" ]; then
+	rm "$VAGRANT_DIR/Vagrantfile"
+fi
+if [ -f "$VAGRANT_DIR/Vagrantfile"  ]; then
+	echo -e "Kept existing Vagrantfile"
+else
+	ln -s "$DIR/vagrant/Vagrantfile" "$VAGRANT_DIR/Vagrantfile"
+fi
+
+if [ -L "$VAGRANT_DIR/scripts/provision" ]; then
+	rm "$VAGRANT_DIR/scripts/provision"
+fi
+if [ -f "$VAGRANT_DIR/scripts/provision"  ]; then
+	echo -e "Kept existing provisioner:"
+else
+	ln -s "$DIR/vagrant/provision" "$VAGRANT_DIR/scripts/provision"
+fi

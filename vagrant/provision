@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+export DEBIAN_FRONTEND=noninteractive
+apt-get update -y > /dev/null
+apt-get -y install tmux vim git-core
+
+# Remove default dotfiles that may exist
+if [ -f "/home/vagrant/.profile" ]; then 
+	rm "/home/vagrant/.profile"
+fi
+if [ -f "/home/vagrant/.bashrc" ]; then 
+	rm "/home/vagrant/.bashrc"
+fi
+if [ -f "/home/vagrant/.bash_profile" ]; then 
+	rm "/home/vagrant/.bash_profile"
+fi
+if [ -f "/home/vagrant/.localrc" ]; then 
+	rm "/home/vagrant/.localrc"
+fi
+if [ -f "/home/vagrant/.bash_logout" ]; then 
+	rm "/home/vagrant/.bash_logout"
+fi
+if [ -f "/home/vagrant/.viminfo" ]; then 
+	rm "/home/vagrant/.viminfo"
+fi
+
+su -c "cd /home/vagrant/.dotfiles && ./install" vagrant
