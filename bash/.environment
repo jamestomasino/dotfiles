@@ -15,7 +15,7 @@ export R_LIBS="$HOME/.rlib"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache -g ""'
 
 # path vars
-export DROPBOX_PATH="$HOME/.dropbox"
+export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
 export SPIDEROAK_PATH="$HOME/.spideroak"
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:/usr/bin/npm"
