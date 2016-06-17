@@ -11,9 +11,8 @@ image/gif; ~/bin/view_attachment.sh %s gif
 # PDFs
 application/pdf; ~/bin/view_attachment.sh %s pdf
 
-# HTML
-text/html; ~/bin/view_attachment.sh %s html
-
 # Unidentified files
 application/octet-stream; ~/bin/view_attachment.sh %s "-"
 
+# HTML Emails
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
