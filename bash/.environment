@@ -23,6 +23,7 @@ export ANDROID_HOME="$HOME/android/android-sdk-macosx"
 export TODO="$DROPBOX_PATH/Todo/personal.txt"
 export NOTE_DIR="$DROPBOX_PATH/Work/GSW/notes"
 export WEIGHT="$SPIDEROAK_PATH/Documents/Medical/Weight/weight.csv"
+export SHEET_FILE="$DROPBOX_PATH/Work/GSW/ti-sheet.json"
 
 # ruby
 export GEM_HOME="$HOME/.gem"
