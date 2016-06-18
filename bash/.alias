@@ -19,7 +19,6 @@ alias ......="cd ../../../../.."
 # aliases to default commands with certain switches
 alias grep='grep --color=auto'
 alias mkdir='mkdir -p'
-alias mutt='cd ~/Desktop && mutt'
 
 # update scripts
 alias systemupdate='sudo softwareupdate -i -a; brew update; brew upgrade'
