@@ -10,7 +10,6 @@ set editor                = "vim"                      # Use terminal Vim to com
 set envelope_from                                      # which from?
 set fast_reply                                         # skip to compose when replying
 set fcc_attach                                         # save attachments with the body
-set folder                = ~/.mail
 set forward_decode                                     # decode when forwarding
 set forward_format        = "Fwd: %s"                  # format of subject when forwarding
 set forward_quote                                      # include message in forwards
@@ -34,7 +33,6 @@ set realname              = "James Tomasino"           # who am i?
 set reply_regexp          = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 set reply_to                                           # reply to Reply to: field
 set reverse_name                                       # reply as whomever it was to
-set sidebar_delim_chars   = '/.'
 set sidebar_divider_char  = '|'
 set sidebar_folder_indent = no
 set sidebar_format        = '%B%?F? [%F]?%* %?N?%N/?%S'
@@ -45,15 +43,15 @@ set sidebar_refresh_time  = 60
 set sidebar_short_path    = no
 set sidebar_sort_method   = 'unsorted'
 set sidebar_visible       = yes
-set sidebar_width         = 20
+set sidebar_width         = 24
+set sidebar_delim_chars    = '  │'
 set sig_dashes                                         # dashes before sig
 set signature             = ~/.sig                     # signature
 set smtp_url              = "smtp://$imap_user@mail.tomasino.org:587"
 set sort                  = threads                    # like gmail
 set sort_aux              = reverse-last-date-received # like gmail
 set sort_re                                            # thread based on regex
-set spoolfile             = "james-tomasino.org/INBOX"
-set thorough_search       = yes
+set thorough_search
 set tilde                                              # show tildes like in vim
 set timeout               = 3                          # idle time before scanning
 set uncollapse_jump                                    # don't collapse on an unread message
@@ -62,11 +60,17 @@ unset markers                                          # no ugly plus signs
 unset confirmappend
 unset mark_old
 unset mime_forward                                     # forward attachments as part of body
-unset move
+
+# Status Bar -----------------------------------------
+set status_chars  = " *%A"
+set status_format = "---[ Folder: %f ]---[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]---%>-%?p?( %p postponed )?---"
 
 # View Options __-------------------------------------
 auto_view text/html                                      # view html automatically
 alternative_order text/plain text/enriched text/html     # save html for last
+
+# Alternate email addresses.
+alternates james@tomasino.org .*@jamestomasino.com james.tomasino@inventivhealth.com james.tomasino@gsw-w.com
 
 # Header Options -------------------------------------
 ignore *                                # ignore all headers
@@ -85,7 +89,6 @@ bind index <space>  collapse-thread
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
 bind index,pager <right>  sidebar-open
-bind index,pager <left>   sidebar-close
 bind index,pager B        sidebar-toggle-visible
 
 # Pager Key Bindings ---------------------------------
@@ -120,14 +123,17 @@ macro compose \eh "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-
 ################################ MAILBOXES ###################################
 ##############################################################################
 
-mailboxes +james-tomasino.org/INBOX \
-          +james-tomasino.org/archive \
-          +james-tomasino.org/sent \
-          +james-tomasino.org/drafts \
+set folder = ~/.mail/james-tomasino.org
+set spoolfile = "+INBOX"
+mailboxes +INBOX \
+          +archive \
+          +sent \
+          +drafts \
+          +junk \
 
-set mbox      = "+james-tomasino.org/archive"
-set postponed = "+james-tomasino.org/drafts"
-set record    = "+james-tomasino.org/sent"
+set mbox      = "+archive"
+set postponed = "+drafts"
+set record    = "+sent"
 
 ##############################################################################
 ################################ COLORS ######################################
@@ -251,6 +257,9 @@ color body brightblue  default "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punc
 mono  body underline           "(^|[[:space:][:punct:]])_[^_]+_([[:space:][:punct:]]|$)"
 # Border lines.
 color body blue default "( *[-+=#*~_|]){6,}"
+
+# Sidebar
+color sidebar_new color221 color233
 
 # --------------------------------------------------------------------------
 # vim: syntax=muttrc

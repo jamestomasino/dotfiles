@@ -13,10 +13,12 @@ postsynchook = notmuch new
 [Repository JamesTomasino-Local]
 type = Maildir
 localfolders = ~/.mail/james-tomasino.org
-nametrans = lambda folder: {'drafts':  '=Drafts',
+nametrans = lambda folder: {'INBOX':   '=Inbox',
+                            'drafts':  '=Drafts',
                             'sent':    '=Sent',
                             'trash':   '=Trash',
                             'archive': '=Archive',
+                            'junk':    '=Junk',
                             }.get(folder, folder)
 
 [Repository JamesTomasino-Remote]
@@ -29,8 +31,10 @@ cert_fingerprint = 56195fd43924b7e34850014df8b00669af18a76c
 remoteuser = james@tomasino.is
 remotepasseval = get_keychain_pass(server="mail.tomasino.org")
 realdelete = no
-nametrans = lambda folder: {'=Drafts':    'drafts',
+nametrans = lambda folder: {'=Inbox':     'INBOX',
+                            '=Drafts':    'drafts',
                             '=Sent':      'sent',
                             '=Trash':     'trash',
                             '=Archive':   'archive',
+                            '=Junk':      'junk',
                             }.get(folder, folder)
