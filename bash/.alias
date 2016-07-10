@@ -82,3 +82,6 @@ alias busy='cat /dev/urandom | hexdump -C | grep "ca fe"'
 
 # tron
 alias tron='ssh sshtron.zachlatta.com'
+
+# rickroll
+alias roll='curl -s -L http://bit.ly/10hA8iC | bash'
