@@ -13,9 +13,12 @@ show-read-feeds no
 feed-sort-order firsttag
 
 color info default default reverse
+color listnormal         default default
 color listnormal_unread yellow default
 color listfocus blue default reverse bold
 color listfocus_unread blue default reverse bold
+color background         default default
+color article            default default
 
 text-width 80
 
@@ -35,7 +38,6 @@ bind-key K prev-feed articlelist
 bind-key j down article
 bind-key k up article
 
-
 # -- bookmarks -----------------------------------------------------------------
 
 bookmark-cmd ~/.newsbeuter/bookmark.sh
@@ -48,3 +50,5 @@ bookmark-autopilot yes
 unbind-key C feedlist
 confirm-exit no
 cleanup-on-quit yes
+notify-beep     no
+max-items       250
