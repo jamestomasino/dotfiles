@@ -289,12 +289,15 @@ track() {
 			-h|--help)
 				echo "track - track a thing"
 				echo " "
-				echo "track thing [options] [value]"
-				echo " "
-				echo "options:"
-				echo "-h, --help                show brief help"
-				echo "-a, --all                 show all values of thing"
-				echo "-n, --number              show # values of thing"
+				echo "usage: track                     # list things tracked"
+				echo "usage: track (-h|--help)         # show this help"
+				echo "usage: track [thing]             # show most recent value of thing"
+				echo "usage: track [thing] [value]     # track new value of thing for today"
+				echo "usage: track [thing] [options]"
+				echo "    options:"
+				echo "    -h, --help    show this help"
+				echo "    -a, --all     show all values of thing"
+				echo "    -n, --number  show (number) values of thing"
 				;;
 			*)
 				local f
@@ -316,12 +319,15 @@ track() {
 						-h|--help)
 							echo "track - track a thing"
 							echo " "
-							echo "track thing [options] [value]"
-							echo " "
-							echo "options:"
-							echo "-h, --help                show brief help"
-							echo "-a, --all                 show all values of thing"
-							echo "-n, --number              show # values of thing"
+							echo "usage: track                     # list things tracked"
+							echo "usage: track (-h|--help)         # show this help"
+							echo "usage: track [thing]             # show most recent value of thing"
+							echo "usage: track [thing] [value]     # track new value of thing for today"
+							echo "usage: track [thing] [options]"
+							echo "    options:"
+							echo "    -h, --help    show this help"
+							echo "    -a, --all     show all values of thing"
+							echo "    -n, --number  show (number) values of thing"
 							;;
 						-a|--all)
 							column -s, -t "$f" | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
