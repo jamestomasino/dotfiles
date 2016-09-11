@@ -22,7 +22,7 @@ export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:/usr/bin/npm"
 export ANDROID_HOME="$HOME/android/android-sdk-macosx"
 export TODO="$DROPBOX_PATH/Todo/personal.txt"
 export NOTE_DIR="$DROPBOX_PATH/Work/GSW/notes"
-export WEIGHT="$SPIDEROAK_PATH/Documents/Medical/Weight/weight.csv"
+export TRACK_DIR="$DROPBOX_PATH/track"
 export SHEET_FILE="$DROPBOX_PATH/Work/GSW/ti-sheet.json"
 
 # ruby

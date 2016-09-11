@@ -252,34 +252,6 @@ old() {
     mv "$1"{,.old}
 }
 
-# Weight tracking
-weight() {
-	: "${WEIGHT:?'WEIGHT ENV var not set'}"
-	if [ $# -eq 0 ]; then
-		tail -n 1 "$WEIGHT" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
-	else
-		case "$1" in
-			"-a")
-				column -s, -t "$WEIGHT" | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
-				;;
-			"-n")
-				tail -n "$2" "$WEIGHT" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
-				;;
-			*)
-				local d
-				d=$(date '+%Y,%m,%d')
-				local l
-				l=$(sed -n "/$d/{=;}" "$WEIGHT")
-				if [ -z "$l" ]; then
-					echo "$d,$*" >> "$WEIGHT"
-				else
-					sed -i "$l c $d,$*" "$WEIGHT"
-				fi
-				;;
-		esac
-	fi
-}
-
 # Note taking function and command completion
 _n() {
 	local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')
@@ -302,6 +274,79 @@ n() {
 	fi
 }
 complete -F _n n
+
+_track() {
+	local lis=$(ls -1 "$TRACK_DIR" | sed -e 's/\..*$//')
+	local cur=${COMP_WORDS[COMP_CWORD]}
+	COMPREPLY=( $(compgen -W "$lis" -- $cur) )
+}
+track() {
+	: "${TRACK_DIR:?'TRACK_DIR ENV var not set'}"
+	if [ $# -eq 0 ]; then
+		ls -1 "$TRACK_DIR" | grep "$*" | sed -e 's/\..*$//'
+	else
+		case "$1" in
+			-h|--help)
+				echo "track - track a thing"
+				echo " "
+				echo "track thing [options] [value]"
+				echo " "
+				echo "options:"
+				echo "-h, --help                show brief help"
+				echo "-a, --all                 show all values of thing"
+				echo "-n, --number              show # values of thing"
+				;;
+			*)
+				local f
+				local fn
+				f="$TRACK_DIR"/"$1".csv
+				fn="$1"
+				shift
+				if [ $# -eq 0 ]; then
+					if [ ! -f "$f" ]; then
+						echo "track: '$fn' not found"
+					else
+						tail -n 1 "$f" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
+					fi
+				else
+					if [ ! -f "$f" ]; then
+						echo "year,month,day,$fn" > "$f"
+					fi
+					case "$1" in
+						-h|--help)
+							echo "track - track a thing"
+							echo " "
+							echo "track thing [options] [value]"
+							echo " "
+							echo "options:"
+							echo "-h, --help                show brief help"
+							echo "-a, --all                 show all values of thing"
+							echo "-n, --number              show # values of thing"
+							;;
+						-a|--all)
+							column -s, -t "$f" | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
+							;;
+						-n|--number)
+							tail -n "$2" "$f" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
+							;;
+						*)
+							local d
+							d=$(date '+%Y,%m,%d')
+							local l
+							l=$(sed -n "/$d/{=;}" "$f")
+							if [ -z "$l" ]; then
+								echo "$d,$*" >> "$f"
+							else
+								sed -i "$l c $d,$*" "$f"
+							fi
+							;;
+					esac
+				fi
+				;;
+		esac
+	fi
+}
+complete -F _track track
 
 # get battery level on osx
 battery() {
