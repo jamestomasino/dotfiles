@@ -298,9 +298,9 @@ function track() {
 				echo "usage: track [thing] [value]     # track new value of thing for today"
 				echo "usage: track [thing] [options]"
 				echo "    options:"
-				echo "    -a, --all     show all values of thing"
-				echo "    -n, --number  show (number) values of thing"
-				echo "    -d, --delete  delete thing tracking"
+				echo "    -a, --all                    # show all values of thing"
+				echo "    -n, --number                 # show (number) values of thing"
+				echo "    -d, --delete                 # delete thing tracking"
 				;;
 			*)
 				local f
