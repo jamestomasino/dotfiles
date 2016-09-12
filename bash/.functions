@@ -275,29 +275,32 @@ n() {
 }
 complete -F _n n
 
-_track() {
-	local lis=$(ls -1 "$TRACK_DIR" | sed -e 's/\..*$//')
-	local cur=${COMP_WORDS[COMP_CWORD]}
-	COMPREPLY=( $(compgen -W "$lis" -- $cur) )
+function _track() {
+	TRACK_DIR=${TRACK_DIR:-.}
+	local lis
+	lis=$(find "$TRACK_DIR"/*.csv -maxdepth 1 2>/dev/null | sed -e 's/.*\///' | sed -e 's/\..*$//')
+	local cur
+	cur=${COMP_WORDS[COMP_CWORD]}
+	COMPREPLY=( $(compgen -W "$lis" -- "$cur") )
 }
-track() {
-	: "${TRACK_DIR:?'TRACK_DIR ENV var not set'}"
+function track() {
+	TRACK_DIR=${TRACK_DIR:-.}
 	if [ $# -eq 0 ]; then
-		ls -1 "$TRACK_DIR" | grep "$*" | sed -e 's/\..*$//'
+		find "$TRACK_DIR"/*.csv -maxdepth 1 2>/dev/null | sed -e 's/.*\///' | sed -e 's/\..*$//'
 	else
 		case "$1" in
 			-h|--help)
 				echo "track - track a thing"
 				echo " "
 				echo "usage: track                     # list things tracked"
-				echo "usage: track (-h|--help)         # show this help"
+				echo "usage: track (-h or --help)      # show this help"
 				echo "usage: track [thing]             # show most recent value of thing"
 				echo "usage: track [thing] [value]     # track new value of thing for today"
 				echo "usage: track [thing] [options]"
 				echo "    options:"
-				echo "    -h, --help    show this help"
 				echo "    -a, --all     show all values of thing"
 				echo "    -n, --number  show (number) values of thing"
+				echo "    -d, --delete  delete thing tracking"
 				;;
 			*)
 				local f
@@ -316,34 +319,26 @@ track() {
 						echo "year,month,day,$fn" > "$f"
 					fi
 					case "$1" in
-						-h|--help)
-							echo "track - track a thing"
-							echo " "
-							echo "usage: track                     # list things tracked"
-							echo "usage: track (-h|--help)         # show this help"
-							echo "usage: track [thing]             # show most recent value of thing"
-							echo "usage: track [thing] [value]     # track new value of thing for today"
-							echo "usage: track [thing] [options]"
-							echo "    options:"
-							echo "    -h, --help    show this help"
-							echo "    -a, --all     show all values of thing"
-							echo "    -n, --number  show (number) values of thing"
-							;;
 						-a|--all)
 							column -s, -t "$f" | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
 							;;
 						-n|--number)
 							tail -n "$2" "$f" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
 							;;
+						-d|--delete)
+							rm "$f"
+							;;
 						*)
 							local d
 							d=$(date '+%Y,%m,%d')
 							local l
 							l=$(sed -n "/$d/{=;}" "$f")
+							local c
+							c="${*//,/-}"
 							if [ -z "$l" ]; then
-								echo "$d,$*" >> "$f"
+								echo "$d,$c" >> "$f"
 							else
-								sed -i "$l c $d,$*" "$f"
+								sed -i "$l c $d,$c" "$f"
 							fi
 							;;
 					esac
