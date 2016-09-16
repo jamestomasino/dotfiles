@@ -103,6 +103,11 @@ bind index p recall-message
 bind index N search-opposite
 bind attach <return> view-mailcap
 
+# Google contacts
+set query_command="goobook query %s"
+macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
+
 # Ctrl-R to mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
