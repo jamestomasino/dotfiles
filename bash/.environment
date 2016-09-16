@@ -8,11 +8,11 @@ export HISTCONTRAL=ignoredups
 export HISTFILESIZE=10000
 export HISTZIE=10000
 export HISTIGNORE="clear:keybase*"
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
 export R_LIBS="$HOME/.rlib"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache -g ""'
+export _Z_NO_PROMPT_COMMAND=1
 
 # path vars
 export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
@@ -38,7 +38,9 @@ export MODIFIED_COLOR="\033[38;05;112m"
 export UNTRACKED_COLOR="\033[38;05;117m"
 export PROMPT_COLOR="\033[38;05;88m"
 export USER_COLOR="\033[38;05;130m"
+export ROOT_COLOR="\033[38;05;160m"
 export HOST_COLOR="\033[38;05;130m"
+export TIME_COLOR="\033[38;05;60m"
 export RESET_COLOR="\033[m"
 
 # less settings
@@ -71,6 +73,9 @@ shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s nocaseglob
+
+# PROMPT COMMANDS
+PROMPT_COMMAND="_z --add \"$(pwd -P 2>/dev/null)\" 2>/dev/null; history -a; history -c; history -r;"
 
 # use vim on the command line
 set -o vi
