@@ -314,11 +314,11 @@ function ti() {
 	local activity_start
 	local sess
 	if ! [ -z ${match:x} ]; then
-		read sess activity activity_start <<< $(sed -n "${match}p" < "$timerfile")
+		read sess activity_start activity <<< $(sed -n "${match}p" < "$timerfile")
 	fi
 
 	if [ $# -eq 0 ]; then
-		if [ -z ${activity:x} ]; then
+		if [ -z "$activity" ]; then
 			echo "No activity set"
 		else
 			echo "$activity started"
@@ -329,13 +329,6 @@ function ti() {
 				echo "ti - time tracker"
 				echo " "
 				echo "usage: ti                   # show activity for current session"
-				;;
-			-s|--start)
-				if [ -z "$match" ]; then
-					echo "$session $2 $(timestamp)" >> "$timerfile"
-				else
-					confirm "You have an activity started ($activity). Abandon it? [y/N] " && sed -i "$match c $session $2 $(timestamp)" "$timerfile"
-				fi
 				;;
 			-d|--done|-f|--finish)
 				if ! [ -z "$match" ]; then
@@ -361,6 +354,17 @@ function ti() {
 				;;
 			--clear-log)
 				> "$TIME_LOG"
+				;;
+			*|-s|--start)
+				# shift only if we used the switch. Otherwise continue.
+				if [ "$1" == "-s" ] || [ "$1" == "--start" ]; then
+					shift
+				fi
+				if [ -z "$match" ]; then
+					echo "$session $(timestamp) $*" >> "$timerfile"
+				else
+					confirm "You have an activity started ($activity). Abandon it? [y/N] " && sed -i "$match c $session $(timestamp) $*" "$timerfile"
+				fi
 				;;
 		esac
 	fi
