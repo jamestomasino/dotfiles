@@ -9,10 +9,23 @@ exists() { type -t "$1" > /dev/null 2>&1; }
 function trimspace() {
 	echo "${@//[[:blank:]]/}"
 }
+# generate unix timestamp
 function timestamp() {
 	date +"%s"
 }
-
+# generic confirmation function
+confirm () {
+    # call with a prompt string or use a default
+    read -r -p "${1:-Are you sure? [y/N]} " response
+    case $response in
+        [yY][eE][sS]|[yY]) 
+            true
+            ;;
+        *)
+            false
+            ;;
+    esac
+}
 ################################################################################
 ################################## FUNCTIONS ###################################
 ################################################################################
@@ -280,7 +293,8 @@ complete -F _n n
 
 function ti() {
 	# Set up paths and vars
-	TIME_CONF=${TIME_CONF:-$HOME/.time}
+	TIME_LOG="${TIMELOG:-$HOME/.timelog}"
+	timerfile="${TIMERFILE:-$HOME/.timerfile}"
 	local session
 	session="personal"
 
@@ -289,64 +303,66 @@ function ti() {
 		session=$(tmux display -p '#S')
 	fi
 
+	if ! [ -r $timerfile ]; then
+		touch "$timerfile"
+	fi
+
+	local match
+	match=$(sed -n "/$session/{=;}" "$timerfile")
+
 	local activity
 	local activity_start
-	if [ -r $TIME_CONF ]; then
+	local sess
+	if ! [ -z ${match:x} ]; then
+		read sess activity activity_start <<< $(sed -n "${match}p" < "$timerfile")
+	fi
 
-		local match
-		match=$(sed -n "/$session/{=;}" "$TIME_CONF")
-
-		local activity
-		local activity_start
-		local sess
-		if ! [ -z ${match:x} ]; then
-			read sess activity activity_start <<< $(sed -n "${match}p" < "$TIME_CONF")
-		fi
-
-		if [ $# -eq 0 ]; then
-			if [ -z ${activity:x} ]; then
-				echo "No activity set"
-			else
-				local pretty_start
-				pretty_start=$(date -r "$activity_start" '+%Y-%m-%d %H:%M:%S')
-				echo "$activity started at $pretty_start"
-			fi
+	if [ $# -eq 0 ]; then
+		if [ -z ${activity:x} ]; then
+			echo "No activity set"
 		else
-			case "$1" in
-				-h|--help)
-					echo "ti - time tracker"
-					echo " "
-					echo "usage: ti                   # show activity for current session"
-					;;
-				-a|--add|-s|--start)
-					if [ -z "$match" ]; then
-						echo "$session $2 $(timestamp)" >> "$TIME_CONF"
-					else
-						echo "Changing activity. Need to log this later."
-						sed -i "$match c $session $2 $(timestamp)" "$TIME_CONF"
-					fi
-					;;
-				-d|--done|-f|--finish)
-					local match
-					match=$(sed -n "/$session/{=;}" "$TIME_CONF")
-					if [ -z "$match" ]; then
-						#echo "$match $2 $(timestamp)" >> "$TIME_CONF"
-						echo "Something went wrong."
-					else
-						sed -i "$match d" "$TIME_CONF"
-						local activity_finish
-						activity_finish=$(timestamp)
-						activity_duration=$((activity_finish-activity_start))
-						local pretty_finish
-						pretty_finish=$(date -r "$activity_finish" '+%Y-%m-%d %H:%M:%S')
-						echo "$activity finished at $pretty_finish - ${activity_duration}s"
-					fi
-					;;
-			esac
+			echo "$activity started"
 		fi
-
 	else
-		echo "Time conf file doesn't exist. (~/.time by default)"
+		case "$1" in
+			-h|--help)
+				echo "ti - time tracker"
+				echo " "
+				echo "usage: ti                   # show activity for current session"
+				;;
+			-s|--start)
+				if [ -z "$match" ]; then
+					echo "$session $2 $(timestamp)" >> "$timerfile"
+				else
+					confirm "You have an activity started ($activity). Abandon it? [y/N] " && sed -i "$match c $session $2 $(timestamp)" "$timerfile"
+				fi
+				;;
+			-d|--done|-f|--finish)
+				if ! [ -z "$match" ]; then
+					sed -i "$match d" "$timerfile"
+					local activity_finish
+					activity_finish=$(timestamp)
+					activity_duration=$((activity_finish-activity_start))
+					local pretty_start
+					pretty_start=$(date -r "$activity_start" '+%Y-%m-%d %H:%M:%S')
+					local pretty_finish
+					pretty_finish=$(date -r "$activity_finish" '+%Y-%m-%d %H:%M:%S')
+					echo "$activity finished in ${activity_duration} seconds"
+					echo "$session, $activity, $pretty_start, $pretty_finish, $activity_duration" >> "$TIME_LOG"
+				fi
+				;;
+			-a|--abort)
+				if ! [ -z "$match" ]; then
+					sed -i "$match d" "$timerfile"
+				fi
+				;;
+			-l|--log)
+				cat "$TIME_LOG"
+				;;
+			--clear-log)
+				> "$TIME_LOG"
+				;;
+		esac
 	fi
 }
 
