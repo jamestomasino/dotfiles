@@ -15,13 +15,13 @@ function _ti() {
 	# Get the list of previously logged activities
 	local loglist
 	if [ -r "$TIME_LOG" ]; then
-		loglist=$(awk -F ", " '{printf "%s\n", $2;}' $TIME_LOG)
+		loglist=$(awk -F ", " '{printf "%s\n", $2;}' "$TIME_LOG")
 	fi
 
 	# Combine all the lists for autocomplete
 	local cur
 	cur=${COMP_WORDS[COMP_CWORD]}
-	COMPREPLY=( $( compgen -W "$activity $loglist $helplist" -- $cur ) )
+	COMPREPLY=( $( compgen -W "$activity $loglist $helplist" -- "$cur" ) )
 }
 function ti() {
 	# Setup paths
@@ -36,7 +36,7 @@ function ti() {
 	fi
 
 	# Create the timerfile to avoid throwing errors
-	if ! [ -r $timerfile ]; then
+	if ! [ -r "$timerfile" ]; then
 		touch "$timerfile"
 	fi
 
@@ -117,7 +117,7 @@ function ti() {
 				;;
 			-l|--log)
 				# Show log file if it exists
-				if ! [ -r $TIME_LOG ]; then
+				if ! [ -r "$TIME_LOG" ]; then
 					# If the file doesn't exist, create it to avoid errors
 					touch "$TIME_LOG"
 				fi
