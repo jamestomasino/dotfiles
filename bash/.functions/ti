@@ -71,7 +71,8 @@ function ti() {
 				# Help
 				echo "ti - time tracker"
 				echo " "
-				echo "Tracks activity time with a simple start/stop syntax. Logs to CSV. Tmux session aware. Allows one activity active at a time, per session."
+				echo "Tracks activity time with a simple start/stop syntax. Logs to CSV. Tmux session aware."
+				echo "Allows one activity active at a time, per session."
 				echo " "
 				echo "usage: ti                                       # show this help"
 				echo "usage: ti (--help or -h)                        # show this help"
