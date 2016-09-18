@@ -3,7 +3,7 @@
 function _ti() {
 	# Setup paths
 	TIME_LOG="${TIME_LOG:-$HOME/.timelog}"
-	#
+
 	# Get basic autocomplete commands from the function itself
 	local helplist
 	helplist=$(ti --shortlist)
@@ -23,6 +23,7 @@ function _ti() {
 	cur=${COMP_WORDS[COMP_CWORD]}
 	COMPREPLY=( $( compgen -W "$activity $loglist $helplist" -- "$cur" ) )
 }
+
 function ti() {
 	# Setup paths
 	TIME_LOG="${TIME_LOG:-$HOME/.timelog}"
@@ -53,20 +54,26 @@ function ti() {
 	fi
 
 	if [ $# -eq 0 ]; then
+
 		# No parameters = show help
 		ti -h
+
 	else
+
 		case "$1" in
+
 			--activity-name)
 				# Shows the current activity name if there is one for this session
 				if ! [ -z "$activity" ]; then
 					echo "$activity"
 				fi
 				;;
+
 			--shortlist)
 				# Shows a short list of commands without context
 				echo "--help --start --done --finish --abort --list --clear-log --activity-name --shortlist";
 				;;
+
 			-h|--help)
 				# Help
 				echo "ti - time tracker"
@@ -85,6 +92,7 @@ function ti() {
 				echo "usage: ti --shortlist                           # quick list of commands without context"
 				echo "usage: ti [activity name]                       # toggles start/stop"
 				;;
+
 			-d|--done|-f|--finish)
 				# Only finish an activity if there is an active one
 				if ! [ -z "$match" ]; then
@@ -109,12 +117,14 @@ function ti() {
 					echo "$session, $activity, $pretty_start, $pretty_finish, $activity_duration" >> "$TIME_LOG"
 				fi
 				;;
+
 			-a|--abort)
 				# Remove activity from timerfile without logging
 				if ! [ -z "$match" ]; then
 					sed -i "$match d" "$timerfile"
 				fi
 				;;
+
 			-l|--log)
 				# Show log file if it exists
 				if ! [ -r "$TIME_LOG" ]; then
@@ -123,10 +133,12 @@ function ti() {
 				fi
 				cat "$TIME_LOG"
 				;;
+
 			--clear-log)
 				# Empty contents of log
 				> "$TIME_LOG"
 				;;
+
 			*|-s|--start)
 				if [ "$*" == "$activity" ]; then
 					# we repeated the active activity name, that means finish
@@ -146,7 +158,11 @@ function ti() {
 					confirm "You have an activity started ($activity). Abandon it? [y/N] " && sed -i "$match c $session $(timestamp) $*" "$timerfile"
 				fi
 				;;
+
 		esac
+
 	fi
+
 }
+
 complete -F _ti ti
