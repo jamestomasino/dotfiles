@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Start a .NET server using mono
 function netserver() {
 	local port="${1:-8080}"

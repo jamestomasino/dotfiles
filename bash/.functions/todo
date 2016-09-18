@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Todo List & Completion
 _todo() {
 	local iter use cur

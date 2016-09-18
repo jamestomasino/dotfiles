@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Use the right extraction method based on file extension
 function extract() {
     if [ -f "$1" ] ; then

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function _track() {
 	TRACK_DIR=${TRACK_DIR:-.}
 	local lis

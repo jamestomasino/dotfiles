@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Note taking function and command completion
 _n() {
 	local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')

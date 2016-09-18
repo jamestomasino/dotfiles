@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # fd - cd to selected directory
 fd() {
   local dir

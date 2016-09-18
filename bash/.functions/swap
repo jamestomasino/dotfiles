@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Swap 2 filenames around, if they exist
 function swap() {
     local TMPFILE=tmp.$$

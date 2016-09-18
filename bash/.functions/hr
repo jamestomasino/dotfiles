@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Create a horizontal rule, hr style
 function hr() {
 	set -f

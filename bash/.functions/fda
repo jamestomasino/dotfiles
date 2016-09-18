@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # fda - including hidden directories
 fda() {
   local dir

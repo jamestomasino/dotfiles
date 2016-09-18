@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # json formatting / highlighting
 function json() {
 	if [ -t 0 ]; then

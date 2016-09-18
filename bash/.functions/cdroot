@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # jump to root folder of git repo
 function cdroot {
 	LOCAL_DIR=$(git rev-parse --show-toplevel)

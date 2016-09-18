@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # c - browse chrome history
 c() {
 	local cols sep

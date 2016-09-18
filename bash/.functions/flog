@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # fshow - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
 flog() {
   local out shas sha q k

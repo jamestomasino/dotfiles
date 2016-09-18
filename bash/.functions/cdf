@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # cdf - cd into the directory of the selected file
 cdf() {
    local file

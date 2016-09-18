@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function gittreestatus() {
 	if [ $# -eq 0 ]; then
 		for i in $(find . -type d -maxdepth 1)
