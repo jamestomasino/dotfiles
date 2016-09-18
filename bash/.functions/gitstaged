@@ -1,0 +1,10 @@
+# Return number of staged files in folder
+function gitstaged() {
+	local s=$(trimspace "$(git diff --cached --numstat 2> /dev/null | wc -l)" )
+	if [ "0" == "${s}" ]; then
+		s=""
+	else
+		s=" stg: ${s}"
+	fi
+	echo "${s}"
+}

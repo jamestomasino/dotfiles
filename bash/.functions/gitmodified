@@ -1,0 +1,10 @@
+# Return number of modified files in folder
+function gitmodified() {
+	local m=$(trimspace "$(git diff --numstat 2> /dev/null | wc -l)" )
+	if [ "0" == "${m}" ]; then
+		m=""
+	else
+		m=" mod: ${m}"
+	fi
+	echo "${m}"
+}

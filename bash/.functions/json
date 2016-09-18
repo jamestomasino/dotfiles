@@ -1,0 +1,8 @@
+# json formatting / highlighting
+function json() {
+	if [ -t 0 ]; then
+		python -mjson.tool <<< "$*" | pygmentize -l javascript
+	else
+		python -mjson.tool | pygmentize -l javascript
+	fi
+}

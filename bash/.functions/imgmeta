@@ -1,0 +1,4 @@
+# image metadata from web
+imgmeta() {
+	curl -sr 0-1024 "$@" |strings
+}

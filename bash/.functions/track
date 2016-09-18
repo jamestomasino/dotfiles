@@ -1,0 +1,73 @@
+function _track() {
+	TRACK_DIR=${TRACK_DIR:-.}
+	local lis
+	lis=$(find "$TRACK_DIR"/*.csv -maxdepth 1 2>/dev/null | sed -e 's/.*\///' | sed -e 's/\..*$//')
+	local cur
+	cur=${COMP_WORDS[COMP_CWORD]}
+	COMPREPLY=( $(compgen -W "$lis" -- "$cur") )
+}
+function track() {
+	TRACK_DIR=${TRACK_DIR:-.}
+	if [ $# -eq 0 ]; then
+		find "$TRACK_DIR"/*.csv -maxdepth 1 2>/dev/null | sed -e 's/.*\///' | sed -e 's/\..*$//'
+	else
+		case "$1" in
+			-h|--help)
+				echo "track - track a thing"
+				echo " "
+				echo "usage: track                     # list things tracked"
+				echo "usage: track (-h or --help)      # show this help"
+				echo "usage: track [thing]             # show most recent value of thing"
+				echo "usage: track [thing] [value]     # track new value of thing for today"
+				echo "usage: track [thing] [options]"
+				echo "    options:"
+				echo "    -a, --all                    # show all values of thing"
+				echo "    -n, --number                 # show (number) values of thing"
+				echo "    -d, --delete                 # delete thing tracking"
+				;;
+			*)
+				local f
+				local fn
+				f="$TRACK_DIR"/"$1".csv
+				fn="$1"
+				shift
+				if [ $# -eq 0 ]; then
+					if [ ! -f "$f" ]; then
+						echo "track: '$fn' not found"
+					else
+						tail -n 1 "$f" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
+					fi
+				else
+					if [ ! -f "$f" ]; then
+						echo "year,month,day,$fn" > "$f"
+					fi
+					case "$1" in
+						-a|--all)
+							column -s, -t "$f" | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
+							;;
+						-n|--number)
+							tail -n "$2" "$f" | column -s, -t | awk '{printf "\033[38;05;226m%s-\033[38;05;226m%s-\033[38;05;226m%s\t\033[38;05;46m%s\t\n", $1, $2, $3, $4;}'
+							;;
+						-d|--delete)
+							rm "$f"
+							;;
+						*)
+							local d
+							d=$(date '+%Y,%m,%d')
+							local l
+							l=$(sed -n "/$d/{=;}" "$f")
+							local c
+							c="${*//,/-}"
+							if [ -z "$l" ]; then
+								echo "$d,$c" >> "$f"
+							else
+								sed -i "$l c $d,$c" "$f"
+							fi
+							;;
+					esac
+				fi
+				;;
+		esac
+	fi
+}
+complete -F _track track

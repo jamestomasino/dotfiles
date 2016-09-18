@@ -1,0 +1,6 @@
+# jump to root folder of git repo
+function cdroot {
+	LOCAL_DIR=$(git rev-parse --show-toplevel)
+	LOCAL_DIR=${LOCAL_DIR:-.}
+	cd "$LOCAL_DIR"
+}

@@ -1,0 +1,4 @@
+# calculator
+=() {
+	python -c "from math import *; print($@)"
+}

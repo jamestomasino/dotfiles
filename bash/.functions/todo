@@ -1,0 +1,42 @@
+# Todo List & Completion
+_todo() {
+	local iter use cur
+	cur=${COMP_WORDS[COMP_CWORD]}
+	use=$(cat "$TODOFILE" | awk '{gsub(/ /,"\\ ")}8')
+	use="${use//\\ /___}"
+	for iter in $use; do
+		if [[ $iter =~ ^$cur ]]; then
+			COMPREPLY+=( "${iter//___/ }" )
+		fi
+	done
+}
+function todo {
+	: "${TODO:?'TODO ENV Var not set'}"
+	# If we are in a tmux session, name the file with the session name
+	# If not in tmux, use the full $TODO env var for path/file
+	if echo "$TERM" | grep -Fq screen && test "$TMUX" ; then
+		sessname=$(tmux display -p '#S')
+		todopath=$(dirname "$TODO")
+		TODOFILE=$todopath/$sessname".txt"
+	else
+		TODOFILE=$TODO
+	fi
+
+	case "$1" in
+		"-a")
+			echo "${*:2}" >> "$TODOFILE"
+			;;
+		"-d")
+			re='^[0-9]+$'
+			if ! [[ "$2" =~ $re ]] ; then
+				sed -i "" -e "/$2/d" "$TODOFILE" 2> /dev/null
+			else
+				sed -i "" -e "$2d" "$TODOFILE" 2> /dev/null
+			fi
+			;;
+	esac
+	if [ -f "$TODOFILE" ] ; then
+		cat "$TODOFILE" | awk '{ print NR, "-", $0 }'
+	fi
+}
+complete -F _todo todo

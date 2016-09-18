@@ -9,8 +9,8 @@ if [ -f "$HOME/.zsh" ] ; then
 fi
 
 # functions
-if [ -f "$HOME/.functions" ] ; then
-    . "$HOME/.functions"
+if [ -f "$HOME/.func" ] ; then
+    . "$HOME/.func"
 fi
 
 # alias
