@@ -291,25 +291,51 @@ n() {
 }
 complete -F _n n
 
+function _ti() {
+	# Setup paths
+	TIME_LOG="${TIME_LOG:-$HOME/.timelog}"
+	#
+	# Get basic autocomplete commands from the function itself
+	local helplist
+	helplist=$(ti --shortlist)
+
+	# Get activity name from function itself
+	local activity
+	activity=$(ti --activity-name)
+
+	# Get the list of previously logged activities
+	local loglist
+	if [ -r "$TIME_LOG" ]; then
+		loglist=$(awk -F ", " '{printf "%s\n", $2;}' $TIME_LOG)
+	fi
+
+	# Combine all the lists for autocomplete
+	local cur
+	cur=${COMP_WORDS[COMP_CWORD]}
+	COMPREPLY=( $( compgen -W "$activity $loglist $helplist" -- $cur ) )
+}
 function ti() {
-	# Set up paths and vars
-	TIME_LOG="${TIMELOG:-$HOME/.timelog}"
+	# Setup paths
+	TIME_LOG="${TIME_LOG:-$HOME/.timelog}"
 	timerfile="${TIMERFILE:-$HOME/.timerfile}"
+
+	# Session detection
 	local session
 	session="personal"
-
-	# Check for tmux session name to override default session
 	if echo "$TERM" | grep -Fq screen && test "$TMUX" ; then
 		session=$(tmux display -p '#S')
 	fi
 
+	# Create the timerfile to avoid throwing errors
 	if ! [ -r $timerfile ]; then
 		touch "$timerfile"
 	fi
 
+	# Do we have an activity active for this session?
 	local match
 	match=$(sed -n "/$session/{=;}" "$timerfile")
 
+	# Get activity name, start time (and throw away session name)
 	local activity
 	local activity_start
 	local sess
@@ -318,17 +344,32 @@ function ti() {
 	fi
 
 	if [ $# -eq 0 ]; then
-		if [ -z "$activity" ]; then
-			echo "No activity set"
-		else
-			echo "$activity started"
-		fi
+		ti -h
 	else
 		case "$1" in
+			--activity-name)
+				if ! [ -z "$activity" ]; then
+					echo "$activity"
+				fi
+				;;
+			--shortlist)
+				echo "--help --start --done --finish --abort --list --clear-log --activity-name --shortlist";
+				;;
 			-h|--help)
 				echo "ti - time tracker"
 				echo " "
-				echo "usage: ti                   # show activity for current session"
+				echo "Tracks activity time with a simple start/stop syntax. Logs to CSV. Tmux session aware. Allows one activity active at a time, per session."
+				echo " "
+				echo "usage: ti                                       # show this help"
+				echo "usage: ti (--help or -h)                        # show this help"
+				echo "usage: ti (--start or -s) [activity name]       # start a new activity"
+				echo "usage: ti (--done or -d or --finish or -f)      # stop and log activity"
+				echo "usage: ti (--abort or -a)                       # stop activity, no log"
+				echo "usage: ti (--list -l)                           # show log of previous activities"
+				echo "usage: ti --clear-log                           # delete log of previous activities"
+				echo "usage: ti --activity-name                       # show activity for current session"
+				echo "usage: ti --shortlist                           # quick list of commands without context"
+				echo "usage: ti [activity name]                       # toggles start/stop"
 				;;
 			-d|--done|-f|--finish)
 				if ! [ -z "$match" ]; then
@@ -350,25 +391,37 @@ function ti() {
 				fi
 				;;
 			-l|--log)
+				if ! [ -r $TIME_LOG ]; then
+					touch "$TIME_LOG"
+				fi
 				cat "$TIME_LOG"
 				;;
 			--clear-log)
 				> "$TIME_LOG"
 				;;
 			*|-s|--start)
-				# shift only if we used the switch. Otherwise continue.
-				if [ "$1" == "-s" ] || [ "$1" == "--start" ]; then
+				if [ "$*" == "$activity" ]; then
+					# we repeated the active activity name, that means finish
+					ti -f
+					return 0
+				elif [ "$1" == "-s" ] || [ "$1" == "--start" ]; then
+					# shift only if we used the switch. Otherwise continue.
 					shift
 				fi
+
+				# Use the full remaining param list as the new name
 				if [ -z "$match" ]; then
+					# No current activity? Just create one.
 					echo "$session $(timestamp) $*" >> "$timerfile"
 				else
+					# Already a current activity? Ask to abandon first
 					confirm "You have an activity started ($activity). Abandon it? [y/N] " && sed -i "$match c $session $(timestamp) $*" "$timerfile"
 				fi
 				;;
 		esac
 	fi
 }
+complete -F _ti ti
 
 function _track() {
 	TRACK_DIR=${TRACK_DIR:-.}
