@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function _ti() {
 	# Setup paths
 	TIME_LOG="${TIME_LOG:-$HOME/.timelog}"
