@@ -53,18 +53,22 @@ function ti() {
 	fi
 
 	if [ $# -eq 0 ]; then
+		# No parameters = show help
 		ti -h
 	else
 		case "$1" in
 			--activity-name)
+				# Shows the current activity name if there is one for this session
 				if ! [ -z "$activity" ]; then
 					echo "$activity"
 				fi
 				;;
 			--shortlist)
+				# Shows a short list of commands without context
 				echo "--help --start --done --finish --abort --list --clear-log --activity-name --shortlist";
 				;;
 			-h|--help)
+				# Help
 				echo "ti - time tracker"
 				echo " "
 				echo "Tracks activity time with a simple start/stop syntax. Logs to CSV. Tmux session aware. Allows one activity active at a time, per session."
@@ -81,31 +85,45 @@ function ti() {
 				echo "usage: ti [activity name]                       # toggles start/stop"
 				;;
 			-d|--done|-f|--finish)
+				# Only finish an activity if there is an active one
 				if ! [ -z "$match" ]; then
+					# Remove the activity from the timerfile
 					sed -i "$match d" "$timerfile"
+
+					# Activity finish timestamp and pretty version
 					local activity_finish
 					activity_finish=$(timestamp)
-					activity_duration=$((activity_finish-activity_start))
-					local pretty_start
-					pretty_start=$(date -r "$activity_start" '+%Y-%m-%d %H:%M:%S')
 					local pretty_finish
 					pretty_finish=$(date -r "$activity_finish" '+%Y-%m-%d %H:%M:%S')
+
+					# Activity duration calculation
+					activity_duration=$((activity_finish-activity_start))
+
+					# Activity start pretty version
+					local pretty_start
+					pretty_start=$(date -r "$activity_start" '+%Y-%m-%d %H:%M:%S')
+
+					# Output to console and log file
 					echo "$activity finished in ${activity_duration} seconds"
 					echo "$session, $activity, $pretty_start, $pretty_finish, $activity_duration" >> "$TIME_LOG"
 				fi
 				;;
 			-a|--abort)
+				# Remove activity from timerfile without logging
 				if ! [ -z "$match" ]; then
 					sed -i "$match d" "$timerfile"
 				fi
 				;;
 			-l|--log)
+				# Show log file if it exists
 				if ! [ -r $TIME_LOG ]; then
+					# If the file doesn't exist, create it to avoid errors
 					touch "$TIME_LOG"
 				fi
 				cat "$TIME_LOG"
 				;;
 			--clear-log)
+				# Empty contents of log
 				> "$TIME_LOG"
 				;;
 			*|-s|--start)
