@@ -12,7 +12,6 @@ export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
 export R_LIBS="$HOME/.rlib"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache -g ""'
-export _Z_NO_PROMPT_COMMAND=1
 
 # path vars
 export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
@@ -76,7 +75,7 @@ shopt -s histappend
 shopt -s nocaseglob
 
 # PROMPT COMMANDS
-PROMPT_COMMAND="_z --add \"$(pwd -P 2>/dev/null)\" 2>/dev/null; history -a; history -c; history -r;"
+PROMPT_COMMAND="history -a; history -r; $PROMPT_COMMAND"
 
 # use vim on the command line
 set -o vi
