@@ -20,6 +20,7 @@ set pastetoggle=<Leader>z
 "{{{
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
+nnoremap <Leader>ll :Limelight!!<CR>
 nnoremap <Leader>u :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>

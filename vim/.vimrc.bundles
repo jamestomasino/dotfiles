@@ -7,14 +7,9 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 " Global
-Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'embear/vim-localvimrc'
-Plug 'reedes/vim-wheel'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/vim-easy-align'
-
-" System
-Plug 'rkitover/vimpager'
 
 " Styling
 Plug 'romainl/Apprentice'
@@ -34,16 +29,13 @@ Plug 'reedes/vim-textobj-sentence'
 Plug 'reedes/vim-wordy'
 
 " Development Tools
-Plug 'tpope/vim-surround'
 Plug 'elzr/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'sjl/gundo.vim'
 Plug 'mbbill/undotree'
-Plug 'AndrewRadev/sideways.vim'
 Plug 'tomtom/quickfixsigns_vim'
 Plug 'rking/ag.vim'
-Plug 'tpope/vim-commentary'
 Plug 'scrooloose/syntastic'
 Plug 'ajh17/VimCompletesMe'
 
