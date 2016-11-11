@@ -1,0 +1,9 @@
+#!/bin/bash
+# Generates changelog day by day
+echo "CHANGELOG"
+echo ----------------------
+git log --no-merges --format="%cd" --date=short | sort -u -r | while read DATE ; do
+    echo -e "\033[38;05;226m [$DATE] \033[0m"
+    GIT_PAGER=cat git log --no-merges --format=" * %s (%Cgreen%an%Creset)" --since="$DATE 00:00:00" --until="$DATE 24:00:00"
+done
+

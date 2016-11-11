@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+location=$(iploc)
+units="metric"
+weather=$(curl -s "http://api.openweathermap.org/data/2.5/weather?q=$location&units=$units")
+
+if [ -z "$weather" ]
+then
+	echo "ERROR : Cannot fetch weather data"
+	exit
+fi
+
+status_code=$(echo $weather | jq -r '.cod')
+
+if [ $status_code != 200 ]
+then
+	echo "ERROR : Cannot fetch weather data for the given location"
+	exit
+fi
+
+
+
+###[ Process Weather data ]####################################################
+
+function epoch_to_date {
+	if date -j -r $1 +"%a %b %d" > /dev/null 2>&1; then
+		# BSD
+		ret=$(date -j -r $1 +"%a %b %d")
+	else
+		# GNU
+		ret=$(date -d @$1 +"%a %b %d")
+	fi
+	echo $ret
+}
+
+now=$(date +%s)
+city=$(echo $weather | jq -r '.name')
+temperature=$(printf '%.0f' $(echo $weather | jq '.main.temp'))
+humidity=$(echo $weather | jq '.main.humidity')
+pressure=$(echo $weather | jq '.main.pressure')
+sky=$(echo $weather | jq -r '.weather[0].main')
+sunrise=$(echo $weather | jq '.sys.sunrise')
+sunset=$(echo $weather | jq '.sys.sunset')
+wind=$(echo $weather | jq '.wind.speed')
+azimuth=$(echo $weather | jq '.wind.deg')
+if [ -z "$sunset" ] || [ -z "$sunrise" ]
+	then
+		period="day"
+	elif [ $now -ge $sunset ] || [ $now -le $sunrise ]
+	then
+		period="night"
+	else
+		period="day"
+fi
+###[ Set the scale ]###########################################################
+
+scale="°C"
+
+###[ Set icons ]###############################################################
+
+function get_icon {
+	case $1 in
+		Clear)
+			if [ $period = "night" ]; then
+				echo "$moon "
+			else
+				echo "$sun  "
+			fi
+			;;
+		Clouds)
+			echo "$clouds  "
+			;;
+		Rain)
+			echo "$rain  "
+			;;
+		Fog)
+			echo "$fog "
+			;;
+		Mist)
+			echo "$mist "
+			;;
+		Haze)
+			echo "$haze "
+			;;
+		Snow)
+			echo "$snow "
+			;;
+		Thunderstorm)
+			echo "$thunderstorm  "
+			;;
+	esac
+}
+
+
+
+###[ Display current Weather ]#################################################
+
+icon="$(get_icon $sky)"
+output="$icon$temperature$scale"
+echo -e "$output"

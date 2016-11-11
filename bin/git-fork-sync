@@ -1,0 +1,220 @@
+#!/bin/bash
+
+VERSION="20150504"
+
+usage() {
+    cat << __EOF
+$0 usage:
+
+    $0 [options]
+
+Where [options] include:
+
+   -h|--help                    Show this help
+   -v|--version                 Show the version and exit
+   -r|--remote REMOTE_NAME      Fetch only this remote
+   -t|--topic  TOPIC_BRANCH     And rebase master onto this
+                                topic branch after syncing.
+   -u|--upstream REMOTE_NAME    And push synced master here too
+   -c|--checkout TOPIC_BRANCH   When done, checkout this branch
+   -s|--mine-only               Only sync with your origin
+   -a|--fetch-all               With -s, also fetch all remotes
+
+If remote is not specified, all remotes are fetched
+and your local master is rebased with upstream/master
+then pushed to your origin.
+
+If remote is specified, only that remote is fetched
+and your local master is rebased to remote/master
+then pushed to your origin.
+
+-t|--topic       may be used multiple times
+-u|--upstream    may be used multiple times
+-s|--mine-only   will ignore other options except -a
+
+If you only have an origin, git fork-sync will only sync with
+your origin as if you specified -s or --mine-only.
+
+git fork-sync will fail if you do not have at least origin defined
+as a remote.
+
+__EOF
+
+    exit 1
+}
+
+REMOTE=""
+MINE_ONLY=""
+FETCH_ALL=""
+TOPICS=()
+UPSTREAMS=()
+CHECKOUT=""
+
+while [ $# -ge 1 ]; do
+    key="$1"
+    shift
+
+    case $key in
+        -h|--help)
+            usage
+            exit 1
+            ;;
+        -v|--version)
+            echo "git-fork-sync version $VERSION"
+            echo""
+            exit 0
+            ;;
+        -r|--remote)
+            REMOTE="$1"
+            shift
+            ;;
+        -t|--topic)
+            TOPICS+=("$1")
+            shift
+            ;;
+        -u|--upstream)
+            UPSTREAMS+=("$1")
+            shift
+            ;;
+        -c|--checkout)
+            CHECKOUT="$1"
+            shift
+            ;;
+        -s|--mine-only)
+            MINE_ONLY="yes"
+            ;;
+        -a|--fetch-all)
+            FETCH_ALL="yes"
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+if output=$(git status --untracked-files=no --porcelain) && [ -z "$output" ]; then
+    echo "Working directory is clean."
+else
+    echo "You have uncommitted changes."
+
+    exit 1
+fi
+
+echo "Checking connectivity:"
+
+all_remotes=`git remote`
+cr=($all_remotes)
+have_origin=""
+have_upstream=""
+
+for r in $all_remotes; do
+    echo -n "   $r... "
+
+    if [ "origin" == "$r" ]; then
+        have_origin="yes"
+    elif [ "upstream" == "$r" ]; then
+        have_upstream="yes"
+    fi
+
+    if git ls-remote --exit-code $r &>/dev/null; then
+        echo "ok"
+    else
+        echo "FAILED!"
+
+        exit 1
+    fi
+done
+
+if [ -z "$have_origin" ]; then
+    echo "You do not have an origin defined."
+
+    exit 1
+fi
+
+if [ 1 == ${#cr[@]} ]; then
+    echo "You only have an origin, falling back to single mode."
+    MINE_ONLY="yes"
+fi
+
+if [ -z "$have_upstream" ]; then
+    echo "You do not have an upstream, falling back to single mode and fetching all."
+    MINE_ONLY="yes"
+    FETCH_ALL="yes"
+fi
+
+set -e
+
+git checkout master
+
+if ! [ -z "$MINE_ONLY" ]; then
+    if [ -z "$FETCH_ALL" ]; then
+        echo "Only syncing with your origin."
+        git pull --rebase=preserve
+
+        echo -n "Now pruning remote origin... "
+        git remote prune origin && echo "done."
+    else
+        echo "Getting all remote history and syncing only with your origin."
+        git pull --rebase=preserve --all
+
+        echo "Pruning all remotes:"
+
+        for r in $all_remotes; do
+            echo -n "   $r... "
+            git remote prune $r && echo "done"
+        done
+    fi
+
+    exit 0
+elif [ -z "$REMOTE" ]; then
+    echo "Getting all remote history."
+    git pull --rebase=preserve --all
+
+    echo "Syncing with upstream."
+    git rebase -p upstream/master
+    git push origin master
+
+    echo "Pruning all remotes:"
+
+    for r in $all_remotes; do
+        echo -n "   $r... "
+        git remote prune $r && echo "done"
+    done
+else
+    echo "Only syncing $REMOTE with master."
+
+    git pull --rebase=preserve
+    git fetch $REMOTE
+    git rebase $REMOTE/master
+    git push origin master
+    git remote prune $REMOTE
+fi
+
+if [ ${#TOPICS[@]} -gt 0 ]; then
+    echo "Rebasing topic branches:"
+
+    for t in ${TOPICS[@]}
+    do
+        echo "   onto $t"
+        git rebase -p master $t
+    done
+
+    git checkout master
+fi
+
+if [ ${#UPSTREAMS[@]} -gt 0 ]; then
+    echo "Pushing synced master:"
+
+    for u in ${UPSTREAMS[@]}
+    do
+        echo "   to $u"
+        git push $u master
+    done
+fi
+
+if ! [ -z "$CHECKOUT" ]; then
+    git checkout $CHECKOUT
+fi
+
+exit 0

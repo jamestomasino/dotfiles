@@ -1,0 +1,13 @@
+#!/bin/bash
+# Generates changelog day by day
+echo "CHANGELOG"
+echo ----------------------
+git log --no-merges --format="%cd" --date=short | sort -u -r | while read DATE ; do
+	echo
+	echo -e "####$DATE####"
+	echo
+    GIT_PAGER=cat git log --no-merges --format=" * %s (\`%an\`)" --since="$DATE 00:00:00" --until="$DATE 09:00:00"
+    GIT_PAGER=cat git log --no-merges --format=" * __%s__ (\`%an\`)" --since="$DATE 09:00:01" --until="$DATE 17:30:00"
+    GIT_PAGER=cat git log --no-merges --format=" * %s (\`%an\`)" --since="$DATE 17:30:01" --until="$DATE 24:00:00"
+done
+

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+fetch_cmd="curl -s"
+jqpath="`which jq`"
+if [ "$jqpath" == "" ]
+then
+	echo -e "\njq binary is not found, please download it from http://stedolan.github.io/jq/ and put it in your PATH"
+	exit 255
+fi
+ip=${1:-$(dig +short myip.opendns.com @resolver1.opendns.com)}
+#ip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+geo_locate_api="http://ipinfo.io/$ip"
+geo_data=$($fetch_cmd $geo_locate_api)
+city=$(echo $geo_data | jq -r '.city')
+country=$(echo $geo_data | jq -r '.country')
+location=$city,$country
+
+if [ "$location" == "null,IS" ]; then
+	location="Reykjavik,IS" # Iceland has no cities in geo_location, so force
+fi
+echo $location
