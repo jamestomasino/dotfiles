@@ -1,23 +1,19 @@
 #!/usr/bin/env bash
 
-topics="R
-bash
-bin
-git
-newsbeuter
-notmuch
-tmux
-utils
-vim
-zsh"
+stow -t "$HOME" bash
+stow -t "$HOME" git
+stow -t "$HOME" newsbeuter
+stow -t "$HOME" notmuch
+stow -t "$HOME" R
+stow -t "$HOME" tmux
+stow -t "$HOME" utils
+stow -t "$HOME" vim
+stow -t "$HOME" zsh
 
-for i in "$topics"
-do
-    echo "Stowing $i..."
-    stow -t "$HOME" "$i"
-done
+mkdir -p "$HOME/bin"
+stow -t "$HOME/bin/" bin
 
-source ~/.bash_profile
+source "$HOME/.bash_profile"
 
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
 	curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \
