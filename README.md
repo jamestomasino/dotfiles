@@ -10,7 +10,9 @@ Nothing, really. Some aliases might not work without certain things installed, b
 
 From cloned git repo folder:
 
-    $ make install_<platform>
+    $ make
+
+The Makefile will attempt to determine your platform automatically and install the right files. You can override this by specifying the platform specifically in the make command (e.g., `make OSX`).
 
 ### Update ###
 
