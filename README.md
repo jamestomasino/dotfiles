@@ -4,7 +4,12 @@ This repo serves as a master collection of all my dotfiles. Each grouping has it
 
 ### Dependencies ###
 
-Nothing, really. Some aliases might not work without certain things installed, but it'll be pretty obvious. My tmux settings require tmux (brew install tmux), and [my bin files](https://github.com/jamestomasino/bin) to be installed somewhere in the path. You probably want ruby 1.9.3+, python 2.7+, and php 5.4+ installed. Vim 7.4 too.
+The dotfiles installation requires the GNU program `stow`. To install this, do your brand of:
+
+	brew install stow
+	-or-
+	sudo apt-get install stow
+
 
 ### Install ###
 
