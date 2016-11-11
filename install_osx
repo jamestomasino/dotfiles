@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
 topics="R
-ag
 bash
 bin
-ctags
 git
-jshint
 newsbeuter
 notmuch
 slate
 tmux
-urlview
+utils
 vim
 zsh"
 
