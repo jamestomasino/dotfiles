@@ -10,7 +10,7 @@ Nothing, really. Some aliases might not work without certain things installed, b
 
 From cloned git repo folder:
 
-    $ ./install_<env>
+    $ make install_<platform>
 
 ### Update ###
 
