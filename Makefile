@@ -87,4 +87,4 @@ tmux:
 		fi \
 	fi
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch offlineimap clean install install_osx
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch offlineimap clean install OSX Windows Linux Other
