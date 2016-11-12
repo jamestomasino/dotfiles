@@ -48,6 +48,11 @@ R:
 
 slate:
 	stow -t "$$HOME" slate
+	rm "$$HOME/Library/Application Support/Karabiner/private.xml"
+	mkdir -p "$$HOME/Library/Application Support/Karabiner"
+	stow -t "$$HOME/Library/Application Support/Karabiner" karabiner
+	@printf "\033[38;05;226m*** \033[38;05;46mSet Caps Lock to no action in system settings\n"
+	@printf "\033[38;05;226m*** \033[38;05;46mBind Caps Lcok to key code 80 in Seil\n\033[m"
 
 utils:
 	stow -t "$$HOME" utils
