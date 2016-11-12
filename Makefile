@@ -14,9 +14,9 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git newsbeuter R slate utils zsh bin vim tmux
-Linux: bash git newsbeuter R utils zsh bin vim tmux
-Windows: bash git newsbeuter R utils zsh bin vim tmux
+OSX: bash git news R slate utils zsh bin vim tmux
+Linux: bash git news R utils zsh bin vim tmux
+Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim
 
 clean:
