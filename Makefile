@@ -1,3 +1,7 @@
+YELLOW = \033[38;05;226m
+GREEN = \033[38;05;46m
+RED = \033[38;05;196m
+RESET = \033[m
 ifeq ($(OS),Windows_NT)
 	UNAME = Windows
 else
@@ -20,7 +24,7 @@ Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim
 
 clean:
-	@printf "\033[38;05;226m--- clean\n\033[m"
+	@printf "$(RED)--- clean\n$(RESET)"
 	@stow -t "$$HOME" -D bash
 	@stow -t "$$HOME" -D git
 	@stow -t "$$HOME" -D newsbeuter
@@ -37,70 +41,72 @@ clean:
 	@stow -t "$$HOME" -D tmux
 
 bash:
-	@printf "\033[38;05;226m--- bash\n\033[m"
+	@printf "$(YELLOW)--- bash\n$(RESET)"
 	@stow -t "$$HOME" bash
 
 git:
-	@printf "\033[38;05;226m--- git\n\033[m"
+	@printf "$(YELLOW)--- git\n$(RESET)"
 	@stow -t "$$HOME" git
 
 news:
-	@printf "\033[38;05;226m--- news\n\033[m"
+	@printf "$(YELLOW)--- news\n$(RESET)"
 	@stow -t "$$HOME" newsbeuter
 
 R:
-	@printf "\033[38;05;226m--- R\n\033[m"
+	@printf "$(YELLOW)--- R\n$(RESET)"
 	@stow -t "$$HOME" R
 
 slate:
-	@printf "\033[38;05;226m--- slate\n\033[m"
+	@printf "$(YELLOW)--- slate\n$(RESET)"
 	@stow -t "$$HOME" slate
-	@rm "$$HOME/Library/Application Support/Karabiner/private.xml"
+	@if [ -f "$$HOME/Library/Application Support/Karabiner/private.xml" ]; then \
+		rm "$$HOME/Library/Application Support/Karabiner/private.xml"; \
+	fi
 	@mkdir -p "$$HOME/Library/Application Support/Karabiner"
 	@stow -t "$$HOME/Library/Application Support/Karabiner" karabiner
-	@printf "    \033[38;05;46mSet Caps Lock to no action in system settings\n"
-	@printf "    \033[38;05;46mBind Caps Lcok to key code 80 in Seil\n\033[m"
+	@printf "    $(GREEN)Set Caps Lock to no action in system settings\n"
+	@printf "    $(GREEN)Bind Caps Lcok to key code 80 in Seil\n$(RESET)"
 
 utils:
-	@printf "\033[38;05;226m--- utils\n\033[m"
+	@printf "$(YELLOW)--- utils\n$(RESET)"
 	@stow -t "$$HOME" utils
 
 zsh:
-	@printf "\033[38;05;226m--- zsh\n\033[m"
+	@printf "$(YELLOW)--- zsh\n$(RESET)"
 	@stow -t "$$HOME" zsh
 
 mintty:
-	@printf "\033[38;05;226m--- mintty\n\033[m"
+	@printf "$(YELLOW)--- mintty\n$(RESET)"
 	@stow -t "$$HOME" mintty
 
 mutt:
-	@printf "\033[38;05;226m--- mutt\n\033[m"
+	@printf "$(YELLOW)--- mutt\n$(RESET)"
 	@stow -t "$$HOME" mutt
 
 notmuch:
-	@printf "\033[38;05;226m--- notmuch\n\033[m"
+	@printf "$(YELLOW)--- notmuch\n$(RESET)"
 	@stow -t "$$HOME" notmuch
 
 offlineimap:
-	@printf "\033[38;05;226m--- offlineimap\n\033[m"
+	@printf "$(YELLOW)--- offlineimap\n$(RESET)"
 	@stow -t "$$HOME" offlineimap
 
 bin:
-	@printf "\033[38;05;226m--- bin\n\033[m"
+	@printf "$(YELLOW)--- bin\n$(RESET)"
 	@mkdir -p "$$HOME/bin"
 	@stow -t "$$HOME/bin/" bin
 
 vim:
-	@printf "\033[38;05;226m--- vim\n\033[m"
+	@printf "$(YELLOW)--- vim\n$(RESET)"
 	@stow -t "$$HOME" vim
 	@if [ ! -f "$$HOME/.vim/autoload/plug.vim" ]; then \
 		curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
 	fi
-	@printf "    \033[38;05;46mLaunch vim and run :PlugInstall\n"
+	@printf "    $(GREEN)Launch vim and run :PlugInstall\n"
 
 tmux:
-	@printf "\033[38;05;226m--- tmux\n\033[m"
+	@printf "$(YELLOW)--- tmux\n$(RESET)"
 	@stow -t "$$HOME" tmux
 	@if [ ! -d "$$HOME/.tmux/plugins/tpm" ]; then \
 		git clone https://github.com/tmux-plugins/tpm "$$HOME/.tmux/plugins/tpm" --quiet; \
@@ -108,6 +114,6 @@ tmux:
 			tmux source-file "$$HOME/.tmux.conf"; \
 		fi \
 	fi
-	@printf "    \033[38;05;46mLaunch tmux and run \`I to install plugins\n"
+	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n"
 
 .PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch offlineimap clean install OSX Windows Linux Other
