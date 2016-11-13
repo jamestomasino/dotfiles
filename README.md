@@ -17,13 +17,7 @@ From cloned git repo folder:
 
     $ make
 
-The Makefile will attempt to determine your platform automatically and install the right files. You can override this by specifying the platform specifically in the make command (e.g., `make OSX`).
-
-### Update ###
-
-From anywhere:
-
-    $ shellupdate
+The Makefile will attempt to determine your platform automatically and install the right files. You can override this by specifying the platform specifically in the make command (e.g., `make OSX`). Or you can install specific packages with make as well (e.g., `make tmux`).
 
 ### Credits ####
 
