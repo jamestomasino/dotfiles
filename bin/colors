@@ -1,4 +1,22 @@
 #!/bin/sh
 for c in {0..255} ; do
-    echo "\033[38;05;${c}m \\\033[38;05;${c}m"
+    echo "\033[38;05;${c}m \\\033[38;05;${c}m -or- tput setaf ${c}"
 done
+
+printf "
+tput setab [1-7] – Set a background color using ANSI escape
+tput setb [1-7] – Set a background color
+tput setaf [1-7] – Set a foreground color using ANSI escape
+tput setf [1-7] – Set a foreground color
+
+tput Text Mode Capabilities:
+
+tput bold – Set bold mode
+tput dim – turn on half-bright mode
+tput smul – begin underline mode
+tput rmul – exit underline mode
+tput rev – Turn on reverse mode
+tput smso – Enter standout mode (bold on rxvt)
+tput rmso – Exit standout mode
+tput sgr0 – Turn off all attributes
+"
