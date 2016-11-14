@@ -12,7 +12,7 @@ geo_api_proto:http
 geo_api_url:www.telize.com/geoip
 
 # Text and Colors
-background:\033[44m
+background:\033[40m
 text:\033[36;1m
 data:\033[33;1m
 delimiter:\033[35m=>

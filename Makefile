@@ -1,7 +1,8 @@
-YELLOW = \033[38;05;226m
-GREEN = \033[38;05;46m
-RED = \033[38;05;196m
-RESET = \033[m
+YELLOW = $$(tput setaf 226)
+GREEN = $$(tput setaf 46)
+RED = $$(tput setaf 196)
+RESET = $$(tput sgr0)
+
 ifeq ($(OS),Windows_NT)
 	UNAME = Windows
 else
