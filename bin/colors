@@ -3,20 +3,20 @@ for c in {0..255} ; do
     echo "\033[38;05;${c}m \\\033[38;05;${c}m -or- tput setaf ${c}"
 done
 
-printf "
-tput setab [1-7] – Set a background color using ANSI escape
-tput setb [1-7] – Set a background color
-tput setaf [1-7] – Set a foreground color using ANSI escape
-tput setf [1-7] – Set a foreground color
+echo "
+$(tput setaf 226)tput setab {num}  $(tput sgr0)– Set a background color using ANSI escape
+$(tput setaf 226)tput setb {num}   $(tput sgr0)– Set a background color
+$(tput setaf 226)tput setaf {num}  $(tput sgr0)– Set a foreground color using ANSI escape
+$(tput setaf 226)tput setf {num}   $(tput sgr0)– Set a foreground color
 
 tput Text Mode Capabilities:
 
-tput bold – Set bold mode
-tput dim – turn on half-bright mode
-tput smul – begin underline mode
-tput rmul – exit underline mode
-tput rev – Turn on reverse mode
-tput smso – Enter standout mode (bold on rxvt)
-tput rmso – Exit standout mode
-tput sgr0 – Turn off all attributes
+$(tput setaf 226)tput bold         $(tput sgr0)– Set bold mode
+$(tput setaf 226)tput dim          $(tput sgr0)– turn on half-bright mode
+$(tput setaf 226)tput smul         $(tput sgr0)– begin underline mode
+$(tput setaf 226)tput rmul         $(tput sgr0)– exit underline mode
+$(tput setaf 226)tput rev          $(tput sgr0)– Turn on reverse mode
+$(tput setaf 226)tput smso         $(tput sgr0)– Enter standout mode (bold on rxvt)
+$(tput setaf 226)tput rmso         $(tput sgr0)– Exit standout mode
+$(tput setaf 226)tput sgr0         $(tput sgr0)– Turn off all attributes
 "
