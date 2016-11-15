@@ -19,7 +19,7 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux profanity
+OSX: bash git news R  profanity slate utils zsh bin vim tmux
 Linux: bash git news R utils zsh bin vim tmux profanity
 Windows: bash git news R utils zsh bin vim tmux profanity
 Other: bash git utils zsh vim profanity
@@ -120,6 +120,6 @@ tmux:
 			tmux source-file "$$HOME/.tmux.conf"; \
 		fi \
 	fi
-	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n"
+	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n$(RESET)"
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch offlineimap clean install OSX Windows Linux Other
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch offlineimap clean install OSX Windows Linux Other profanity
