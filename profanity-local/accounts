@@ -1,4 +1,4 @@
-[james.tomasino@gmail.com]
+[hangouts]
 enabled=true
 jid=james.tomasino@gmail.com
 resource=profanity
@@ -13,3 +13,19 @@ priority.xa=0
 priority.dnd=0
 last.activity=2016-11-15T17:12:28.937872Z
 eval_password=lpass login lastpass@jamestomasino.com > /dev/null; lpass show --password Google
+
+[slackinventiv]
+enabled=true
+jid=jamestomasino@inventiv-tech.xmpp.slack.com
+resource=profanity
+muc.service=conference.inventiv-tech.xmpp.slack.com
+muc.nick=jamestomasino
+presence.last=online
+presence.login=online
+priority.online=0
+priority.chat=0
+priority.away=0
+priority.xa=0
+priority.dnd=0
+last.activity=2016-11-15T17:12:28.937872Z
+eval_password=lpass login lastpass@jamestomasino.com > /dev/null; lpass show --password Slack-inVentiv-Gateway
