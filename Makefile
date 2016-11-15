@@ -19,10 +19,10 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux
-Linux: bash git news R utils zsh bin vim tmux
-Windows: bash git news R utils zsh bin vim tmux
-Other: bash git utils zsh vim
+OSX: bash git news R slate utils zsh bin vim tmux profanity
+Linux: bash git news R utils zsh bin vim tmux profanity
+Windows: bash git news R utils zsh bin vim tmux profanity
+Other: bash git utils zsh vim profanity
 
 clean:
 	@printf "$(RED)--- clean -----------------------------------------------\n$(RESET)"
@@ -96,6 +96,11 @@ bin:
 	@printf "$(YELLOW)--- bin -------------------------------------------------\n$(RESET)"
 	@mkdir -p "$$HOME/bin"
 	stow -t "$$HOME/bin/" bin
+
+profanity:
+	@printf "$(YELLOW)--- profanity -------------------------------------------\n$(RESET)"
+	@mkdir -p "$$HOME/.config/profanity"
+	stow -t "$$HOME/.config/profanity/" profanity
 
 vim:
 	@printf "$(YELLOW)--- vim -------------------------------------------------\n$(RESET)"
