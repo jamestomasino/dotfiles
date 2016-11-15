@@ -13,7 +13,7 @@ _todo() {
 	done
 }
 function todo {
-	: "${TODO:?'TODO ENV Var not set'}"
+	: "${TODO:?'TODO ENV Var not set. Please set to path of default todo file.'}"
 	# If we are in a tmux session, name the file with the session name
 	# If not in tmux, use the full $TODO env var for path/file
 	if echo "$TERM" | grep -Fq screen && test "$TMUX" ; then
