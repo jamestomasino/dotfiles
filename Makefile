@@ -20,9 +20,9 @@ install:
 	@make $(UNAME)
 
 OSX: bash git news R  profanity slate utils zsh bin vim tmux
-Linux: bash git news R utils zsh bin vim tmux profanity
-Windows: bash git news R utils zsh bin vim tmux profanity
-Other: bash git utils zsh vim profanity
+Linux: bash git news R utils zsh bin vim tmux
+Windows: bash git news R utils zsh bin vim tmux
+Other: bash git utils zsh vim
 
 clean:
 	@printf "$(RED)--- clean -----------------------------------------------\n$(RESET)"
