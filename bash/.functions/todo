@@ -50,7 +50,7 @@ function todo {
 					sed -i "" -e "$2d" "$TODOFILE" 2> /dev/null
 				fi
 				if [ ! -z "$match" ]; then
-					echo $match >>$TODOARCHIVEFILE
+					echo "$(date +"%Y-%m-%d %H:%M:%S") $match - " >>$TODOARCHIVEFILE
 				fi
 				;;
 		esac
