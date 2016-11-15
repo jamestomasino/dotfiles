@@ -100,7 +100,9 @@ bin:
 profanity:
 	@printf "$(YELLOW)--- profanity -------------------------------------------\n$(RESET)"
 	@mkdir -p "$$HOME/.config/profanity"
-	stow -t "$$HOME/.config/profanity/" profanity
+	@mkdir -p "$$HOME/.local/share/profanity"
+	stow -t "$$HOME/.config/profanity/" profanity-config
+	stow -t "$$HOME/.local/share/profanity/" profanity-local
 
 vim:
 	@printf "$(YELLOW)--- vim -------------------------------------------------\n$(RESET)"
