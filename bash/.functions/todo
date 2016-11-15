@@ -4,7 +4,7 @@
 _todo() {
 	local iter use cur
 	cur=${COMP_WORDS[COMP_CWORD]}
-	use=$(cat "$TODOFILE" | awk '{gsub(/ /,"\\ ")}8')
+	use=$( awk '{gsub(/ /,"\\ ")}8' "$TODOFILE" )
 	use="${use//\\ /___}"
 	for iter in $use; do
 		if [[ $iter =~ ^$cur ]]; then
@@ -28,7 +28,7 @@ function todo {
 
 	if [ $# -eq 0 ]; then
 		if [ -f "$TODOFILE" ] ; then
-			cat "$TODOFILE" | awk '{ print NR, "-", $0 }'
+			awk '{ print NR, "-", $0 }' "$TODOFILE" 
 		fi
 	else
 		case "$1" in
