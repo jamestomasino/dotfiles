@@ -19,7 +19,7 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R  profanity slate utils zsh bin vim tmux
+OSX: bash git news R profanity slate utils zsh bin vim tmux
 Linux: bash git news R utils zsh bin vim tmux
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim
@@ -40,6 +40,8 @@ clean:
 	stow -t "$$HOME/bin" -D bin
 	stow -t "$$HOME" -D vim
 	stow -t "$$HOME" -D tmux
+	stow -t "$$HOME/.config/profanity/" -D profanity-config
+	stow -t "$$HOME/.local/share/profanity/" -D profanity-local
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
@@ -94,13 +96,13 @@ offlineimap:
 
 bin:
 	@printf "$(YELLOW)--- bin -------------------------------------------------\n$(RESET)"
-	@mkdir -p "$$HOME/bin"
+	mkdir -p "$$HOME/bin"
 	stow -t "$$HOME/bin/" bin
 
 profanity:
 	@printf "$(YELLOW)--- profanity -------------------------------------------\n$(RESET)"
-	@mkdir -p "$$HOME/.config/profanity"
-	@mkdir -p "$$HOME/.local/share/profanity"
+	mkdir -p "$$HOME/.config/profanity"
+	mkdir -p "$$HOME/.local/share/profanity"
 	stow -t "$$HOME/.config/profanity/" profanity-config
 	stow -t "$$HOME/.local/share/profanity/" profanity-local
 
