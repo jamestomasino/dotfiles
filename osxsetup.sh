@@ -62,6 +62,7 @@ brew install wget
 brew install coreutils
 brew install findutils
 brew install gnu-sed --default-names
+brew bash
 
 ################################################################################
 ######################### Programming Languages ################################
@@ -162,6 +163,23 @@ brew cask install virtualbox
 brew cask install virtualbox-extension-pack
 brew cask install viscosity
 brew cask install vlc
+brew install mas
+
+# Microsoft Remote Desktop
+mas install 715768417
+
+################################################################################
+########################### Quicklook Plugins ##################################
+################################################################################
+
+brew cask install betterzipql
+brew cask install qlcolorcode
+brew cask install qlimagesize
+brew cask install qlmarkdown
+brew cask install qlprettypatch
+brew cask install qlstephen
+brew cask install quicklook-csv
+brew cask install quicklook-json
 
 ################################################################################
 ############################## Completions #####################################
