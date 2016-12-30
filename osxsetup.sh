@@ -138,6 +138,8 @@ brew install irssi
 brew install cmus
 brew install libcaca
 brew install mplayer --with-libcaca
+brew install surfraw
+brew install buku
 
 ################################################################################
 ############################# Applications #####################################
