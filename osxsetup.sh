@@ -340,10 +340,10 @@ sudo nvram SystemAudioVolume=" "
 
 # Set default desktop background
 curl "https://s3.amazonaws.com/squishyface/images/background.jpg" > "background.jpg"
-sudo mv "background.jpg" "/Library/Desktop Pictures/dune.jpg"
+sudo mv "background.jpg" "/Library/Desktop Pictures/background.jpg"
 rm -rf "$HOME/Library/Application\ Support/Dock/desktoppicture.db"
 sudo rm -rf "/System/Library/CoreServices/DefaultDesktop.jpg"
-sudo ln -s "/Library/Desktop Pictures/dune.jpg" "/System/Library/CoreServices/DefaultDesktop.jpg"
+sudo ln -s "/Library/Desktop Pictures/background.jpg" "/System/Library/CoreServices/DefaultDesktop.jpg"
 
 # Kill affected applications, so the changes apply
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
