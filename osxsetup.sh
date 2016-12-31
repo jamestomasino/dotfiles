@@ -140,6 +140,7 @@ brew install libcaca
 brew install mplayer --with-libcaca
 brew install surfraw
 brew install buku
+brew install asciinema
 
 ################################################################################
 ############################# Applications #####################################
