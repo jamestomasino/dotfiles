@@ -5,7 +5,8 @@
 
 [github]
 	user = jamestomasino
-
+[gpg]
+	program = gpg
 [core]
 	whitespace = trailing-space, space-before-tab, cr-at-eol
 	excludesfile = ~/.gitignore_global
