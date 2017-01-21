@@ -168,6 +168,7 @@ brew cask install virtualbox
 brew cask install virtualbox-extension-pack
 brew cask install viscosity
 brew cask install vlc
+brew cask install gpgtools
 brew install mas
 
 # Microsoft Remote Desktop
