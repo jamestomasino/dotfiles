@@ -306,3 +306,5 @@
 
 	pconfig = config -f .git/config
 	up = "!git remote update -p; git merge --ff-only @{u}"
+[tag]
+	gpgsign = true
