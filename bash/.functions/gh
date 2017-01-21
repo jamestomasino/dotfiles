@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function gh() {
   giturl=$(git config --get remote.origin.url)
   if [ "$giturl" == "" ]
@@ -11,6 +13,6 @@ function gh() {
   branch="$(git symbolic-ref HEAD 2>/dev/null)" ||
   branch="(unnamed branch)"     # detached HEAD
   branch=${branch##refs/heads/}
-  giturl=$giturl/tree/$branch
+  giturl=$giturl$branch
   open $giturl
 }
