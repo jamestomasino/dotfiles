@@ -141,6 +141,8 @@ brew install mplayer --with-libcaca
 brew install surfraw
 brew install buku
 brew install asciinema
+brew install pinentry-mac
+brew linkapps pinentry-mac
 
 ################################################################################
 ############################# Applications #####################################
@@ -220,6 +222,8 @@ cd ~/Sites/system/dotfiles && ./make
 
 vim -c ":PlugInstall|q|q" # auto install plugins
 $HOME/.tmux/plugins/tpm/bin/install_plugins
+
+brew install gpg
 
 ################################################################################
 ####################### System Configuration ###################################

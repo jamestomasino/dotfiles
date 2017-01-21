@@ -1,6 +1,7 @@
 [user]
 	name = James Tomasino
 	email = james@tomasino.org
+	signingkey = 5F41104B
 
 [github]
 	user = jamestomasino
