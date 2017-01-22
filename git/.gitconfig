@@ -9,8 +9,6 @@
 	program = gpg
 [tag]
 	gpgsign = true
-[commit]
-	gpgsign = true
 [core]
 	whitespace = trailing-space, space-before-tab, cr-at-eol
 	excludesfile = ~/.gitignore_global
