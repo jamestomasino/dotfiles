@@ -22,6 +22,10 @@ if has("autocmd")
         au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     augroup END
 
+    augroup type_lisp
+        au filetype lisp,scheme setlocal equalprg=scmindent
+    augroup END
+
     augroup type_python
         au!
         au FileType python setlocal expandtab

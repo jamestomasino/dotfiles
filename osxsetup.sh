@@ -97,6 +97,7 @@ perlbrew switch perl-5.16.0
 # node
 brew install node
 npm install -g grunt-cli
+npm install -g scmindent # lisp
 
 ################################################################################
 ################################# git ##########################################
