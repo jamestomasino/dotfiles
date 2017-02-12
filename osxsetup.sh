@@ -158,6 +158,7 @@ brew cask install google-chrome
 brew cask install iterm2
 brew cask install karabiner
 brew cask install mou
+brew cask install nextcloud
 brew cask install plex-media-server
 brew cask install skype
 brew cask install slate
