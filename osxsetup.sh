@@ -163,12 +163,12 @@ brew cask install plex-media-server
 brew cask install skype
 brew cask install slate
 brew cask install spideroak
+brew cask install tunnelblick
 brew cask install vagrant
 brew cask install vagrant-manager
 brew cask install veracrypt
 brew cask install virtualbox
 brew cask install virtualbox-extension-pack
-brew cask install viscosity
 brew cask install vlc
 brew cask install gpgtools
 brew install mas
