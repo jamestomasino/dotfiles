@@ -38,6 +38,7 @@ Plug 'tomtom/quickfixsigns_vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'ajh17/VimCompletesMe'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
