@@ -79,6 +79,12 @@ pip install --user colorama
 pip install rtv
 pip install qrcode
 
+# haskell
+brew install haskell-stack
+stack setup
+stack install hlint
+stack install ghc-mod
+
 # ruby
 brew install rbenv
 brew install ruby-build

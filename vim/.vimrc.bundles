@@ -40,6 +40,12 @@ Plug 'scrooloose/syntastic'
 Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-fugitive'
 
+" Haskell
+Plug 'bitc/vim-hdevtools'
+Plug 'lukerandall/haskellmode-vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
+
 call plug#end()
 
 " vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
