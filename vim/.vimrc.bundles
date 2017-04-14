@@ -41,10 +41,6 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-fugitive'
 
 " Haskell
-Plug 'bitc/vim-hdevtools'
-Plug 'lukerandall/haskellmode-vim'
-Plug 'eagletmt/ghcmod-vim'
-Plug 'eagletmt/neco-ghc'
 
 call plug#end()
 

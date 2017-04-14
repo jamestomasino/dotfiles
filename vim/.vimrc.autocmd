@@ -29,6 +29,10 @@ if has("autocmd")
         au filetype lisp,scheme setlocal expandtab
     augroup END
 
+    augroup type_haskell
+        au FileType haskell compiler ghc
+    augroup END
+
     augroup type_python
         au!
         au FileType python setlocal expandtab
