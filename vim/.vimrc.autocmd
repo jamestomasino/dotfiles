@@ -31,6 +31,9 @@ if has("autocmd")
 
     augroup type_haskell
         au FileType haskell compiler ghc
+        au filetype haskell setlocal tabstop=2
+        au filetype haskell setlocal shiftwidth=2
+        au filetype haskell setlocal expandtab
     augroup END
 
     augroup type_python
