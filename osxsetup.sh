@@ -53,6 +53,7 @@ brew update && brew upgrade
 brew tap caskroom/cask
 brew install Caskroom/cask/xquartz
 brew tap homebrew/completions
+brew tap homebrew/dupes
 
 ################################################################################
 ########################## Update System Utils #################################
@@ -61,8 +62,16 @@ brew tap homebrew/completions
 brew install wget
 brew install coreutils
 brew install findutils
-brew install gnu-sed --default-names
-brew bash
+brew install binutils
+brew install diffutils
+brew install gnutls
+brew install gnu-sed --with-default-names
+brew install gnu-tar --with-default-names
+brew install gnu-which --with-default-names
+brew install grep --with-default-names
+brew install bash
+brew install make
+brew install less
 
 ################################################################################
 ######################### Programming Languages ################################
