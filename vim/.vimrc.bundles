@@ -41,6 +41,7 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-fugitive'
 
 " Haskell
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 

@@ -34,6 +34,13 @@ if has("autocmd")
         au filetype haskell setlocal tabstop=2
         au filetype haskell setlocal shiftwidth=2
         au filetype haskell setlocal expandtab
+        au filetype haskell let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+        au filetype haskell let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+        au filetype haskell let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+        au filetype haskell let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+        au filetype haskell let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+        au filetype haskell let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+        au filetype haskell let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
     augroup END
 
     augroup type_python
