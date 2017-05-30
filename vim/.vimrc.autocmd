@@ -22,6 +22,27 @@ if has("autocmd")
         au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     augroup END
 
+    augroup type_lisp
+        au filetype lisp,scheme setlocal equalprg=scmindent
+        au filetype lisp,scheme setlocal tabstop=2
+        au filetype lisp,scheme setlocal shiftwidth=2
+        au filetype lisp,scheme setlocal expandtab
+    augroup END
+
+    augroup type_haskell
+        au FileType haskell compiler ghc
+        au filetype haskell setlocal tabstop=2
+        au filetype haskell setlocal shiftwidth=2
+        au filetype haskell setlocal expandtab
+        au filetype haskell let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+        au filetype haskell let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+        au filetype haskell let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+        au filetype haskell let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+        au filetype haskell let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+        au filetype haskell let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+        au filetype haskell let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+    augroup END
+
     augroup type_python
         au!
         au FileType python setlocal expandtab

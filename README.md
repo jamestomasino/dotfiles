@@ -23,7 +23,7 @@ The Makefile will attempt to determine your platform automatically and install t
 
 Optionally my full OSX setup script can be run directly from this repository. It should, with a little luck, configure the system, install all sorts of programs, pull down these dotfiles, and run all the necessary installers.
 
-	curl https://github.com/jamestomasino/dotfiles/blob/master/osxsetup.sh | bash
+	curl https://raw.githubusercontent.com/jamestomasino/dotfiles/master/osxsetup.sh | bash
 
 ### Credits ####
 

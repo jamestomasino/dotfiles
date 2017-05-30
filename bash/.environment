@@ -65,6 +65,7 @@ PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/sbin
 PATH=${PATH}:.
 PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin
+PATH=${PATH}:${HOME}/.local/bin
 PATH=${PATH}:${HOME}/sdk/tools
 PATH=${PATH}:${HOME}/sdk/tools/bin
 PATH=${PATH}:${HOME}/sdk/platform-tools

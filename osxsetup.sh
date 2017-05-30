@@ -53,6 +53,7 @@ brew update && brew upgrade
 brew tap caskroom/cask
 brew install Caskroom/cask/xquartz
 brew tap homebrew/completions
+brew tap homebrew/dupes
 
 ################################################################################
 ########################## Update System Utils #################################
@@ -61,8 +62,16 @@ brew tap homebrew/completions
 brew install wget
 brew install coreutils
 brew install findutils
-brew install gnu-sed --default-names
-brew bash
+brew install binutils
+brew install diffutils
+brew install gnutls
+brew install gnu-sed --with-default-names
+brew install gnu-tar --with-default-names
+brew install gnu-which --with-default-names
+brew install grep --with-default-names
+brew install bash
+brew install make
+brew install less
 
 ################################################################################
 ######################### Programming Languages ################################
@@ -78,6 +87,12 @@ pip install --user pyyaml
 pip install --user colorama
 pip install rtv
 pip install qrcode
+
+# haskell
+brew install haskell-stack
+stack setup
+stack install hlint
+stack install ghc-mod
 
 # ruby
 brew install rbenv
@@ -97,6 +112,7 @@ perlbrew switch perl-5.16.0
 # node
 brew install node
 npm install -g grunt-cli
+npm install -g scmindent # lisp
 
 ################################################################################
 ################################# git ##########################################
@@ -157,16 +173,17 @@ brew cask install google-chrome
 brew cask install iterm2
 brew cask install karabiner
 brew cask install mou
+brew cask install nextcloud
 brew cask install plex-media-server
 brew cask install skype
 brew cask install slate
 brew cask install spideroak
+brew cask install tunnelblick
 brew cask install vagrant
 brew cask install vagrant-manager
 brew cask install veracrypt
 brew cask install virtualbox
 brew cask install virtualbox-extension-pack
-brew cask install viscosity
 brew cask install vlc
 brew cask install gpgtools
 brew install mas

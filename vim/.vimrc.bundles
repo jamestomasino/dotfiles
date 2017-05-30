@@ -14,6 +14,7 @@ Plug 'junegunn/vim-easy-align'
 " Styling
 Plug 'romainl/Apprentice'
 Plug 'bling/vim-airline'
+Plug 'ywjno/vim-tomorrow-theme'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'
@@ -38,6 +39,10 @@ Plug 'tomtom/quickfixsigns_vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'ajh17/VimCompletesMe'
+Plug 'tpope/vim-fugitive'
+
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 

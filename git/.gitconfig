@@ -40,6 +40,7 @@
 	stat = true
 	log = true
 	tool = fugitive
+	renamelimit = 100000
 
 [mergetool]
 	keepBackup = false
@@ -119,6 +120,9 @@
 	untracked = cyan
 
 [alias]
+
+	# squash entire repo to a single commit (requires --force to push)
+	squash = "!git reset $(git commit-tree HEAD^{tree} -m 'initial commit') "
 
 	# rollback
 	rollback = "!f() { git reset $1; git reset --soft HEAD@{1}; git commit -m 'reverting to older revision $1'; git reset --hard; }; f"
