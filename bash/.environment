@@ -18,7 +18,7 @@ export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
 export SPIDEROAK_PATH="$HOME/.spideroak"
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:/usr/bin/npm"
-export ANDROID_HOME="$HOME/android/android-sdk-macosx"
+export ANDROID_HOME="$HOME/sdk"
 export TODO="$DROPBOX_PATH/Todo/personal.txt"
 export NOTE_DIR="$DROPBOX_PATH/Work/GSW/notes"
 export TRACK_DIR="$DROPBOX_PATH/track"
@@ -64,9 +64,11 @@ PATH=${PATH}:/bin
 PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/sbin
 PATH=${PATH}:.
-PATH=${PATH}:${ANDROID_HOME}/tools
-PATH=${PATH}:${ANDROID_HOME}/platform-tools
 PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin
+PATH=${PATH}:${HOME}/sdk/tools
+PATH=${PATH}:${HOME}/sdk/tools/bin
+PATH=${PATH}:${HOME}/sdk/platform-tools
+PATH=${PATH}:${HOME}/sdk/build-tools/25.0.2
 
 # options
 shopt -s cdspell
