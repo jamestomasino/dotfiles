@@ -1,6 +1,0 @@
-#!/bin/sh
-
-FULLPAGECONTENT=$(html2text --ignore-links --ignore-images "http://www.readability.com/m?url=$1")
-TRIMCONTENT=$(echo "$FULLPAGECONTENT" | sed '1,13d')
-TRIMCONTENT=$(echo "$TRIMCONTENT" | sed '/^_powered\ by_\ Readability$/,$d')
-echo "$TRIMCONTENT" | speedread -w 750
