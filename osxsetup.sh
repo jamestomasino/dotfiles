@@ -20,23 +20,23 @@ EOD
 ######################### Cleanup Default Files ################################
 ################################################################################
 
-if [ -f "$HOME/.profile" ]; then 
-	rm "$HOME/.profile"
+if [ -f "$HOME/.profile" ]; then
+    rm "$HOME/.profile"
 fi
-if [ -f "$HOME/.bashrc" ]; then 
-	rm "$HOME/.bashrc"
+if [ -f "$HOME/.bashrc" ]; then
+    rm "$HOME/.bashrc"
 fi
-if [ -f "$HOME/.bash_profile" ]; then 
-	rm "$HOME/.bash_profile"
+if [ -f "$HOME/.bash_profile" ]; then
+    rm "$HOME/.bash_profile"
 fi
-if [ -f "$HOME/.localrc" ]; then 
-	rm "$HOME/.localrc"
+if [ -f "$HOME/.localrc" ]; then
+    rm "$HOME/.localrc"
 fi
-if [ -f "$HOME/.bash_logout" ]; then 
-	rm "$HOME/.bash_logout"
+if [ -f "$HOME/.bash_logout" ]; then
+    rm "$HOME/.bash_logout"
 fi
-if [ -f "$HOME/.viminfo" ]; then 
-	rm "$HOME/.viminfo"
+if [ -f "$HOME/.viminfo" ]; then
+    rm "$HOME/.viminfo"
 fi
 
 ################################################################################
@@ -320,7 +320,7 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.Dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0
 
-# Disable Smart Quotes 
+# Disable Smart Quotes
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 # Disable Smart Dashes
@@ -342,7 +342,7 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # Show item info to the right of the icons on the desktop
 /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
 
-# Enable snap-to-grid for icons on the desktop and in other icon views 
+# Enable snap-to-grid for icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
 # Bottom left screen corner → Start screen saver
