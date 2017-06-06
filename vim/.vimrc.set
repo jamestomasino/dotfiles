@@ -30,16 +30,6 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 " }}}
 
-" Syntaxastic {{{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_python_checkers=['flake8', 'pylint']
-let g:syntastic_html_tidy_exec = 'tidy5'
-" }}}
-
 " Pencil / Writing Controls {{{
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 74
@@ -134,13 +124,6 @@ endif
 " Statusline {{{
 if has('statusline')
     set laststatus=2
-    set statusline=%<%f\                     " Filename
-    set statusline+=%w%h%m%r%{PencilMode()}\ " Options
-    set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
 endif
 " }}}
 

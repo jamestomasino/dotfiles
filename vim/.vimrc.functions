@@ -91,6 +91,32 @@ endfunction
 
 command! BTags call s:btags()
 
+function! ALEGetError()
+    let l:res = ale#statusline#Status()
+    if l:res ==# 'OK'
+        return ''
+    else
+        let l:e_w = split(l:res)
+        if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
+            return ' -' . matchstr(l:e_w[0], '\d\+') . ' '
+        endif
+    endif
+endfunction
+
+function! ALEGetWarning()
+    let l:res = ale#statusline#Status()
+    if l:res ==# 'OK'
+        return ''
+    else
+        let l:e_w = split(l:res)
+        if len(l:e_w) == 2
+            return ' -' . matchstr(l:e_w[1], '\d\+')
+        elseif match(l:e_w, 'W') > -1
+            return ' -' . matchstr(l:e_w[0], '\d\+')
+        endif
+    endif
+endfunction
+
 call InitializeDirectories()
 
 " vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
