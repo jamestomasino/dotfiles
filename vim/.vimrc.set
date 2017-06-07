@@ -3,7 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " General Lets {{{
-let g:mapleader = '\,'
+let g:mapleader = ','
 let b:match_ignorecase = 1
 " }}}
 
