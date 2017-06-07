@@ -29,6 +29,12 @@ if has("autocmd")
         au filetype lisp,scheme setlocal expandtab
     augroup END
 
+    augroup type_javascript
+        au filetype javascript setlocal tabstop=2
+        au filetype javascript setlocal shiftwidth=2
+        au filetype javascript setlocal expandtab
+    augroup END
+
     augroup type_haskell
         au FileType haskell compiler ghc
         au filetype haskell setlocal tabstop=2

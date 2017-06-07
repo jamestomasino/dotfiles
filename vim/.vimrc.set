@@ -3,13 +3,14 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " General Lets {{{
-let mapleader = "\,"
+let g:mapleader = '\,'
 let b:match_ignorecase = 1
 " }}}
 
 " miscelanious settings {{{
 filetype plugin indent on       " Automatically detect file types.
 syntax on                       " Syntax highlighting
+set encoding=utf-8
 scriptencoding utf-8
 " }}}
 
@@ -54,24 +55,24 @@ let g:limelight_default_coefficient = 0.5
 " sets {{{
 setglobal nobomb
 set nobomb
-set background=dark         " Assume a dark background
-set mouse=a                 " Automatically enable mouse usage
-set mousehide               " Hide the mouse cursor while typing
-set shortmess+=aoOtTI          " Abbrev. of messages (avoids 'hit enter')
+set background=dark             " Assume a dark background
+set mouse=a                     " Automatically enable mouse usage
+set mousehide                   " Hide the mouse cursor while typing
+set shortmess+=aoOtTI           " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set foldmethod=syntax
 set foldlevelstart=20
-set virtualedit=onemore             " Allow for cursor beyond last character
-set history=1000                    " Store a ton of history (default is 20)
-set nospell                           " Spell checking off
-set hidden                          " Allow buffer switching without saving
-set backup                  " Backups are nice ...
+set virtualedit=onemore         " Allow for cursor beyond last character
+set history=1000                " Store a ton of history (default is 20)
+set nospell                     " Spell checking off
+set hidden                      " Allow buffer switching without saving
+set backup                      " Backups are nice ...
 set tabpagemax=15               " Only show 15 tabs
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
-set nu                          " Line numbers on
+set number                      " Line numbers on
 set relativenumber              " Use relative line numbers
 set showmatch                   " Show matching brackets/parenthesis
 set incsearch                   " Find as you type search
@@ -88,14 +89,14 @@ set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=4                " Use indents of 4 spaces
-set tabstop=4                   " An indentation every four columns
-set softtabstop=4               " Let backspace delete indent
+set shiftwidth=2                " Use indents of 4 spaces
+set tabstop=2                   " An indentation every four columns
+set softtabstop=2               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
 set fileencoding=utf-8
-set noexpandtab
+set expandtab
 set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
@@ -141,7 +142,6 @@ endif
 if has('gui_running')
     set guioptions-=T
     set lines=40
-    set encoding=utf-8
     set transparency=0
     syntax enable
     set background=dark
@@ -158,13 +158,12 @@ endif
 " Windows {{{
 if WINDOWS()
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-    if has("multi_byte")
+    if has('multi_byte')
         set termencoding=cp850
-        set encoding=utf-8
         setglobal fileencoding=utf-8
         set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
     endif
 endif
 " }}}
 
-" vim: set ft=vim sw=4 ts=4 sts=4 et tw=78 nospell foldmethod=marker:foldlevel=0
+" vim: set ft=vim sw=2 ts=2 sts=2 et tw=78 nospell foldmethod=marker:foldlevel=0

@@ -109,10 +109,24 @@ source ~/perl5/perlbrew/etc/bashrc
 perlbrew install perl-5.16.0
 perlbrew switch perl-5.16.0
 
-# node
+# javascript
 brew install node
 npm install -g grunt-cli
-npm install -g scmindent # lisp
+npm install -g jshint
+npm install -g standard
+npm install -g jsonlint
+
+# bash
+brew install shellcheck
+
+# css
+npm install -g stylelint
+
+# html
+brew install tidy-html5
+
+# viml
+pip install vim-vint
 
 ################################################################################
 ################################# git ##########################################
