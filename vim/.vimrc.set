@@ -145,13 +145,13 @@ if has('gui_running')
     set transparency=0
     syntax enable
     set background=dark
-    colorscheme Tomorrow-Night
+    colorscheme apprentice
 else
     let g:indent_guides_enable_on_vim_startup = 0
     set t_Co=256
     syntax enable
     set background=dark
-    colorscheme Tomorrow-Night
+    colorscheme apprentice
 endif
 " }}}
 
