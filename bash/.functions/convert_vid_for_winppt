@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+function convert_vid_for_winppt () {
+    ffmpeg -i "$1" \
+    -r 25 \
+    -f mpeg \
+    -vcodec mpeg1video \
+    -ar 48000 \
+    -b:v 5000k \
+    -b:a 128k \
+    -acodec mp2 \
+    -ar 44100 \
+    -ac 1 \
+    -y \
+    "$(basename "${1%.*}")".mpg
+}
