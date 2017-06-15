@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 function convert_vid_for_winppt () {
+  if [ $# -eq 0 ]; then
+    echo "Missing video to convert as argument."
+  else
     ffmpeg -i "$1" \
     -r 25 \
     -f mpeg \
@@ -13,4 +16,5 @@ function convert_vid_for_winppt () {
     -ac 1 \
     -y \
     "$(basename "${1%.*}")".mpg
+  fi
 }
