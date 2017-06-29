@@ -16,6 +16,7 @@
     "prototypejs"   : false,
     "mootools"      : false,
     "dojo"          : false,
+    "esversion"     : 6,
 
     "predef"        : [  // Extra globals.
         "define",

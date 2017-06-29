@@ -30,9 +30,9 @@ if has("autocmd")
     augroup END
 
     augroup type_javascript
-        au filetype javascript setlocal tabstop=2
-        au filetype javascript setlocal shiftwidth=2
-        au filetype javascript setlocal expandtab
+        au filetype javascript setlocal tabstop=4
+        au filetype javascript setlocal shiftwidth=4
+        au filetype javascript setlocal noexpandtab
     augroup END
 
     augroup type_haskell
