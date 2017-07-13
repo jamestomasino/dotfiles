@@ -19,8 +19,8 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R profanity slate utils zsh bin vim tmux cmus surfraw lisp gnupg
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw lisp gnupg
+OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw gnupg
+Linux: bash git news R utils zsh bin vim tmux cmus surfraw gnupg
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
 
@@ -40,11 +40,8 @@ clean:
 	stow -t "$$HOME" -D vim
 	stow -t "$$HOME" -D tmux
 	stow -t "$$HOME" -D surfraw
-	stow -t "$$HOME" -D lisp
 	stow -t "$$HOME" -D gnupg
 	stow -t "$$HOME/.cmus/" -D cmus
-	stow -t "$$HOME/.config/profanity/" -D profanity-config
-	stow -t "$$HOME/.local/share/profanity/" -D profanity-local
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
@@ -98,13 +95,6 @@ bin:
 	mkdir -p "$$HOME/bin"
 	stow -t "$$HOME/bin/" bin
 
-profanity:
-	@printf "$(YELLOW)--- profanity -------------------------------------------\n$(RESET)"
-	mkdir -p "$$HOME/.config/profanity"
-	mkdir -p "$$HOME/.local/share/profanity"
-	stow -t "$$HOME/.config/profanity/" profanity-config
-	stow -t "$$HOME/.local/share/profanity/" profanity-local
-
 vim:
 	@printf "$(YELLOW)--- vim -------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" vim
@@ -123,10 +113,6 @@ surfraw:
 	@printf "$(YELLOW)--- surfraw ---------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" surfraw
 
-lisp:
-	@printf "$(YELLOW)--- lisp ------------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" lisp
-
 gnupg:
 	@printf "$(YELLOW)--- gnupg -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" gnupg
@@ -142,4 +128,4 @@ tmux:
 	fi
 	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n$(RESET)"
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other profanity gnupg lisp
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other gnupg
