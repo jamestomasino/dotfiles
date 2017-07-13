@@ -2,7 +2,7 @@
 
 location=$(iploc)
 units="metric"
-weather=$(curl -s "http://api.openweathermap.org/data/2.5/weather?q=$location&units=$units")
+weather=$(curl -s "http://api.openweathermap.org/data/2.5/weather?q=$location&units=$units&APPID=$WEATHER_APP_ID")
 
 if [ -z "$weather" ]
 then
