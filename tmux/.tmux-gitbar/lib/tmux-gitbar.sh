@@ -186,7 +186,7 @@ update_gitbar() {
 
     # append Git status to current status string
     local status_string
-    status_string="#[$TMGB_OUTREPO_STYLE]$TMGB_OUTREPO_STATUS#[$TMGB_STYLE]$(do_interpolation "${TMGB_STATUS_STRING}")"
+    status_string="#[$TMGB_STYLE]$(do_interpolation "${TMGB_STATUS_STRING}")#[$TMGB_OUTREPO_STYLE]$TMGB_OUTREPO_STATUS"
     tmux set-window-option "status-$TMGB_STATUS_LOCATION" "$status_string" > /dev/null
 
   else
