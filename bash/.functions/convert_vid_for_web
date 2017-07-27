@@ -10,9 +10,9 @@ function convert_vid_for_web () {
       ffmpeg -i "$1" -b:v 1500k -vcodec libvpx -acodec libvorbis -ab 160000 -f webm -g 30 "$pname.webm"
       ffmpeg -i "$1" -b:v 1500k -vcodec libtheora -acodec libvorbis -ab 160000 -g 30 "$pname.ogv"
       echo "<video>"
-      echo "  <source src=\"$pname.mp4\" \".mp4\" type=\"video/mp4\"></source>"
-      echo "  <source src=\"$pname.webm\" type=\"video/webm\"></source>"
-      echo "  <source src=\"$pname.ogv\" type=\"video/ogg\"></source>"
+      echo "  <source src=\"$pname.mp4\" type=\"video/mp4\">"
+      echo "  <source src=\"$pname.webm\" type=\"video/webm\">"
+      echo "  <source src=\"$pname.ogv\" type=\"video/ogg\">"
       echo "</video>"
     else
       echo "Video file does not exist"
