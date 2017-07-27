@@ -6,12 +6,12 @@ function convert_vid_for_web () {
   else
     if [ -f "$1" ] ; then
       pname="$(basename "${1%.*}")-web"
-      ffmpeg -i "$1" -b:v 1500k -vcodec libx264 -vpre slow -vpre baseline -g 30 "$pname.mp4"
+      ffmpeg -i "$1" -b:v 1500k -vcodec libx264 -preset veryslow -profile:v baseline -g 30 "$pname.mp4"
       ffmpeg -i "$1" -b:v 1500k -vcodec libvpx -acodec libvorbis -ab 160000 -f webm -g 30 "$pname.webm"
       ffmpeg -i "$1" -b:v 1500k -vcodec libtheora -acodec libvorbis -ab 160000 -g 30 "$pname.ogv"
       echo "<video>"
-      echo "  <source src=\"$pname.mp4\" type=\"video/mp4\">"
       echo "  <source src=\"$pname.webm\" type=\"video/webm\">"
+      echo "  <source src=\"$pname.mp4\" type=\"video/mp4\">"
       echo "  <source src=\"$pname.ogv\" type=\"video/ogg\">"
       echo "</video>"
     else

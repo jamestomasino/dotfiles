@@ -150,7 +150,22 @@ brew install ssh-copy-id
 brew install stow
 brew install imagemagick
 brew install libvpx
-brew install ffmpeg --with-libvpx --with-theora --with-libvorbis
+brew install automake
+brew install fdk-aac
+brew install lame libass
+brew install libtool
+brew install libvorbis
+brew install libvpx
+brew install opus
+brew install sdl
+brew install shtool
+brew install texi2html
+brew install theora
+brew install x264
+brew install x265
+brew install xvid
+brew install yasm
+brew install ffmpeg --with-libvpx --with-theora --with-libvorbis --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvpx --with-x265
 brew install the_silver_searcher
 brew install tree
 brew install unrar
