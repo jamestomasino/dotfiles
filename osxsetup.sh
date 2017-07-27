@@ -150,7 +150,7 @@ brew install ssh-copy-id
 brew install stow
 brew install imagemagick
 brew install libvpx
-brew install ffmpeg --with-libvpx
+brew install ffmpeg --with-libvpx --with-theora --with-libvorbis
 brew install the_silver_searcher
 brew install tree
 brew install unrar
