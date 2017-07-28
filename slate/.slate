@@ -18,7 +18,7 @@ alias ssy screenSizeY
 
 # App aliases
 alias browser   'Google Chrome'
-alias terminal  'iTerm'
+alias terminal  'iTerm2'
 
 # Window Hints
 bind e:${hyper}  hint HTNSDFGCRLBMWVZ # use whatever keys you want

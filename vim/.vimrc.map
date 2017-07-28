@@ -3,8 +3,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Tweak existing keys for more natural operation {{{
-noremap j gj
-noremap k gk
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
@@ -20,6 +20,7 @@ set pastetoggle=<Leader>z
 "{{{
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
+nnoremap <Leader>ll :Limelight!!<CR>
 nnoremap <Leader>u :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>
@@ -73,12 +74,25 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 nnoremap <silent> <Leader>t :BTags<CR>
 " }}}
 
+" Splits {{{
+nnoremap <Leader>\| :vsp<CR>
+nnoremap <Leader>- :sp<CR>
+nnoremap <Leader>j <C-W><C-J>
+nnoremap <Leader>k <C-W><C-K>
+nnoremap <Leader>l <C-W><C-L>
+nnoremap <Leader>h <C-W><C-H>
+nnoremap <Leader>J :resize +5<CR>
+nnoremap <Leader>K :resize -5<CR>
+nnoremap <Leader>H :vertical resize -5<CR>
+nnoremap <Leader>L :vertical resize +5<CR>
+" }}}
+
 " File actions {{{
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 nnoremap <Leader>ff :FZF<CR>            " file search & open
 nnoremap <Leader>fw :w<CR>              " file save
 nnoremap <Leader>fs :w<CR>              " file save
-nnoremap <leader>fq :q<CR>              " file quit
+nnoremap <Leader>fq :q<CR>              " file quit
 " }}}
 
 " Diff conflict actions {{{

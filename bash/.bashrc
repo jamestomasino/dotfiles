@@ -11,6 +11,11 @@ fi
 # FZF really wants to put this in this file
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# allow for sensitive settings
+if [ -f "$HOME/.bash_private" ] ; then
+    . "$HOME/.bash_private"
+fi
+
 # allow for .bash_local overrides
 if [ -f "$HOME/.bash_local" ] ; then
     . "$HOME/.bash_local"

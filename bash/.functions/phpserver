@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Start a PHP server from a directory, optionally specifying the port
+# (Requires PHP 5.4.0+.)
+function phpserver() {
+	if hash ipconfig 2>/dev/null; then
+		local port="${1:-4000}"
+		local ip=$(ipconfig getifaddr en1)
+		if [[ -z ${ip} ]] ; then
+			local ip=$(ipconfig getifaddr en0)
+		fi
+		sleep 1 && open "http://${ip}:${port}/" &
+		php -S "${ip}:${port}"
+	else
+		php -S "127.0.0.1:4000"
+	fi
+}

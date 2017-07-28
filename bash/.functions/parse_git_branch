@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Return current git branch
+function parse_git_branch {
+	local B=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
+	echo "${B}"
+}

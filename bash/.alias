@@ -22,7 +22,6 @@ alias mkdir='mkdir -p'
 
 # update scripts
 alias systemupdate='sudo softwareupdate -i -a; brew update; brew upgrade'
-alias shellupdate='cd ~/.dotfiles && git pull && cd - && ~/.dotfiles/install && reload && clear'
 
 # tools
 alias browserstack="java -jar ~/bin/BrowserStackTunnel.jar 8vlzgcB58bVTdLITt514 localhost,80,0"
@@ -31,12 +30,13 @@ alias simulator='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhon
 
 # utils
 alias imgsz='sips -g pixelWidth -g pixelHeight'
-alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to pasteboard.\n'"
+alias pubkey="more ~/.ssh/id_rsa.pub | clip | printf '=> Public key copied to pasteboard.\n'"
 alias cl="fc -e -| pbcopy" # copy output of last command to clipboard
 alias cpwd='pwd|tr -d "\n"|pbcopy' # copy working directory path to clipboard
 alias chess='cd ~ && /Applications/Chess.app/Contents/Resources/sjeng.ChessEngine && rm *.lrn && cd -'
 alias gempurge='gem uninstall -aIx'
 alias imagemagick='convert' # I always forget the name of the app for imagemagick
+alias figlet='figlet -c -w 204 -f univers'
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption.local -x'

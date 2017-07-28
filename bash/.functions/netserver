@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Start a .NET server using mono
+function netserver() {
+	local port="${1:-8080}"
+	local ip=$(ipconfig getifaddr en1)
+	if [[ -z ${ip} ]] ; then
+		local ip=$(ipconfig getifaddr en0)
+	fi
+	sleep 1 && open "http://${ip}:${port}/" &
+	xsp2 --port "${port}" --address "${ip}" --verbose
+}

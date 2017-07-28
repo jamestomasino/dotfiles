@@ -1,0 +1,19 @@
+set format_current= %a: %l: %02n %t%= %y 
+set format_playlist= %-18a %-18l %02n %t%= %d %04y 
+set format_playlist_va= %-18a %-18l %02n %t%= %d %04y 
+set format_trackwin= %02n %t%= %d %04y 
+set format_title=cmus
+set altformat_title=cmus
+set lib_sort=artist album discnumber tracknumber title filename
+set play_sorted=false
+set repeat=true
+set softvol=true
+
+colorscheme bored
+
+bind -f common  < seek -30
+bind -f common  > seek +30
+bind -f common  i invert
+bind -f common  L win-sel-cur
+bind -f library a set lib_sort=artist album discnumber tracknumber title filename
+bind -f library A set lib_sort=album discnumber tracknumber title filename

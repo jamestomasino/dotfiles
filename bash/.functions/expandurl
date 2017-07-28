@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# expand url shorteners
+expandurl() { curl -sIL "$1" 2>&1 | awk '/^Location/ {print $2}' | tail -n1; }

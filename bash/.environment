@@ -12,18 +12,18 @@ export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
 export R_LIBS="$HOME/.rlib"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache -g ""'
-export _Z_NO_PROMPT_COMMAND=1
 
 # path vars
 export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
 export SPIDEROAK_PATH="$HOME/.spideroak"
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:/usr/bin/npm"
-export ANDROID_HOME="$HOME/android/android-sdk-macosx"
+export ANDROID_HOME="$HOME/sdk"
 export TODO="$DROPBOX_PATH/Todo/personal.txt"
 export NOTE_DIR="$DROPBOX_PATH/Work/GSW/notes"
 export TRACK_DIR="$DROPBOX_PATH/track"
 export SHEET_FILE="$DROPBOX_PATH/Work/GSW/ti-sheet.json"
+export TIME_LOG="$DROPBOX_PATH/Time/timelog.csv"
 
 # ruby
 export GEM_HOME="$HOME/.gem"
@@ -48,6 +48,10 @@ export PAGER=less
 
 # path
 PATH=/usr/local/bin
+PATH=${PATH}:${HOME}/bin
+PATH=${PATH}:${HOME}/.node/bin
+PATH=${PATH}:${HOME}/.gem/bin
+PATH=${PATH}:${HOME}/.rbenv/bin
 PATH=${PATH}:/opt/local/bin
 PATH=${PATH}:/opt/local/sbin
 PATH=${PATH}:/usr/local/sbin
@@ -59,14 +63,13 @@ PATH=${PATH}:/usr/bin
 PATH=${PATH}:/bin
 PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/sbin
-PATH=${PATH}:~/bin
 PATH=${PATH}:.
-PATH=${PATH}:${ANDROID_HOME}/tools
-PATH=${PATH}:${ANDROID_HOME}/platform-tools
 PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin
-PATH=${PATH}:${HOME}/.node/bin
-PATH=${PATH}:${HOME}/.gem/bin
-PATH=${PATH}:${HOME}/.rbenv/bin
+PATH=${PATH}:${HOME}/.local/bin
+PATH=${PATH}:${HOME}/sdk/tools
+PATH=${PATH}:${HOME}/sdk/tools/bin
+PATH=${PATH}:${HOME}/sdk/platform-tools
+PATH=${PATH}:${HOME}/sdk/build-tools/25.0.2
 
 # options
 shopt -s cdspell
@@ -75,7 +78,7 @@ shopt -s histappend
 shopt -s nocaseglob
 
 # PROMPT COMMANDS
-PROMPT_COMMAND="_z --add \"$(pwd -P 2>/dev/null)\" 2>/dev/null; history -a; history -c; history -r;"
+PROMPT_COMMAND="history -a; history -r; $PROMPT_COMMAND"
 
 # use vim on the command line
 set -o vi

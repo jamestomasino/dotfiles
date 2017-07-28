@@ -2,34 +2,6 @@
 """"""""""""""""""""""""""""""""""" FUNCTIONS """"""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! Indenting(indent, what, cols)
-    let spccol = repeat(' ', a:cols)
-    let result = substitute(a:indent, spccol, '\t', 'g')
-    let result = substitute(result, ' \+\ze\t', '', 'g')
-    if a:what == 1
-        let result = substitute(result, '\t', spccol, 'g')
-    endif
-    return result
-endfunction
-
-function! IndentConvert(line1, line2, what, cols)
-    let savepos = getpos('.')
-    let cols = empty(a:cols) ? &tabstop : a:cols
-    execute a:line1 . ',' . a:line2 . 's/^\s\+/\=Indenting(submatch(0), a:what, cols)/e'
-    call histdel('search', -1)
-    call setpos('.', savepos)
-endfunction
-
-" toggle between number and relativenumber
-function! ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-
 silent function! OSX()
     return has('macunix')
 endfunction
@@ -85,125 +57,8 @@ function! StripTrailingWhitespace()
     call cursor(l, c)
 endfunction
 
-function! s:RunShellCommand(cmdline)
-    botright new
-
-    setlocal buftype=nofile
-    setlocal bufhidden=delete
-    setlocal nobuflisted
-    setlocal noswapfile
-    setlocal nowrap
-    setlocal filetype=shell
-    setlocal syntax=shell
-
-    call setline(1, a:cmdline)
-    call setline(2, substitute(a:cmdline, '.', '=', 'g'))
-    execute 'silent $read !' . escape(a:cmdline, '%#')
-    setlocal nomodifiable
-endfunction
-
-function! g:FixTabStops()
-    set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-endfunction
-
-function! HighlightRepeats() range
-    let lineCounts = {}
-    let lineNum = a:firstline
-    while lineNum <= a:lastline
-        let lineText = getline(lineNum)
-        if lineText != ""
-            let lineCounts[lineText] = (has_key(lineCounts, lineText) ? lineCounts[lineText] : 0) + 1
-        endif
-        let lineNum = lineNum + 1
-    endwhile
-    exe 'syn clear Repeat'
-    for lineText in keys(lineCounts)
-        if lineCounts[lineText] >= 2
-            exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
-        endif
-    endfor
-endfunction
-
-function! WordProcessorMode()
-    setlocal spell spelllang=en_us
-    setlocal thesaurus+=~/.dotfiles/vim/thesaurus/mthesaur.txt
-    setlocal complete+=s
-    if has("gui_running")
-        setlocal lines=999
-        setlocal columns=60
-    endif
-    setlocal colorcolumn=0
-    setlocal textwidth=60
-    setlocal nolist
-    setlocal formatoptions=l1
-    setlocal wrap
-    setlocal linebreak
-    setlocal nonumber
-    setlocal norelativenumber
-    setf writing
-endfunction
-
-function! Buflist()
-    redir => ls
-    silent ls
-    redir END
-    return split(ls, '\n')
-endfunction
-
-function! Bufopen(e)
-    execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-if !WINDOWS()
-    set shell=/bin/sh
-endif
-
-function! s:goyo_enter()
-    silent !tmux set status off
-    set noshowmode
-    set noshowcmd
-    set scrolloff=999
-    let b:quitting = 0
-    let b:quitting_bang = 0
-    au QuitPre <buffer> let b:quitting = 1
-    cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-    Limelight
-endfunction
-
-function! s:goyo_leave()
-    silent !tmux set status on
-    set showmode
-    set showcmd
-    set scrolloff=5
-    " Quit Vim if this is the only remaining buffer
-    if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-        if b:quitting_bang
-            qa!
-        else
-            qa
-        endif
-    endif
-    Limelight!
-endfunction
-
-function! s:align_lists(lists)
-  let maxes = {}
-  for list in a:lists
-    let i = 0
-    while i < len(list)
-      let maxes[i] = max([get(maxes, i, 0), len(list[i])])
-      let i += 1
-    endwhile
-  endfor
-  for list in a:lists
-    call map(list, "printf('%-'.maxes[v:key].'s', v:val)")
-  endfor
-  return a:lists
-endfunction
-
 function! s:btags_source()
-  let lines = map(split(system(printf(
-    \ 'ctags -f - --sort=no --fields=nKs --excmd=pattern --language-force=%s %s',
-    \ &filetype, expand('%:S'))), "\n"), 'split(v:val, "\t")')
+  let lines = map(split(system(printf('ctags -f - --sort=no --fields=nKs --excmd=pattern --language-force=%s %s', &filetype, expand('%:S'))), "\n"), 'split(v:val, "\t")')
   if v:shell_error
     throw 'failed to extract tags'
   endif
@@ -236,24 +91,31 @@ endfunction
 
 command! BTags call s:btags()
 
-if has("user_commands")
-    command! -bang -nargs=* -complete=file E e<bang> <args>
-    command! -bang -nargs=* -complete=file W w<bang> <args>
-    command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-    command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-    command! -bang Wa wa<bang>
-    command! -bang WA wa<bang>
-    command! -bang Q q<bang>
-    command! -bang QA qa<bang>
-    command! -bang Qa qa<bang>
+function! ALEGetError()
+    let l:res = ale#statusline#Status()
+    if l:res ==# 'OK'
+        return ''
+    else
+        let l:e_w = split(l:res)
+        if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
+            return ' -' . matchstr(l:e_w[0], '\d\+') . ' '
+        endif
+    endif
+endfunction
 
-    command! -complete=file -nargs=+ Shell call s:RunShellCommand(<q-args>)
-    command! -nargs=? -range=% Space2Tab call IndentConvert(<line1>,<line2>,0,<q-args>)
-    command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-args>)
-    command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q-args>)
-    command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
-    command! -range=% HighlightRepeats <line1>,<line2>call HighlightRepeats()
-endif
+function! ALEGetWarning()
+    let l:res = ale#statusline#Status()
+    if l:res ==# 'OK'
+        return ''
+    else
+        let l:e_w = split(l:res)
+        if len(l:e_w) == 2
+            return ' -' . matchstr(l:e_w[1], '\d\+')
+        elseif match(l:e_w, 'W') > -1
+            return ' -' . matchstr(l:e_w[0], '\d\+')
+        endif
+    endif
+endfunction
 
 call InitializeDirectories()
 

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+function ddg() {
+	local YELLOW=$(tput setaf 226)
+	local GREEN=$(tput setaf 46)
+	local RED=$(tput setaf 196)
+	local RESET=$(tput sgr0)
+
+	local URL="https://duckduckgo.com/html/?q="
+	local query=""
+	local response=""
+	local titles=""
+	local urls=""
+	local snippets=""
+	local output=""
+	for word in "$*"; do
+		query="$query+$word"
+	done
+	query=${query:1}
+	response=$(curl -s "$URL$query")
+	titles=$(echo -e "$response" | grep "result__a" | sed 's|<[^>]*>||g' | sed 's|^\s*||g' | sed "s|^|$GREEN|g" | sed "s|\$|$RESET|g" )
+	urls=$(echo -e "$response" | grep "result__url" | sed 's|^.*href=\"||g' | sed 's|".*$||g' |sed 's|^\s*||g' | sed "s|^|http://|g"| sed "s|^|$YELLOW|g" | sed "s|\$|$RESET|g" )
+	snippets=$(echo -e "$response" | grep "result__snippet"| sed 's|<[^>]*>||g' | sed 's|^\s*||g')
+	output=$(paste -d'\n' <(echo "$titles") <(echo "$snippets") <(echo "$urls") | sed '0~3 a\\')
+
+	echo "$output"
+}
