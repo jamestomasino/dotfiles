@@ -56,7 +56,7 @@
 	autosetupmerge = true
 
 [push]
-	default = simple
+	default = matching
 
 [fetch]
 	prune = true
