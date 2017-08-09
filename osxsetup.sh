@@ -169,6 +169,7 @@ brew install mplayer --with-libcaca
 brew install surfraw
 brew install buku
 brew install asciinema
+brew install lynx
 brew install pinentry-mac
 brew linkapps pinentry-mac
 
