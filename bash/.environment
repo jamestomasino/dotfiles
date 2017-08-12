@@ -12,6 +12,7 @@ export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
 export R_LIBS="$HOME/.rlib"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache -g ""'
+export LYNX_CFG="$HOME/.lynxrc"
 
 # path vars
 export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
