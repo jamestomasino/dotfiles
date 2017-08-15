@@ -6,7 +6,7 @@ function gituntracked() {
 	if [ "0" == "${u}" ]; then
 		u=""
 	else
-		u=" untrk: ${u}"
+		u="${u} "
 	fi
 	echo "${u}"
 }

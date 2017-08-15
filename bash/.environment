@@ -33,14 +33,15 @@ export GEM_PATH="$HOME/.gem"
 # colors
 [[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color
 export DIRECTORY_COLOR="$(tput setaf 222)"
-export GIT_COLOR="$(tput setaf 172)"
+export GIT_COLOR="$(tput setaf 7)"
 export STAGED_COLOR="$(tput setaf 226)"
 export MODIFIED_COLOR="$(tput setaf 112)"
 export UNTRACKED_COLOR="$(tput setaf 117)"
 export PROMPT_COLOR="$(tput setaf 226)"
-export USER_COLOR="$(tput setaf 130)"
+export USER_COLOR="$(tput setaf 87)"
 export ROOT_COLOR="$(tput setaf 160)"
-export HOST_COLOR="$(tput setaf 130)"
+export AT_COLOR="$(tput setaf 240)"
+export HOST_COLOR="$(tput setaf 213)"
 export TIME_COLOR="$(tput setaf 60)"
 export RESET_COLOR="$(tput sgr0)"
 

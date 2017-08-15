@@ -6,7 +6,7 @@ function gitstaged() {
 	if [ "0" == "${s}" ]; then
 		s=""
 	else
-		s=" stg: ${s}"
+		s="${s} "
 	fi
 	echo "${s}"
 }

@@ -6,7 +6,7 @@ function gitmodified() {
 	if [ "0" == "${m}" ]; then
 		m=""
 	else
-		m=" mod: ${m}"
+		m="${m} "
 	fi
 	echo "${m}"
 }
