@@ -2,12 +2,16 @@
 	name = James Tomasino
 	email = james@tomasino.org
 	signingkey = 09DDD7DF
+
 [github]
 	user = jamestomasino
+
 [gpg]
 	program = gpg
+
 [tag]
 	gpgsign = true
+
 [core]
 	whitespace = trailing-space, space-before-tab, cr-at-eol
 	excludesfile = ~/.gitignore_global
@@ -18,6 +22,16 @@
 	compression = 9
 	bigFileThreshold = 20m
 	ignorecase = false
+  packedGitLimit = 256m
+  packedGitWindowSize = 256m
+
+[pack]
+	threads = 1
+	window = 0
+	windowMemory = 256m
+	SizeLimit = 256m
+  deltaCacheSize = 256m
+  packSizeLimet = 256m
 
 [color]
 	diff = auto
@@ -70,11 +84,9 @@
 [advice]
 	statusHints = true
 
-[help]
-	autocorrect = true
-
 [http]
 	postBuffer = 524288000
+	sslVerify = false
 
 [gitflow "prefix"]
 	feature = feature/
@@ -314,3 +326,5 @@
 
 	pconfig = config -f .git/config
 	up = "!git remote update -p; git merge --ff-only @{u}"
+[credential]
+	helper = cache --timeout=3600
