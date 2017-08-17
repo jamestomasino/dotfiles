@@ -1,7 +1,3 @@
-# application feeds
-http://vimcasts.org/feeds/ogg vim
-http://vimbits.com/bits.rss?sort=new vim
-
 # thinking
 https://what-if.xkcd.com/feed.atom thought
 http://piercework.typepad.com/just_jen/atom.xml thought
@@ -11,10 +7,10 @@ http://smshum101.wordpress.com/feed/ blogs
 http://gardenstategoldenstate.blogspot.com/feeds/posts/default blogs
 http://musing.kennbivins.com/feed/ blogs
 http://thebloggess.com/?feed=rss2 blogs
-http://feedproxy.google.com/EvanSultanik blogs
 http://feeds.feedburner.com/stephentudor blogs
 http://feeds.feedburner.com/destroytoday blogs
 https://howtobeastoic.wordpress.com/feed/ blogs
+#
 # religion
 http://www.therues.com/blog/index.php/feed/ religion
 https://godinallthings.com/feed/atom/ religion
