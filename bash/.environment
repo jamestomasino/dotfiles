@@ -13,6 +13,7 @@ export CLICOLOR=1
 export R_LIBS="$HOME/.rlib"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache -g ""'
 export LYNX_CFG="$HOME/.lynxrc"
+export WWW_HOME="gopher://sdf.org/1/users/tomasino"
 
 # path vars
 export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
