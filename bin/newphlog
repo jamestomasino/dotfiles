@@ -7,7 +7,7 @@ DaySuffix() {
   3|23)    echo "rd";;
   *)       echo "th";;
   esac
-} 
+}
 
 read -p "Enter a title for your post: " title
 title_slug=$(echo ${title:-Untitled} | sed -E -e 's/[^[:alnum:]]/-/g' -e 's/^-+|-+$//g' | tr -s '-' | tr A-Z a-z)
@@ -16,7 +16,7 @@ test -f $post_path && { echo "Error: $post_path already exists" ; exit 1; }
 echo "Creating $post_path"
 echo "----------------------------------------" >> "$post_path"
 echo "$title"                                   >> "$post_path"
-echo "$(date +"%B %d$(DaySuffix), %Y")"          >> "$post_path"
+echo "$(date +"%B %d$(DaySuffix), %Y")"         >> "$post_path"
 echo "----------------------------------------" >> "$post_path"
 echo " "                                        >> "$post_path"
 echo " "                                        >> "$post_path"
