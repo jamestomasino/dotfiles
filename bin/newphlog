@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+DaySuffix() {
+  case $(date +%d) in
+    1|21|31) echo "st";;
+  2|22)    echo "nd";;
+  3|23)    echo "rd";;
+  *)       echo "th";;
+  esac
+} 
+
+read -p "Enter a title for your post: " title
+title_slug=$(echo ${title:-Untitled} | sed -E -e 's/[^[:alnum:]]/-/g' -e 's/^-+|-+$//g' | tr -s '-' | tr A-Z a-z)
+post_path="$HOME/gopher/phlog/`date +%Y%m%d`-$title_slug.txt"
+test -f $post_path && { echo "Error: $post_path already exists" ; exit 1; }
+echo "Creating $post_path"
+echo "----------------------------------------" >> "$post_path"
+echo "$title"                                   >> "$post_path"
+echo "$(date +"%B %d$(DaySuffix), %Y")"          >> "$post_path"
+echo "----------------------------------------" >> "$post_path"
+echo " "                                        >> "$post_path"
+echo " "                                        >> "$post_path"
+
+# Add entry to Phlog gophermap
+echo -e "0$(date +%Y-%m-%d) - $title\t$(basename $post_path)\n$(cat "$HOME/gopher/phlog/gophermap")" > "$HOME/gopher/phlog/gophermap"
+
+# Update Last Updated date in index gophermap
+sed -i "s/.*Last\ Updated:.*/        ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
+
+# Write post
+vim $post_path
+
+# Unlist and relist phlog on SDF
+pushd /etc && phlog && phlog && popd
