@@ -21,14 +21,14 @@ echo "----------------------------------------" >> "$post_path"
 echo " "                                        >> "$post_path"
 echo " "                                        >> "$post_path"
 
+# Write post
+vim $post_path
+
 # Add entry to Phlog gophermap
 echo -e "0$(date +%Y-%m-%d) - $title\t$(basename $post_path)\n$(cat "$HOME/gopher/phlog/gophermap")" > "$HOME/gopher/phlog/gophermap"
 
 # Update Last Updated date in index gophermap
 sed -i "s/.*Last\ Updated:.*/        ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
-
-# Write post
-vim $post_path
 
 # Unlist and relist phlog on SDF
 pushd /etc && phlog && phlog && popd
