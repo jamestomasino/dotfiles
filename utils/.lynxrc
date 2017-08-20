@@ -437,7 +437,7 @@ DEFAULT_INDEX_FILE:http://scout.wisc.edu/
 # Find RFC 1345 at
 .url http://tools.ietf.org/html/rfc1345
 #
-CHARACTER_SET:iso-8859-1
+CHARACTER_SET:UNICODE (UTF-8)
 
 .h2 LOCALE_CHARSET
 # LOCALE_CHARSET overrides CHARACTER_SET if true, using the current locale to
