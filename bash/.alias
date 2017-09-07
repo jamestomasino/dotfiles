@@ -89,3 +89,4 @@ alias roll='curl -s -L http://bit.ly/10hA8iC | bash'
 # sdf
 alias sdf='mosh sdf'
 alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
+alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
