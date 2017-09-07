@@ -19,8 +19,8 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw gnupg
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw gnupg
+OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw
+Linux: bash git news R utils zsh bin vim tmux cmus surfraw
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
 
@@ -40,7 +40,6 @@ clean:
 	stow -t "$$HOME" -D vim
 	stow -t "$$HOME" -D tmux
 	stow -t "$$HOME" -D surfraw
-	stow -t "$$HOME" -D gnupg
 	stow -t "$$HOME/.cmus/" -D cmus
 
 bash:
@@ -113,10 +112,6 @@ surfraw:
 	@printf "$(YELLOW)--- surfraw ---------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" surfraw
 
-gnupg:
-	@printf "$(YELLOW)--- gnupg -----------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" gnupg
-
 tmux:
 	@printf "$(YELLOW)--- tmux ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" tmux
@@ -128,4 +123,4 @@ tmux:
 	fi
 	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n$(RESET)"
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other gnupg
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other
