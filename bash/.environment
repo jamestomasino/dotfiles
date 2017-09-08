@@ -32,6 +32,9 @@ export TIME_LOG="$DROPBOX_PATH/Time/timelog.csv"
 export GEM_HOME="$HOME/.gem"
 export GEM_PATH="$HOME/.gem"
 
+# system
+export TZ="America/New_York"
+
 # colors
 [[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color
 export DIRECTORY_COLOR="$(tput setaf 222)"
@@ -83,6 +86,9 @@ shopt -s nocaseglob
 
 # PROMPT COMMANDS
 PROMPT_COMMAND="history -a; history -r; $PROMPT_COMMAND"
+
+# umask liberal
+umask 0022
 
 # use vim on the command line
 set -o vi
