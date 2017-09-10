@@ -31,4 +31,7 @@ echo -e "0$(date +%Y-%m-%d) - $title\t$(basename $post_path)\n$(cat "$HOME/gophe
 sed -i "s/.*Last\ Updated:.*/        ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
 
 # Unlist and relist phlog on SDF
-pushd /etc && phlog && phlog && popd
+/etc/phlog && /etc/phlog
+
+# Save it in git
+pushd "$HOME/gopher" && git add -A && git commit -m "$title" && git pull && git push && popd
