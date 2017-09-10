@@ -17,15 +17,18 @@ nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
 set pastetoggle=<Leader>z
 " }}}
-"{{{
+
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
+nnoremap <Leader>T :FZF<CR>
+nnoremap <Leader>PH :PencilHard<CR>
+nnoremap <Leader>PO :PencilOff<CR>
+nnoremap <Leader>PT :PencilToggle<CR>
 nnoremap <Leader>u :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>
 vmap <Enter> <Plug>(EasyAlign)
-nnoremap <Leader>n :call ToggleNumber()<CR>
 " }}}
 
 " Move blocks up and down {{{
