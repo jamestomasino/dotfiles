@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+DaySuffix() {
+  case $(date +%d) in
+    01|1|21|31) echo "st";;
+    02|2|22)    echo "nd";;
+    03|3|23)    echo "rd";;
+    *)          echo "th";;
+  esac
+}
+
+read -p "Enter a title for your post: " title
+title_slug=$(echo ${title:-Untitled} | sed -E -e 's/[^[:alnum:]]/-/g' -e 's/^-+|-+$//g' | tr -s '-' | tr A-Z a-z)
+post_path="$HOME/gopher/food/recipes/$title_slug.txt"
+if [[ -f $post_path ]] ; then
+  echo "$post_path already exists"
+else
+  echo "Creating $post_path"
+  echo "----------------------------------------" >> "$post_path"
+  echo "$title"                                   >> "$post_path"
+  echo "----------------------------------------" >> "$post_path"
+  echo ""                                         >> "$post_path"
+  echo ""                                         >> "$post_path"
+fi
+
+# Write post
+vim $post_path
+
+# Add entry to recipes gophermap
+echo -e "0$title\t$(basename $post_path)\n$(cat "$HOME/gopher/food/recipes/gophermap")" > "$HOME/gopher/food/recipes/gophermap"
+
+# Sort the recipes alphabetically
+sort -fo "$HOME/gopher/food/recipes/gophermap" "$HOME/gopher/food/recipes/gophermap"
+
+# Update Last Updated date in index gophermap
+sed -i "s/.*Last\ Updated:.*/        ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
+
+# Save it in git
+pushd "$HOME/gopher" && git add -A && git commit -m "$title" && git pull && git push && popd
