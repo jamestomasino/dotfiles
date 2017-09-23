@@ -16,6 +16,14 @@ if has("autocmd")
         au FileType c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     augroup END
 
+    augroup type_text
+        au!
+        au FileType text setlocal expandtab
+        au filetype text setlocal tabstop=4
+        au FileType text setlocal softtabstop=4
+        au filetype text setlocal shiftwidth=4
+    augroup END
+
     augroup type_gitcommit
         au!
         au FileType gitcommit call setpos('.', [0, 1, 1, 0])
@@ -32,6 +40,7 @@ if has("autocmd")
     augroup type_javascript
         au filetype javascript setlocal tabstop=4
         au filetype javascript setlocal shiftwidth=4
+        au FileType javascript setlocal softtabstop=4
         au filetype javascript setlocal noexpandtab
     augroup END
 
