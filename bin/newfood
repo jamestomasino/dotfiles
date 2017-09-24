@@ -18,7 +18,7 @@ if [[ -f $post_path ]] ; then
 else
   echo "Creating $post_path"
   echo "----------------------------------------" >> "$post_path"
-  echo "$(date +"%B %d$(DaySuffix), %Y, %A")"     >> "$post_path"
+  echo "$(date +"%B %d$(DaySuffix), %Y (%A)")"    >> "$post_path"
   echo "----------------------------------------" >> "$post_path"
   echo ""                                         >> "$post_path"
   echo ""                                         >> "$post_path"
@@ -27,7 +27,7 @@ else
   vim $post_path
 
   # Add entry to food log gophermap
-  echo -e "0$(date +%Y-%m-%d, %A)\t$(basename $post_path)\n$(cat "$HOME/gopher/food/log/gophermap")" > "$HOME/gopher/food/log/gophermap"
+  echo -e "0$(date +%Y-%m-%d\ -\ %A)\t$(basename $post_path)\n$(cat "$HOME/gopher/food/log/gophermap")" > "$HOME/gopher/food/log/gophermap"
 
   # Update Last Updated date in index gophermap
   sed -i "s/.*Last\ Updated:.*/        ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
