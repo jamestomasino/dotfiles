@@ -30,16 +30,14 @@ echo ""                                         >> "$post_path"
 vim -c ":set textwidth=66|PencilHard|6" $post_path
 
 # Cut links from post, temporarily
-links="$post_dir/links"
-sed -n '/^Links:$/,$p' $post_path | tail -n +2 > $links
+links=$(sed -n '/^Links:$/,$p' $post_path | tail -n +2)
 sed -i '/^Links:$/,$d' $post_path
 
 # Add a space before every line
 sed -i 's/^/ /' $post_path
 
 # Stitch files back together, cleanup
-cat $links >> $post_path
-rm $links
+echo $links >> $post_path
 
 # Add entry to Phlog gophermap
 echo -e "1$(date +%Y-%m-%d) - $title\t$(basename $post_dir)\n$(cat "$HOME/gopher/phlog/gophermap")" > "$HOME/gopher/phlog/gophermap"
