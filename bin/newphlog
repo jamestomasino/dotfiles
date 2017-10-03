@@ -11,21 +11,38 @@ DaySuffix() {
 
 read -p "Enter a title for your post: " title
 title_slug=$(echo ${title:-Untitled} | sed -E -e 's/[^[:alnum:]]/-/g' -e 's/^-+|-+$//g' | tr -s '-' | tr A-Z a-z)
-post_path="$HOME/gopher/phlog/`date +%Y%m%d`-$title_slug.txt"
+post_dir="$HOME/gopher/phlog/`date +%Y%m%d`-$title_slug"
+post_path="$post_dir/gophermap"
 test -f $post_path && { echo "Error: $post_path already exists" ; exit 1; }
 echo "Creating $post_path"
+mkdir -p "$post_dir"
 echo "----------------------------------------" >> "$post_path"
 echo "$title"                                   >> "$post_path"
 echo "$(date +"%B %d$(DaySuffix), %Y")"         >> "$post_path"
 echo "----------------------------------------" >> "$post_path"
-echo " "                                        >> "$post_path"
-echo " "                                        >> "$post_path"
+echo ""                                         >> "$post_path"
+echo ""                                         >> "$post_path"
+echo ""                                         >> "$post_path"
+echo "Links:"                                   >> "$post_path"
+echo ""                                         >> "$post_path"
 
 # Write post
-vim $post_path
+vim -c ":set textwidth=70" $post_path
+
+# Cut links from post, temporarily
+links="$post_dir/links"
+sed -n '/^Links:$/,$p' $post_path | tail -n +2 > $links
+sed -i '/^Links:$/,$d' $post_path
+
+# Add a space before every line
+sed -i 's/^/ /' $post_path
+
+# Stitch files back together, cleanup
+cat $links >> $post_path
+rm $links
 
 # Add entry to Phlog gophermap
-echo -e "0$(date +%Y-%m-%d) - $title\t$(basename $post_path)\n$(cat "$HOME/gopher/phlog/gophermap")" > "$HOME/gopher/phlog/gophermap"
+echo -e "1$(date +%Y-%m-%d) - $title\t$(basename $post_dir)\n$(cat "$HOME/gopher/phlog/gophermap")" > "$HOME/gopher/phlog/gophermap"
 
 # Update Last Updated date in index gophermap
 sed -i "s/.*Last\ Updated:.*/        ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
