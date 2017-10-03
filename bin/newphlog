@@ -27,7 +27,7 @@ echo "Links:"                                   >> "$post_path"
 echo ""                                         >> "$post_path"
 
 # Write post
-vim -c ":set textwidth=70" $post_path
+vim -c ":set textwidth=66|PencilHard|6" $post_path
 
 # Cut links from post, temporarily
 links="$post_dir/links"
