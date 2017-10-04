@@ -48,7 +48,7 @@ alias gb="git branch"
 alias gap="git add -p"
 
 # tmux
-alias tmux='tmux -2'
+alias tmux='tmux -u2'
 alias t='tmux attach || tmux new'
 alias tomasino='mosh tomasino -- tmux attach -t chat -d'
 
