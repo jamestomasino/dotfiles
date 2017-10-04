@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Output the current time in Swatch Internet Time "beats"
+# See: https://en.wikipedia.org/wiki/Swatch_Internet_Time
+#
+# Example output: @811
+
+function beat {
+	local d=0 # decimal places
+	local x=0 # initial coeff
+	local t=`TZ=CET date '+%S %M %H'`
+
+	# helper function to output S + (M * 60) + (H * 3600)
+	sixty() {
+		echo -n "+ ($1 * (60^($2)))"
+	}
+	echo "scale=$d; (0 `for i in $t; do sixty $i $x; x=$x+1; done`) / 86.4" \
+		| bc \
+		| awk '{ printf("@%03d\n", $1) }'
+}
+
