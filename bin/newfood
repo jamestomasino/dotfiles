@@ -21,10 +21,15 @@ else
   echo "$(date +"%B %d$(DaySuffix), %Y (%A)")"    >> "$post_path"
   echo "----------------------------------------" >> "$post_path"
   echo ""                                         >> "$post_path"
+  echo "Breakfast:"                               >> "$post_path"
+  echo ""                                         >> "$post_path"
+  echo "Lunch:"                                   >> "$post_path"
+  echo ""                                         >> "$post_path"
+  echo "Dinner:"                                  >> "$post_path"
   echo ""                                         >> "$post_path"
 
   # Write post
-  vim $post_path
+  vim -c "6" $post_path
 
   # Add entry to food log gophermap
   echo -e "0$(date +%Y-%m-%d\ -\ %A)\t$(basename $post_path)\n$(cat "$HOME/gopher/food/log/gophermap")" > "$HOME/gopher/food/log/gophermap"
