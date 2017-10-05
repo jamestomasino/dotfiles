@@ -10,9 +10,9 @@ function convert_vid_for_ipad () {
 			read input
 			if [ "$input" = "Y" ]
 			then
-				ffmpeg -i "$1" -vf "scale=-2:720:flags=lanczos" -vcodec libx264 -profile:v main -level 3.1 -preset medium -crf 23 -x264-params ref=4 -acodec copy -movflags +faststart "$pname.mp4"
+				ffmpeg -i "$1" -vf "scale=-2:720:flags=lanczos" -pix_fmt yuv420p -vcodec libx264 -profile:v main -level 3.1 -preset medium -crf 23 -x264-params ref=4 -acodec copy -movflags +faststart "$pname.mp4"
 			else
-				ffmpeg -i "$1" -vcodec libx264 -profile:v main -level 3.1 -preset medium -crf 23 -x264-params ref=4 -acodec copy -movflags +faststart "$pname.mp4"
+				ffmpeg -i "$1" -pix_fmt yuv420p -vcodec libx264 -profile:v main -level 3.1 -preset medium -crf 23 -x264-params ref=4 -acodec copy -movflags +faststart "$pname.mp4"
 			fi
 		else
 			echo "Video file does not exist"
