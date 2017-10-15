@@ -1,3 +1,4 @@
+
 # Conky settings #
 background yes
 update_interval 1
@@ -12,6 +13,8 @@ minimum_size 268 1220
 maximum_width 268
 alignment top_right
 own_window yes
+own_window_class Conky
+own_window_type override
 own_window_type normal
 own_window_transparent yes
 own_window_argb_visual yes
