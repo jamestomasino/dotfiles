@@ -134,6 +134,8 @@ bindsym Mod4+Shift+c reload
 bindsym Mod4+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Lock screen
+bindsym Mod4+Shift+z exec "xautolock -locknow &> /dev/null"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -173,3 +175,4 @@ exec xrandr --dpi 220
 exec --no-startup-id feh --bg-scale /home/tomasino/Pictures/background.jpg
 # exec --no-startup-id conky -c ~/.config/i3/.conkyrc
 exec --no-startup-id dropbox start
+exec xautolock -detectsleep -time 3 -locker "/home/tomasino/bin/i3l" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
