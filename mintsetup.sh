@@ -2,6 +2,29 @@
 set -e
 sudo -s
 
+################################################################################
+######################### Cleanup Default Files ################################
+################################################################################
+
+if [ -f "$HOME/.profile" ]; then
+    rm "$HOME/.profile"
+fi
+if [ -f "$HOME/.bashrc" ]; then
+    rm "$HOME/.bashrc"
+fi
+if [ -f "$HOME/.bash_profile" ]; then
+    rm "$HOME/.bash_profile"
+fi
+if [ -f "$HOME/.localrc" ]; then
+    rm "$HOME/.localrc"
+fi
+if [ -f "$HOME/.bash_logout" ]; then
+    rm "$HOME/.bash_logout"
+fi
+if [ -f "$HOME/.viminfo" ]; then
+    rm "$HOME/.viminfo"
+fi
+
 # Install everything for i3
 apt install -y i3 i3status dmenu i3lock xautolock xbacklight feh conky-all
 echo "Set up suspend on systemd logind.service to use i3l"
@@ -31,7 +54,6 @@ apt install -y veracrypt
 apt install -y vim
 apt install -y lynx
 apt install -y wire-desktop
-apt install -y xclip
 
 # Fonts
 apt install -y fonts-firacode
@@ -89,3 +111,30 @@ make install
 hash -r
 
 cd ~
+
+################################################################################
+###################### Folder Structures and Links #############################
+################################################################################
+
+mkdir -p ~/Sites/system/
+mkdir -p ~/Sites/work/
+mkdir -p ~/Sites/personal/
+mkdir -p ~/Sites/sync/Dropbox
+mkdir -p ~/Sites/sync/spideroak
+mkdir -p ~/.dropbox
+ln -s ~/Sites/sync/Dropbox ~/.dropbox/Dropbox
+ln -s ~/Sites/sync/spideroak ~/.spideroak
+
+################################################################################
+############################### Dotfiles #######################################
+################################################################################
+
+cd ~/Sites/system && git clone https://github.com/jamestomasino/dotfiles.git
+cd ~/Sites/system/dotfiles && ./make
+
+################################################################################
+########################### Plugin Installs ####################################
+################################################################################
+
+vim -c ":PlugInstall|q|q" # auto install plugins
+$HOME/.tmux/plugins/tpm/bin/install_plugins
