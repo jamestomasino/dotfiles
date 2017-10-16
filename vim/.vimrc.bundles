@@ -40,6 +40,7 @@ Plug 'rking/ag.vim'
 Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-fugitive'
 Plug 'w0rp/ale'
+Plug 'posva/vim-vue'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
