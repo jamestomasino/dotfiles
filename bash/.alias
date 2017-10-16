@@ -88,5 +88,11 @@ alias roll='curl -s -L http://bit.ly/10hA8iC | bash'
 
 # sdf
 alias sdf='mosh sdf'
+alias meta='mosh meta'
 alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
 alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
+
+# Wrap vlc on OSX with a happy little alias
+if ! exists nvlc; then
+  alias nvlc="/Applications/VLC.app/Contents/MacOS/VLC --intf ncurses"
+fi

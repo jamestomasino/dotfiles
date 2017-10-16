@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -e
-sudo -s
 
 ################################################################################
 ######################### Cleanup Default Files ################################
@@ -25,6 +24,11 @@ if [ -f "$HOME/.viminfo" ]; then
     rm "$HOME/.viminfo"
 fi
 
+################################################################################
+######################### SUDO to INSTALL THINGS ###############################
+################################################################################
+
+sudo -s
 # Install everything for i3
 apt install -y i3 i3status dmenu i3lock xautolock xbacklight feh conky-all
 echo "Set up suspend on systemd logind.service to use i3l"
@@ -68,7 +72,7 @@ apt install -y pngquant
 apt install -y tig
 
 # FFMPEG
-apt-get -y install autoconf automake build-essential libass-dev libfreetype6-dev libsdl2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo wget zlib1g-dev
+apt install -y autoconf automake build-essential libass-dev libfreetype6-dev libsdl2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo wget zlib1g-dev
 apt install -y yasm
 
 mkdir ~/ffmpeg_sources
@@ -109,8 +113,8 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
 PATH="$HOME/bin:$PATH" make
 make install
 hash -r
-
 cd ~
+exit
 
 ################################################################################
 ###################### Folder Structures and Links #############################
