@@ -22,6 +22,7 @@ set pastetoggle=<Leader>z
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
 nmap ; :Buffers<CR>
+nmap <Leader>w :bd<CR>
 nmap <Leader>t :GFiles<CR>
 nmap <Leader>T :Files<CR>
 nmap <Leader>r :Tags<CR>
