@@ -21,7 +21,10 @@ set pastetoggle=<Leader>z
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
-nnoremap <Leader>T :FZF<CR>
+nmap ; :Buffers<CR>
+nmap <Leader>t :GFiles<CR>
+nmap <Leader>T :Files<CR>
+nmap <Leader>r :Tags<CR>
 nnoremap <Leader>PH :PencilHard<CR>
 nnoremap <Leader>PO :PencilOff<CR>
 nnoremap <Leader>PT :PencilToggle<CR>
@@ -67,10 +70,6 @@ nnoremap <Leader>L :vertical resize +5<CR>
 
 " File actions {{{
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-nnoremap <Leader>ff :FZF<CR>            " file search & open
-nnoremap <Leader>fw :w<CR>              " file save
-nnoremap <Leader>fs :w<CR>              " file save
-nnoremap <Leader>fq :q<CR>              " file quit
 " }}}
 
 " Diff conflict actions {{{
@@ -84,12 +83,6 @@ nnoremap <Leader>cl :diffget //3<CR>    " use merge contents (right)
 " Linting actions {{{
 nnoremap <Leader>ln :lnext<CR>          " Next linting error
 nnoremap <Leader>lN :lprev<CR>          " Previous linting error
-" }}}
-
-" Buffers, Files, and Tags {{{
-nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
 " }}}
 
 " command mode helpers {{{
