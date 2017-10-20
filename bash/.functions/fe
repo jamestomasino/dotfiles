@@ -5,6 +5,6 @@
 #   - Exit if there's no match (--exit-0)
 fe() {
   local file
-  file=$(fzf --query="$1" --select-1 --exit-0)
+  file=$(fzf --query="$1" --select-1 --exit-0)\
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }

@@ -12,7 +12,7 @@ export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
 export R_LIBS="$HOME/.rlib"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache --ignore npm_modules -g ""'
-export FZF_DEFAULT_OPTS="--inline-info --preview \"pygmentize {}\" --color light --bind alt-d:preview-down,alt-u:preview-up"
+export FZF_DEFAULT_OPTS=""
 export LYNX_CFG="$HOME/.lynxrc"
 export WWW_HOME="gopher://sdf.org/1/users/tomasino"
 

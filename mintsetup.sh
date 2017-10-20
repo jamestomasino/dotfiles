@@ -66,6 +66,8 @@ apt install -y fonts-firacode
 apt install -y nodejs nodejs-dev build-essentials
 apt install -y haskell-platform
 apt install -y rbenv
+apt install -y python-pygments
+apt install -y exuberant-ctags
 
 # Other development
 apt install -y pngquant
