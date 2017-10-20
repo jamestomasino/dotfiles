@@ -73,10 +73,6 @@ nnoremap <silent> <Leader><Enter> :call fzf#run({
 \ })<CR>
 " }}}
 
-" Tags with FZF {{{
-nnoremap <silent> <Leader>t :BTags<CR>
-" }}}
-
 " Splits {{{
 nnoremap <Leader>\| :vsp<CR>
 nnoremap <Leader>- :sp<CR>
@@ -109,6 +105,12 @@ nnoremap <Leader>cl :diffget //3<CR>    " use merge contents (right)
 " Linting actions {{{
 nnoremap <Leader>ln :lnext<CR>          " Next linting error
 nnoremap <Leader>lN :lprev<CR>          " Previous linting error
+" }}}
+
+" Buffers, Files, and Tags {{{
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
 " }}}
 
 " command mode helpers {{{
