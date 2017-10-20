@@ -52,27 +52,6 @@ nnoremap <Leader><space> za
 vnoremap <Leader><Space> zf
 " }}}
 
-" Choose a color scheme with fzf {{{
-nnoremap <silent> <Leader>C :call fzf#run({
-\   'source':
-\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-\   'sink':     'colo',
-\   'options':  '+m',
-\   'left':     20,
-\   'launcher': 'xterm -geometry 20x30 -e bash -ic %s'
-\ })<CR>
-" }}}
-
-" Use <Leader><Enter> to list buffer with fuzzy searching {{{
-nnoremap <silent> <Leader><Enter> :call fzf#run({
-\   'source':  reverse(Buflist()),
-\   'sink':    function('Bufopen'),
-\   'options': '+m',
-\   'down':    len(Buflist()) + 2
-\ })<CR>
-" }}}
-
 " Splits {{{
 nnoremap <Leader>\| :vsp<CR>
 nnoremap <Leader>- :sp<CR>
