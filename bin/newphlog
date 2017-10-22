@@ -11,9 +11,6 @@ DaySuffix() {
 
 read -p "Enter a title for your post: " title
 title_slug=$(echo ${title:-Untitled} | sed -E -e 's/[^[:alnum:]]/-/g' -e 's/^-+|-+$//g' | tr -s '-' | tr A-Z a-z)
-
-Links:
-
 post_dir="$HOME/gopher/phlog/`date +%Y%m%d`-$title_slug"
 post_path="$post_dir/gophermap"
 test -f $post_path && { echo "Error: $post_path already exists" ; exit 1; }
@@ -41,8 +38,8 @@ sed -i '/^Links:$/,$d' $post_path
 sed -i 's/^/ /' $post_path
 
 # Stitch files back together, cleanup
-cat $links >> $post_path
-rm $links
+cat "$links" >> $post_path
+rm "$links"
 
 # Add entry to Phlog gophermap
 echo -e "1$(date +%Y-%m-%d) - $title\t$(basename $post_dir)\n$(cat "$HOME/gopher/phlog/gophermap")" > "$HOME/gopher/phlog/gophermap"
