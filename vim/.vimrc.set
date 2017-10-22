@@ -25,12 +25,6 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 " }}}
 
-" Airline {{{
-let g:airline_powerline_fonts = 0
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-" }}}
-
 " Pencil / Writing Controls {{{
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 74
@@ -50,6 +44,10 @@ let g:localvimrc_ask=0
 
 " Limelight {{{
 let g:limelight_default_coefficient = 0.5
+" }}}
+
+" Ack.vim {{{
+let g:ackprg = 'ag --vimgrep'
 " }}}
 
 " sets {{{

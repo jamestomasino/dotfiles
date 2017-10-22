@@ -9,7 +9,13 @@ call plug#begin('~/.vim/plugged')
 " Global
 Plug 'embear/vim-localvimrc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-eunuch'
+Plug 'roryokane/detectindent'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 
 " Styling
 Plug 'romainl/Apprentice'
@@ -21,7 +27,6 @@ Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-abolish'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'tpope/vim-markdown'
 Plug 'mattly/vim-markdown-enhancements'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'reedes/vim-lexical'
@@ -30,19 +35,17 @@ Plug 'reedes/vim-textobj-sentence'
 Plug 'reedes/vim-wordy'
 
 " Development Tools
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'hail2u/vim-css3-syntax'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
 Plug 'sjl/gundo.vim'
 Plug 'mbbill/undotree'
-Plug 'tomtom/quickfixsigns_vim'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'w0rp/ale'
+Plug 'sheerun/vim-polyglot'
 
-" Haskell
-Plug 'neovimhaskell/haskell-vim'
 
 call plug#end()
 

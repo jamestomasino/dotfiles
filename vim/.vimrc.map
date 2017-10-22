@@ -21,7 +21,11 @@ set pastetoggle=<Leader>z
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
-nnoremap <Leader>T :FZF<CR>
+nmap ; :Buffers<CR>
+nmap <Leader>w :bd<CR>
+nmap <Leader>t :GFiles<CR>
+nmap <Leader>T :Files<CR>
+nmap <Leader>r :Tags<CR>
 nnoremap <Leader>PH :PencilHard<CR>
 nnoremap <Leader>PO :PencilOff<CR>
 nnoremap <Leader>PT :PencilToggle<CR>
@@ -52,31 +56,6 @@ nnoremap <Leader><space> za
 vnoremap <Leader><Space> zf
 " }}}
 
-" Choose a color scheme with fzf {{{
-nnoremap <silent> <Leader>C :call fzf#run({
-\   'source':
-\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-\   'sink':     'colo',
-\   'options':  '+m',
-\   'left':     20,
-\   'launcher': 'xterm -geometry 20x30 -e bash -ic %s'
-\ })<CR>
-" }}}
-
-" Use <Leader><Enter> to list buffer with fuzzy searching {{{
-nnoremap <silent> <Leader><Enter> :call fzf#run({
-\   'source':  reverse(Buflist()),
-\   'sink':    function('Bufopen'),
-\   'options': '+m',
-\   'down':    len(Buflist()) + 2
-\ })<CR>
-" }}}
-
-" Tags with FZF {{{
-nnoremap <silent> <Leader>t :BTags<CR>
-" }}}
-
 " Splits {{{
 nnoremap <Leader>\| :vsp<CR>
 nnoremap <Leader>- :sp<CR>
@@ -92,10 +71,6 @@ nnoremap <Leader>L :vertical resize +5<CR>
 
 " File actions {{{
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
-nnoremap <Leader>ff :FZF<CR>            " file search & open
-nnoremap <Leader>fw :w<CR>              " file save
-nnoremap <Leader>fs :w<CR>              " file save
-nnoremap <Leader>fq :q<CR>              " file quit
 " }}}
 
 " Diff conflict actions {{{
