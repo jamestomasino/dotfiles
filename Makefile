@@ -42,6 +42,7 @@ clean:
 	stow -t "$$HOME" -D surfraw
 	stow -t "$$HOME/.cmus/" -D cmus
 	stow -t "$$HOME/.config/i3/" -D i3
+	stow -t "$$HOME" -D i3status
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
@@ -86,6 +87,7 @@ i3:
 	@printf "$(YELLOW)--- i3 --------------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/.config/i3"
 	stow -t "$$HOME/.config/i3/" i3
+	stow -t "$$HOME" i3status
 
 mutt:
 	@printf "$(YELLOW)--- mutt ------------------------------------------------\n$(RESET)"
