@@ -33,7 +33,7 @@ set $right l
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec konsole
+bindsym Mod4+Return exec uxterm -ls
 
 # kill focused window
 bindsym Mod4+Shift+w kill
