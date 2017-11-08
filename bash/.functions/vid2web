@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function convert_vid_for_web () {
+function vid2web () {
   if [ $# -eq 0 ]; then
     echo "Missing video to convert as argument."
   else
