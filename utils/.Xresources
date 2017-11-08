@@ -1,9 +1,13 @@
 #include ".Xresources.molokai"
 
 XTerm*faceName: "Fira Code,Fira Code Light"
-XTerm*faceSize: 8
+XTerm*faceSize: 9
+
 Xft*antialias: true
 Xft*autohint: true
-xterm*locale: true
-xterm*termName: xterm-256color
-xterm*utf8: 1
+
+UXTerm*faceName: -misc-fixed-medium-r-normal--0-0-100-100-c-0-iso8859-1
+UXTerm*faceSize: 9
+UXTerm*locale: true
+UXTerm*termName: xterm-256color
+UXTerm*utf8: 1

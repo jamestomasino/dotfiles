@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+echo "This might not actually run. You may need to use it as a guide and do the steps one at a time"
+
 set -e
 
 ################################################################################
@@ -29,6 +32,7 @@ fi
 ################################################################################
 
 sudo -s
+
 # Install everything for i3
 apt install -y i3 i3status dmenu i3lock xautolock xbacklight feh conky-all
 echo "Set up suspend on systemd logind.service to use i3l"
@@ -61,6 +65,10 @@ apt install -y wire-desktop
 
 # Fonts
 apt install -y fonts-firacode
+apt install -y fonts-inconsolata
+
+# Dependencies for st terminal emulator
+apt install -y libx11-dev libxext-dev libxft-dev
 
 # Languages
 apt install -y nodejs nodejs-dev build-essentials
@@ -144,3 +152,10 @@ cd ~/Sites/system/dotfiles && ./make
 
 vim -c ":PlugInstall|q|q" # auto install plugins
 $HOME/.tmux/plugins/tpm/bin/install_plugins
+
+################################################################################
+############################# st Emulator ######################################
+################################################################################
+
+cd ~/Sites/system && git clone https://github.com/jamestomasino/st.git
+cd ~/Sites/system/st && sudo make clean install
