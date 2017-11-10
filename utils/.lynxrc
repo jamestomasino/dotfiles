@@ -3783,6 +3783,7 @@ EXTERNAL:http:wget -r %s:TRUE
 EXTERNAL:ftp:x-www-browser %s:TRUE
 EXTERNAL:file:x-www-browser %s:TRUE
 EXTERNAL:http:x-www-browser %s:TRUE
+
 # include
 INCLUDE:/etc/lynx/local.cfg
 INCLUDE:~/.lynx/colors:COLOR
