@@ -357,10 +357,11 @@ if has('statusline')
     set statusline+=\ %f\ 
     set statusline+=%h%m%r%w
     set statusline+=%=
-    set statusline+=%#PmenuSel#
-    set statusline+=\ %y
+    set statusline+=\ %y\ 
+    set statusline+=%#Menu#
     set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-    set statusline+=\ [%{&fileformat}\]
+    set statusline+=\ [%{&fileformat}\]\ 
+    set statusline+=%#PmenuSel#
     set statusline+=\ %p%%
     set statusline+=\ %l:%c
     set statusline+=\ 
