@@ -465,11 +465,6 @@ nnoremap <Leader>ch :diffget //2<CR>    " keep local contents (left)
 nnoremap <Leader>cl :diffget //3<CR>    " use merge contents (right)
 " }}}
 
-" Linting actions {{{
-nnoremap <Leader>ln :lnext<CR>          " Next linting error
-nnoremap <Leader>lN :lprev<CR>          " Previous linting error
-" }}}
-
 " command mode helpers {{{
 cmap w!! w !sudo tee % >/dev/null
 cmap cd. lcd %:p:h
