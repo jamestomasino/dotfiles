@@ -339,8 +339,7 @@ endif
 " Statusline {{{
 if has('statusline')
     set laststatus=2
-"    set statusline=%F%m%r%h%w\ [%L]\ [%{&ff}]\ %y\ [%p%%]\ [%04l,%04v]
-"    set statusline+=%#StatusLineStyle#%f#
+
     function! GitBranch()
       return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
     endfunction
@@ -351,13 +350,14 @@ if has('statusline')
     endfunction
 
     set statusline=
+    set statusline+=%#Search#\ %n\ 
     set statusline+=%#PmenuSel#
     set statusline+=%{StatuslineGit()}
-    set statusline+=%#LineNr#
-    set statusline+=\ %f
-    set statusline+=%m\
+    set statusline+=%#CursorLine#
+    set statusline+=\ %f\ 
+    set statusline+=%h%m%r%w
     set statusline+=%=
-    set statusline+=%#CursorColumn#
+    set statusline+=%#PmenuSel#
     set statusline+=\ %y
     set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
     set statusline+=\ [%{&fileformat}\]
