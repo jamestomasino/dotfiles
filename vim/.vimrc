@@ -34,14 +34,14 @@ Plug 'reedes/vim-textobj-sentence'
 Plug 'reedes/vim-wordy'
 
 " Development Tools
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-Plug 'mileszs/ack.vim'
-Plug 'ajh17/VimCompletesMe'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'w0rp/ale'
-Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'             " git changes
+Plug 'tpope/vim-surround'                 " parens, quotes, etc
+Plug 'mileszs/ack.vim'                    " helpful search things
+Plug 'ajh17/VimCompletesMe'               " omnicompletion
+Plug 'tpope/vim-fugitive'                 " git wrapper
+Plug 'tpope/vim-rhubarb'                  " github extension to fugitive
+Plug 'w0rp/ale'                           " linting
+Plug 'sheerun/vim-polyglot'               " syntax for lots of things
 
 call plug#end()
 
