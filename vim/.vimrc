@@ -37,7 +37,6 @@ Plug 'reedes/vim-wordy'
 " Development Tools
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
-Plug 'sjl/gundo.vim'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'ajh17/VimCompletesMe'
@@ -395,7 +394,6 @@ nnoremap <Leader>r :Tags<CR>
 nnoremap <Leader>PH :PencilHard<CR>
 nnoremap <Leader>PO :PencilOff<CR>
 nnoremap <Leader>PT :PencilToggle<CR>
-nnoremap <Leader>u :GundoToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>
 vmap <Enter> <Plug>(EasyAlign)
