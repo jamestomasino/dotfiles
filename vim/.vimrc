@@ -55,32 +55,32 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! InitializeDirectories()
-    let parent = $HOME
-    let prefix = 'vim'
-    let dir_list = {
+    let l:parent = $HOME
+    let l:prefix = 'vim'
+    let l:dir_list = {
                 \ 'backup': 'backupdir',
                 \ 'views': 'viewdir',
                 \ 'swap': 'directory' }
 
     if has('persistent_undo')
-        let dir_list['undo'] = 'undodir'
+        let l:dir_list['undo'] = 'undodir'
     endif
 
-    let common_dir = parent . '/.' . prefix
+    let l:common_dir = l:parent . '/.' . l:prefix
 
-    for [dirname, settingname] in items(dir_list)
-        let directory = common_dir . dirname . '/'
-        if exists("*mkdir")
-            if !isdirectory(directory)
-                call mkdir(directory)
+    for [l:dirname, l:settingname] in items(l:dir_list)
+        let l:directory = l:common_dir . l:dirname . '/'
+        if exists('*mkdir')
+            if !isdirectory(l:directory)
+                call mkdir(l:directory)
             endif
         endif
-        if !isdirectory(directory)
-            echo "Warning: Unable to create backup directory: " . directory
-            echo "Try: mkdir -p " . directory
+        if !isdirectory(l:directory)
+            echo 'Warning: Unable to create backup directory: ' . l:directory
+            echo 'Try: mkdir -p ' . l:directory
         else
-            let directory = substitute(directory, " ", "\\\\ ", "g")
-            exec "set " . settingname . "=" . directory
+            let l:directory = substitute(l:directory, ' ', '\\\\ ', 'g')
+            exec 'set ' . l:settingname . '=' . l:directory
         endif
     endfor
 endfunction
@@ -88,14 +88,14 @@ call InitializeDirectories()
 
 function! StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
+    let l:_s=@/
+    let l:l = line('.')
+    let l:c = col('.')
     " do the business:
     %s/\s\+$//e
     " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+    let @/=l:_s
+    call cursor(l:l, l:c)
 endfunction
 
 function! ALEGetError()
@@ -128,7 +128,7 @@ endfunction
 """""""""""""""""""""""""""""""""""" AUTOCMD """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if has("autocmd")
+if has('autocmd')
 
     augroup general_buffer
         au!
@@ -253,6 +253,14 @@ let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 " }}}
 
+" GitGutter Customization {{{
+let g:gitgutter_sign_added = '●'
+let g:gitgutter_sign_modified = '●'
+let g:gitgutter_sign_modified_first_line = '●'
+let g:gitgutter_sign_removed = '●'
+let g:gitgutter_sign_removed_first_line = '●'
+" }}}
+
 " Local vimrc loading {{{
 let g:localvimrc_sandbox=0
 let g:localvimrc_ask=0
@@ -309,7 +317,7 @@ set softtabstop=2               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set fileencoding=utf-8
 set expandtab
 set noerrorbells
@@ -455,7 +463,7 @@ nmap <silent> <Leader>/ :nohlsearch<CR>
 """""""""""""""""""""""""""" LOCAL OVERRIDES """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if filereadable(expand("~/.vimrc.local"))
+if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 
