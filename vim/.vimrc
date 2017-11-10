@@ -37,7 +37,6 @@ Plug 'reedes/vim-wordy'
 " Development Tools
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
-Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'ajh17/VimCompletesMe'
 Plug 'tpope/vim-fugitive'
