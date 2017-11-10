@@ -1,5 +1,3 @@
-set nocompatible
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""" BUNDLES """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -311,9 +309,9 @@ set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set nowrap                      " Do not wrap long lines
 set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=2                " Use indents of 4 spaces
-set tabstop=2                   " An indentation every four columns
-set softtabstop=2               " Let backspace delete indent
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
@@ -389,11 +387,11 @@ set pastetoggle=<Leader>z
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
-nmap ; :Buffers<CR>
-nmap <Leader>w :bd<CR>
-nmap <Leader>t :GFiles<CR>
-nmap <Leader>T :Files<CR>
-nmap <Leader>r :Tags<CR>
+nnoremap ; :Buffers<CR>
+nnoremap <Leader>w :bd<CR>
+nnoremap <Leader>t :GFiles<CR>
+nnoremap <Leader>T :Files<CR>
+nnoremap <Leader>r :Tags<CR>
 nnoremap <Leader>PH :PencilHard<CR>
 nnoremap <Leader>PO :PencilOff<CR>
 nnoremap <Leader>PT :PencilToggle<CR>
@@ -456,7 +454,7 @@ cmap cd. lcd %:p:h
 " }}}
 
 " clear search results {{{
-nmap <silent> <Leader>/ :nohlsearch<CR>
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
