@@ -39,7 +39,7 @@ alias imagemagick='convert' # I always forget the name of the app for imagemagic
 alias figlet='figlet -c -w 204 -f univers'
 
 # vim
-alias vime='vim -u ~/.vimrc.encryption.local -x'
+alias vime='vim -u ~/.vimrc.encryption -x'
 alias vimr='vim -u NONE'
 
 # git
