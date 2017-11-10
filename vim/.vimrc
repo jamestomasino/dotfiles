@@ -54,18 +54,6 @@ call plug#end()
 """"""""""""""""""""""""""""""""""" FUNCTIONS """"""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-silent function! OSX()
-    return has('macunix')
-endfunction
-
-silent function! LINUX()
-    return has('unix') && !has('macunix') && !has('win32unix')
-endfunction
-
-silent function! WINDOWS()
-    return  (has('win16') || has('win32') || has('win64'))
-endfunction
-
 function! InitializeDirectories()
     let parent = $HOME
     let prefix = 'vim'
@@ -96,6 +84,7 @@ function! InitializeDirectories()
         endif
     endfor
 endfunction
+call InitializeDirectories()
 
 function! StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
@@ -108,40 +97,6 @@ function! StripTrailingWhitespace()
     let @/=_s
     call cursor(l, c)
 endfunction
-
-function! s:btags_source()
-  let lines = map(split(system(printf('ctags -f - --sort=no --fields=nKs --excmd=pattern --language-force=%s %s', &filetype, expand('%:S'))), "\n"), 'split(v:val, "\t")')
-  if v:shell_error
-    throw 'failed to extract tags'
-  endif
-  return map(s:align_lists(lines), 'join(v:val, "\t")')
-endfunction
-
-function! s:btags_sink(line)
-  let lines = split(a:line, "\t")
-  for line in lines
-      let arr = split(line, ":")
-      if arr[0] == "line"
-          exec arr[-1]
-      endif
-  endfor
-  sil! norm! zvzz
-endfunction
-
-function! s:btags()
-  try
-    call fzf#run({'source':  s:btags_source(),
-                 \'down':    '50%',
-                 \'options': '+m -d "\t" --with-nth 4,1',
-                 \'sink':    function('s:btags_sink')})
-  catch
-    echohl WarningMsg
-    echom v:exception
-    echohl None
-  endtry
-endfunction
-
-command! BTags call s:btags()
 
 function! ALEGetError()
     let l:res = ale#statusline#Status()
@@ -168,8 +123,6 @@ function! ALEGetWarning()
         endif
     endif
 endfunction
-
-call InitializeDirectories()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""" AUTOCMD """""""""""""""""""""""""""""""""""
@@ -321,7 +274,7 @@ set mouse=                      " Automatically disable mouse usage
 set mousehide                   " Hide the mouse cursor while typing
 set shortmess+=aoOtTI           " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-set foldmethod=syntax
+set foldmethod=manual
 set foldlevelstart=20
 set virtualedit=onemore         " Allow for cursor beyond last character
 set history=1000                " Store a ton of history (default is 20)
@@ -356,15 +309,12 @@ set softtabstop=2               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
+set clipboard=unnamedplus
 set fileencoding=utf-8
 set expandtab
 set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
-" }}}
-
-" Global abbreviations {{{
-:iab <expr> dts strftime("%Y-%m-%d")
 " }}}
 
 " conditional settings {{{
@@ -389,15 +339,6 @@ if has('statusline')
 endif
 " }}}
 
-" Clipboard {{{
-if has('clipboard')
-    if LINUX()
-        set clipboard=unnamedplus
-    else
-        set clipboard=unnamed
-    endif
-endif
-" }}}
 
 " GUI {{{
 if has('gui_running')
@@ -416,16 +357,6 @@ else
 endif
 " }}}
 
-" Windows {{{
-if WINDOWS()
-    set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-    if has('multi_byte')
-        set termencoding=cp850
-        setglobal fileencoding=utf-8
-        set fileencodings=ucs-bom,utf-8,utf-16le,cp1252,iso-8859-15
-    endif
-endif
-" }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""" MAPPINGS """""""""""""""""""""""""""""""""""
@@ -474,10 +405,6 @@ nnoremap <C-Down> ddp
 " Create blank lines {{{
 nnoremap <silent> <Leader>o o<Esc>
 nnoremap <silent> <Leader>O O<Esc>
-" }}}
-
-" Highlight recent visual selections {{{
-nnoremap <Leader>V `[v`]
 " }}}
 
 " Fold selection {{{
