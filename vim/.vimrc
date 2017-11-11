@@ -10,28 +10,26 @@ call plug#begin('~/.vim/plugged')
 Plug 'embear/vim-localvimrc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-eunuch'
-Plug 'roryokane/detectindent'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
+Plug 'junegunn/vim-easy-align'            " <Enter> to visually align
+Plug 'tpope/vim-eunuch'                   " :Delete :Move :Rename, etc
+Plug 'roryokane/detectindent'             " :DetectIndent to match file struct
+Plug 'tpope/vim-commentary'               " gcc to toggle comments
+Plug 'tpope/vim-repeat'                   " Custom mappings take counts and .
 
 " Styling
 Plug 'romainl/Apprentice'
 Plug 'ywjno/vim-tomorrow-theme'
 
 " Writing/Authoring Tools
-Plug 'reedes/vim-pencil'
-Plug 'tpope/vim-abolish'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'mattly/vim-markdown-enhancements'
-Plug 'nelstrom/vim-markdown-folding'
-Plug 'reedes/vim-lexical'
-Plug 'reedes/vim-litecorrect'
-Plug 'reedes/vim-textobj-sentence'
-Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-pencil'                  " Super-powered writing things
+Plug 'tpope/vim-abolish'                  " Fancy abbreviation replacements
+Plug 'junegunn/limelight.vim'             " Highlights only active paragraph
+Plug 'junegunn/goyo.vim'                  " Full screen writing mode
+Plug 'nelstrom/vim-markdown-folding'      " Natural folding by syntax
+Plug 'reedes/vim-lexical'                 " Better spellcheck mappings
+Plug 'reedes/vim-litecorrect'             " Better autocorrections
+Plug 'reedes/vim-textobj-sentence'        " Treat sentences as text objects
+Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
 
 " Development Tools
 Plug 'airblade/vim-gitgutter'             " git changes
