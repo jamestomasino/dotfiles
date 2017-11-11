@@ -423,6 +423,10 @@ nnoremap <S-Right> :SidewaysRight<cr>
 vmap <Enter> <Plug>(EasyAlign)
 " }}}
 
+" Insert Date/Timestamp for notes {{{
+nnoremap gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
+" }}}
+
 " Move blocks up and down {{{
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
