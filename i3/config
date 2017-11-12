@@ -126,16 +126,37 @@ bindsym Mod4+Shift+8 move container to workspace 8
 bindsym Mod4+Shift+9 move container to workspace 9
 bindsym Mod4+Shift+0 move container to workspace 10
 
+# open applications on specific workspaces
+assign [class="Firefox"] 4
+assign [class="Wire"] 5
+assign [class="SpiderOakONE"] 8
+assign [class="Nextcloud"] 8
+assign [class="Dropbox"] 8
+assign [class="Steam"] 9
+
 # reload the configuration file
 bindsym Mod4+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Mod4+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
 # Lock screen
 bindsym Mod4+Shift+z exec "xautolock -locknow &> /dev/null"
 
-# resize window (you can also use the mouse for that)
+# Media Keys
+bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '-5%'
+bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '+5%'
+bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -172,6 +193,11 @@ bar {
 # Startup scripts
 exec xrandr --dpi 220
 exec --no-startup-id feh --bg-scale /home/tomasino/Pictures/background.jpg
-# exec --no-startup-id conky -c ~/.config/i3/.conkyrc
 exec --no-startup-id dropbox start
+exec --no-startup-id nextcloud
+exec --no-startup-id SpiderOakONE
+exec --no-startup-id wire-desktop
+exec --no-startup-id i3-msg 'workspace 1; exec st -e /bin/bash --login'
+exec --no-startup-id i3-msg 'workspace 2; exec st -e /bin/bash --login'
+exec --no-startup-id i3-msg 'workspace 3; exec st -e /bin/bash --login'
 exec xautolock -detectsleep -time 3 -locker "/home/tomasino/bin/i3l" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
