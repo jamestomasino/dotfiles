@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+function mute () {
+  if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    amixer -q -D pulse sset Master toggle
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    let m=$(osascript -e 'output muted of (get volume settings)')
+    if [[ "$m" == "true" ]]; then
+      osascript -e 'set volume output muted false'
+    else
+      osascript -e 'set volume output muted true'
+    fi
+  else
+    echo "Unknown system type"
+  fi
+}
+

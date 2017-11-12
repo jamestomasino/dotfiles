@@ -19,6 +19,7 @@ Plug 'tpope/vim-repeat'                   " Custom mappings take counts and .
 " Styling
 Plug 'romainl/Apprentice'
 Plug 'ywjno/vim-tomorrow-theme'
+Plug 'Badacadabra/vim-archery'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things
