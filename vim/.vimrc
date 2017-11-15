@@ -206,6 +206,15 @@ if has('autocmd')
                     \ | setl spell spl=en_us fdl=4 noru nonu nornu
                     \ | setl fdo+=search
     augroup END
+
+    augroup gophermap
+        au!
+        au VimEnter * if @% == 'gophermap' | set textwidth=66 | endif
+        au VimEnter * if @% == 'gophermap' | set expandtab | endif
+        au VimEnter * if @% == 'gophermap' | set tabstop=2 | endif
+        au VimEnter * if @% == 'gophermap' | set softtabstop=2 | endif
+        au VimEnter * if @% == 'gophermap' | set shiftwidth=2 | endif
+    augroup END
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
