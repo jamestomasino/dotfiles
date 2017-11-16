@@ -59,7 +59,7 @@ apt install -y tmux
 apt install -y stow
 apt install -y teamviewer
 apt install -y veracrypt
-apt install -y vim
+apt install -y vim-gtk
 apt install -y lynx
 apt install -y wire-desktop
 
