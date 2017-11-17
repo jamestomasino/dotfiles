@@ -21,6 +21,8 @@ if [ -f "$HOME/.bash_local" ] ; then
     . "$HOME/.bash_local"
 fi
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if hash rbenv 2>/dev/null ; then
+    eval "$(rbenv init -)"
+fi
 
 # vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
