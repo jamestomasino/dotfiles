@@ -31,7 +31,11 @@ fi
 ######################### SUDO to INSTALL THINGS ###############################
 ################################################################################
 
-sudo -s
+# Ask for administrator password
+sudo -v
+
+# keep-alive: update existing 'sudo' time stamp until finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Install everything for i3
 apt install -y i3 i3status dmenu i3lock xautolock xbacklight feh conky-all
