@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+twt(){
+  local TWTXT=${TWTXT:-"/meta/www/t/tomasino/twtxt.txt"}
+
+  if [ $# -eq 0 ]; then
+    read -ep 'Message: ' input
+    if [ ! -z "$input" ]; then
+      echo -e "`date -Im`\t$input" >> "$TWTXT"
+    else
+      echo "No message. Abort."
+    fi
+  else
+    echo -e "`date -Im`\t$@" >> "$TWTXT"
+  fi
+}
+twt "$@"
