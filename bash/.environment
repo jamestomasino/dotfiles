@@ -69,6 +69,7 @@ PATH=${PATH}:/usr/local/php5/bin
 PATH=${PATH}:/usr/local/mysql/bin
 PATH=${PATH}:/usr/X11/bin
 PATH=${PATH}:/usr/bin
+PATH=${PATH}:/usr/games
 PATH=${PATH}:/bin
 PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/sbin
