@@ -14,4 +14,12 @@ twt(){
     echo -e "`date -Im`\t$@" >> "$TWTXT"
   fi
 }
-twt "$@"
+
+meta="ma.sdf.org"
+host=$(hostname)
+
+if [ $host != $meta ]; then
+  ssh -t tomasino@ma.sdf.org twt "$@"
+else
+  twt "$@"
+fi
