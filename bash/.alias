@@ -91,6 +91,7 @@ alias sdf='mosh sdf'
 alias meta='mosh meta'
 alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
 alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
+alias twtxt='ssh -t meta twtxt timeline'
 
 # Wrap vlc on OSX with a happy little alias
 if ! exists nvlc; then

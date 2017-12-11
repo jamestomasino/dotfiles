@@ -19,7 +19,7 @@ meta="ma.sdf.org"
 host=$(hostname)
 
 if [ $host != $meta ]; then
-  ssh -t tomasino@ma.sdf.org twt "$@"
+  ssh -t meta twt "$@"
 else
   twt "$@"
 fi
