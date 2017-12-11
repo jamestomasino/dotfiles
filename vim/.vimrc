@@ -11,22 +11,17 @@ Plug 'embear/vim-localvimrc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'            " <Enter> to visually align
-Plug 'tpope/vim-eunuch'                   " :Delete :Move :Rename, etc
 Plug 'roryokane/detectindent'             " :DetectIndent to match file struct
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
-Plug 'tpope/vim-repeat'                   " Custom mappings take counts and .
 
 " Styling
 Plug 'romainl/Apprentice'
-Plug 'ywjno/vim-tomorrow-theme'
-Plug 'Badacadabra/vim-archery'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things
 Plug 'tpope/vim-abolish'                  " Fancy abbreviation replacements
 Plug 'junegunn/limelight.vim'             " Highlights only active paragraph
 Plug 'junegunn/goyo.vim'                  " Full screen writing mode
-Plug 'nelstrom/vim-markdown-folding'      " Natural folding by syntax
 Plug 'reedes/vim-lexical'                 " Better spellcheck mappings
 Plug 'reedes/vim-litecorrect'             " Better autocorrections
 Plug 'reedes/vim-textobj-sentence'        " Treat sentences as text objects
@@ -34,11 +29,8 @@ Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
 
 " Development Tools
 Plug 'airblade/vim-gitgutter'             " git changes
-Plug 'tpope/vim-surround'                 " parens, quotes, etc
 Plug 'mileszs/ack.vim'                    " helpful search things
-Plug 'ajh17/VimCompletesMe'               " omnicompletion
 Plug 'tpope/vim-fugitive'                 " git wrapper
-Plug 'tpope/vim-rhubarb'                  " github extension to fugitive
 Plug 'w0rp/ale'                           " linting
 Plug 'sheerun/vim-polyglot'               " syntax for lots of things
 
@@ -124,37 +116,15 @@ endfunction
 
 if has('autocmd')
 
-    augroup general_buffer
-        au!
-        au BufReadPost setlocal nobomb
-        au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-        au BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-    augroup END
-
     augroup func_whitespace
         au!
         au FileType c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-    augroup END
-
-    augroup type_text
-        au!
-        au FileType text setlocal expandtab
-        au filetype text setlocal tabstop=4
-        au FileType text setlocal softtabstop=4
-        au filetype text setlocal shiftwidth=4
     augroup END
 
     augroup type_gitcommit
         au!
         au FileType gitcommit call setpos('.', [0, 1, 1, 0])
         au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-    augroup END
-
-    augroup type_lisp
-        au filetype lisp,scheme setlocal equalprg=scmindent
-        au filetype lisp,scheme setlocal tabstop=2
-        au filetype lisp,scheme setlocal shiftwidth=2
-        au filetype lisp,scheme setlocal expandtab
     augroup END
 
     augroup type_javascript
@@ -241,7 +211,7 @@ highlight clear LineNr          " Current line number row will have same backgro
 " Indent Guides {{{
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 " }}}
 
 " Pencil / Writing Controls {{{
@@ -251,7 +221,6 @@ let g:pencil#joinspaces = 0
 let g:pencil#cursorwrap = 1
 let g:pencil#conceallevel = 3
 let g:pencil#concealcursor = 'c'
-let g:airline_section_x = '%{PencilMode()}'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 " }}}
@@ -278,7 +247,6 @@ let g:ackprg = 'ag --vimgrep'
 " }}}
 
 " sets {{{
-setglobal nobomb
 set nobomb
 set background=dark             " Assume a dark background
 set mouse=                      " Automatically disable mouse usage
@@ -297,7 +265,6 @@ set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
-set number                      " Line numbers on
 set relativenumber              " Use relative line numbers
 set showmatch                   " Show matching brackets/parenthesis
 set incsearch                   " Find as you type search
@@ -306,7 +273,7 @@ set winminheight=0              " Windows can be 0 line high
 set ignorecase                  " Case insensitive search
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set wildmenu
-set lazyredraw
+set nolazyredraw
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
@@ -326,6 +293,8 @@ set expandtab
 set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
+
+colorscheme apprentice
 " }}}
 
 " conditional settings {{{
@@ -333,14 +302,6 @@ if has('persistent_undo')
     set undofile                " So is persistent undo ...
     set undolevels=1000         " Maximum number of changes that can be undone
     set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
-endif
-" }}}
-
-" CMDLine {{{
-if has('cmdline_info')
-    set ruler                   " Show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-    set showcmd                 " Show partial commands in status line and selected characters/lines in visual mode
 endif
 " }}}
 
@@ -375,25 +336,6 @@ if has('statusline')
     set statusline+=\ 
 endif
 " }}}
-
-
-" GUI {{{
-if has('gui_running')
-    set guioptions-=T
-    set lines=40
-    set transparency=0
-    syntax enable
-    set background=dark
-    colorscheme apprentice
-else
-    let g:indent_guides_enable_on_vim_startup = 0
-    set t_Co=256
-    syntax enable
-    set background=dark
-    colorscheme apprentice
-endif
-" }}}
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""" MAPPINGS """""""""""""""""""""""""""""""""""
