@@ -1,0 +1,10 @@
+#!/sdf/sys/pkg6_amd64/bin/bash
+
+echo -e "The most recent 100 books I've read:\n\n" > /sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt
+
+USERAGENT="Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
+FEEDURL="https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5Tb80xd6Y_8TR84JUa5zWax6D4hoAhEK&shelf=read"
+
+/usr/pkg/bin/curl -A "$USERAGENT" -s "$FEEDURL" | /usr/pkg/bin/xml sel -t -m "/rss/channel/item" -v "title" -o " - " -v "author_name" -n >> /sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt
+
+pushd "$HOME/gopher" && git add "reading/recentbooks.txt" && git commit -m "Updated Read Books List" && git pull && git push && popd
