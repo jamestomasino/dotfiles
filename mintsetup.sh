@@ -66,6 +66,8 @@ apt install -y veracrypt
 apt install -y vim-gtk
 apt install -y lynx
 apt install -y wire-desktop
+apt install -y html2text
+apt install -y recode
 
 # Fonts
 apt install -y fonts-firacode
