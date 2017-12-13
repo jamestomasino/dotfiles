@@ -1,4 +1,4 @@
-#!/sdf/sys/pkg6_amd64/bin/bash
+#!/usr/bin/env bash
 
 echo -e "Books I am currently reading:\n\n" > /sdf/arpa/tz/t/tomasino/gopher/reading/currentbooks.txt
 
