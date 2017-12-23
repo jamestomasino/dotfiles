@@ -20,7 +20,7 @@ install:
 	@make $(UNAME)
 
 OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3
+Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
 
@@ -38,6 +38,7 @@ clean:
 	stow -t "$$HOME" -D notmuch
 	stow -t "$$HOME/bin" -D bin
 	stow -t "$$HOME" -D vim
+	stow -t "$$HOME" -D neovim
 	stow -t "$$HOME" -D tmux
 	stow -t "$$HOME" -D surfraw
 	stow -t "$$HOME/.cmus/" -D cmus
@@ -111,6 +112,16 @@ vim:
 	fi
 	@printf "    $(GREEN)Launch vim and run :PlugInstall\n"
 
+neovim:
+	@printf "$(YELLOW)--- neovim ----------------------------------------------\n$(RESET)"
+	mkdir -p "$$HOME/.config/nvim"
+	stow -t "$$HOME/.config/nvim/" neovim
+	if [ ! -f "$$HOME/.vim/autoload/plug.vim" ]; then \
+		curl -sfLo "$$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
+	fi
+	@printf "    $(GREEN)Launch nvim and run :PlugInstall\n"
+
 cmus:
 	@printf "$(YELLOW)--- cmus ------------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/.cmus"
@@ -131,4 +142,4 @@ tmux:
 	fi
 	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n$(RESET)"
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim
