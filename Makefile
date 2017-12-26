@@ -107,7 +107,7 @@ vim:
 	@printf "$(YELLOW)--- vim -------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" vim
 	if [ ! -f "$$HOME/.vim/autoload/plug.vim" ]; then \
-		curl -sfLo ~/.vim/autoload/plug.vim --create-dirs \
+		curl -sfLo "$$HOME/.vim/autoload/plug.vim" --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
 	fi
 	@printf "    $(GREEN)Launch vim and run :PlugInstall\n"
@@ -116,7 +116,7 @@ neovim:
 	@printf "$(YELLOW)--- neovim ----------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/.config/nvim"
 	stow -t "$$HOME/.config/nvim/" neovim
-	if [ ! -f "$$HOME/.vim/autoload/plug.vim" ]; then \
+	if [ ! -f "$$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then \
 		curl -sfLo "$$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
 	fi
