@@ -143,6 +143,7 @@ brew install tig
 ################################################################################
 
 brew install vim --with-python3 --with-tcl --with-perl --override-system-vi
+brew install neovim
 brew install tmux
 brew install reattach-to-user-namespace
 brew install jq

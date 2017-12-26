@@ -19,7 +19,7 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw
+OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim
 Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
