@@ -94,6 +94,11 @@ alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
 alias twtxt='ssh -t meta twtxt timeline'
 
 # Wrap vlc on OSX with a happy little alias
-if ! exists nvlc; then
+if ! hash nvlc 2>/dev/null; then
   alias nvlc="/Applications/VLC.app/Contents/MacOS/VLC --intf ncurses"
+fi
+
+# Use neovim if it exists
+if hash nvim 2>/dev/null; then
+  alias vim='nvim'
 fi
