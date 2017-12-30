@@ -91,7 +91,11 @@ alias sdf='mosh sdf'
 alias meta='mosh meta'
 alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
 alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
-alias twtxt='ssh -t meta twtxt timeline'
+
+# If not on ma.sdf.org, alias this to run remotely
+if [ $(hostname) != 'ma.sdf.org' ]; then
+  alias twtxt='ssh -t meta twtxt timeline'
+fi
 
 # Wrap vlc on OSX with a happy little alias
 if ! hash nvlc 2>/dev/null; then
