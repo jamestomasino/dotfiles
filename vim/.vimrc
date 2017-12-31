@@ -117,60 +117,60 @@ endfunction
 if has('autocmd')
 
     augroup func_whitespace
-        au!
-        au FileType c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+        autocmd!
+        autocmd FileType c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     augroup END
 
     augroup type_gitcommit
-        au!
-        au FileType gitcommit call setpos('.', [0, 1, 1, 0])
-        au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+        autocmd!
+        autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+        autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     augroup END
 
     augroup type_javascript
-        au filetype javascript setlocal tabstop=4
-        au filetype javascript setlocal shiftwidth=4
-        au FileType javascript setlocal softtabstop=4
-        au filetype javascript setlocal noexpandtab
+        autocmd filetype javascript setlocal tabstop=4
+        autocmd filetype javascript setlocal shiftwidth=4
+        autocmd FileType javascript setlocal softtabstop=4
+        autocmd filetype javascript setlocal noexpandtab
     augroup END
 
     augroup type_haskell
-        au FileType haskell compiler ghc
-        au filetype haskell setlocal tabstop=2
-        au filetype haskell setlocal shiftwidth=2
-        au filetype haskell setlocal expandtab
-        au filetype haskell let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-        au filetype haskell let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-        au filetype haskell let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-        au filetype haskell let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-        au filetype haskell let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-        au filetype haskell let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-        au filetype haskell let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+        autocmd FileType haskell compiler ghc
+        autocmd filetype haskell setlocal tabstop=2
+        autocmd filetype haskell setlocal shiftwidth=2
+        autocmd filetype haskell setlocal expandtab
+        autocmd filetype haskell let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+        autocmd filetype haskell let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+        autocmd filetype haskell let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+        autocmd filetype haskell let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+        autocmd filetype haskell let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+        autocmd filetype haskell let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+        autocmd filetype haskell let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
     augroup END
 
     augroup type_python
-        au!
-        au FileType python setlocal expandtab
-        au FileType python setlocal tabstop=4
-        au FileType python setlocal softtabstop=4
-        au FileType python setlocal shiftwidth=4
+        autocmd!
+        autocmd FileType python setlocal expandtab
+        autocmd FileType python setlocal tabstop=4
+        autocmd FileType python setlocal softtabstop=4
+        autocmd FileType python setlocal shiftwidth=4
     augroup END
 
     augroup type_json
-        au!
-        au FileType json setlocal equalprg=python\ -m\ json.tool
+        autocmd!
+        autocmd FileType json setlocal equalprg=python\ -m\ json.tool
     augroup END
 
     augroup bundle_rmarkdown
-        au FileType Rmd setlocal expandtab
-        au FileType Rmd setlocal tabstop=4
-        au FileType Rmd setlocal softtabstop=4
-        au FileType Rmd setlocal shiftwidth=4
+        autocmd FileType Rmd setlocal expandtab
+        autocmd FileType Rmd setlocal tabstop=4
+        autocmd FileType Rmd setlocal softtabstop=4
+        autocmd FileType Rmd setlocal shiftwidth=4
     augroup END
 
     augroup pencil
-        au!
-        au FileType markdown,mkd call pencil#init()
+        autocmd!
+        autocmd FileType markdown,mkd call pencil#init()
                     \ | call lexical#init()
                     \ | call litecorrect#init()
                     \ | setl spell spl=en_us fdl=4 noru nonu nornu
@@ -178,12 +178,12 @@ if has('autocmd')
     augroup END
 
     augroup gophermap
-        au!
-        au VimEnter * if @% == 'gophermap' | set textwidth=66 | endif
-        au VimEnter * if @% == 'gophermap' | set expandtab | endif
-        au VimEnter * if @% == 'gophermap' | set tabstop=2 | endif
-        au VimEnter * if @% == 'gophermap' | set softtabstop=2 | endif
-        au VimEnter * if @% == 'gophermap' | set shiftwidth=2 | endif
+        autocmd!
+        autocmd VimEnter * if @% == 'gophermap' | set textwidth=66 | endif
+        autocmd VimEnter * if @% == 'gophermap' | set expandtab | endif
+        autocmd VimEnter * if @% == 'gophermap' | set tabstop=2 | endif
+        autocmd VimEnter * if @% == 'gophermap' | set softtabstop=2 | endif
+        autocmd VimEnter * if @% == 'gophermap' | set shiftwidth=2 | endif
     augroup END
 endif
 
@@ -365,8 +365,8 @@ nnoremap gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
 " }}}
 
 " Move blocks up and down {{{
-vmap <C-Up> xkP`[V`]
-vmap <C-Down> xp`[V`]
+vnoremap <C-Up> xkP`[V`]
+vnoremap <C-Down> xp`[V`]
 nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
 " }}}
@@ -407,8 +407,8 @@ nnoremap <Leader>cl :diffget //3<CR>    " use merge contents (right)
 " }}}
 
 " command mode helpers {{{
-cmap w!! w !sudo tee % >/dev/null
-cmap cd. lcd %:p:h
+cnoremap w!! w !sudo tee % >/dev/null
+cnoremap cd. lcd %:p:h
 " }}}
 
 " clear search results {{{
