@@ -37,10 +37,10 @@ Plug 'sheerun/vim-polyglot'               " syntax for lots of things
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""" FUNCTIONS """"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""" FUNCTIONS """"""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! InitializeDirectories()
+function! InitDirs()
     let l:parent = $HOME
     let l:prefix = 'vim'
     let l:dir_list = {
@@ -70,7 +70,7 @@ function! InitializeDirectories()
         endif
     endfor
 endfunction
-call InitializeDirectories()
+call InitDirs()
 
 function! StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
@@ -84,31 +84,11 @@ function! StripTrailingWhitespace()
     call cursor(l:l, l:c)
 endfunction
 
-function! ALEGetError()
-    let l:res = ale#statusline#Status()
-    if l:res ==# 'OK'
-        return ''
-    else
-        let l:e_w = split(l:res)
-        if len(l:e_w) == 2 || match(l:e_w, 'E') > -1
-            return ' -' . matchstr(l:e_w[0], '\d\+') . ' '
-        endif
-    endif
+function! MyHighlights() abort
+    highlight clear SignColumn      " SignColumn should match background
+    highlight clear LineNr          " Current line number row will have same background color in relative mode
 endfunction
 
-function! ALEGetWarning()
-    let l:res = ale#statusline#Status()
-    if l:res ==# 'OK'
-        return ''
-    else
-        let l:e_w = split(l:res)
-        if len(l:e_w) == 2
-            return ' -' . matchstr(l:e_w[1], '\d\+')
-        elseif match(l:e_w, 'W') > -1
-            return ' -' . matchstr(l:e_w[0], '\d\+')
-        endif
-    endif
-endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""" AUTOCMD """""""""""""""""""""""""""""""""""
@@ -117,60 +97,60 @@ endfunction
 if has('autocmd')
 
     augroup func_whitespace
-        au!
-        au FileType c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+        autocmd!
+        autocmd filetype c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
     augroup END
 
     augroup type_gitcommit
-        au!
-        au FileType gitcommit call setpos('.', [0, 1, 1, 0])
-        au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+        autocmd!
+        autocmd filetype gitcommit call setpos('.', [0, 1, 1, 0])
+        autocmd filetype gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     augroup END
 
     augroup type_javascript
-        au filetype javascript setlocal tabstop=4
-        au filetype javascript setlocal shiftwidth=4
-        au FileType javascript setlocal softtabstop=4
-        au filetype javascript setlocal noexpandtab
+        autocmd!
+        autocmd filetype javascript setlocal shiftwidth=4
+        autocmd filetype javascript setlocal softtabstop=4
+        autocmd filetype javascript setlocal tabstop=4
+        autocmd filetype javascript setlocal noexpandtab
     augroup END
 
     augroup type_haskell
-        au FileType haskell compiler ghc
-        au filetype haskell setlocal tabstop=2
-        au filetype haskell setlocal shiftwidth=2
-        au filetype haskell setlocal expandtab
-        au filetype haskell let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-        au filetype haskell let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-        au filetype haskell let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-        au filetype haskell let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-        au filetype haskell let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-        au filetype haskell let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-        au filetype haskell let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+        autocmd!
+        autocmd filetype haskell compiler ghc
+        autocmd filetype haskell setlocal shiftwidth=2
+        autocmd filetype haskell setlocal expandtab
+        autocmd filetype haskell let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+        autocmd filetype haskell let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+        autocmd filetype haskell let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+        autocmd filetype haskell let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+        autocmd filetype haskell let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+        autocmd filetype haskell let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+        autocmd filetype haskell let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
     augroup END
 
     augroup type_python
-        au!
-        au FileType python setlocal expandtab
-        au FileType python setlocal tabstop=4
-        au FileType python setlocal softtabstop=4
-        au FileType python setlocal shiftwidth=4
+        autocmd!
+        autocmd filetype python setlocal expandtab
+        autocmd filetype python setlocal softtabstop=4
+        autocmd filetype python setlocal shiftwidth=4
     augroup END
 
     augroup type_json
-        au!
-        au FileType json setlocal equalprg=python\ -m\ json.tool
+        autocmd!
+        autocmd filetype json setlocal equalprg=python\ -m\ json.tool
     augroup END
 
     augroup bundle_rmarkdown
-        au FileType Rmd setlocal expandtab
-        au FileType Rmd setlocal tabstop=4
-        au FileType Rmd setlocal softtabstop=4
-        au FileType Rmd setlocal shiftwidth=4
+        autocmd!
+        autocmd filetype Rmd setlocal expandtab
+        autocmd filetype Rmd setlocal softtabstop=4
+        autocmd filetype Rmd setlocal shiftwidth=4
     augroup END
 
     augroup pencil
-        au!
-        au FileType markdown,mkd call pencil#init()
+        autocmd!
+        autocmd filetype markdown,mkd call pencil#init()
                     \ | call lexical#init()
                     \ | call litecorrect#init()
                     \ | setl spell spl=en_us fdl=4 noru nonu nornu
@@ -178,13 +158,18 @@ if has('autocmd')
     augroup END
 
     augroup gophermap
-        au!
-        au VimEnter * if @% == 'gophermap' | set textwidth=66 | endif
-        au VimEnter * if @% == 'gophermap' | set expandtab | endif
-        au VimEnter * if @% == 'gophermap' | set tabstop=2 | endif
-        au VimEnter * if @% == 'gophermap' | set softtabstop=2 | endif
-        au VimEnter * if @% == 'gophermap' | set shiftwidth=2 | endif
+        autocmd!
+        autocmd VimEnter * if @% == 'gophermap' | set textwidth=66 | endif
+        autocmd VimEnter * if @% == 'gophermap' | set expandtab | endif
+        autocmd VimEnter * if @% == 'gophermap' | set softtabstop=2 | endif
+        autocmd VimEnter * if @% == 'gophermap' | set shiftwidth=2 | endif
     augroup END
+
+    augroup mycolors
+        autocmd!
+        autocmd ColorScheme * call MyHighlights()
+    augroup END
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -203,10 +188,6 @@ set encoding=utf-8
 scriptencoding utf-8
 " }}}
 
-" highlight {{{
-highlight clear SignColumn      " SignColumn should match background
-highlight clear LineNr          " Current line number row will have same background color in relative mode
-" }}}
 
 " Indent Guides {{{
 let g:indent_guides_start_level = 2
@@ -247,60 +228,55 @@ let g:ackprg = 'ag --vimgrep'
 " }}}
 
 " sets {{{
-set nobomb
-set background=dark             " Assume a dark background
-set mouse=                      " Automatically disable mouse usage
-set mousehide                   " Hide the mouse cursor while typing
-set shortmess+=aoOtTI           " Abbrev. of messages (avoids 'hit enter')
-set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-set foldmethod=manual
-set foldlevelstart=20
-set virtualedit=onemore         " Allow for cursor beyond last character
-set history=1000                " Store a ton of history (default is 20)
-set nospell                     " Spell checking off
-set hidden                      " Allow buffer switching without saving
-set backup                      " Backups are nice ...
-set tabpagemax=15               " Only show 15 tabs
-set showmode                    " Display the current mode
-set noshowcmd                   " Don't show the current command
-set cursorline                  " Highlight current line
+set autoindent                  " Indent at the same level of the previous line
 set backspace=indent,eol,start  " Backspace for dummies
-set linespace=0                 " No extra spaces between rows
-set relativenumber              " Use relative line numbers
-set showmatch                   " Show matching brackets/parenthesis
-set incsearch                   " Find as you type search
+set backup                      " Backups are nice ...
+set clipboard^=unnamed,unnamedplus
+set colorcolumn=80
+set cursorline                  " Highlight current line
+set expandtab
+set fileencoding=utf-8
+set foldlevelstart=20
+set foldmethod=manual
+set hidden                      " Allow buffer switching without saving
+set history=1000                " Store a ton of history (default is 20)
 set hlsearch                    " Highlight search terms
-set winminheight=0              " Windows can be 0 line high
 set ignorecase                  " Case insensitive search
-set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-set wildmenu
+set incsearch                   " Find as you type search
 set lazyredraw
-set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-set scrolljump=5                " Lines to scroll when cursor leaves screen
-set scrolloff=3                 " Minimum lines to keep above and below cursor
+set linespace=0                 " No extra spaces between rows
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-set nowrap                      " Do not wrap long lines
-set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+set mouse=                      " Automatically disable mouse usage
+set mousehide                   " Hide the mouse cursor while typing
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
-set splitright                  " Puts new vsplit windows to the right of the current
+set noshowcmd                   " Don't show the current command
+set nowrap                      " Do not wrap long lines
+set relativenumber              " Use relative line numbers
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set shiftwidth=2
+set shortmess+=aoOtTI           " Abbrev. of messages (avoids 'hit enter')
+set showmatch                   " Show matching brackets/parenthesis
+set showmode                    " Display the current mode
+set softtabstop=2
 set splitbelow                  " Puts new split windows to the bottom of the current
-set clipboard^=unnamed,unnamedplus
-set fileencoding=utf-8
-set expandtab
-set noerrorbells
-set colorcolumn=80
+set splitright                  " Puts new vsplit windows to the right of the current
+set tabpagemax=15               " Only show 15 tabs
 set tags=./tags,tags;$HOME
+set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
+set virtualedit=onemore         " Allow for cursor beyond last character
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+set wildmenu
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set winminheight=0              " Windows can be 0 line high
 
 colorscheme apprentice
-" }}}
 
 if has('nvim-0.1.5')            " True color in neovim wasn't added until 0.1.5
     set termguicolors
 endif
+" }}}
 
 " conditional settings {{{
 if has('persistent_undo')
@@ -340,15 +316,15 @@ endif
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap Y y$
-vnoremap < <gv
-vnoremap > >gv
-vnoremap . :normal .<CR>
+xnoremap < <gv
+xnoremap > >gv
+xnoremap . :normal .<CR>
 " }}}
 
 " Delete and put with black hole register {{{
 xnoremap <Leader>p "_dP
 nnoremap <Leader>d "_d
-vnoremap <Leader>d "_d
+xnoremap <Leader>d "_d
 set pastetoggle=<Leader>z
 " }}}
 
@@ -365,7 +341,7 @@ nnoremap <Leader>PO :PencilOff<CR>
 nnoremap <Leader>PT :PencilToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>
-vmap <Enter> <Plug>(EasyAlign)
+xnoremap <Enter> <Plug>(EasyAlign)
 " }}}
 
 " Insert Date/Timestamp for notes {{{
@@ -373,8 +349,8 @@ nnoremap gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
 " }}}
 
 " Move blocks up and down {{{
-vmap <C-Up> xkP`[V`]
-vmap <C-Down> xp`[V`]
+xnoremap <C-Up> xkP`[V`]
+xnoremap <C-Down> xp`[V`]
 nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
 " }}}
@@ -386,7 +362,7 @@ nnoremap <silent> <Leader>O O<Esc>
 
 " Fold selection {{{
 nnoremap <Leader><space> za
-vnoremap <Leader><Space> zf
+xnoremap <Leader><Space> zf
 " }}}
 
 " Splits {{{
@@ -415,8 +391,8 @@ nnoremap <Leader>cl :diffget //3<CR>    " use merge contents (right)
 " }}}
 
 " command mode helpers {{{
-cmap w!! w !sudo tee % >/dev/null
-cmap cd. lcd %:p:h
+cnoremap w!! w !sudo tee % >/dev/null
+cnoremap cd. lcd %:p:h
 " }}}
 
 " clear search results {{{
@@ -431,4 +407,4 @@ if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
 
-" vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
+" vim: set sw=4 sts=4 et tw=78 nospell:
