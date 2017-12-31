@@ -247,8 +247,6 @@ let g:ackprg = 'ag --vimgrep'
 " }}}
 
 " sets {{{
-set nobomb
-set background=dark             " Assume a dark background
 set mouse=                      " Automatically disable mouse usage
 set mousehide                   " Hide the mouse cursor while typing
 set shortmess+=aoOtTI           " Abbrev. of messages (avoids 'hit enter')
@@ -257,7 +255,6 @@ set foldmethod=manual
 set foldlevelstart=20
 set virtualedit=onemore         " Allow for cursor beyond last character
 set history=1000                " Store a ton of history (default is 20)
-set nospell                     " Spell checking off
 set hidden                      " Allow buffer switching without saving
 set backup                      " Backups are nice ...
 set tabpagemax=15               " Only show 15 tabs
@@ -291,7 +288,6 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 set clipboard^=unnamed,unnamedplus
 set fileencoding=utf-8
 set expandtab
-set noerrorbells
 set colorcolumn=80
 set tags=./tags,tags;$HOME
 
