@@ -159,10 +159,12 @@ if has('autocmd')
 
     augroup gophermap
         autocmd!
-        autocmd VimEnter * if @% == 'gophermap' | set textwidth=66 | endif
-        autocmd VimEnter * if @% == 'gophermap' | set expandtab | endif
-        autocmd VimEnter * if @% == 'gophermap' | set softtabstop=2 | endif
-        autocmd VimEnter * if @% == 'gophermap' | set shiftwidth=2 | endif
+        autocmd VimEnter * if @% == 'gophermap'
+                    \ | set textwidth=66 
+                    \ | set expandtab 
+                    \ | set softtabstop=2
+                    \ | set shiftwidth=2 
+                    \ | endif
     augroup END
 
     augroup mycolors
