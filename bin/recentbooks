@@ -7,4 +7,9 @@ FEEDURL="https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5
 
 /usr/pkg/bin/curl -A "$USERAGENT" -s "$FEEDURL" | /usr/pkg/bin/xml sel -t -m "/rss/channel/item" -v "title" -o " - " -v "author_name" -n >> /sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt
 
-pushd "$HOME/gopher" && git add "reading/recentbooks.txt" && git commit -m "Updated Read Books List" && git pull && git push && popd
+pushd "$HOME/gopher" >/dev/null &>/dev/null
+git add "reading/currentbooks.txt"
+git commit -m "Updated Read Books List" -q >/dev/null &>/dev/null
+git pull -q >/dev/null &>/dev/null
+git push -q >/dev/null &>/dev/null
+popd >/dev/null &>/dev/null
