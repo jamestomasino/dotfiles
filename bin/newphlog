@@ -45,7 +45,7 @@ rm "$links"
 echo -e "1$(date +%Y-%m-%d) - $title\t$(basename $post_dir)\n$(cat "$HOME/gopher/phlog/gophermap")" > "$HOME/gopher/phlog/gophermap"
 
 # Update Last Updated date in index gophermap
-sed -i "s/.*Last\ Updated:.*/        ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
+sed -i "s/.*Last\ Updated:.*/ ==== Last Updated: $(date +"%B %d$(DaySuffix), %Y") ====/" "$HOME/gopher/gophermap"
 
 # Unlist and relist phlog on SDF
 pushd /etc && phlog && phlog && popd
