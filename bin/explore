@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GOPHER_CATEGORY=""
+GOPHER_CATEGORY=()
 GOPHER_LOC=""
 VERBOSE=0
 
@@ -18,59 +18,81 @@ OPTIONAL ARGS:
 
 END
 }
-# Script to manage editing of exploration files in gopher hole.
 
-# Get param
-while getopts "hvc:g:t:" opt
-do
-  case "${opt}" in
-    h)
-      show_help
-      exit 0
-      ;;
-    v) VERBOSE=1 ;;
-    c) GOPHER_CATEGORY=${OPTARG} ;;
-    g) GOPHER_LOC=${OPTARG} ;;
-    t) GOPHER_CATEGORY_TITLE=${OPTARG} ;;
-  esac
-done
+function parseopts() {
+  while getopts "hvc:g:" opt
+  do
+    case "${opt}" in
+      h)
+        show_help
+        exit 0
+        ;;
+      v) VERBOSE=1 ;;
+      c) GOPHER_CATEGORY+=($OPTARG) ;;
+      g) GOPHER_LOC=$OPTARG ;;
+    esac
+  done
+  return $OPTIND
+}
 
-shift "$((OPTIND-1))"
+function parseargs() {
+  for p in "$@"
+  do
+    GOPHER_CATEGORY+=("$p")
+  done
+}
 
-if [[ ${GOPHER_CATEGORY} = "" ]]
+# Parse all options, then remaining arguments
+parseopts "$@"
+parseargs "${@:$?}"
+
+# Require at least one category, either with -c or as arg
+if [ ${#GOPHER_CATEGORY[@]} -eq 0 ]
 then
   show_help
   exit 1
 fi
 
+# Require a location to be set for gopher explorations
 if [[ ${GOPHER_LOC} = "" ]]
 then
-  GOPHER_LOC=${GOPHER_EXP_DIR:="$HOME/gopher/explorations"}
+  GOPHER_LOC=${GOPHER_EXP_DIR:-$HOME/gopher/explorations}
 fi
 
+echo "$GOPHER_LOC"
+# Require gopher explorations folder to exist
 if [[ ! -d $GOPHER_LOC ]]
 then
   echo "Gopher Explorations folder invalid. Try using -g"
   exit 1
 fi
 
-GOPHER_CATEGORY_DIR="${GOPHER_LOC}/${GOPHER_CATEGORY}"
-
+# Verbose logging
 if [[ ${VERBOSE} -gt 0 ]]
 then
   set -x
 fi
 
-if [[ ! -d $GOPHER_CATEGORY_DIR ]]
-then
-  echo "Creating new category: $GOPHER_CATEGORY"
-  mkdir -p "$GOPHER_CATEGORY_DIR"
-  touch "${GOPHER_CATEGORY_DIR}/gophermap"
-  GOPHER_CATEGORY_TITLE=${GOPHER_CATEGORY_TITLE:=${GOPHER_CATEGORY//-/\ }}
-  title=($GOPHER_CATEGORY_TITLE)
-  title=${title[@]^}
-  echo "1${title}	${GOPHER_CATEGORY}" >> "${GOPHER_LOC}/gophermap"
-  sort -b -k 1.2 "${GOPHER_LOC}/gophermap" -o "${GOPHER_LOC}/gophermap"
-fi
+# Process each category passed
+for index in ${!GOPHER_CATEGORY[@]}
+do
 
-vim ${GOPHER_CATEGORY_DIR}/*
+  GOPHER_CATEGORY_DIR="${GOPHER_LOC}/${GOPHER_CATEGORY[$index]}"
+
+  # New categories, create folder, update gophermap
+  if [[ ! -d $GOPHER_CATEGORY_DIR ]]
+  then
+    echo "Creating new category: $GOPHER_CATEGORY[$index]"
+    mkdir -p "$GOPHER_CATEGORY_DIR"
+    touch "${GOPHER_CATEGORY_DIR}/gophermap"
+    GOPHER_CATEGORY_TITLE=${GOPHER_CATEGORY[$index]//-/\ }
+    title=($GOPHER_CATEGORY_TITLE)
+    title=${title[@]^}
+    echo "1${title}	${GOPHER_CATEGORY[$index]}" >> "${GOPHER_LOC}/gophermap"
+    sort -b -k 1.2 "${GOPHER_LOC}/gophermap" -o "${GOPHER_LOC}/gophermap"
+  fi
+
+  # Edit each category
+  vim ${GOPHER_CATEGORY_DIR}/*
+done
+
