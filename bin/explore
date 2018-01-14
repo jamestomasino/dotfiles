@@ -59,7 +59,6 @@ then
   GOPHER_LOC=${GOPHER_EXP_DIR:-$HOME/gopher/explorations}
 fi
 
-echo "$GOPHER_LOC"
 # Require gopher explorations folder to exist
 if [[ ! -d $GOPHER_LOC ]]
 then
