@@ -23,13 +23,13 @@ function parseopts() {
   while getopts "hvc:g:" opt
   do
     case "${opt}" in
-      h)
-        show_help
-        exit 0
-        ;;
       v) VERBOSE=1 ;;
       c) GOPHER_CATEGORY+=($OPTARG) ;;
       g) GOPHER_LOC=$OPTARG ;;
+      h|*)
+        show_help
+        exit 0
+        ;;
     esac
   done
   return $OPTIND
@@ -73,7 +73,7 @@ then
 fi
 
 # Process each category passed
-for index in ${!GOPHER_CATEGORY[@]}
+for index in "${!GOPHER_CATEGORY[@]}"
 do
 
   GOPHER_CATEGORY_DIR="${GOPHER_LOC}/${GOPHER_CATEGORY[$index]}"
@@ -81,17 +81,17 @@ do
   # New categories, create folder, update gophermap
   if [[ ! -d $GOPHER_CATEGORY_DIR ]]
   then
-    echo "Creating new category: $GOPHER_CATEGORY[$index]"
+    echo "Creating new category: ${GOPHER_CATEGORY[$index]}"
     mkdir -p "$GOPHER_CATEGORY_DIR"
     touch "${GOPHER_CATEGORY_DIR}/gophermap"
     GOPHER_CATEGORY_TITLE=${GOPHER_CATEGORY[$index]//-/\ }
-    title=($GOPHER_CATEGORY_TITLE)
-    title=${title[@]^}
+    title=($GOPHER_CATEGORY_TITLE) # read as array for auto-caps
+    title="${title[@]^}"
     echo "1${title}	${GOPHER_CATEGORY[$index]}" >> "${GOPHER_LOC}/gophermap"
     sort -b -k 1.2 "${GOPHER_LOC}/gophermap" -o "${GOPHER_LOC}/gophermap"
   fi
 
   # Edit each category
-  vim ${GOPHER_CATEGORY_DIR}/*
+  vim "${GOPHER_CATEGORY_DIR}"/*
 done
 
