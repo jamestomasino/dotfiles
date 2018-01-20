@@ -126,7 +126,7 @@ neovim:
 burrow:
 	@printf "$(YELLOW)--- burrow-----------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/.config/burrow"
-	stow -t "$$HOME/.config/" burrow
+	stow -t "$$HOME/.config/burrow/" burrow
 
 cmus:
 	@printf "$(YELLOW)--- cmus ------------------------------------------------\n$(RESET)"
