@@ -20,7 +20,7 @@ install:
 	@make $(UNAME)
 
 OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim burrow
+Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
 
@@ -44,7 +44,6 @@ clean:
 	stow -t "$$HOME/.cmus/" -D cmus
 	stow -t "$$HOME/.config/i3/" -D i3
 	stow -t "$$HOME" -D i3status
-	stow -t "$$HOME/.config" -D burrow
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
@@ -123,11 +122,6 @@ neovim:
 	fi
 	@printf "    $(GREEN)Launch nvim and run :PlugInstall\n"
 
-burrow:
-	@printf "$(YELLOW)--- burrow-----------------------------------------------\n$(RESET)"
-	mkdir -p "$$HOME/.config/burrow"
-	stow -t "$$HOME/.config/burrow/" burrow
-
 cmus:
 	@printf "$(YELLOW)--- cmus ------------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/.cmus"
@@ -148,4 +142,4 @@ tmux:
 	fi
 	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n$(RESET)"
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim burrow
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim
