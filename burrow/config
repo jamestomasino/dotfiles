@@ -3,3 +3,4 @@ location_phlog="$HOME/Sites/personal/gopher/phlog"
 location_recipebox="$HOME/Sites/personal/gopher/food/recipes"
 git_commit=true
 git_push=true
+post_phlog_command="ssh -t meta phlog && phlog"
