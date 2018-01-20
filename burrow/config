@@ -1,0 +1,2 @@
+git_commit = true
+custom_editor = 'vim -c ":set tw=66|PencilHard"'
