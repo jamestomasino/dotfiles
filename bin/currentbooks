@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 
-OUTPUT="/sdf/arpa/tz/t/tomasino/gopher/reading/currentbooks.txt"
-echo -e "Books I am currently reading:\n\n" > "$OUTPUT"
-
-FEEDURL="https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5Tb80xd6Y_8TR84JUa5zWax6D4hoAhEK&shelf=currently-reading"
-
-/usr/pkg/bin/curl -s "$FEEDURL" | \
-  /usr/pkg/bin/xml sel -t -m "/rss/channel/item/book" -v "num_pages" -n | \
-  awk '/^[0-9]+$/ { a+=$0 } END { print "Only", a, "pages left to read!\n" }' >> "$OUTPUT"
-
-/usr/pkg/bin/curl \
-  -s "$FEEDURL" | \
-  /usr/pkg/bin/xml sel -t -m "/rss/channel/item" -v "title" -o " - " -v "author_name" -n >> "$OUTPUT"
+curl -s "https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5Tb80xd6Y_8TR84JUa5zWax6D4hoAhEK&shelf=currently-reading" | \
+  /usr/pkg/bin/xml sel -t -m "/rss/channel/item" -v "title" -o "^" -v "author_name" -o "^" -v "book/num_pages" -n | \
+  awk 'BEGIN { FS="^"; books="\n"; print "Books I am currently reading:" } /[0-9]+/ {  pages+=$3; books=(books $1 "\n  by " $2 "\n") } END { print "(" pages " pages left to read)\n", books }' | \
+  fold -s -w 66 >> "/sdf/arpa/tz/t/tomasino/gopher/reading/currentbooks.txt"
 
 pushd "$HOME/gopher" >/dev/null &>/dev/null
 git add "reading/currentbooks.txt"
