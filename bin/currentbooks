@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-echo -e "Books I am currently reading:\n\n" > /sdf/arpa/tz/t/tomasino/gopher/reading/currentbooks.txt
-
-USERAGENT="Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
-FEEDURL="https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5Tb80xd6Y_8TR84JUa5zWax6D4hoAhEK&shelf=currently-reading"
-
-/usr/pkg/bin/curl -A "$USERAGENT" -s "$FEEDURL" | /usr/pkg/bin/xml sel -t -m "/rss/channel/item" -v "title" -o " - " -v "author_name" -n >> /sdf/arpa/tz/t/tomasino/gopher/reading/currentbooks.txt
+curl -s "https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5Tb80xd6Y_8TR84JUa5zWax6D4hoAhEK&shelf=currently-reading" | \
+  /usr/pkg/bin/xml sel -t -m "/rss/channel/item" -v "title" -o "^" -v "author_name" -o "^" -v "book/num_pages" -n | \
+  awk 'BEGIN { FS="^"; books="\n"; print "Books I am currently reading:" } $3 ~ /[0-9]+/ {  pages+=$3; books=(books $1 "\n  by " $2 "\n") } END { print "(" pages " pages left to read)\n", books }' | \
+  fold -s -w 66 > "/sdf/arpa/tz/t/tomasino/gopher/reading/currentbooks.txt"
 
 pushd "$HOME/gopher" >/dev/null &>/dev/null
 git add "reading/currentbooks.txt"
