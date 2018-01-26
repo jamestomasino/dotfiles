@@ -16,11 +16,6 @@ if [ -f "$HOME/.bash_private" ] ; then
     . "$HOME/.bash_private"
 fi
 
-# allow for .bash_local overrides
-if [ -f "$HOME/.bash_local" ] ; then
-    . "$HOME/.bash_local"
-fi
-
 if hash rbenv 2>/dev/null ; then
     eval "$(rbenv init -)"
 fi
