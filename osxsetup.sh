@@ -173,6 +173,7 @@ brew install asciinema
 brew install lynx
 brew install pinentry-mac
 brew linkapps pinentry-mac
+brew install csvkit
 
 ################################################################################
 ############################# Applications #####################################
