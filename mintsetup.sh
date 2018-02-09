@@ -68,6 +68,7 @@ apt install -y lynx
 apt install -y wire-desktop
 apt install -y html2text
 apt install -y recode
+apt install -y csvkit
 
 # Fonts
 apt install -y fonts-firacode
