@@ -1,15 +1,37 @@
 #!/usr/bin/env bash
 
-echo -e "The most recent 100 books I've read:\n\n" > /sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt
-
-USERAGENT="Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
 FEEDURL="https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5Tb80xd6Y_8TR84JUa5zWax6D4hoAhEK&shelf=read"
+DEST="/sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt"
+#DEST="${HOME}/recentbooks.txt"
+XMLSTARLET="/usr/pkg/bin/xml"
+#XMLSTARLET="xmlstarlet"
 
-/usr/pkg/bin/curl -A "$USERAGENT" -s "$FEEDURL" | /usr/pkg/bin/xml sel -t -m "/rss/channel/item" -v "title" -o " - " -v "author_name" -n >> /sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt
+################################
+# AWK scripts                  #
+################################
+read -d '' awkParseBooks << 'EOF'
+BEGIN {
+  FS="^"
+  books="\\n"
+  print "The most recent 100 books I\'ve read:"
+}
 
-pushd "$HOME/gopher" >/dev/null &>/dev/null
-git add "reading/recentbooks.txt"
-git commit -m "Updated Read Books List" -q >/dev/null &>/dev/null
-git pull -q >/dev/null &>/dev/null
-git push -q >/dev/null &>/dev/null
-popd >/dev/null &>/dev/null
+$3 ~ /[0-9]+/ {
+  pages+=$3
+  books=(books $1 "\\n  by " $2 "\\n\\n")
+}
+
+END {
+  print "(" pages " pages read)\\n", books
+}
+EOF
+################################
+# End of AWK Scripts           #
+################################
+
+
+FEED=$(curl -s "${FEEDURL}")
+FIELDS=$(${XMLSTARLET} sel -t -m "/rss/channel/item" -v "title" -o "^" -v "author_name" -o "^" -v "book/num_pages" -n <<< "${FEED}")
+OUTPUT=$(awk "$awkParseBooks" <<< "${FIELDS}")
+FOLD=$(fold -s -w 67 <<< "${OUTPUT}")
+echo "${FOLD}" > "${DEST}"
