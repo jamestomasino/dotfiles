@@ -157,16 +157,6 @@ if has('autocmd')
                     \ | setl fdo+=search
     augroup END
 
-    augroup gophermap
-        autocmd!
-        autocmd VimEnter * if @% == 'gophermap'
-                    \ | set textwidth=66 
-                    \ | set expandtab 
-                    \ | set softtabstop=2
-                    \ | set shiftwidth=2 
-                    \ | endif
-    augroup END
-
     augroup mycolors
         autocmd!
         autocmd ColorScheme * call MyHighlights()

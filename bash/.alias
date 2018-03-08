@@ -90,6 +90,7 @@ alias roll='curl -s -L http://bit.ly/10hA8iC | bash'
 
 # sdf
 alias sdf='mosh sdf'
+alias sdftouchphlog='ssh sdf "cd gopher && git pull && touch /ftp/pub/users/tomasino/"'
 alias meta='mosh ma.sdf.org'
 alias tilde='mosh tilde.town'
 alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'

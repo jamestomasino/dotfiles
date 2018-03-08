@@ -108,6 +108,7 @@ bindsym Mod4+Shift+0 move container to workspace 10
 # open applications on specific workspaces
 assign [class="Firefox"] 4
 assign [class="Wire"] 5
+assign [class="Exodus"] 7
 assign [class="SpiderOakONE"] 8
 assign [class="Nextcloud"] 8
 assign [class="Dropbox"] 8
