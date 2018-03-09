@@ -1,17 +1,3 @@
-#include ".Xresources.molokai"
-
-XTerm*faceName: "Fira Code,Fira Code Light"
-XTerm*faceSize: 9
-
-Xft*antialias: true
-Xft*autohint: true
-
-UXTerm*faceName: -misc-fixed-medium-r-normal--0-0-100-100-c-0-iso8859-1
-UXTerm*faceSize: 9
-UXTerm*locale: true
-UXTerm*termName: xterm-256color
-UXTerm*utf8: 1
-
 #if __has_include(".extend.Xresources")
 #include ".extend.Xresources"
 #endif
