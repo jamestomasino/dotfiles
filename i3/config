@@ -2,10 +2,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
-
 workspace_auto_back_and_forth yes
 
 # Before i3 v4.8, we used to recommend this one as the default:
@@ -169,6 +165,21 @@ bar {
         tray_output primary
         position top
 }
+
+## Styling
+new_window pixel 2
+new_float pixel 2
+hide_edge_borders none
+font xft:Hack 8
+
+# class                 border  backgr. text    indicator child_border
+client.background       #ffffff
+client.focused          #EAD49B     #1E272B     #EAD49B     #9D6A47     #9D6A47
+client.unfocused        #EAD49B     #1E272B     #EAD49B     #78824B     #78824B
+client.focused_inactive #EAD49B     #1E272B     #EAD49B     #78824B     #78824B
+client.urgent           #EAD49B     #1E272B     #EAD49B     #78824B     #78824B
+client.placeholder      #EAD49B     #1E272B     #EAD49B     #78824B     #78824B
+
 
 # Startup scripts
 exec xrandr --dpi 220
