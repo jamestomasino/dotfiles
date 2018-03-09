@@ -39,6 +39,7 @@ alias imagemagick='convert' # I always forget the name of the app for imagemagic
 alias figlet='figlet -c -w 204 -f univers'
 alias figletfonts='ls -1 `figlet -I2` | grep "\.flf$" | cut -f 1 -d "." | sort -u'
 alias lynx='lynx -display_charset=utf8'
+alias utc='date -u +%H:%M:%S'
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption -x'
