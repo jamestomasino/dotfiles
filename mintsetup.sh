@@ -69,6 +69,7 @@ apt install -y wire-desktop
 apt install -y html2text
 apt install -y recode
 apt install -y csvkit
+apt install -y liquidsoap liquidsoap-plugin-all
 
 # Fonts
 apt install -y fonts-firacode
