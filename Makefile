@@ -31,14 +31,13 @@ clean:
 	stow -t "$$HOME" -D newsbeuter
 	stow -t "$$HOME" -D R
 	stow -t "$$HOME" -D slate
-	stow -t "$$HOME/Library/Application Support/Karabiner" -D karabiner
 	stow -t "$$HOME" -D utils
 	stow -t "$$HOME" -D zsh
 	stow -t "$$HOME" -D mintty
 	stow -t "$$HOME" -D notmuch
 	stow -t "$$HOME/bin" -D bin
 	stow -t "$$HOME" -D vim
-	stow -t "$$HOME" -D neovim
+	stow -t "$$HOME/.config/nvim/" -D neovim
 	stow -t "$$HOME" -D tmux
 	stow -t "$$HOME" -D surfraw
 	stow -t "$$HOME/.cmus/" -D cmus
