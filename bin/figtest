@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$?" -ne 0 ]; then
+if [ $# -ne 0 ]; then
   text="$*"
 else
   text="sample"
