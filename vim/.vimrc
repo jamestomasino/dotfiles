@@ -15,7 +15,7 @@ Plug 'roryokane/detectindent'             " :DetectIndent to match file struct
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
-Plug 'chriskempson/base16-vim'
+Plug 'romainl/Apprentice'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things
@@ -263,8 +263,7 @@ set wildmenu
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set winminheight=0              " Windows can be 0 line high
 
-let base16colorspace=256
-colorscheme base16-default-dark
+colorscheme apprentice
 " }}}
 
 " conditional settings {{{
