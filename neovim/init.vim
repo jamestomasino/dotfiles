@@ -15,7 +15,7 @@ Plug 'roryokane/detectindent'             " :DetectIndent to match file struct
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
-Plug 'romainl/Apprentice'
+Plug 'chriskempson/base16-vim'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things
@@ -157,16 +157,6 @@ if has('autocmd')
                     \ | setl fdo+=search
     augroup END
 
-    augroup gophermap
-        autocmd!
-        autocmd VimEnter * if @% == 'gophermap'
-                    \ | set textwidth=66 
-                    \ | set expandtab 
-                    \ | set softtabstop=2
-                    \ | set shiftwidth=2 
-                    \ | endif
-    augroup END
-
     augroup mycolors
         autocmd!
         autocmd ColorScheme * call MyHighlights()
@@ -273,11 +263,13 @@ set wildmenu
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set winminheight=0              " Windows can be 0 line high
 
-colorscheme apprentice
-
 if has('nvim-0.1.5')            " True color in neovim wasn't added until 0.1.5
     set termguicolors
 endif
+
+let base16colorspace=256        " enable emulation of 256 colors before
+colorscheme base16-default-dark " inheriting colorscheme from base16
+
 " }}}
 
 " conditional settings {{{

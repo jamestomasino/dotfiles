@@ -15,7 +15,6 @@ Plug 'roryokane/detectindent'             " :DetectIndent to match file struct
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
-Plug 'romainl/Apprentice'
 Plug 'chriskempson/base16-vim'
 
 " Writing/Authoring Tools
