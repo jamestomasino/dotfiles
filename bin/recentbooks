@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 FEEDURL="https://www.goodreads.com/review/list_rss/1204542?key=lsdctjrnacNLPRrQ5Tb80xd6Y_8TR84JUa5zWax6D4hoAhEK&shelf=read"
-DEST="/sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt"
-#DEST="${HOME}/recentbooks.txt"
-XMLSTARLET="/usr/pkg/bin/xml"
-#XMLSTARLET="xmlstarlet"
+#DEST="/sdf/arpa/tz/t/tomasino/gopher/reading/recentbooks.txt"
+DEST="/var/gopher/reading/recentbooks.txt"
+#XMLSTARLET="/usr/pkg/bin/xml"
+XMLSTARLET="xmlstarlet"
 
 ################################
 # AWK scripts                  #
