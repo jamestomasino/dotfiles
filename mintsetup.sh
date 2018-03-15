@@ -49,50 +49,45 @@ apt install -y aircrack-ng
 apt install -y wireshark-common wireshark-qt
 
 # Apps
-apt install -y deluge
-apt install -y calibre
-apt install -y imagemagick
-apt install -y jq
-apt install -y konsole
-apt install -y lbry
-apt install -y newsbeuter
-apt install -y nextcloud-client
-apt install -y openssl
-apt install -y spideroakone
-apt install -y tmux
-apt install -y stow
-apt install -y teamviewer
-apt install -y veracrypt
-apt install -y vim-gtk
-apt install -y lynx
-apt install -y wire-desktop
-apt install -y html2text
-apt install -y recode
-apt install -y csvkit
-apt install -y liquidsoap liquidsoap-plugin-all
-
-# Fonts
-apt install -y fonts-firacode
-apt install -y fonts-inconsolata
+apt install -y deluge                             # torrent client
+apt install -y calibre                            # ebook management
+apt install -y imagemagick                        # image conversion
+apt install -y jq                                 # json parsing
+apt install -y newsbeuter                         # newsreader
+apt install -y nextcloud-client                   # personal cloud hosting
+apt install -y openssl                            # secure socket layer networking
+apt install -y spideroakone                       # secure cloud storage
+apt install -y tmux                               # terminal multiplexer
+apt install -y stow                               # store files by symlink
+apt install -y teamviewer                         # screenshare / remote desktop
+apt install -y veracrypt                          # truecrypt replacement
+apt install -y vim-gtk                            # vim with all the fixin's
+apt install -y lynx                               # the greatest browser
+apt install -y wire-desktop                       # wire messaging app
+apt install -y html2text                          # html parsing
+apt install -y recode                             # convert between character sets
+apt install -y csvkit                             # parsing/working with csv
+apt install -y liquidsoap liquidsoap-plugin-all   # icecast streaming
+apt install -y scrot                              # screenshots
 
 # Dependencies for st terminal emulator
-apt install -y libx11-dev libxext-dev libxft-dev
+apt install -y libx11-dev libxext-dev libxft-dev  # lightweight suckless terminal
 
 # Languages
-apt install -y nodejs nodejs-dev build-essentials
-apt install -y haskell-platform
-apt install -y rbenv
-apt install -y python-pygments
-apt install -y exuberant-ctags
+apt install -y nodejs nodejs-dev build-essentials # js development
+apt install -y haskell-platform                   # haskell development
+apt install -y rbenv                              # ruby development
+apt install -y python-pygments                    # syntax highlighting
+apt install -y exuberant-ctags                    # tag management for code hinting
 
 # Other development
-apt install -y pngquant
-apt install -y tig
+apt install -y pngquant                           # image compression
+apt install -y tig                                # git browser
 
 # Neovim
-add-apt-repository ppa:neovim-ppa/stable
+add-apt-repository ppa:neovim-ppa/stable          # neovim repository
 apt update
-apt install neovim
+apt install neovim                                # vim: the next generation
 
 # FFMPEG
 apt install -y autoconf automake build-essential libass-dev libfreetype6-dev libsdl2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texinfo wget zlib1g-dev
