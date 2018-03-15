@@ -319,14 +319,13 @@ set pastetoggle=<Leader>z
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
+nnoremap <Leader>gl :PencilOff<CR>:set tw=9999<CR>
+nnoremap <Leader>gm :PencilHard<CR>:set tw=66<CR>
 nnoremap ; :Buffers<CR>
 nnoremap <Leader>w :bd<CR>
 nnoremap <Leader>t :GFiles<CR>
 nnoremap <Leader>T :Files<CR>
 nnoremap <Leader>r :Tags<CR>
-nnoremap <Leader>PH :PencilHard<CR>
-nnoremap <Leader>PO :PencilOff<CR>
-nnoremap <Leader>PT :PencilToggle<CR>
 nnoremap <S-Left> :SidewaysLeft<cr>
 nnoremap <S-Right> :SidewaysRight<cr>
 xnoremap <Enter> <Plug>(EasyAlign)
