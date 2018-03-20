@@ -12,7 +12,6 @@ contact() {
   if [ $# -eq 0 ]; then
     local file
     file=$(ls -1 "${CONTACTS_DIR}" | \
-      grep "$*" | \
       fzf \
         --multi \
         --select-1 \
