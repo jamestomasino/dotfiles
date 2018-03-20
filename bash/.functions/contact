@@ -2,7 +2,7 @@
 
 _contact() {
   local lis cur
-  lis=$(find "${CONTACTS_DIR}" | sed -e 's/\..*$//')
+  lis=$(ls -1 "${CONTACTS_DIR}")
   cur=${COMP_WORDS[COMP_CWORD]}
   COMPREPLY=( $(compgen -W "$lis" -- "$cur") )
 }
@@ -11,7 +11,7 @@ contact() {
   : "${CONTACTS_DIR:?'CONTACTS_DIR ENV Var not set'}"
   if [ $# -eq 0 ]; then
     local file
-    file=$(find "$CONTACTS_DIR" | grep "$*" | fzf --multi --select-1 --exit-0 --preview="cat ${CONTACTS_DIR}/{}" --preview-window=right:70%:wrap)
+    file=$(ls -1 "$CONTACTS_DIR" | grep "$*" | fzf --multi --select-1 --exit-0 --preview="cat ${CONTACTS_DIR}/{}" --preview-window=right:70%:wrap)
     [[ -n $file ]] && ${EDITOR:-vim} "${CONTACTS_DIR}/${file}"
   else
     case "$1" in
