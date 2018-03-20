@@ -3,7 +3,9 @@
 # Note taking function and command completion
 _n() {
   local lis cur
-  lis=$(ls -1 "${NOTE_DIR}" | sed -e 's/\..*$//')
+  lis=$(find "${NOTE_DIR}" -name "*.md" | \
+    sed -e "s|${NOTE_DIR}/||" | \
+    sed -e 's/\.md$//')
   cur=${COMP_WORDS[COMP_CWORD]}
   COMPREPLY=( $(compgen -W "$lis" -- "$cur") )
 }
@@ -11,8 +13,9 @@ n() {
   : "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
   if [ $# -eq 0 ]; then
     local file
-    file=$(ls -1 "${NOTE_DIR}" | \
-      sed -e 's/\..*$//' | \
+    file=$(find "${NOTE_DIR}" -name "*.md" | \
+      sed -e "s|${NOTE_DIR}/||" | \
+      sed -e 's/\.md$//' | \
       fzf \
         --multi \
         --select-1 \
