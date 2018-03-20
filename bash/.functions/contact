@@ -25,7 +25,7 @@ contact() {
         rm "${CONTACTS_DIR}"/"$2"
         ;;
       *)
-        $EDITOR "${CONTACTS_DIR}"/"$*"
+        ${EDITOR:-vim} "${CONTACTS_DIR}"/"$*"
         ;;
     esac
   fi
