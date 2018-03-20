@@ -2,23 +2,23 @@
 
 # Note taking function and command completion
 _n() {
-	local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')
-	local cur=${COMP_WORDS[COMP_CWORD]}
-	COMPREPLY=( $(compgen -W "$lis" -- $cur) )
+  local lis=$(ls -1 "$NOTE_DIR" | sed -e 's/\..*$//')
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$lis" -- $cur) )
 }
 n() {
-	: "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
-	if [ $# -eq 0 ]; then
-		ls -1 "$NOTE_DIR" | grep "$*" | sed -e 's/\..*$//'
-	else
-		case "$1" in
-			"-d")
-				rm "$NOTE_DIR"/"$2".md
-				;;
-			*)
-				$EDITOR "$NOTE_DIR"/"$*".md
-				;;
-		esac
-	fi
+  : "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
+  if [ $# -eq 0 ]; then
+    ${EDITOR:-vim} "$NOTE_DIR"/"$(ls -1 "$NOTE_DIR" | grep "$*" | sed -e 's/\..*$//' | fzf --multi --select-1 --exit-0)".md
+  else
+    case "$1" in
+      "-d")
+        rm "$NOTE_DIR"/"$2".md
+        ;;
+      *)
+        $EDITOR "$NOTE_DIR"/"$*".md
+        ;;
+    esac
+  fi
 }
 complete -F _n n
