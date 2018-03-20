@@ -147,4 +147,9 @@ zathura:
 	mkdir -p "$$HOME/.config/zathura"
 	stow -t "$$HOME/.config/zathura" zathura
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura
+mokupona:
+	@printf "$(YELLOW)--- moku-pona -------------------------------------------\n$(RESET)"
+	mkdir -p "$$HOME/.moku-pona"
+	stow -t "$$HOME/.moku-pona" mokupona
+
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona
