@@ -53,3 +53,4 @@
 1oms	/users/oms	sdf.org	70
 1hairylarry	/users/hairylarry	sdf.org	70
 1ckeen	/ckeen/phlog	vernunftzentrum.de	70
+1wlsn	/users/wlsn/phlog	sdf-eu.org	70
