@@ -40,6 +40,7 @@ alias figlet='figlet -c -w 204 -f univers'
 alias figletfonts='ls -1 `figlet -I2` | grep "\.flf$" | cut -f 1 -d "." | sort -u'
 alias lynx='lynx -display_charset=utf8'
 alias utc='date -u +%H:%M:%S'
+alias audiobook='mpv --save-position-on-quit'
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption -x'
