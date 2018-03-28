@@ -257,7 +257,7 @@ cd ~/Sites/system/dotfiles && ./make
 ################################################################################
 
 vim -c ":PlugInstall|q|q" # auto install plugins
-$HOME/.tmux/plugins/tpm/bin/install_plugins
+"$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
 brew install gpg
 
@@ -265,11 +265,14 @@ brew install gpg
 ####################### System Configuration ###################################
 ################################################################################
 
+# Disable weird new apple setting to set keyboard rate
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0.02
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 # Set a shorter Delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 12
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
