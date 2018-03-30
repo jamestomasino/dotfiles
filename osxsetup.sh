@@ -87,6 +87,7 @@ pip install --user pyyaml
 pip install --user colorama
 pip install rtv
 pip install qrcode
+pip install csvkit
 
 # haskell
 brew install haskell-stack
@@ -173,7 +174,6 @@ brew install asciinema
 brew install lynx
 brew install pinentry-mac
 brew linkapps pinentry-mac
-brew install csvkit
 
 ################################################################################
 ############################# Applications #####################################
