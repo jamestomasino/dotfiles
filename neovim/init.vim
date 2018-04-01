@@ -96,6 +96,8 @@ endfunction
 
 if has('autocmd')
 
+    autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
+
     augroup func_whitespace
         autocmd!
         autocmd filetype c,markdown,cpp,java,go,php,javascript,python,twig,text,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
