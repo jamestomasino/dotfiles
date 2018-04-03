@@ -27,6 +27,9 @@ Plug 'reedes/vim-litecorrect'             " Better autocorrections
 Plug 'reedes/vim-textobj-sentence'        " Treat sentences as text objects
 Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
 
+" Reading Tools
+Plug 'jamestomasino/vim-scroll'           " :ScrollDown (ESC to stop)
+
 " Development Tools
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'mileszs/ack.vim'                    " helpful search things
@@ -95,6 +98,8 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if has('autocmd')
+
+    autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
 
     augroup func_whitespace
         autocmd!
@@ -325,6 +330,7 @@ set pastetoggle=<Leader>z
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
+nnoremap <Leader>gr :ScrollDown<CR>
 
 nnoremap ; :Buffers<CR>
 nnoremap <Leader>gl :PencilOff<CR>:set tw=9999<CR>

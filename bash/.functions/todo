@@ -2,70 +2,70 @@
 
 # Todo List & Completion
 _todo() {
-	local iter use cur
-	cur=${COMP_WORDS[COMP_CWORD]}
-	use=$( awk '{gsub(/ /,"\\ ")}8' "$TODOFILE" )
-	use="${use//\\ /___}"
-	for iter in $use; do
-		if [[ $iter =~ ^$cur ]]; then
-			COMPREPLY+=( "${iter//___/ }" )
-		fi
-	done
+  local iter use cur
+  cur=${COMP_WORDS[COMP_CWORD]}
+  use=$( awk '{gsub(/ /,"\\ ")}8' "$TODOFILE" )
+  use="${use//\\ /___}"
+  for iter in $use; do
+    if [[ $iter =~ ^$cur ]]; then
+      COMPREPLY+=( "${iter//___/ }" )
+    fi
+  done
 }
-function todo {
-	: "${TODO:?'TODO ENV Var not set. Please set to path of default todo file.'}"
-	# If we are in a tmux session, name the file with the session name
-	# If not in tmux, use the full $TODO env var for path/file
-	if echo "$TERM" | grep -Fq screen && test "$TMUX" ; then
-		sessname=$(tmux display -p '#S')
-		todopath=$(dirname "$TODO")
-		TODOFILE=$todopath/$sessname".txt"
-		TODOARCHIVEFILE=$todopath/$sessname".archive.txt"
-	else
-		TODOFILE=$TODO
-		TODOARCHIVEFILE=${TODO%.*}.archive.txt
-	fi
+todo() {
+  : "${TODO:?'TODO ENV Var not set. Please set to path of default todo file.'}"
+  # If we are in a tmux session, name the file with the session name
+  # If not in tmux, use the full $TODO env var for path/file
+  if echo "$TERM" | grep -Fq screen && test "$TMUX" ; then
+    sessname=$(tmux display -p '#S')
+    todopath=$(dirname "$TODO")
+    TODOFILE=$todopath/$sessname".txt"
+    TODOARCHIVEFILE=$todopath/$sessname".archive.txt"
+  else
+    TODOFILE=$TODO
+    TODOARCHIVEFILE=${TODO%.*}.archive.txt
+  fi
 
-	if [ $# -eq 0 ]; then
-		if [ -f "$TODOFILE" ] ; then
-			awk '{ print NR, "-", $0 }' "$TODOFILE" 
-		fi
-	else
-		case "$1" in
-			-h|--help)
-				echo "todo - Command Line Todo List Manager"
-				echo " "
-				echo "Creates a text-based todo list and provides basic operations to add and remove elements from the list. If using TMUX, the todo list is session based, using the name of your active session."
-				echo " "
-				echo "usage: todo                                 # display todo list"
-				echo "usage: todo (--help or -h)                  # show this help"
-				echo "usage: todo (--add or -a) [activity name]   # add a new activity to list"
-				echo "usage: todo (--archive)                     # show completed tasks in archive list"
-				echo "usage: todo (--done or -d) [name or #]      # complete and archive activity"
-				;;
-			-a|--add)
-				echo "${*:2}" >> "$TODOFILE"
-				;;
-			--archive)
-				if [ -f "$TODOARCHIVEFILE" ] ; then
-					cat "$TODOARCHIVEFILE"
-				fi
-				;;
-			-d|--done)
-				re='^[0-9]+$'
-				if ! [[ "$2" =~ $re ]] ; then
-					match=$(sed -n "/$2/p" "$TODOFILE" 2> /dev/null)
-					sed -i "" -e "/$2/d" "$TODOFILE" 2> /dev/null
-				else
-					match=$(sed -n "$2p" "$TODOFILE" 2> /dev/null)
-					sed -i "" -e "$2d" "$TODOFILE" 2> /dev/null
-				fi
-				if [ ! -z "$match" ]; then
-					echo "$(date +"%Y-%m-%d %H:%M:%S") - $match" >> "$TODOARCHIVEFILE"
-				fi
-				;;
-		esac
-	fi
+  if [ $# -eq 0 ]; then
+    if [ -f "$TODOFILE" ] ; then
+      awk '{ print NR, "-", $0 }' "$TODOFILE" 
+    fi
+  else
+    case "$1" in
+      -h|--help)
+        echo "todo - Command Line Todo List Manager"
+        echo " "
+        echo "Creates a text-based todo list and provides basic operations to add and remove elements from the list. If using TMUX, the todo list is session based, using the name of your active session."
+        echo " "
+        echo "usage: todo                                 # display todo list"
+        echo "usage: todo (--help or -h)                  # show this help"
+        echo "usage: todo (--add or -a) [activity name]   # add a new activity to list"
+        echo "usage: todo (--archive)                     # show completed tasks in archive list"
+        echo "usage: todo (--done or -d) [name or #]      # complete and archive activity"
+        ;;
+      -a|--add)
+        echo "${*:2}" >> "$TODOFILE"
+        ;;
+      --archive)
+        if [ -f "$TODOARCHIVEFILE" ] ; then
+          cat "$TODOARCHIVEFILE"
+        fi
+        ;;
+      -d|--done)
+        re='^[0-9]+$'
+        if ! [[ "$2" =~ $re ]] ; then
+          match=$(sed -n "/$2/p" "$TODOFILE" 2> /dev/null)
+          sed -i "" -e "/$2/d" "$TODOFILE" 2> /dev/null
+        else
+          match=$(sed -n "$2p" "$TODOFILE" 2> /dev/null)
+          sed -i "" -e "$2d" "$TODOFILE" 2> /dev/null
+        fi
+        if [ ! -z "$match" ]; then
+          echo "$(date +"%Y-%m-%d %H:%M:%S") - $match" >> "$TODOARCHIVEFILE"
+        fi
+        ;;
+    esac
+  fi
 
 }
 complete -F _todo todo

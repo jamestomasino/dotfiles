@@ -319,6 +319,8 @@ set pastetoggle=<Leader>z
 " Plugin mappings {{{
 nnoremap <Leader>gy :Goyo<CR>
 nnoremap <Leader>ll :Limelight!!<CR>
+nnoremap <Leader>gr :ScrollDown<CR>
+
 nnoremap <Leader>gl :PencilOff<CR>:set tw=9999<CR>
 nnoremap <Leader>gm :PencilHard<CR>:set tw=66<CR>
 nnoremap ; :Buffers<CR>

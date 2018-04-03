@@ -22,7 +22,8 @@ n() {
         --exit-0 \
         --preview="cat ${NOTE_DIR}/{}.md" \
         --preview-window=right:70%:wrap)
-    [[ -n $file ]] && ${EDITOR:-vim} "${NOTE_DIR}/${file}.md"
+    [[ -n $file ]] && \
+      ${EDITOR:-vim} "${NOTE_DIR}/${file}.md"
   else
     case "$1" in
       "-d")
