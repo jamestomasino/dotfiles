@@ -272,7 +272,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 1
 
 # Set a shorter Delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
@@ -385,7 +385,7 @@ sudo nvram SystemAudioVolume=" "
 # Set default desktop background
 curl "https://s3.amazonaws.com/squishyface/images/background.jpg" > "background.jpg"
 sudo mv "background.jpg" "/Library/Desktop Pictures/background.jpg"
-rm -rf "$HOME/Library/Application\ Support/Dock/desktoppicture.db"
+rm -rf "$HOME/Library/Application Support/Dock/desktoppicture.db"
 sudo rm -rf "/System/Library/CoreServices/DefaultDesktop.jpg"
 sudo ln -s "/Library/Desktop Pictures/background.jpg" "/System/Library/CoreServices/DefaultDesktop.jpg"
 
