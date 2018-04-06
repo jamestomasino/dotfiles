@@ -69,6 +69,7 @@ apt install -y recode                             # convert between character se
 apt install -y csvkit                             # parsing/working with csv
 apt install -y liquidsoap liquidsoap-plugin-all   # icecast streaming
 apt install -y scrot                              # screenshots
+apt install -y dict dictd dict-gcide              # local dictionary
 
 # Dependencies for st terminal emulator
 apt install -y libx11-dev libxext-dev libxft-dev  # lightweight suckless terminal
