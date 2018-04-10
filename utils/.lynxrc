@@ -3774,15 +3774,27 @@ SYSLOG_REQUESTED_URLS:FALSE
 # not support HTTP/1.0 which can be used by switching to the later protocol.
 #HTTP_PROTOCOL:1.0
 
+#   black         red            green         brown
+#   blue          magenta        cyan          lightgray
+#   gray          brightred      brightgreen   yellow
+#   brightblue    brightmagenta  brightcyan    white
 
-COLOR:0:white:black
+# plain text
+COLOR:0:lightgray:black
+# links
 COLOR:1:blue:black
-COLOR:2:yellow:blue
+# address bar
+COLOR:2:brightcyan:gray
+# unknown
 COLOR:3:white:black
+# unknown
 COLOR:4:white:black
-COLOR:5:blue:black
+# form fields
+COLOR:5:brown:black
+# active link
 COLOR:6:brightred:black
-COLOR:7:magenta:black
+# unknown
+COLOR:7:green:black
 
 # let's tackle cookies while here (we accept them all)...
 
