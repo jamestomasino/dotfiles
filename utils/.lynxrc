@@ -2973,7 +2973,7 @@ PERSONAL_MAILCAP:.mailcap
 #COLOR:4:magenta:white
 #COLOR:5:blue:white
 #COLOR:6:red:white
-COLOR:6:brightred:black
+#COLOR:6:brightred:black
 #COLOR:7:magenta:cyan
 
 .h2 COLOR_STYLE
@@ -2992,7 +2992,7 @@ COLOR:6:brightred:black
 # and together with each file specified, provides those as choices in the
 # O)ptions menu.
 #
-#COLOR_STYLE: lynx.lss
+#COLOR_STYLE: ~/.lynx.lss
 #COLOR_STYLE: blue-background.lss
 #COLOR_STYLE: bright-blue.lss
 #COLOR_STYLE: midnight.lss
@@ -3774,6 +3774,21 @@ SYSLOG_REQUESTED_URLS:FALSE
 # not support HTTP/1.0 which can be used by switching to the later protocol.
 #HTTP_PROTOCOL:1.0
 
+
+COLOR:0:white:black
+COLOR:1:blue:black
+COLOR:2:yellow:blue
+COLOR:3:white:black
+COLOR:4:white:black
+COLOR:5:blue:black
+COLOR:6:brightred:black
+COLOR:7:magenta:black
+
+# let's tackle cookies while here (we accept them all)...
+
+FORCE_SSL_COOKIES_SECURE:TRUE
+SET_COOKIES:TRUE
+ACCEPT_ALL_COOKIES:TRUE
 # external
 EXTERNAL:ftp:w3m %s:TRUE
 EXTERNAL:file:w3m %s:TRUE
