@@ -3784,7 +3784,7 @@ COLOR:0:lightgray:black
 # links
 COLOR:1:blue:black
 # address bar
-COLOR:2:brightcyan:gray
+COLOR:2:brightcyan:black
 # unknown
 COLOR:3:white:black
 # unknown
