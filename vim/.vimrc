@@ -109,10 +109,10 @@ if has('autocmd')
 
     augroup type_javascript
         autocmd!
-        autocmd filetype javascript setlocal shiftwidth=4
-        autocmd filetype javascript setlocal softtabstop=4
-        autocmd filetype javascript setlocal tabstop=4
-        autocmd filetype javascript setlocal noexpandtab
+        autocmd filetype javascript setlocal shiftwidth=2
+        autocmd filetype javascript setlocal softtabstop=2
+        autocmd filetype javascript setlocal tabstop=2
+        autocmd filetype javascript setlocal expandtab
     augroup END
 
     augroup type_haskell
@@ -134,6 +134,7 @@ if has('autocmd')
         autocmd filetype python setlocal expandtab
         autocmd filetype python setlocal softtabstop=4
         autocmd filetype python setlocal shiftwidth=4
+        autocmd filetype python setlocal tabstop=4
     augroup END
 
     augroup type_json
@@ -146,6 +147,7 @@ if has('autocmd')
         autocmd filetype Rmd setlocal expandtab
         autocmd filetype Rmd setlocal softtabstop=4
         autocmd filetype Rmd setlocal shiftwidth=4
+        autocmd filetype Rmd setlocal tabstop=4
     augroup END
 
     augroup pencil
@@ -217,6 +219,11 @@ let g:limelight_default_coefficient = 0.5
 
 " Ack.vim {{{
 let g:ackprg = 'ag --vimgrep'
+" }}}
+
+" Ale {{{
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_javascript_prettier_use_local_config = 1
 " }}}
 
 " sets {{{
