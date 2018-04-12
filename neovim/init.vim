@@ -227,7 +227,7 @@ let g:ackprg = 'ag --vimgrep'
 " }}}
 
 " Ale {{{
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --no-semi'
 let g:ale_javascript_prettier_use_local_config = 1
 " }}}
 
