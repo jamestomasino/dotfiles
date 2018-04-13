@@ -120,6 +120,7 @@ shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s nocaseglob
+stty erase ^H
 
 # PROMPT COMMANDS
 PROMPT_COMMAND="history -a; history -r; $PROMPT_COMMAND"
