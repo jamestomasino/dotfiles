@@ -9,6 +9,7 @@ set show-all-if-ambiguous on
 set visible-stats on
 set mark-symlinked-directories on
 set skip-completed-text on
+set enable-bracketed-paste on
 
 # Use the string that has already been typed as the prefix for searching
 # through commands (i.e. more intelligent Up/Down-arrow behavior)
