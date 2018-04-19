@@ -68,3 +68,5 @@
 1cmccabe	/users/cmccabe/	gopher.club	70
 0selmar	/blog.txt	cloudb.zapto.org	70
 1tomasino	/phlog	gopher.black	70
+1deftly	/articles/	deftly.net	70
+1ander	/blog/	9gw.ddns.net	70
