@@ -89,6 +89,8 @@ export PAGER=less
 
 # path
 PATH=/usr/local/bin
+PATH=${HOME}/.yarn/bin:${PATH}
+PATH=${HOME}/.config/yarn/global/node_modules/.bin:${PATH}
 PATH=${PATH}:/usr/pkg/bin
 PATH=${PATH}:${HOME}/bin
 PATH=${PATH}:${HOME}/.node/bin
@@ -107,12 +109,7 @@ PATH=${PATH}:/bin
 PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/sbin
 PATH=${PATH}:.
-PATH=${PATH}:/Library/Frameworks/Python.framework/Versions/Current/bin
 PATH=${PATH}:${HOME}/.local/bin
-PATH=${PATH}:${HOME}/sdk/tools
-PATH=${PATH}:${HOME}/sdk/tools/bin
-PATH=${PATH}:${HOME}/sdk/platform-tools
-PATH=${PATH}:${HOME}/sdk/build-tools/25.0.2
 PATH=${PATH}:/sys/sdf/bin
 
 # options
@@ -120,7 +117,6 @@ shopt -s cdspell
 shopt -s checkwinsize
 shopt -s histappend
 shopt -s nocaseglob
-stty erase ^H
 
 # PROMPT COMMANDS
 PROMPT_COMMAND="history -a; history -r; $PROMPT_COMMAND"

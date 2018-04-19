@@ -23,6 +23,9 @@ if [ -f "$HOME/.platform" ] ; then
     . "$HOME/.platform"
 fi
 
+# Set backspace
+stty erase ^H
+
 # git-completion
 if exists brew; then
     if [ -f "$(brew --prefix)/etc/bash_completion" ] ; then
