@@ -27,7 +27,7 @@ text-width 80
 
 goto-next-feed no
 
-browser "lynx %u"
+browser "lynx -display_charset=utf8 --lss=/dev/null %u"
 
 bind-key j down feedlist
 bind-key k up feedlist
