@@ -173,7 +173,7 @@ exec --no-startup-id SpiderOakONE
 exec --no-startup-id wire-desktop
 exec --no-startup-id i3-msg 'workspace 1; exec st -e /bin/bash --login'
 exec --no-startup-id i3-msg 'workspace 2; exec st -e /bin/bash --login'
-exec xautolock -detectsleep -time 5 -locker "/home/tomasino/bin/i3l" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
+exec xautolock -detectsleep -time 5 -locker "/home/tomasino/bin/i3l" -corners -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
 
 ## Base16 Default Dark
 # Author: Chris Kempson (http://chriskempson.com)

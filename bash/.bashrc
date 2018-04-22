@@ -21,4 +21,3 @@ if hash rbenv 2>/dev/null ; then
 fi
 
 # vim: set sw=4 ts=4 sts=4 et tw=78 nospell:
-. "/home/tomasino/.acme.sh/acme.sh.env"
