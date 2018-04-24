@@ -11,6 +11,7 @@ http://feeds.feedburner.com/stephentudor blogs
 http://destroytoday.com/feed/ blogs
 https://howtobeastoic.wordpress.com/feed/ blogs
 "exec:curl -s gopher://gopher.black/0/rss.xml" blogs
+https://vincent.bernat.im/en/blog/atom.xml blogs
 
 #
 # religion
