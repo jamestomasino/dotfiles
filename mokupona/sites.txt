@@ -31,9 +31,8 @@
 1solene	/~solene	dataswamp.org	70
 0ulcer	/users/ulcer/atom.xml	sdf.org	70
 1siobhan	/users/siobhan	sdf.org	70
-1yargo (sdf)	/users/yargo/glog	sdf.org	70
-1yargo (circumlunar)	/~yargo/glog	circumlunar.space	70
-1c25l	/~c25l/phlog	circumlunar.space	70
+1yargo - sdf	/users/yargo/glog	sdf.org	70
+1yargo - circumlunar	/~yargo/glog	circumlunar.space	70
 1yin feng	/users/tomatobodhi/phlog	sdf.org	70
 1cpider	/users/cpider	sdf.org	70
 1zelbrium	/users/zelbrium	sdf.org	70
@@ -44,9 +43,9 @@
 1caff	/~caff/feels	tilde.town	70
 1endorphant	/~endorphant/feels	tilde.town	70
 1vilmibm	/~vilmibm/feels	tilde.town	70
-1tfurrows (sdf)	/users/tfurrows/phlog	sdf.org	70
-1tfurrows (grex)	/~tfurrows/phlog	grex.org	70
-1tfurrows (circumlunar)	/~tfurrows/phlog	circumlunar.space	70
+1tfurrows - sdf	/users/tfurrows/phlog	sdf.org	70
+1tfurrows - grex	/~tfurrows/phlog	grex.org	70
+1tfurrows - circumlunar	/~tfurrows/phlog	circumlunar.space	70
 1mijk	/~mijk/phlog	grex.org	70
 1chals	/users/chals/phlog	sdf-eu.org	70
 1lostnbronx	/lostnbronx/lostnblog/newer-stuff	gopher.info-underground.net	70
