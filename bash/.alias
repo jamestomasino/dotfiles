@@ -97,6 +97,7 @@ alias meta='mosh ma.sdf.org'
 alias tilde='mosh tilde.town'
 alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
 alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
+alias lush='nvlc "https://somafm.com/lush130.pls"'
 
 # If not on ma.sdf.org, alias this to run remotely
 if [ $(hostname) != 'ma.sdf.org' ]; then
