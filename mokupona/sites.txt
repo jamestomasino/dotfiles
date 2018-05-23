@@ -5,13 +5,13 @@
 1sparcipx	/users/sparcipx/phlog	sdf.org	70
 1gunnarfrost	/users/gunnarfrost	sdf.org	70
 1solderpunk	/~solderpunk/phlog	circumlunar.space	70
-1slugmax	/~slugmax/phlog	circumlunar.space	70
+1slugmax - circumlunar	/~slugmax/phlog	circumlunar.space	70
+1slugmax - sdf	/users/slugmax/phlog	sdf.org	70
 1pet84rik	/users/pet84rik/BLOG	sdf.org	70
 1kvothe	/users/kvothe/phlog	sdf.org	70
 1jynx	/phlog	leveck.us	70
 1xmanmonk	/users/xmanmonk	sdf.org	70
 1mhj	/users/mhj/phlog	sdf.org	70
-1ze libertine gamer	/phlog	zelibertinegamer.me	70
 1defanor	/~defanor	uberspace.net	70
 1jirka	/users/jirka/Phlog	sdf.org	70
 1jebug29	/users/jebug29/log	sdf.org	70
@@ -69,3 +69,7 @@
 1tomasino	/phlog	gopher.black	70
 1deftly	/articles/	deftly.net	70
 1ander	/blog/	9gw.ddns.net	70
+1jellybean styling	/phlog	gopher.jellybeanstyling.com	70
+1kroovy	/phlog	kroovy.de	70
+1orbifx		orbitalfox.eu	70
+1tfurrows - vernunftzentrum	/tfurrows/index.gph	vernunftzentrum.de	70
