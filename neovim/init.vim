@@ -31,6 +31,7 @@ Plug 'tpope/vim-fugitive'                 " git wrapper
 Plug 'w0rp/ale'                           " linting
 Plug 'sheerun/vim-polyglot'               " syntax for lots of things
 Plug 'posva/vim-vue'                      " vue specific syntax support
+Plug 'jamestomasino/vim-conceal'          " conceal formatting for js/py
 
 call plug#end()
 

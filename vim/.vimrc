@@ -33,6 +33,7 @@ Plug 'mileszs/ack.vim'                    " helpful search things
 Plug 'tpope/vim-fugitive'                 " git wrapper
 Plug 'w0rp/ale'                           " linting
 Plug 'sheerun/vim-polyglot'               " syntax for lots of things
+Plug 'jamestomasino/vim-conceal'          " conceal formatting for js/py
 
 call plug#end()
 
