@@ -9,9 +9,7 @@ call plug#begin('~/.vim/plugged')
 " Global
 Plug 'embear/vim-localvimrc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'            " <Enter> to visually align
-Plug 'roryokane/detectindent'             " :DetectIndent to match file struct
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
@@ -27,16 +25,12 @@ Plug 'reedes/vim-litecorrect'             " Better autocorrections
 Plug 'reedes/vim-textobj-sentence'        " Treat sentences as text objects
 Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
 
-" Reading Tools
-Plug 'jamestomasino/vim-scroll'           " :ScrollDown (ESC to stop)
-
 " Development Tools
 Plug 'airblade/vim-gitgutter'             " git changes
-Plug 'mileszs/ack.vim'                    " helpful search things
 Plug 'tpope/vim-fugitive'                 " git wrapper
 Plug 'w0rp/ale'                           " linting
 Plug 'sheerun/vim-polyglot'               " syntax for lots of things
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'                      " vue specific syntax support
 
 call plug#end()
 
@@ -77,22 +71,19 @@ endfunction
 call InitDirs()
 
 function! StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let l:_s=@/
-    let l:l = line('.')
-    let l:c = col('.')
-    " do the business:
-    %s/\s\+$//e
-    " clean up: restore previous search history, and cursor position
-    let @/=l:_s
-    call cursor(l:l, l:c)
+    if !&binary && &filetype != 'diff'
+        normal mz
+        normal Hmy
+        %s/\s\+$//e
+        normal 'yz<CR>
+        normal `z
+    endif
 endfunction
 
 function! MyHighlights() abort
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
 endfunction
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""" AUTOCMD """""""""""""""""""""""""""""""""""
@@ -223,13 +214,16 @@ let g:localvimrc_ask=0
 let g:limelight_default_coefficient = 0.5
 " }}}
 
-" Ack.vim {{{
-let g:ackprg = 'ag --vimgrep'
-" }}}
-
 " Ale {{{
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --no-semi'
 let g:ale_javascript_prettier_use_local_config = 1
+" }}}
+
+" ag support {{{
+if executable("ag")
+    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 " }}}
 
 " sets {{{
@@ -335,25 +329,28 @@ xnoremap <Leader>d "_d
 set pastetoggle=<Leader>z
 " }}}
 
-" Plugin mappings {{{
-nnoremap <Leader>gy :Goyo<CR>
-nnoremap <Leader>ll :Limelight!!<CR>
-nnoremap <Leader>gr :ScrollDown<CR>
+" Buffers {{{
+nnoremap <Leader>a :argadd <c-r>=fnameescape(expand('%:p:h'))<cr>/*<C-d>
+nnoremap <Leader>b :b <C-d>
+nnoremap <Leader>e :e **/
+nnoremap <Leader>s :b#<cr>
+" }}}
 
-nnoremap ; :Buffers<CR>
+" Make {{{
+nnoremap <Leader>m :make<cr>
+" }}}
+
+" Gophermap mappings {{{
 nnoremap <Leader>gl :PencilOff<CR>:set tw=9999<CR>
 nnoremap <Leader>gm :PencilHard<CR>:set tw=66<CR>
-nnoremap <Leader>w :bd<CR>
-nnoremap <Leader>t :GFiles<CR>
-nnoremap <Leader>T :Files<CR>
-nnoremap <Leader>r :Tags<CR>
-nnoremap <S-Left> :SidewaysLeft<cr>
-nnoremap <S-Right> :SidewaysRight<cr>
+" }}}
+
+" Plugin mappings {{{
 xnoremap <Enter> <Plug>(EasyAlign)
 " }}}
 
 " Insert Date/Timestamp for notes {{{
-nnoremap gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
+nnoremap <Leader>gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
 " }}}
 
 " Move blocks up and down {{{
