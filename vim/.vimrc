@@ -346,7 +346,6 @@ set pastetoggle=<Leader>z
 " Buffers {{{
 nnoremap <Leader>a :argadd <c-r>=fnameescape(expand('%:p:h'))<cr>/*<C-d>
 nnoremap <Leader>b :b <C-d>
-nnoremap <Leader>e :e **/
 nnoremap <Leader>s :b#<cr>
 nnoremap <leader>w :bd<cr>
 " }}}
