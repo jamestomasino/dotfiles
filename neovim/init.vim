@@ -81,6 +81,14 @@ function! StripTrailingWhitespace()
     endif
 endfunction
 
+function! CleverTab()
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        return "\<C-N>"
+    endif
+endfunction
+
 function! MyHighlights() abort
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
@@ -336,6 +344,10 @@ nnoremap <Leader>b :b <C-d>
 nnoremap <Leader>e :e **/
 nnoremap <Leader>s :b#<cr>
 nnoremap <leader>w :bd<cr>
+" }}}
+
+" Tab Completion {{{
+inoremap <Tab> <c-r>=CleverTab()<CR>
 " }}}
 
 " Make {{{
