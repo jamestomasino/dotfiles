@@ -347,19 +347,19 @@ set pastetoggle=<Leader>z
 " }}}
 
 " Buffers {{{
-nnoremap <Leader>a :argadd <c-r>=fnameescape(expand('%:p:h'))<cr>/*<C-d>
-nnoremap <Leader>b :b <C-d>
+nnoremap <Leader>a :argadd <C-R>=fnameescape(expand('%:p:h'))<CR>/*<C-D>
+nnoremap <Leader>b :b <C-D>
 nnoremap <Leader>e :e **/
-nnoremap <Leader>s :b#<cr>
-nnoremap <leader>w :bd<cr>
+nnoremap <Leader>s :b#<CR>
+nnoremap <leader>w :bd<CR>
 " }}}
 
 " Tab Completion {{{
-inoremap <Tab> <c-r>=CleverTab()<CR>
+inoremap <Tab> <C-R>=CleverTab()<CR>
 " }}}
 
 " Make {{{
-nnoremap <Leader>m :make<cr>
+nnoremap <Leader>m :make<CR>
 " }}}
 
 " Gophermap mappings {{{
@@ -372,7 +372,7 @@ xnoremap <Enter> <Plug>(EasyAlign)
 " }}}
 
 " Insert Date/Timestamp for notes {{{
-nnoremap <Leader>gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
+nnoremap <Leader>gs :pu! =strftime('%Y-%m-%d %H:%M')<CR>A<space>
 " }}}
 
 " Move blocks up and down {{{
