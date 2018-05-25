@@ -121,6 +121,11 @@ if has('autocmd')
         autocmd filetype javascript setlocal expandtab
     augroup END
 
+    augroup type_vue
+        autocmd!
+        autocmd filetype vue syntax sync fromstart
+    augroup END
+
     augroup type_haskell
         autocmd!
         autocmd filetype haskell compiler ghc
