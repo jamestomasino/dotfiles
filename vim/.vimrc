@@ -146,6 +146,14 @@ if has('autocmd')
         autocmd filetype json setlocal equalprg=python\ -m\ json.tool
     augroup END
 
+    augroup type_make
+        autocmd!
+        autocmd filetype make setlocal noexpandtab
+        autocmd filetype make setlocal softtabstop=4
+        autocmd filetype make setlocal shiftwidth=4
+        autocmd filetype make setlocal tabstop=4
+    augroup END
+
     augroup bundle_rmarkdown
         autocmd!
         autocmd filetype Rmd setlocal expandtab
