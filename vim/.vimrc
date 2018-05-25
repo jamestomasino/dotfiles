@@ -378,11 +378,6 @@ nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
 " }}}
 
-" Create blank lines {{{
-nnoremap <silent> <Leader>o o<Esc>
-nnoremap <silent> <Leader>O O<Esc>
-" }}}
-
 " Fold selection {{{
 nnoremap <Leader><space> za
 xnoremap <Leader><Space> zf
