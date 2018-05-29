@@ -24,6 +24,7 @@ Plug 'reedes/vim-lexical'                 " Better spellcheck mappings
 Plug 'reedes/vim-litecorrect'             " Better autocorrections
 Plug 'reedes/vim-textobj-sentence'        " Treat sentences as text objects
 Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
+Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 
 " Development Tools
 Plug 'airblade/vim-gitgutter'             " git changes
