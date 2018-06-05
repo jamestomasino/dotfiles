@@ -274,7 +274,7 @@ set mousehide                   " Hide the mouse cursor while typing
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set noshowcmd                   " Don't show the current command
 set nowrap                      " Do not wrap long lines
-set relativenumber              " Use relative line numbers
+set relativenumber number       " Use relative line numbers
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 set shiftwidth=2
