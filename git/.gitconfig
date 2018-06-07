@@ -161,9 +161,6 @@
   # not a fan of random merges
   pull = pull --ff-only
 
-  # pull all submodules easily
-  pullall = "!git submodule foreach git pull origin master"
-
   # push to all remotes
   pushall = "!git remote | xargs -L1 git push --all"
 
