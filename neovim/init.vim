@@ -244,7 +244,7 @@ let g:ale_javascript_prettier_use_local_config = 1
 
 " ag support {{{
 if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepprg=ag\ --ignore\ --nogroup\ --nocolor\ --ignore-case\ --column
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 " }}}

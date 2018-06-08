@@ -237,7 +237,7 @@ let g:limelight_default_coefficient = 0.5
 
 " ag support {{{
 if executable("ag")
-    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepprg=ag\ --ignore\ --nogroup\ --nocolor\ --ignore-case\ --column
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 " }}}
