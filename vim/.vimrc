@@ -9,9 +9,7 @@ call plug#begin('~/.vim/plugged')
 " Global
 Plug 'embear/vim-localvimrc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'            " <Enter> to visually align
-Plug 'roryokane/detectindent'             " :DetectIndent to match file struct
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
@@ -26,14 +24,14 @@ Plug 'reedes/vim-lexical'                 " Better spellcheck mappings
 Plug 'reedes/vim-litecorrect'             " Better autocorrections
 Plug 'reedes/vim-textobj-sentence'        " Treat sentences as text objects
 Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
+Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 
 " Development Tools
 Plug 'airblade/vim-gitgutter'             " git changes
-Plug 'mileszs/ack.vim'                    " helpful search things
 Plug 'tpope/vim-fugitive'                 " git wrapper
 Plug 'w0rp/ale'                           " linting
 Plug 'sheerun/vim-polyglot'               " syntax for lots of things
-Plug 'jamestomasino/vim-conceal'          " conceal formatting for js/py
+Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
 
 call plug#end()
 
@@ -74,15 +72,21 @@ endfunction
 call InitDirs()
 
 function! StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let l:_s=@/
-    let l:l = line('.')
-    let l:c = col('.')
-    " do the business:
-    %s/\s\+$//e
-    " clean up: restore previous search history, and cursor position
-    let @/=l:_s
-    call cursor(l:l, l:c)
+    if !&binary && &filetype != 'diff'
+        normal mz
+        normal Hmy
+        %s/\s\+$//e
+        normal 'yz<CR>
+        normal `z
+    endif
+endfunction
+
+function! CleverTab()
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        return "\<C-N>"
+    endif
 endfunction
 
 function! MyHighlights() abort
@@ -116,6 +120,11 @@ if has('autocmd')
         autocmd filetype javascript setlocal expandtab
     augroup END
 
+    augroup type_vue
+        autocmd!
+        autocmd filetype vue syntax sync fromstart
+    augroup END
+
     augroup type_haskell
         autocmd!
         autocmd filetype haskell compiler ghc
@@ -141,6 +150,14 @@ if has('autocmd')
     augroup type_json
         autocmd!
         autocmd filetype json setlocal equalprg=python\ -m\ json.tool
+    augroup END
+
+    augroup type_make
+        autocmd!
+        autocmd filetype make setlocal noexpandtab
+        autocmd filetype make setlocal softtabstop=4
+        autocmd filetype make setlocal shiftwidth=4
+        autocmd filetype make setlocal tabstop=4
     augroup END
 
     augroup bundle_rmarkdown
@@ -218,8 +235,11 @@ let g:localvimrc_ask=0
 let g:limelight_default_coefficient = 0.5
 " }}}
 
-" Ack.vim {{{
-let g:ackprg = 'ag --vimgrep'
+" ag support {{{
+if executable("ag")
+    set grepprg=ag\ --ignore\ --nogroup\ --nocolor\ --ignore-case\ --column
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 " }}}
 
 " Ale {{{
@@ -252,7 +272,7 @@ set mousehide                   " Hide the mouse cursor while typing
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set noshowcmd                   " Don't show the current command
 set nowrap                      " Do not wrap long lines
-set relativenumber              " Use relative line numbers
+set relativenumber number       " Use relative line numbers
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 set shiftwidth=2
@@ -324,25 +344,32 @@ xnoremap <Leader>d "_d
 set pastetoggle=<Leader>z
 " }}}
 
-" Plugin mappings {{{
-nnoremap <Leader>gy :Goyo<CR>
-nnoremap <Leader>ll :Limelight!!<CR>
-nnoremap <Leader>gr :ScrollDown<CR>
+" Buffers {{{
+nnoremap <Leader>a :argadd <c-r>=fnameescape(expand('%:p:h'))<cr>/*<C-d>
+nnoremap <Leader>b :b <C-d>
+nnoremap <Leader>s :b#<cr>
+nnoremap <leader>w :bd<cr>
+" }}}
 
+" Tab Completion {{{
+inoremap <Tab> <c-r>=CleverTab()<CR>
+" }}}
+
+" Make {{{
+nnoremap <Leader>m :make<cr>
+" }}}
+
+" Gophermap mappings {{{
 nnoremap <Leader>gl :PencilOff<CR>:set tw=9999<CR>
 nnoremap <Leader>gm :PencilHard<CR>:set tw=66<CR>
-nnoremap ; :Buffers<CR>
-nnoremap <Leader>w :bd<CR>
-nnoremap <Leader>t :GFiles<CR>
-nnoremap <Leader>T :Files<CR>
-nnoremap <Leader>r :Tags<CR>
-nnoremap <S-Left> :SidewaysLeft<cr>
-nnoremap <S-Right> :SidewaysRight<cr>
+" }}}
+
+" Plugin mappings {{{
 xnoremap <Enter> <Plug>(EasyAlign)
 " }}}
 
 " Insert Date/Timestamp for notes {{{
-nnoremap gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
+nnoremap <Leader>gs :pu! =strftime('%Y-%m-%d %H:%M')<cr>A<space>
 " }}}
 
 " Move blocks up and down {{{
@@ -350,11 +377,6 @@ xnoremap <C-Up> xkP`[V`]
 xnoremap <C-Down> xp`[V`]
 nnoremap <C-Up> ddkP
 nnoremap <C-Down> ddp
-" }}}
-
-" Create blank lines {{{
-nnoremap <silent> <Leader>o o<Esc>
-nnoremap <silent> <Leader>O O<Esc>
 " }}}
 
 " Fold selection {{{
