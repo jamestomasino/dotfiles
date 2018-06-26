@@ -69,7 +69,7 @@
 1jellybean styling	/phlog	gopher.jellybeanstyling.com	70
 1kroovy	/phlog	kroovy.de	70
 1tfurrows - vernunftzentrum	/tfurrows/index.gph	vernunftzentrum.de	70
-1ze libertine gamer	/phlog	zelibertinegamer.me	70
+1ze libertine gamer	/phlog	zlg.space	70
 1f6k	/users/f6k	gopher.club	70
 1keiya	/users/keiya/phlog	gopher.club	70
 1kirch	/users/kirch/phlog	gopher.club	70
@@ -77,3 +77,4 @@
 1c25l	/~c25l/	circumlunar.space	70
 1christina	/~christina/	circumlunar.space	70
 1andram	/~andram/phlog	circumlunar.space	70
+1ymodem	/phlog/2018	ymodem.org	70
