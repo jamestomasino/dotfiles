@@ -82,3 +82,4 @@
 1horsemans		blog.horsemans.online	70
 1teradyne personal phlog	/phlog	prismdragon.net	70
 1teradyne thoughtphlog	/thoughtphlog	prismdragon.net	70
+1imrowan	/users/imrowan/	gopher.club	70
