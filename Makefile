@@ -19,8 +19,8 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura
+OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim sc-im
+Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura sc-im
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
 
@@ -44,6 +44,7 @@ clean:
 	stow -t "$$HOME/.config/i3/" -D i3
 	stow -t "$$HOME" -D i3status
 	stow -t "$$HOME/.config/zathura" -D zathura
+	stow -t "$$HOME" -D sc-im
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
@@ -152,4 +153,8 @@ mokupona:
 	mkdir -p "$$HOME/.moku-pona"
 	stow -t "$$HOME/.moku-pona" mokupona
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona
+sc-im:
+	@printf "$(YELLOW)--- sc-im -----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME/" sc-im
+
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im
