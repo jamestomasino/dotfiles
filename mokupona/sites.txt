@@ -83,3 +83,4 @@
 1teradyne personal phlog	/phlog	prismdragon.net	70
 1teradyne thoughtphlog	/thoughtphlog	prismdragon.net	70
 1imrowan	/users/imrowan/	gopher.club	70
+1jstg	/users/jstg/phlog	sdf.org	70
