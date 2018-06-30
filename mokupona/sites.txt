@@ -84,3 +84,5 @@
 1teradyne thoughtphlog	/thoughtphlog	prismdragon.net	70
 1imrowan	/users/imrowan/	gopher.club	70
 1jstg	/users/jstg/phlog	sdf.org	70
+1endorphant	/~endorphant/feels/	tilde.town	70
+1tfurrows - tilde	/~tfurrows/feels/	tilde.town	70
