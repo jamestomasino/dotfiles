@@ -9,7 +9,6 @@
 1slugmax - sdf	/users/slugmax/phlog	gopher.club	70
 1pet84rik	/users/pet84rik/BLOG	gopher.club	70
 1kvothe	/users/kvothe/phlog	gopher.club	70
-1jynx	/phlog	leveck.us	70
 1xmanmonk	/users/xmanmonk	gopher.club	70
 1mhj	/users/mhj/phlog	gopher.club	70
 1defanor	/~defanor	uberspace.net	70
@@ -86,3 +85,6 @@
 1jstg	/users/jstg/phlog	sdf.org	70
 1endorphant	/~endorphant/feels/	tilde.town	70
 1tfurrows - tilde	/~tfurrows/feels/	tilde.town	70
+1jynx	/phlog/typezero	1436.ninja	70
+1giantessgnostic	/users/giantessgnostic/phlog	gopher.club	70
+1pkotrcka	/users/pkotrcka/phlog/	gopher.club	70
