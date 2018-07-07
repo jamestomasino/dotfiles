@@ -31,7 +31,7 @@
 0ulcer	/users/ulcer/atom.xml	gopher.club	70
 1siobhan	/users/siobhan	gopher.club	70
 1yargo - sdf	/users/yargo/glog	gopher.club	70
-1yargo - circumlunar	/~yargo/glog	circumlunar.space	70
+1yargo - circumlunar	/~yargo/clog	circumlunar.space	70
 1yin feng	/users/tomatobodhi/phlog	gopher.club	70
 1cpider	/users/cpider	gopher.club	70
 1zelbrium	/users/zelbrium	gopher.club	70
