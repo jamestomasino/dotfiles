@@ -1,0 +1,7 @@
+#!/bin/sh
+
+gpu=$(vcgencmd measure_temp | sed 's/[^0-9.]//g')
+printf "GPU\\t%s° C\\n" "$gpu"
+
+cpu=$(cat /sys/class/thermal/thermal_zone0/temp)
+printf "CPU\\t%s° C\\n" "$((cpu/1000))"
