@@ -88,3 +88,7 @@
 1jynx	/phlog/typezero	1436.ninja	70
 1giantessgnostic	/users/giantessgnostic/phlog	gopher.club	70
 1pkotrcka	/users/pkotrcka/phlog/	gopher.club	70
+1st john karp		gopher.stjo.hn	70
+1cdmnky	/users/cdmnky/phlog	sdf.org	70
+1julienxx	/users/julienxx/Log	sdf.org	70
+1hnb	/users/hnb/phlog	sdf.org	70
