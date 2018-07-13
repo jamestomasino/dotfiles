@@ -1,0 +1,8 @@
+#!/bin/sh
+
+git fetch --all
+branches=$(git branch -r | sed -e 's/\s*origin\///')
+for branch in $branches; do
+    git checkout "$branch"      || exit 1
+    git rebase "origin/$branch" || exit 1
+done
