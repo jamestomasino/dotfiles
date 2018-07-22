@@ -92,3 +92,7 @@
 1cdmnky	/users/cdmnky/phlog	sdf.org	70
 1julienxx	/users/julienxx/Log	sdf.org	70
 1hnb	/users/hnb/phlog	sdf.org	70
+1bitreich phlogs	/news.gph	bitreich.org	70
+1rach	/users/rach/phlog	sdf.org	70
+1ben's phlog	/~ben/phlog	tilde.team	70
+1ben's blog	/~ben/blog	tilde.team	70
