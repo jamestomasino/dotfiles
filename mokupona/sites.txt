@@ -65,7 +65,6 @@
 1tomasino	/phlog	gopher.black	70
 1deftly	/articles/	deftly.net	70
 1ander	/blog/	9gw.ddns.net	70
-1jellybean styling	/	gopher.jellybeanstyling.com	70
 1kroovy	/phlog	kroovy.de	70
 1tfurrows - vernunftzentrum	/tfurrows/index.gph	vernunftzentrum.de	70
 1ze libertine gamer	/phlog	zlg.space	70
