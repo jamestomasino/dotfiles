@@ -54,6 +54,7 @@
   log = true
   tool = fugitive
   renamelimit = 100000
+  ff = only
 
 [mergetool]
   keepBackup = false
@@ -157,9 +158,6 @@
 
   # remove all remote branches that have been merged
   removeallmerged = "!git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
-
-  # not a fan of random merges
-  pull = pull --ff-only
 
   # push to all remotes
   pushall = "!git remote | xargs -L1 git push --all"
