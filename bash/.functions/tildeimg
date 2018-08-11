@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function tildeimg () {
+  if [ "$#" -eq 0 ]; then
+    printf "Provide a filename of an image to be uploaded"
+  else
+    filename=$1
+    curl -F"file=@${filename}" https://0x0.tilde.team
+  fi
+}
