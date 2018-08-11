@@ -20,14 +20,6 @@ alias ......="cd ../../../../.."
 alias grep='grep --color=auto'
 alias mkdir='mkdir -p'
 
-# update scripts
-alias systemupdate='sudo softwareupdate -i -a; brew update; brew upgrade'
-
-# tools
-alias browserstack="java -jar ~/bin/BrowserStackTunnel.jar 8vlzgcB58bVTdLITt514 localhost,80,0"
-alias veevastart="git reset --hard HEAD && git pull && git clean -xfd && ant clean && ant globals && ant && ant thumbs && open . && open source/index.html"
-alias simulator='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
-
 # utils
 alias imgsz='sips -g pixelWidth -g pixelHeight'
 alias pubkey="more ~/.ssh/id_rsa.pub | clip | printf '=> Public key copied to pasteboard.\n'"
@@ -41,6 +33,7 @@ alias figletfonts='ls -1 `figlet -I2` | grep "\.flf$" | cut -f 1 -d "." | sort -
 alias lynx='lynx -display_charset=utf8 --lss=/dev/null'
 alias utc='date -u +%H:%M:%S'
 alias audiobook='mpv --save-position-on-quit'
+alias weight='track -ca weight | jp -input csv -height 25 -width 67 -canvas braille'
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption -x'
@@ -48,8 +41,6 @@ alias vimr='vim -u NONE'
 
 # git
 alias gs="git status"
-alias gb="git branch"
-alias gap="git add -p"
 
 # tmux
 alias tmux='tmux -u2'
@@ -77,9 +68,6 @@ alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaver
 # Ubuntu specific
 alias hibernate='sh -c "dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock && dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"'
 
-# julia language
-alias julia="exec '/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia'"
-
 # Look busy
 alias busy='cat /dev/urandom | hexdump -C | grep "ca fe"'
 
@@ -89,22 +77,11 @@ alias tron='ssh sshtron.zachlatta.com'
 # rickroll
 alias roll='curl -s -L http://bit.ly/10hA8iC | bash'
 
-# sdf
-alias sdf='mosh sdf'
-alias sdftouchphlog='ssh sdf "cd gopher && git pull && touch /ftp/pub/users/tomasino/"'
-alias meta='mosh ma.sdf.org'
-alias tilde='mosh tilde.town'
-
 # music
 alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
 alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
 alias lush='nvlc "https://somafm.com/lush130.pls"'
 alias sleepbot='nvlc "http://www.sleepbot.com/ambience/cgi/listen.cgi/listen.pls"'
-
-# If not on ma.sdf.org, alias this to run remotely
-if [ $(hostname) != 'ma.sdf.org' ]; then
-  alias twtxt='ssh -t meta twtxt timeline'
-fi
 
 # Wrap vlc on OSX with a happy little alias
 if ! hash nvlc 2>/dev/null; then
