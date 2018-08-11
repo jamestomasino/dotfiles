@@ -32,6 +32,7 @@ Plug 'tpope/vim-fugitive'                 " git wrapper
 Plug 'w0rp/ale'                           " linting
 Plug 'sheerun/vim-polyglot'               " syntax for lots of things
 Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
+Plug 'terryma/vim-multiple-cursors'       " multiple cursor support
 
 call plug#end()
 

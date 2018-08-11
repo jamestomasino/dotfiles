@@ -33,6 +33,7 @@ Plug 'w0rp/ale'                           " linting
 Plug 'sheerun/vim-polyglot'               " syntax for lots of things
 Plug 'posva/vim-vue'                      " vue specific syntax support
 Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
+Plug 'terryma/vim-multiple-cursors'       " multiple cursor support
 
 call plug#end()
 
