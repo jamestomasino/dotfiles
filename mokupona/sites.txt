@@ -76,10 +76,7 @@
 1christina	/~christina/	circumlunar.space	70
 1andram	/~andram/phlog	circumlunar.space	70
 1ymodem	/phlog/2018	ymodem.org	70
-1m3tti	/phlog/2018	m3tti.ddns.net	70
 1horsemans		blog.horsemans.online	70
-1teradyne personal phlog	/phlog	prismdragon.net	70
-1teradyne thoughtphlog	/thoughtphlog	prismdragon.net	70
 1imrowan	/users/imrowan/	gopher.club	70
 1jstg	/users/jstg/phlog	sdf.org	70
 1endorphant	/~endorphant/feels/	tilde.town	70
