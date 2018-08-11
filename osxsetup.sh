@@ -105,7 +105,7 @@ rbenv rehash
 gem install bundler
 
 # perl
-\curl -L http://install.perlbrew.pl | bash
+\\curl -L http://install.perlbrew.pl | bash
 source ~/perl5/perlbrew/etc/bashrc
 perlbrew install perl-5.16.0
 perlbrew switch perl-5.16.0
@@ -381,13 +381,6 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set volume to 0 at boot
 sudo nvram SystemAudioVolume=" "
-
-# Set default desktop background
-curl "https://s3.amazonaws.com/squishyface/images/background.jpg" > "background.jpg"
-sudo mv "background.jpg" "/Library/Desktop Pictures/background.jpg"
-rm -rf "$HOME/Library/Application Support/Dock/desktoppicture.db"
-sudo rm -rf "/System/Library/CoreServices/DefaultDesktop.jpg"
-sudo ln -s "/Library/Desktop Pictures/background.jpg" "/System/Library/CoreServices/DefaultDesktop.jpg"
 
 # Kill affected applications, so the changes apply
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
