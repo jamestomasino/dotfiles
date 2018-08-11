@@ -95,3 +95,7 @@
 1rach	/users/rach/phlog	sdf.org	70
 1ben's phlog	/~ben/phlog	tilde.team	70
 1ben's blog	/~ben/blog	tilde.team	70
+1nydel microphlog	/~nydel/microphlog/	grex.org	70
+1jeremij	/users/jeremij/phlog	sdf.org	70
+1ratfactor	/users/ratfactor/phlog	sdf.org	70
+1The Boston Diaries	/phlog.gopher	gopher.conman.org	70
