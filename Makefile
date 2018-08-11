@@ -20,7 +20,7 @@ install:
 	@make $(UNAME)
 
 OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim sc-im
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura sc-im
+Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura sc-im alacritty
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
 
@@ -45,10 +45,16 @@ clean:
 	stow -t "$$HOME" -D i3status
 	stow -t "$$HOME/.config/zathura" -D zathura
 	stow -t "$$HOME" -D sc-im
+	stow -t "$$HOME" -D alacritty
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" bash
+
+alacritty:
+	@printf "$(YELLOW)--- alacritty -------------------------------------------\n$(RESET)"
+	mkdir -p "$$HOME/.config/alacritty"
+	stow -t "$$HOME/.config/alacritty" alacritty
 
 git:
 	@printf "$(YELLOW)--- git -------------------------------------------------\n$(RESET)"
@@ -157,4 +163,4 @@ sc-im:
 	@printf "$(YELLOW)--- sc-im -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" sc-im
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im alacritty

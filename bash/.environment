@@ -19,6 +19,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache --ign
 export FZF_DEFAULT_OPTS=""
 export LYNX_CFG="$HOME/.lynxrc"
 export WWW_HOME="gopher://gopher.black"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # path vars
 export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
