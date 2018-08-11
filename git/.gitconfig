@@ -54,6 +54,8 @@
   log = true
   tool = fugitive
   renamelimit = 100000
+
+[pull]
   ff = only
 
 [mergetool]
