@@ -55,9 +55,6 @@
   tool = fugitive
   renamelimit = 100000
 
-[pull]
-  ff = only
-
 [mergetool]
   keepBackup = false
   prompt = false
