@@ -13,7 +13,7 @@ Plug 'junegunn/vim-easy-align'            " <Enter> to visually align
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
-Plug 'romainl/Apprentice'
+Plug 'reedes/vim-colors-pencil'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things
@@ -250,6 +250,7 @@ let g:ale_javascript_prettier_use_local_config = 1
 " sets {{{
 set autoindent                  " Indent at the same level of the previous line
 set backspace=indent,eol,start  " Backspace for dummies
+set background=dark             " use dark theme
 set backup                      " Backups are nice ...
 set clipboard^=unnamed,unnamedplus
 set colorcolumn=80
@@ -291,7 +292,7 @@ set wildmenu
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set winminheight=0              " Windows can be 0 line high
 
-colorscheme apprentice
+colorscheme pencil
 " }}}
 
 " conditional settings {{{

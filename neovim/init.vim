@@ -13,7 +13,7 @@ Plug 'junegunn/vim-easy-align'            " <Enter> to visually align
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
-Plug 'chriskempson/base16-vim'
+Plug 'reedes/vim-colors-pencil'
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things
@@ -252,6 +252,7 @@ endif
 " sets {{{
 set autoindent                  " Indent at the same level of the previous line
 set backspace=indent,eol,start  " Backspace for dummies
+set background=dark             " Use dark theme
 set backup                      " Backups are nice ...
 set clipboard^=unnamed,unnamedplus
 set colorcolumn=80
@@ -298,7 +299,7 @@ if has('nvim-0.1.5')            " True color in neovim wasn't added until 0.1.5
 endif
 
 let base16colorspace=256        " enable emulation of 256 colors before
-colorscheme base16-default-dark " inheriting colorscheme from base16
+colorscheme pencil              " super sexy colorscheme
 
 " }}}
 
