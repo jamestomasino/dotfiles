@@ -94,7 +94,7 @@ fi
 
 if [ ${flag_file} -gt 0 ]; then
   if [ -z "${data}" ]; then
-    printf "%sProvide a data to upload%s\\n" "$ERROR" "$RESET"
+    printf "%sProvide data to upload%s\\n" "$ERROR" "$RESET"
   elif [ ! -f "${data}" ]; then
     printf "%s%s%s\\tFile not found.%s\\n" "$RESET" "${data}" "$ERROR" "$RESET"
     # attempt to split data and upload each string as file
