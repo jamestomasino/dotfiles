@@ -96,3 +96,4 @@
 1jeremij	/users/jeremij/phlog	sdf.org	70
 1ratfactor	/users/ratfactor/phlog	sdf.org	70
 1The Boston Diaries	/phlog.gopher	gopher.conman.org	70
+1tomasino - tilde.team	/~tomasino/phlog	tilde.team	70
