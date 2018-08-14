@@ -30,7 +30,9 @@ Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
 Plug 'w0rp/ale'                           " linting
-Plug 'sheerun/vim-polyglot'               " syntax for lots of things
+Plug 'othree/yajs.vim'                    " javascript syntax
+Plug 'othree/es.next.syntax.vim'          " es.next support
+Plug 'posva/vim-vue'                      " vue specific syntax support
 Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
 Plug 'terryma/vim-multiple-cursors'       " multiple cursor support
 
@@ -119,6 +121,7 @@ if has('autocmd')
         autocmd filetype javascript setlocal softtabstop=2
         autocmd filetype javascript setlocal tabstop=2
         autocmd filetype javascript setlocal expandtab
+        autocmd filetype javascript setlocal foldmethod=syntax
     augroup END
 
     augroup type_vue
@@ -244,6 +247,7 @@ endif
 " }}}
 
 " Ale {{{
+let b:ale_linters = {'javascript': ['eslint','prettier']}
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 let g:ale_javascript_prettier_use_local_config = 1
 " }}}
