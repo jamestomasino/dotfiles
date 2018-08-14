@@ -246,6 +246,10 @@ if executable("ag")
 endif
 " }}}
 
+" vue {{{
+let g:vue_disable_pre_processors=1
+" }}}
+
 " Ale {{{
 let b:ale_linters = {'javascript': ['eslint','prettier']}
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'

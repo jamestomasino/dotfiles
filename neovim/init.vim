@@ -240,6 +240,10 @@ let g:localvimrc_ask=0
 let g:limelight_default_coefficient = 0.5
 " }}}
 
+" vue {{{
+let g:vue_disable_pre_processors=1
+" }}}
+
 " Ale {{{
 let b:ale_linters = {'javascript': ['eslint','prettier']}
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --no-semi'
