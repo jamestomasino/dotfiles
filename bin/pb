@@ -1,6 +1,7 @@
 #!/bin/sh
 
 version="v.2018.08.13"
+ENDPOINT="https://0x0.tilde.team"
 flag_options="hvf"
 flag_version=0
 flag_help=0
@@ -12,10 +13,12 @@ ERROR=$(tput setaf 196)
 RESET=$(tput sgr0)
 
 show_help() {
-   cat > /dev/stdout << END
-pb [options] (data|filename)
+  cat > /dev/stdout << END
+pb [options] filename
+or
+(command-with-stdout) | pb
 
-Uploads a file to the tilde 0x0 paste bin
+Uploads a file or data to the tilde 0x0 paste bin
 
 OPTIONAL FLAGS:
   -h          Show this help
@@ -106,7 +109,7 @@ if [ ${flag_file} -gt 0 ]; then
       fi
       printf "%s${f}\\t%s" "$RESET" "$SUCCESS"
       if [ -f "${f}" ]; then
-        curl -F"file=@${f}" https://0x0.tilde.team
+        curl -F"file=@${f}" "${ENDPOINT}"
         printf "%s" "$RESET"
       else
         printf "%sFile not found.%s\\n" "$ERROR" "$RESET"
@@ -114,7 +117,7 @@ if [ ${flag_file} -gt 0 ]; then
     done
   else
     printf "%s${data}\\t%s" "$RESET" "$SUCCESS"
-    curl -F"file=@${data}" https://0x0.tilde.team
+    curl -F"file=@${data}" "${ENDPOINT}"
     printf "%s" "$RESET"
   fi
 else
@@ -122,7 +125,8 @@ else
     printf "%sNo data found for upload. Please try again.%s\\n" "$ERROR" "$RESET"
   else
     printf "%s" "$SUCCESS"
-    printf "%s" "${data}" | curl -F"file=@-;filename=null.txt" https://0x0.tilde.team
+    printf "%s" "${data}" | curl -F"file=@-;filename=null.txt" "${ENDPOINT}"
     printf "%s" "$RESET"
   fi
 fi
+
