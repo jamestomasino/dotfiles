@@ -44,22 +44,17 @@ echo "Set up suspend on systemd logind.service to use i3l"
 # Networking
 apt install -y mosh
 
-# Crypto
-apt install -y aircrack-ng
-apt install -y wireshark-common wireshark-qt
+apt install -y openssl                            # secure socket layer networking
 
 # Apps
+apt install -y stow                               # store files by symlink
 apt install -y deluge                             # torrent client
 apt install -y calibre                            # ebook management
 apt install -y imagemagick                        # image conversion
 apt install -y jq                                 # json parsing
-apt install -y newsbeuter                         # newsreader
 apt install -y nextcloud-client                   # personal cloud hosting
-apt install -y openssl                            # secure socket layer networking
 apt install -y spideroakone                       # secure cloud storage
 apt install -y tmux                               # terminal multiplexer
-apt install -y stow                               # store files by symlink
-apt install -y teamviewer                         # screenshare / remote desktop
 apt install -y veracrypt                          # truecrypt replacement
 apt install -y vim-gtk                            # vim with all the fixin's
 apt install -y lynx                               # the greatest browser
@@ -71,13 +66,10 @@ apt install -y liquidsoap liquidsoap-plugin-all   # icecast streaming
 apt install -y scrot                              # screenshots
 apt install -y dict dictd dict-gcide              # local dictionary
 
-# Dependencies for st terminal emulator
-apt install -y libx11-dev libxext-dev libxft-dev  # lightweight suckless terminal
-
 # Languages
 apt install -y nodejs nodejs-dev build-essentials # js development
-apt install -y haskell-platform                   # haskell development
 apt install -y rbenv                              # ruby development
+curl https://sh.rustup.rs -sSf | sh               # rustup for rust development
 apt install -y python-pygments                    # syntax highlighting
 apt install -y exuberant-ctags                    # tag management for code hinting
 
@@ -132,26 +124,14 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
 PATH="$HOME/bin:$PATH" make
 make install
 hash -r
-cd ~
-exit
 
-# Docker
-# First import the GPG key
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 \
-      --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-
-# Next, point the package manager to the official Docker repository
-sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
-
-# Update the package database
-sudo apt update
-
-# Installing both packages will eliminate an unmet dependencies error when you
-# try to install the linux-image-extra-virtual by itself
-sudo apt install -y linux-image-generic linux-image-extra-virtual
-
-# Install Docker
-sudo apt install docker-engine
+# Alacritty terminal emulator
+mkdir -p ~/tmp/
+cd ~/tmp/
+git clone https://github.com/jwilm/alacritty.git
+cd alacritty
+cargo install cargo-deb
+cargo deb --install
 
 ################################################################################
 ###################### Folder Structures and Links #############################
@@ -179,10 +159,3 @@ cd ~/Sites/system/dotfiles && ./make
 vim -c ":PlugInstall|q|q" # auto install plugins
 nvim -c ":PlugInstall|q|q" # auto install plugins
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
-
-################################################################################
-############################# st Emulator ######################################
-################################################################################
-
-cd ~/Sites/system && git clone https://github.com/jamestomasino/st.git
-cd ~/Sites/system/st && sudo make clean install
