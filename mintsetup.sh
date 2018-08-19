@@ -160,10 +160,9 @@ sudo apt install docker-engine
 mkdir -p ~/Sites/system/
 mkdir -p ~/Sites/work/
 mkdir -p ~/Sites/personal/
-mkdir -p ~/Sites/sync/Dropbox
 mkdir -p ~/Sites/sync/spideroak
-mkdir -p ~/.dropbox
-ln -s ~/Sites/sync/Dropbox ~/.dropbox/Dropbox
+mkdir -p ~/Sites/sync/nextcloud
+ln -s ~/Sites/sync/nextcloud/ ~/.nextcloud
 ln -s ~/Sites/sync/spideroak ~/.spideroak
 
 ################################################################################
@@ -179,7 +178,7 @@ cd ~/Sites/system/dotfiles && ./make
 
 vim -c ":PlugInstall|q|q" # auto install plugins
 nvim -c ":PlugInstall|q|q" # auto install plugins
-$HOME/.tmux/plugins/tpm/bin/install_plugins
+"$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
 ################################################################################
 ############################# st Emulator ######################################

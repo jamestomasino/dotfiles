@@ -22,17 +22,17 @@ export WWW_HOME="gopher://gopher.black"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # path vars
-export DROPBOX_PATH="$HOME/.dropbox/Dropbox"
 export SPIDEROAK_PATH="$HOME/.spideroak"
+export NEXTCLOUD_PATH="$HOME/.nextcloud"
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:/usr/bin/npm"
 export ANDROID_HOME="$HOME/sdk"
-export TODO="$DROPBOX_PATH/Todo/personal.txt"
-export NOTE_DIR="$DROPBOX_PATH/notes"
-export CONTACTS_DIR="$DROPBOX_PATH/contacts"
-export TRACK_DIR="$DROPBOX_PATH/track"
-export SHEET_FILE="$DROPBOX_PATH/Work/GSW/ti-sheet.json"
-export TIME_LOG="$DROPBOX_PATH/Time/timelog.csv"
+
+# personal app storage paths
+export TODO="$NEXTCLOUD_PATH/Todo/personal.txt"
+export NOTE_DIR="$NEXTCLOUD_PATH/notes"
+export CONTACTS_DIR="$NEXTCLOUD_PATH/contacts"
+export TRACK_DIR="$NEXTCLOUD_PATH/track"
 
 # ruby
 export GEM_HOME="$HOME/.gem"
