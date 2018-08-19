@@ -180,7 +180,6 @@ brew linkapps pinentry-mac
 ################################################################################
 
 brew cask install deluge
-brew cask install dropbox
 brew cask install easysimbl
 brew cask install filezilla
 brew cask install firefox
@@ -239,10 +238,9 @@ brew install vagrant-completion
 mkdir -p ~/Sites/system/
 mkdir -p ~/Sites/work/
 mkdir -p ~/Sites/personal/
-mkdir -p ~/Sites/sync/Dropbox
 mkdir -p ~/Sites/sync/spideroak
-mkdir -p ~/.dropbox
-ln -s ~/Sites/sync/Dropbox ~/.dropbox/Dropbox
+mkdir -p ~/Sites/sync/nextcloud
+ln -s ~/Sites/sync/nextcloud ~/.nextcloud
 ln -s ~/Sites/sync/spideroak ~/.spideroak
 
 ################################################################################
