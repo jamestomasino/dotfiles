@@ -29,7 +29,7 @@ export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:/usr/bin/npm"
 export ANDROID_HOME="$HOME/sdk"
 
 # personal app storage paths
-export TODO="$NEXTCLOUD_PATH/Todo/personal.txt"
+export TODO="$NEXTCLOUD_PATH/todo/personal.txt"
 export NOTE_DIR="$NEXTCLOUD_PATH/notes"
 export CONTACTS_DIR="$NEXTCLOUD_PATH/contacts"
 export TRACK_DIR="$NEXTCLOUD_PATH/track"
