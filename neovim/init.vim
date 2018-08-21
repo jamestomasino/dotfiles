@@ -35,6 +35,7 @@ Plug 'othree/es.next.syntax.vim'          " es.next support
 Plug 'posva/vim-vue'                      " vue specific syntax support
 Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
 Plug 'terryma/vim-multiple-cursors'       " multiple cursor support
+Plug 'leafgarland/typescript-vim'         " typescript syntax
 
 call plug#end()
 
