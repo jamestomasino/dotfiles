@@ -1,4 +1,4 @@
-1alexschroeder		alexschroeder.ch	70
+1alexschroeder	/	alexschroeder.ch	70
 1dokuja	/~dokuja/phlog	circumlunar.space	70
 1dbucklin	/users/dbucklin/posts	gopher.club	70
 1sysdharma	/users/sysdharma/phlog	gopher.club	70

@@ -5,5 +5,5 @@ function todos {
 	#local m=$(trimspace $(git diff --numstat 2> /dev/null | wc -l))
 	LOCAL_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
 	LOCAL_DIR=${LOCAL_DIR:-.}
-	find "${LOCAL_DIR}" -type f -exec grep -H -n '(TODO|FIX(ME)?):' {} \; 2> /dev/null
+	ag '(TODO|FIX(ME)?):' "${LOCAL_DIR}" 
 }
