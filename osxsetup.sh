@@ -143,45 +143,46 @@ brew install git git-flow-avh bash-completion gnu-getopt
 curl https://raw.githubusercontent.com/petervanderdoes/git-flow-completion/develop/git-flow-completion.bash > git-flow-completion.bash
 chmod 755 git-flow-completion.bash
 mv git-flow-completion.bash ~/.git-flow-completion.sh
-brew install tig
 
 ################################################################################
 ############################## Utilities #######################################
 ################################################################################
 
-brew install neovim
-brew install tmux
-brew install reattach-to-user-namespace
+brew install asciinema
+brew install bat
+brew install buku
+brew install calc
+brew install cmus
+brew install diff-so-fancy
+brew install ffmpeg --with-libvpx --with-theora --with-libvorbis --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvpx --with-x265
+brew install figlet
+brew install gpg
+brew install gsl
+brew install htop
+brew install imagemagick
+brew install irssi
 brew install jq
+brew install lastpass-cli --with-pinentry
+brew install libcaca
+brew install lynx
+brew install mplayer --with-libcaca
+brew install ncdu
+brew install --HEAD neovim
+brew install newsbeuter
+brew install p7zip
+brew install pinentry-mac
+brew install prettyping
+brew install reattach-to-user-namespace
 brew install ssh-copy-id
 brew install stow
-brew install imagemagick
-brew install ffmpeg --with-libvpx --with-theora --with-libvorbis --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvpx --with-x265
+brew install surfraw
 brew install the_silver_searcher
+brew install tig
+brew install tmux
+brew install tpp
 brew install tree
 brew install unrar
-brew install calc
-brew install htop
 brew install youtube-dl
-brew install p7zip
-brew install figlet
-brew install gsl
-brew install tpp
-brew install newsbeuter
-brew install lastpass-cli --with-pinentry
-brew install irssi
-brew install cmus
-brew install libcaca
-brew install mplayer --with-libcaca
-brew install surfraw
-brew install buku
-brew install asciinema
-brew install lynx
-brew install pinentry-mac
-brew install bat
-brew install prettyping
-brew install diff-so-fancy
-brew install ncdu
 
 ################################################################################
 ############################# Applications #####################################
@@ -190,14 +191,10 @@ brew install ncdu
 brew cask install deluge
 brew cask install filezilla
 brew cask install nextcloud
-brew cask install spideroak
-brew cask install vagrant
-brew cask install vagrant-manager
+brew cask install spideroakone
 brew cask install veracrypt
-brew cask install virtualbox
-brew cask install virtualbox-extension-pack
 brew cask install vlc
-brew cask install gpgtools
+brew cask install gpg-suite
 brew install mas
 
 # Microsoft Remote Desktop
@@ -210,22 +207,18 @@ mas install 931134707
 ########################### Quicklook Plugins ##################################
 ################################################################################
 
-brew cask install betterzipql
 brew cask install qlcolorcode
-brew cask install qlimagesize
 brew cask install qlmarkdown
 brew cask install qlprettypatch
 brew cask install qlstephen
 brew cask install quicklook-csv
 brew cask install quicklook-json
+brew cask install qlimagesize
 
 ################################################################################
 ############################## Completions #####################################
 ################################################################################
 
-brew install bundler-completion
-brew install gem-completion
-brew install grunt-completion
 brew install pip-completion
 brew install vagrant-completion
 
@@ -255,7 +248,12 @@ cd ~/Sites/system/dotfiles && ./make
 vim -c ":PlugInstall|q|q" # auto install plugins
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
 
-brew install gpg
+################################################################################
+###########################  iTerm Colors   ####################################
+################################################################################
+
+# Import this into iterm profile
+wget https://raw.githubusercontent.com/mattly/iterm-colors-pencil/master/pencil-dark.itermcolors
 
 ################################################################################
 ####################### System Configuration ###################################
