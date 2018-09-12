@@ -165,6 +165,7 @@ brew install jq
 brew install lastpass-cli --with-pinentry
 brew install libcaca
 brew install lynx
+brew install mosh
 brew install mplayer --with-libcaca
 brew install ncdu
 brew install --HEAD neovim
