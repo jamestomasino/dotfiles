@@ -15,6 +15,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+alias du="ncdu --color dark -rr --exclude .git --exclude node_modules"
 
 # aliases to default commands with certain switches
 alias grep='grep --color=auto'

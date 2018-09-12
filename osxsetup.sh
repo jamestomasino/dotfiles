@@ -5,6 +5,7 @@ set -e # exit on any nonzero command
 ######################### Command Line Tools ###################################
 ################################################################################
 
+# Try to just run command line tools
 xcode-select --install
 sleep 1
 osascript <<EOD
@@ -15,6 +16,11 @@ osascript <<EOD
     end tell
   end tell
 EOD
+
+# If that didn't work, install command line tools for relevant version of xcode & macOS
+#   https://developer.apple.com/download/more/
+#   MacOS 10.12.6 & XCode 9.2 => 
+#     https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_macOS_10.12_for_Xcode_9.2/Command_Line_Tools_macOS_10.12_for_Xcode_9.2.dmg
 
 ################################################################################
 ######################### Cleanup Default Files ################################
@@ -43,6 +49,13 @@ fi
 ############################### Homebrew #######################################
 ################################################################################
 
+# Reset permissions on /usr/local
+sudo chown -R $USER /usr/local
+
+# Try uninstalling homebrew first in case the system shipped with something stupid
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+
+# Now install it fresh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update && brew upgrade
 
@@ -52,8 +65,6 @@ brew update && brew upgrade
 
 brew tap caskroom/cask
 brew install Caskroom/cask/xquartz
-brew tap homebrew/completions
-brew tap homebrew/dupes
 
 ################################################################################
 ########################## Update System Utils #################################
@@ -61,10 +72,10 @@ brew tap homebrew/dupes
 
 brew install wget
 brew install coreutils
-brew install findutils
+brew install findutils --with-default-names
 brew install binutils
 brew install diffutils
-brew install gnutls
+brew install gnutls --with-default-names
 brew install gnu-sed --with-default-names
 brew install gnu-tar --with-default-names
 brew install gnu-which --with-default-names
@@ -82,25 +93,21 @@ brew cask install java
 
 # python
 brew install python --with-brewed-openssl
-pip install --upgrade pip
-pip install --user pyyaml
-pip install --user colorama
-pip install rtv
-pip install qrcode
-pip install csvkit
+brew install python@2
+pip3 install --upgrade pip setuptools wheel 
+pip install --upgrade pip setuptools
+pip3 install --user pyyaml colorama 
+pip3 install rtv qrcode csvkit
 
 # haskell
-brew install haskell-stack
-stack setup
-stack install hlint
-stack install ghc-mod
+# Install haskell-platform full via official package installer. Don't use homebrew
 
 # ruby
 brew install rbenv
 brew install ruby-build
-rbenv install 2.4.0-dev
+rbenv install 2.5.1
 rbenv rehash
-rbenv global 2.4.0-dev
+rbenv global 2.5.1
 rbenv rehash
 gem install bundler
 
@@ -111,17 +118,16 @@ perlbrew install perl-5.16.0
 perlbrew switch perl-5.16.0
 
 # javascript
-brew install node
-npm install -g grunt-cli
-npm install -g jshint
-npm install -g standard
-npm install -g jsonlint
+# Install using website install package
+# Reset permissions for node modules to current user
+brew install yarn --without-node
+yarn global add eslint
 
 # bash
 brew install shellcheck
 
 # css
-npm install -g stylelint
+yarn global add stylelint
 
 # html
 brew install tidy-html5
@@ -143,7 +149,6 @@ brew install tig
 ############################## Utilities #######################################
 ################################################################################
 
-brew install vim --with-python3 --with-tcl --with-perl --override-system-vi
 brew install neovim
 brew install tmux
 brew install reattach-to-user-namespace
@@ -173,26 +178,19 @@ brew install buku
 brew install asciinema
 brew install lynx
 brew install pinentry-mac
-brew linkapps pinentry-mac
+brew install bat
+brew install prettyping
+brew install diff-so-fancy
+brew install ncdu
 
 ################################################################################
 ############################# Applications #####################################
 ################################################################################
 
 brew cask install deluge
-brew cask install easysimbl
 brew cask install filezilla
-brew cask install firefox
-brew cask install google-chrome
-brew cask install iterm2
-brew cask install karabiner
-brew cask install mou
 brew cask install nextcloud
-brew cask install plex-media-server
-brew cask install skype
-brew cask install slate
 brew cask install spideroak
-brew cask install tunnelblick
 brew cask install vagrant
 brew cask install vagrant-manager
 brew cask install veracrypt
