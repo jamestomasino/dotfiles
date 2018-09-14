@@ -193,14 +193,15 @@ brew cask install deluge
 brew cask install filezilla
 brew cask install nextcloud
 brew cask install spideroakone
+brew cask install syncthing
 brew cask install veracrypt
 brew cask install vlc
 brew cask install gpg-suite
 brew install mas
 
+# Log in to Apple App Store before running mas installers
 # Microsoft Remote Desktop
 mas install 715768417
-
 # Wire
 mas install 931134707
 
@@ -231,9 +232,11 @@ mkdir -p ~/Sites/system/
 mkdir -p ~/Sites/work/
 mkdir -p ~/Sites/personal/
 mkdir -p ~/Sites/sync/spideroak
+mkdir -p ~/Sites/sync/syncthing
 mkdir -p ~/Sites/sync/nextcloud
 ln -s ~/Sites/sync/nextcloud ~/.nextcloud
 ln -s ~/Sites/sync/spideroak ~/.spideroak
+ln -s ~/Sites/sync/syncthing ~/.syncthing
 
 ################################################################################
 ############################### Dotfiles #######################################
