@@ -28,6 +28,10 @@ export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:${HOME}/.yarn/bin:/usr/bin/npm"
 export ANDROID_HOME="$HOME/sdk"
 
+# lastpass
+export LPASS_HOME="$HOME/.lpass"
+export LPASS_DISABLE_PINENTRY=1
+
 # personal app storage paths
 export TODO="$NEXTCLOUD_PATH/todo/personal.txt"
 export NOTE_DIR="$NEXTCLOUD_PATH/notes"
