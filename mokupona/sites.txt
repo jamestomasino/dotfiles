@@ -97,3 +97,7 @@
 1ratfactor	/users/ratfactor/phlog	sdf.org	70
 1The Boston Diaries	/phlog.gopher	gopher.conman.org	70
 1tomasino - tilde.team	/~tomasino/phlog	tilde.team	70
+1hobbs	/~cmhobbs/	circumlunar.space	70
+1thesaint	/users/theesaint/Phlog/	sdf.org	70
+1tty	/users/tty/phlog/	sdf.org	70
+1krixano	/~krixano/phlog	circumlunar.space	70
