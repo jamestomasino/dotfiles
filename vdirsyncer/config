@@ -1,0 +1,20 @@
+[general]
+status_path = "~/.vdirsyncer/status/"
+
+[pair tomasinocloud]
+a = "tomasinocloud_local"
+b = "tomasinocloud_remote"
+collections = ["from a", "from b"]
+conflict_resolution = "b wins"
+
+[storage tomasinocloud_local]
+type = "filesystem"
+path = "~/.calendars/"
+fileext = ".ics"
+
+[storage tomasinocloud_remote]
+type = "caldav"
+
+url = "https://cloud.tomasino.org/remote.php/caldav/"
+username = "tomasino"
+password.fetch = ["command", "lpass", "show", "Tomasino Cloud", "--password"]

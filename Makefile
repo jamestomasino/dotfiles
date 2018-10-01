@@ -19,8 +19,8 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim sc-im
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura sc-im alacritty weechat
+OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim sc-im khal vdirsyncer
+Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura sc-im alacritty weechat khal vdirsyncer
 Windows: bash git news R utils zsh bin vim tmux
 Other: bash git utils zsh vim cmus surfraw
 
@@ -47,6 +47,8 @@ clean:
 	stow -t "$$HOME" -D sc-im
 	stow -t "$$HOME" -D alacritty
 	stow -t "$$HOME/.weechat" -D weechat
+	stow -t "$$HOME/.config/khal" -D khal
+	stow -t "$$HOME/.config/vdirsyncer" -D vdirsyncer
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
@@ -56,6 +58,16 @@ weechat:
 	@printf "$(YELLOW)--- weechat ---------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/.weechat"
 	stow -t "$$HOME/.weechat" weechat
+
+vdirsyncer:
+	@printf "$(YELLOW)--- khal ------------------------------------------------\n$(RESET)"
+	mkdir -p "$$HOME/.config/vdirsyncer"
+	stow -t "$$HOME/.config/vdirsyncer" vdirsyncer
+
+khal:
+	@printf "$(YELLOW)--- khal ------------------------------------------------\n$(RESET)"
+	mkdir -p "$$HOME/.config/khal"
+	stow -t "$$HOME/.config/khal" khal
 
 alacritty:
 	@printf "$(YELLOW)--- alacritty -------------------------------------------\n$(RESET)"
@@ -169,4 +181,4 @@ sc-im:
 	@printf "$(YELLOW)--- sc-im -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" sc-im
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im alacritty weechat
+.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im alacritty weechat vdirsyncer khal

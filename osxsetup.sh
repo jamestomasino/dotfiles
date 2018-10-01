@@ -162,11 +162,13 @@ brew install htop
 brew install imagemagick
 brew install irssi
 brew install jq
+pip3 install khal
 brew install lastpass-cli --with-pinentry
 brew install libcaca
 brew install lynx
 brew install mosh
 brew install mplayer --with-libcaca
+brew install mysql
 brew install ncdu
 brew install --HEAD neovim
 brew install newsbeuter
@@ -183,6 +185,7 @@ brew install tmux
 brew install tpp
 brew install tree
 brew install unrar
+brew install vdirsyncer
 brew install youtube-dl
 
 ################################################################################

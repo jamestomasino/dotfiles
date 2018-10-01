@@ -1,0 +1,17 @@
+[calendars]
+[[personal]]
+  path = ~/.calendars/personal/
+  color = dark green
+
+[[birthdays]]
+  path = ~/.calendars/contact_birthdays/
+  color = light blue
+
+[locale]
+local_timezone= America/New_York
+default_timezone= America/New_York
+timeformat= %H:%M
+dateformat= %d.%m.
+longdateformat= %Y.%m.%d
+datetimeformat= %d.%m. %H:%M
+longdatetimeformat= %Y.%m.%d %H:%M
