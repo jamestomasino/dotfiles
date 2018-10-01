@@ -9,7 +9,7 @@ conflict_resolution = "b wins"
 
 [storage tomasinocloud_local]
 type = "filesystem"
-path = "~/.calendars/"
+path = "~/.calendars/tomasinocloud/"
 fileext = ".ics"
 
 [storage tomasinocloud_remote]

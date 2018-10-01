@@ -1,10 +1,10 @@
 [calendars]
 [[personal]]
-  path = ~/.calendars/personal/
+  path = ~/.calendars/tomasinocloud/personal/
   color = dark green
 
 [[birthdays]]
-  path = ~/.calendars/contact_birthdays/
+  path = ~/.calendars/tomasinocloud/contact_birthdays/
   color = light blue
 
 [[holidays]]
