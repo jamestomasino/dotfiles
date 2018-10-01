@@ -1,5 +1,6 @@
 [default]
-highlight_event_days= true
+highlight_event_days = true
+default_command = interactive
 
 [calendars]
 [[personal]]
@@ -12,7 +13,7 @@ highlight_event_days= true
 
 [[holidays]]
   path = ~/.calendars/holidays/
-  color = dark magenta
+  color = dark red
 
 [locale]
 local_timezone= America/New_York
