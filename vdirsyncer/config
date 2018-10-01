@@ -30,7 +30,7 @@ path = "~/.calendars/holidays/"
 fileext = ".ics"
 
 [storage holidays_remote]
-read_only = "true"
+read_only = true
 type = "http"
 url = "https://calendar.google.com/calendar/ical/en.usa%23holiday%40group.v.calendar.google.com/public/basic.ics"
 
