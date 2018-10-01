@@ -1,7 +1,7 @@
 [calendars]
 [[personal]]
   path = ~/.calendars/tomasinocloud/personal/
-  color = dark green
+  color = light green
 
 [[birthdays]]
   path = ~/.calendars/tomasinocloud/contact_birthdays/
@@ -19,3 +19,7 @@ dateformat= %d.%m.
 longdateformat= %Y.%m.%d
 datetimeformat= %d.%m. %H:%M
 longdatetimeformat= %Y.%m.%d %H:%M
+
+# black, white, brown, yellow, dark gray, dark green, dark blue, light gray,
+# light green, light blue, dark magenta, dark cyan, dark red, light magenta,
+# light cyan, light red.
