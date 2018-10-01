@@ -1,6 +1,7 @@
 [default]
 highlight_event_days = true
 default_command = interactive
+timedelta = 7d
 
 [calendars]
 [[personal]]
@@ -23,6 +24,7 @@ dateformat= %d.%m.
 longdateformat= %Y.%m.%d
 datetimeformat= %d.%m. %H:%M
 longdatetimeformat= %Y.%m.%d %H:%M
+firstweekday= 6
 
 # black, white, brown, yellow, dark gray, dark green, dark blue, light gray,
 # light green, light blue, dark magenta, dark cyan, dark red, light magenta,
