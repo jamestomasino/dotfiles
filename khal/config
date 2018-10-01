@@ -1,3 +1,6 @@
+[default]
+highlight_event_days= true
+
 [calendars]
 [[personal]]
   path = ~/.calendars/tomasinocloud/personal/
