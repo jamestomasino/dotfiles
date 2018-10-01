@@ -7,6 +7,10 @@
   path = ~/.calendars/contact_birthdays/
   color = light blue
 
+[[holidays]]
+  path = ~/.calendars/holidays/
+  color = dark magenta
+
 [locale]
 local_timezone= America/New_York
 default_timezone= America/New_York
