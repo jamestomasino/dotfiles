@@ -175,6 +175,14 @@ if has('autocmd')
         autocmd filetype Rmd setlocal tabstop=4
     augroup END
 
+    augroup bundle_php
+        autocmd!
+        autocmd filetype php setlocal expandtab
+        autocmd filetype php setlocal softtabstop=2
+        autocmd filetype php setlocal shiftwidth=2
+        autocmd filetype php setlocal tabstop=2
+    augroup END
+
     augroup pencil
         autocmd!
         autocmd filetype markdown,mkd call pencil#init()
