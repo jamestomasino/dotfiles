@@ -8,7 +8,6 @@
 1slugmax - circumlunar	/~slugmax/phlog	circumlunar.space	70
 1slugmax - sdf	/users/slugmax/phlog	gopher.club	70
 1pet84rik	/users/pet84rik/BLOG	gopher.club	70
-1kvothe	/users/kvothe/phlog	gopher.club	70
 1xmanmonk	/users/xmanmonk	gopher.club	70
 1mhj	/users/mhj/phlog	gopher.club	70
 1defanor	/~defanor	uberspace.net	70
@@ -101,3 +100,11 @@
 1thesaint	/users/theesaint/Phlog/	sdf.org	70
 1tty	/users/tty/phlog/	sdf.org	70
 1krixano	/~krixano/phlog	circumlunar.space	70
+1slugmax - slerm	/~slugmax/cgi-bin/slerm	circumlunar.space	70
+1bradfonseca	/users/bradfonseca/phlog	sdf.org	70
+1inpefess	/gopherlog	boris.shminke.me	70
+1solobsd	/phlog/	gopher.solobsd.org	70
+1kvothe	/~kvothe/	circumlunar.space	70
+1luke	/~luke/	circumlunar.space	70
+1moji	/~moji/phlog	circumlunar.space	70
+1tengu	/~tengu	circumlunar.space	70
