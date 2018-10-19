@@ -65,7 +65,7 @@
 1deftly	/articles/	deftly.net	70
 1ander	/blog/	9gw.ddns.net	70
 1kroovy	/phlog	kroovy.de	70
-1tfurrows - vernunftzentrum	/tfurrows/index.gph	vernunftzentrum.de	70
+1tfurrows - vernunftzentrum	/tfurrows/phlog	vernunftzentrum.de	70
 1ze libertine gamer	/phlog	zlg.space	70
 1f6k	/users/f6k	gopher.club	70
 1keiya	/users/keiya/phlog	gopher.club	70
