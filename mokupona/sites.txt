@@ -108,3 +108,4 @@
 1luke	/~luke/	circumlunar.space	70
 1moji	/~moji/phlog	circumlunar.space	70
 1tengu	/~tengu	circumlunar.space	70
+1heavysquare	/noise/	heavysquare.com	70
