@@ -176,6 +176,7 @@ brew install p7zip
 brew install pinentry-mac
 brew install prettyping
 brew install reattach-to-user-namespace
+brew install sshuttle
 brew install ssh-copy-id
 brew install stow
 brew install surfraw
