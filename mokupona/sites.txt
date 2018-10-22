@@ -38,7 +38,6 @@
 1elw	/users/elw/phlog	gopher.club	70
 1strixy	/users/strixy/phlog	gopher.club	70
 1caff	/~caff/feels	tilde.town	70
-1endorphant	/~endorphant/feels	tilde.town	70
 1vilmibm	/~vilmibm/feels	tilde.town	70
 1tfurrows - sdf	/users/tfurrows/phlog	gopher.club	70
 1tfurrows - grex	/~tfurrows/phlog	grex.org	70
@@ -109,3 +108,4 @@
 1moji	/~moji/phlog	circumlunar.space	70
 1tengu	/~tengu	circumlunar.space	70
 1heavysquare	/noise/	heavysquare.com	70
+1simple	/%7emeta4/Phlog	devio.us	70
