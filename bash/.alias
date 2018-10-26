@@ -83,6 +83,7 @@ alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
 alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
 alias lush='nvlc "https://somafm.com/lush130.pls"'
 alias sleepbot='nvlc "http://www.sleepbot.com/ambience/cgi/listen.cgi/listen.pls"'
+alias tilderadio='nvlc "http://radio.tildeverse.org:8000/radio.mp3"'
 
 # Wrap vlc on OSX with a happy little alias
 if ! hash nvlc 2>/dev/null; then
