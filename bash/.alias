@@ -79,11 +79,11 @@ alias tron='ssh sshtron.zachlatta.com'
 alias roll='curl -s -L http://bit.ly/10hA8iC | bash'
 
 # music
-alias anonradio='nvlc "http://anonradio.net:8000/anonradio"'
-alias groovesalad='nvlc "https://somafm.com/groovesalad.pls"'
-alias lush='nvlc "https://somafm.com/lush130.pls"'
-alias sleepbot='nvlc "http://www.sleepbot.com/ambience/cgi/listen.cgi/listen.pls"'
-alias tilderadio='nvlc https://radio.tildeverse.org/radio/8000/radio.ogg"'
+alias anonradio='nvlc --http-caching 5000 --loop --http-reconnect "http://anonradio.net:8000/anonradio"'
+alias groovesalad='nvlc --http-caching 5000 --loop --http-reconnect "https://somafm.com/groovesalad.pls"'
+alias lush='nvlc --http-caching 5000 --loop --http-reconnect "https://somafm.com/lush130.pls"'
+alias sleepbot='nvlc --http-caching 5000 --loop --http-reconnect "http://www.sleepbot.com/ambience/cgi/listen.cgi/listen.pls"'
+alias tilderadio='nvlc  --http-caching 5000 --loop --http-reconnect "https://radio.tildeverse.org/radio/8000/radio.ogg"'
 
 # Wrap vlc on OSX with a happy little alias
 if ! hash nvlc 2>/dev/null; then
