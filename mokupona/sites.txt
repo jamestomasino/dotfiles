@@ -109,3 +109,4 @@
 1tengu	/~tengu	circumlunar.space	70
 1heavysquare	/noise/	heavysquare.com	70
 1simple	/%7emeta4/Phlog	devio.us	70
+1tekmav	/phlogs/	solarbaby.tekmav.space	70
