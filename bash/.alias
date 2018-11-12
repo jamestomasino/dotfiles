@@ -75,11 +75,14 @@ alias busy='cat /dev/urandom | hexdump -C | grep "ca fe"'
 # tron
 alias tron='ssh sshtron.zachlatta.com'
 
+# JPL horizons info
+alias horizons='telnet horizons.jpl.nasa.gov 6775'
+
 # rickroll
 alias roll='curl -s -L http://bit.ly/10hA8iC | bash'
 
 # music
-alias anonradio='nvlc --http-caching 5000 --loop --http-reconnect "http://anonradio.net:8000/anonradio"'
+alias anonradio='nvlc --http-caching 15000 --loop --http-reconnect "http://anonradio.net:8000/anonradio"'
 alias groovesalad='nvlc --http-caching 5000 --loop --http-reconnect "https://somafm.com/groovesalad.pls"'
 alias lush='nvlc --http-caching 5000 --loop --http-reconnect "https://somafm.com/lush130.pls"'
 alias sleepbot='nvlc --http-caching 5000 --loop --http-reconnect "http://www.sleepbot.com/ambience/cgi/listen.cgi/listen.pls"'
