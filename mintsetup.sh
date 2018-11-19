@@ -42,7 +42,7 @@ apt install -y i3 i3status dmenu i3lock xautolock xbacklight feh conky-all
 echo "Set up suspend on systemd logind.service to use i3l"
 
 # Networking
-apt install -y mosh
+apt install -y mosh                               # better ssh over intermittent connections
 
 apt install -y openssl                            # secure socket layer networking
 
@@ -66,6 +66,7 @@ apt install -y liquidsoap liquidsoap-plugin-all   # icecast streaming
 apt install -y scrot                              # screenshots
 apt install -y sshuttle                           # poor man's vpn over ssh
 apt install -y dict dictd dict-gcide              # local dictionary
+apt install -y wicd-curses                        # network manager
 
 # Languages
 apt install -y nodejs nodejs-dev build-essentials # js development
@@ -143,6 +144,7 @@ mkdir -p ~/Sites/work/
 mkdir -p ~/Sites/personal/
 mkdir -p ~/Sites/sync/spideroak
 mkdir -p ~/Sites/sync/nextcloud
+mkdir -p ~/Sites/sync/syncthing
 ln -s ~/Sites/sync/nextcloud/ ~/.nextcloud
 ln -s ~/Sites/sync/spideroak ~/.spideroak
 
