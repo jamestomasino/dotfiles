@@ -1,8 +1,13 @@
 #!/usr/bin/env sh
 
 # Config
-GOPHER_DIR="/home/tomasino/public_gopher"
-SED_CMD="s|\t\(/[^\t]*\)$|\t/~tomasino\1|g"
+if [ "$1" = "sdf" ]; then
+  GOPHER_DIR="/ftp/pub/users/tomasino/"
+  SED_CMD="s|\t\(/[^\t]*\)$|\t/users/tomasino\1|g"
+else
+  GOPHER_DIR="/home/tomasino/public_gopher"
+  SED_CMD="s|\t\(/[^\t]*\)$|\t/~tomasino\1|g"
+fi
 
 # move to working gopher directory
 cd "${GOPHER_DIR}"
