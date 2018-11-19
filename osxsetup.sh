@@ -128,6 +128,7 @@ brew install shellcheck
 
 # css
 yarn global add stylelint
+yarn global add caniuse-cmd
 
 # html
 brew install tidy-html5
