@@ -3,10 +3,12 @@
 # Config
 if [ "$1" = "sdf" ]; then
   GOPHER_DIR="/ftp/pub/users/tomasino/"
-  SED_CMD="s|\t\(/[^\t]*\)$|\t/users/tomasino\1|g"
+  SED_PARAM="s|\t(/[^\t]*)$|\t/users/tomasino\1|g"
+  SED_CMD="/usr/pkg/bin/gsed"
 else
   GOPHER_DIR="/home/tomasino/public_gopher"
-  SED_CMD="s|\t\(/[^\t]*\)$|\t/~tomasino\1|g"
+  SED_PARAM="s|\t\(/[^\t]*\)$|\t/~tomasino\1|g"
+  SED_CMD="sed"
 fi
 
 # move to working gopher directory
@@ -34,7 +36,7 @@ if [ "$remotesha" != "$localsha" ]; then
   curl -s gopher://gopher.black/0/reading/currentbooks.txt > reading/currentbooks.txt 2> /dev/null
   curl -s gopher://gopher.black/0/reading/recentbooks.txt > reading/recentbooks.txt 2> /dev/null
   # rename pathing for the local server
-  find . -name "gophermap" -exec sed -i"" "$SED_CMD" {} \;
+  find . -name "gophermap" -exec $SED_CMD -i"" "$SED_PARAM" {} \;
   # touch gopher dir itself (mostly for SDF phlog listing)
   touch .
 fi
