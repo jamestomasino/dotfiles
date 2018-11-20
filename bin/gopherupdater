@@ -3,7 +3,7 @@
 # Config
 if [ "$1" = "sdf" ]; then
   GOPHER_DIR="/ftp/pub/users/tomasino/"
-  SED_PARAM="s|\t(/[^\t]*)$|\t/users/tomasino\1|g"
+  SED_PARAM="s|\t\(/[^\t]*\)$|\t/users/tomasino\1|g"
   SED_CMD="/usr/pkg/bin/gsed"
 else
   GOPHER_DIR="/home/tomasino/public_gopher"
