@@ -51,7 +51,6 @@
 1oms	/users/oms	gopher.club	70
 1hairylarry	/users/hairylarry	gopher.club	70
 1ckeen	/ckeen/phlog	vernunftzentrum.de	70
-1wlsn	/users/wlsn/phlog	sdf-eu.org	70
 1dubst3pp4	/Phlog	l00t.de	70
 1zcrayfish	/phlog/	gopher.zcrayfish.soy	70
 1rach	/users/rach/phlog	gopher.club	70
@@ -79,7 +78,6 @@
 1jstg	/users/jstg/phlog	sdf.org	70
 1endorphant	/~endorphant/feels/	tilde.town	70
 1tfurrows - tilde	/~tfurrows/feels/	tilde.town	70
-1jynx	/phlog/typezero	1436.ninja	70
 1giantessgnostic	/users/giantessgnostic/phlog	gopher.club	70
 1pkotrcka	/users/pkotrcka/	gopher.club	70
 1st john karp		gopher.stjo.hn	70
@@ -110,3 +108,8 @@
 1heavysquare	/noise/	heavysquare.com	70
 1simple	/%7emeta4/Phlog	devio.us	70
 1tekmav	/phlogs/	solarbaby.tekmav.space	70
+1cmccabe - circumlunar	/~cmccabe/	circumlunar.space	70
+1cpj	/~cpj/phlog/	circumlunar.space	70
+1sloum	/~sloum/phlog/	circumlunar.space	70
+1visiblink	/~visiblink/phlog/	circumlunar.space	70
+1jynx	/Phlog	1436.ninja	70
