@@ -128,6 +128,7 @@ brew install shellcheck
 
 # css
 yarn global add stylelint
+yarn global add caniuse-cmd
 
 # html
 brew install tidy-html5
@@ -148,46 +149,44 @@ mv git-flow-completion.bash ~/.git-flow-completion.sh
 ############################## Utilities #######################################
 ################################################################################
 
-brew install asciinema
-brew install bat
-brew install buku
-brew install calc
-brew install cmus
-brew install diff-so-fancy
-brew install ffmpeg --with-libvpx --with-theora --with-libvorbis --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvpx --with-x265
-brew install figlet
-brew install gpg
-brew install gsl
-brew install htop
-brew install imagemagick
-brew install irssi
-brew install jq
-pip3 install khal
-brew install lastpass-cli --with-pinentry
-brew install libcaca
-brew install lynx
-brew install mosh
-brew install mplayer --with-libcaca
-brew install mysql
-brew install ncdu
-brew install --HEAD neovim
-brew install newsbeuter
-brew install p7zip
-brew install pinentry-mac
-brew install prettyping
-brew install reattach-to-user-namespace
-brew install sshuttle
-brew install ssh-copy-id
-brew install stow
-brew install surfraw
-brew install the_silver_searcher
-brew install tig
-brew install tmux
-brew install tpp
-brew install tree
-brew install unrar
-brew install vdirsyncer
-brew install youtube-dl
+brew install asciinema # record terminal sessions
+brew install bat # a prettier cat/less utility
+brew install calc # command line calculator
+brew install cmus # audio player
+brew install diff-so-fancy # better, colorized, diff displays
+brew install ffmpeg --with-libvpx --with-theora --with-libvorbis --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvpx --with-x265 # video processor
+brew install figlet # pretty-print words really big
+brew install gpg # privacy & key management
+brew install gsl # gnu scientific library, dependency for lots of stuff
+brew install htop # better version of top utility
+brew install imagemagick # image processor
+brew install jq # json parser
+pip3 install khal # calendar on commandline
+brew install lastpass-cli --with-pinentry # password manager
+brew install libcaca # codec for ascii video
+brew install lynx # web and gopher browser for cli
+brew install mosh # ssh for intermittent connections
+brew install mplayer --with-libcaca # multimedia player
+brew install mysql # database
+brew install ncdu # browsable file/folder size
+brew install --HEAD neovim # text editor
+brew install newsbeuter # rss reader
+brew install p7zip # compression utility
+brew install pinentry-mac # command line password interface for gpg
+brew install prettyping # graphical ping replacer
+brew install reattach-to-user-namespace # fix for clipboard issues in term
+brew install sshuttle # poor man's vpn over ssh
+brew install ssh-copy-id # easily deploy ssh keys to servers
+brew install stow # manages dotfiles
+brew install surfraw # search engine cli interface
+brew install the_silver_searcher # grep replacer
+brew install tig # git browser
+brew install tmux # terminal multiplexer
+brew install tpp # text based power point
+brew install tree # show file hierearchy
+brew install unrar # compression utility
+brew install vdirsyncer # sync webdav
+brew install youtube-dl # download youtube content
 
 ################################################################################
 ############################# Applications #####################################
