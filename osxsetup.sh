@@ -70,19 +70,13 @@ brew install Caskroom/cask/xquartz
 ########################## Update System Utils #################################
 ################################################################################
 
-brew install wget
-brew install coreutils
+brew install wget coreutils binutils diffutils bash make less
 brew install findutils --with-default-names
-brew install binutils
-brew install diffutils
 brew install gnutls --with-default-names
 brew install gnu-sed --with-default-names
 brew install gnu-tar --with-default-names
 brew install gnu-which --with-default-names
 brew install grep --with-default-names
-brew install bash
-brew install make
-brew install less
 
 ################################################################################
 ######################### Programming Languages ################################
@@ -196,7 +190,7 @@ brew cask install deluge
 brew cask install filezilla
 brew cask install nextcloud
 brew cask install spideroakone
-brew cask install syncthing
+brew cask install syncthing-app
 brew cask install veracrypt
 brew cask install vlc
 brew cask install gpg-suite
