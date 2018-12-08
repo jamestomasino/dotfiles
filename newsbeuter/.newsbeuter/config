@@ -74,3 +74,8 @@ highlight article     ":.*\\(embedded flash\\)$"            color74  default
 color listnormal                                            white    default
 color listfocus                                             default  color240
 color info                                                  default  color240
+
+urls-source "ttrss"
+ttrss-url "https://rss.tildeverse.org/"
+ttrss-login "tomasino"
+ttrss-password "JX6Gwfe5jBEqTolale0R"
