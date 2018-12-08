@@ -69,6 +69,9 @@ alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaver
 # Ubuntu specific
 alias hibernate='sh -c "dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock && dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"'
 
+# Cosmic Voyage
+alias qec="lynx -display_charset=utf8 --lss=/dev/null gopher://cosmic.voyage"
+
 # Look busy
 alias busy='cat /dev/urandom | hexdump -C | grep "ca fe"'
 
