@@ -113,3 +113,4 @@
 1sloum	/~sloum/phlog/	circumlunar.space	70
 1visiblink	/~visiblink/phlog/	circumlunar.space	70
 1jynx	/Phlog	1436.ninja	70
+1bitsrearranged	/phlog	bitsrearranged.com	70

@@ -199,13 +199,7 @@ mas install 931134707
 ########################### Quicklook Plugins ##################################
 ################################################################################
 
-brew cask install qlcolorcode
-brew cask install qlmarkdown
-brew cask install qlprettypatch
-brew cask install qlstephen
-brew cask install quicklook-csv
-brew cask install quicklook-json
-brew cask install qlimagesize
+brew cask install qlcolorcode qlmarkdown qlprettypatch qlstephen quicklook-csv quicklook-json
 
 ################################################################################
 ############################## Completions #####################################
@@ -233,7 +227,7 @@ ln -s ~/Sites/sync/syncthing ~/.syncthing
 ################################################################################
 
 cd ~/Sites/system && git clone https://github.com/jamestomasino/dotfiles.git
-cd ~/Sites/system/dotfiles && ./make
+cd ~/Sites/system/dotfiles && make
 
 ################################################################################
 ########################### Plugin Installs ####################################
