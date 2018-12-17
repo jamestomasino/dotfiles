@@ -99,6 +99,13 @@ function! MyHighlights() abort
     highlight clear LineNr          " Current line number row will have same background color in relative mode
 endfunction
 
+function! Print()
+    let &printheader = " "
+    hardcopy > %:r.ps
+    !ps2pdf %:r.ps
+    !rm %:r.ps
+endfunction
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""" AUTOCMD """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
