@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+somalist() {
+  curl -s https://somafm.com/listen/ | awk -F '[<>]' '/MP3:/ { print $4 }' | awk -F '"' '{print $2}' | tr -d \/
+}
+soma() {
+  mplayer -playlist http://somafm.com/"$1"
+}
+_soma() {
+    if [ "${#COMP_WORDS[@]}" != "2" ]; then
+        return
+    fi
+
+    COMPREPLY=($(compgen -W "$(somalist)" -- "${COMP_WORDS[1]}"))
+}
+
+complete -F _soma soma
