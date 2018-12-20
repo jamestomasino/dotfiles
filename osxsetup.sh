@@ -140,6 +140,7 @@ brew install asciinema # record terminal sessions
 brew install bat # a prettier cat/less utility
 brew install calc # command line calculator
 brew install cmus # audio player
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags # ctags
 brew install diff-so-fancy # better, colorized, diff displays
 brew install ffmpeg --with-libvpx --with-theora --with-libvorbis --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvpx --with-x265 # video processor
 brew install figlet # pretty-print words really big
