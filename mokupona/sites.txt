@@ -27,7 +27,6 @@
 1jzp	/users/jzp/phlog	gopher.club	70
 1uninformativ	/twitpher	uninformativ.de	70
 1solene	/~solene	dataswamp.org	70
-0ulcer	/users/ulcer/atom.xml	gopher.club	70
 1siobhan	/users/siobhan	gopher.club	70
 1yargo - sdf	/users/yargo/glog	gopher.club	70
 1yargo - circumlunar	/~yargo/clog	circumlunar.space	70
@@ -114,3 +113,8 @@
 1visiblink	/~visiblink/phlog/	circumlunar.space	70
 1jynx	/Phlog	1436.ninja	70
 1bitsrearranged	/phlog	bitsrearranged.com	70
+11436 Files	/1436_Files	1436.ninja	70
+1schroeder	/users/schroeder/	gopher.club	70
+1xiled	/users/xiled/phlog/	sdf.org	70
+1cpj	/~cpj/phlog	zaibatsu.circumlunar.space	70
+1ubergeek	/~ubergeek/feels	gopher.yourtilde.com	70
