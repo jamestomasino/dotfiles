@@ -36,6 +36,7 @@ alias weight='track -ca weight | jp -input csv -height 25 -width 67 -canvas brai
 # vim
 alias vime='vim -u ~/.vimrc.encryption -x'
 alias vimr='vim -u NONE'
+alias ideas="vim +'normal Go' +'r!date' ~/ideas.txt"
 
 # git
 alias gs="git status"
