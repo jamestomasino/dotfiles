@@ -123,6 +123,9 @@ bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Lock screen
 bindsym Mod4+Shift+z exec "xautolock -locknow &> /dev/null"
 
+# Play chime for CYOA
+bindsym Mod4+c exec "play /home/tomasino/sync/syncthing/syncthing/cyoa/choice.mp3"
+
 # Media Keys
 bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '-5%'
 bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume @DEFAULT_SINK@ '+5%'
