@@ -3782,9 +3782,9 @@ SYSLOG_REQUESTED_URLS:FALSE
 # plain text
 COLOR:0:lightgray:black
 # links
-COLOR:1:blue:black
+COLOR:1:brightcyan:black
 # address bar
-COLOR:2:brightcyan:black
+COLOR:2:yellow:black
 # unknown
 COLOR:3:white:black
 # unknown
@@ -3813,7 +3813,3 @@ EXTERNAL:http:x-www-browser %s:TRUE
 
 # include
 INCLUDE:/etc/lynx/local.cfg
-INCLUDE:~/.lynx/colors:COLOR
-INCLUDE:~/.lynx/keymap:KEYMAP
-INCLUDE:~/.lynx/viewers:VIEWER
-INCLUDE:~/.lynx/external:EXTERNAL
