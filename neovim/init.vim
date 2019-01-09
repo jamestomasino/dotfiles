@@ -9,8 +9,6 @@ call plug#begin('~/.vim/plugged')
 " Global
 Plug 'embear/vim-localvimrc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'junegunn/vim-easy-align'            " <Enter> to visually align
-Plug 'tpope/vim-commentary'               " gcc to toggle comments
 
 " Styling
 Plug 'reedes/vim-colors-pencil'
@@ -27,6 +25,7 @@ Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
 Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 
 " Development Tools
+Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
 Plug 'w0rp/ale'                           " linting
