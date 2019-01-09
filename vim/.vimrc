@@ -8,7 +8,8 @@ call plug#begin('~/.vim/plugged')
 
 " Global
 Plug 'embear/vim-localvimrc'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Styling
 Plug 'reedes/vim-colors-pencil'
@@ -103,6 +104,11 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if has('autocmd')
+
+    augroup fzf
+        autocmd! FileType fzf
+        autocmd  FileType fzf set laststatus=0 noshowmode noruler | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    augroup END
 
     augroup func_whitespace
         autocmd!
@@ -355,8 +361,9 @@ set pastetoggle=<Leader>z
 " }}}
 
 " Buffers {{{
-nnoremap <Leader>a :argadd <c-r>=fnameescape(expand('%:p:h'))<cr>/*<C-d>
-nnoremap <Leader>b :b <C-d>
+nnoremap <Leader>a :Files<CR>
+nnoremap <Leader>A :GFiles<CR>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>s :b#<cr>
 nnoremap <leader>w :bd<cr>
 " }}}
