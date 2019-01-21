@@ -228,6 +228,9 @@
   # search logs for a bugzilla like number
   findbug = "!sh -c 'git log --grep ^$1:' -"
 
+  # edit from list of git modified files
+  edit-changed = "!vim `git status -u --porcelain | cut -b4- | fzf`"
+
   # show what tag/release a bug was part of
   bugrelease = "!sh -c 'git name-rev --tags --name-only  $(git log --grep ^$1: --pretty=\"format:%H\n\")' -"
 

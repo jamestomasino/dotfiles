@@ -1,4 +1,3 @@
-1alexschroeder	/	alexschroeder.ch	70
 1dokuja	/~dokuja/phlog	circumlunar.space	70
 1dbucklin	/users/dbucklin/posts	gopher.club	70
 1sysdharma	/users/sysdharma/phlog	gopher.club	70
@@ -17,7 +16,7 @@
 1auzymoto	/glog	auzymoto.net	70
 1cat	/phlog	baud.baby	70
 1snowdusk	/users/snowdusk/phlog	gopher.club	70
-1logout	/en/phlog	i-logout.cz	70
+1logout	/phlog	i-logout.cz	70
 1jandal	/~jandal/phlog	grex.org	70
 1papa	/~papa/pgphlog/2018	grex.org	70
 1melton	/users/melton/phlog	gopher.club	70
@@ -42,7 +41,6 @@
 1tfurrows - grex	/~tfurrows/phlog	grex.org	70
 1tfurrows - circumlunar	/~tfurrows/phlog	circumlunar.space	70
 1mijk	/~mijk/phlog	grex.org	70
-1chals	/users/chals/phlog	sdf-eu.org	70
 1lostnbronx	/lostnbronx/lostnblog/newer-stuff	gopher.info-underground.net	70
 1christyotwisty	/users/christyotwisty/phlog	gopher.club	70
 1mre	/users/mre	gopher.club	70
@@ -53,26 +51,22 @@
 1dubst3pp4	/Phlog	l00t.de	70
 1zcrayfish	/phlog/	gopher.zcrayfish.soy	70
 1rach	/users/rach/phlog	gopher.club	70
-1adth	/users/adth/phlog	sdf-eu.org	70
 1alberti	/users/alberti/phlog	gopher.club	70
 1jakob	/phlog	jakob.space	70
 1cmccabe	/users/cmccabe/	gopher.club	70
 0selmar	/blog.txt	cloudb.zapto.org	70
 1tomasino	/phlog	gopher.black	70
 1deftly	/articles/	deftly.net	70
-1ander	/blog/	9gw.ddns.net	70
 1kroovy	/phlog	kroovy.de	70
 1tfurrows - vernunftzentrum	/tfurrows/phlog	vernunftzentrum.de	70
 1ze libertine gamer	/phlog	zlg.space	70
 1f6k	/users/f6k	gopher.club	70
 1keiya	/users/keiya/phlog	gopher.club	70
 1kirch	/users/kirch/phlog	gopher.club	70
-1abelisto	/users/abelisto/phlog	sdf-eu.org	70
 1c25l	/~c25l/	circumlunar.space	70
 1christina	/~christina/	circumlunar.space	70
 1andram	/~andram/phlog	circumlunar.space	70
 1ymodem	/phlog/2018	ymodem.org	70
-1horsemans		blog.horsemans.online	70
 1imrowan	/users/imrowan/	gopher.club	70
 1jstg	/users/jstg/phlog	sdf.org	70
 1endorphant	/~endorphant/feels/	tilde.town	70
@@ -83,7 +77,6 @@
 1cdmnky	/users/cdmnky/phlog	sdf.org	70
 1julienxx	/users/julienxx/Log	sdf.org	70
 1hnb	/users/hnb/phlog	sdf.org	70
-1bitreich phlogs	/news.gph	bitreich.org	70
 1rach	/users/rach/phlog	sdf.org	70
 1ben's phlog	/~ben/phlog	tilde.team	70
 1ben's blog	/~ben/blog	tilde.team	70
@@ -108,13 +101,22 @@
 1simple	/%7emeta4/Phlog	devio.us	70
 1tekmav	/phlogs/	solarbaby.tekmav.space	70
 1cmccabe - circumlunar	/~cmccabe/	circumlunar.space	70
-1cpj	/~cpj/phlog/	circumlunar.space	70
 1sloum	/~sloum/phlog/	circumlunar.space	70
 1visiblink	/~visiblink/phlog/	circumlunar.space	70
-1jynx	/Phlog	1436.ninja	70
 1bitsrearranged	/phlog	bitsrearranged.com	70
 11436 Files	/1436_Files	1436.ninja	70
 1schroeder	/users/schroeder/	gopher.club	70
 1xiled	/users/xiled/phlog/	sdf.org	70
 1cpj	/~cpj/phlog	zaibatsu.circumlunar.space	70
 1ubergeek	/~ubergeek/feels	gopher.yourtilde.com	70
+1losthalo	/~losthalo/nusuth	zaibatsu.circumlunar.space	70
+0ulcer atom	/users/ulcer/atom.xml	sdf.org	70
+1slackz	/blog	gopher.orghub.co	70
+1lich	/musings	desolate.k.vu	70
+0bitreich	/news.atom.xml	bitreich.org	70
+1cosmic voyage	/log	cosmic.voyage	70
+1hardmous	/users/hardmous/Phlog	sdf.org	70
+1lro	/users/lro/phlog/technical/	sdf.org	70
+1spring	/~spring/phlog/	republic.circumlunar.space	70
+0jynx atom	/phlog.atom	1436.ninja	70
+0kensanata	do/rss	alexschroeder.ch	70
