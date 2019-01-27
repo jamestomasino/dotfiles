@@ -26,6 +26,7 @@ Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
 Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 
 " Development Tools
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
