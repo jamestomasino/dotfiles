@@ -89,6 +89,7 @@ alias tilderadio='mplayer https://radio.tildeverse.org/radio/8000/radio.ogg'
 alias sleepbot='mplayer -playlist "http://www.sleepbot.com/ambience/cgi/listen.cgi/listen.pls"'
 alias wrti="mplayer http://playerservices.streamtheworld.com/api/livestream-redirect/WRTI_CLASSICAL.mp3"
 
+alias getmusic="youtube-dl -x --audio-quality 0 --audio-format mp3"
 
 # Wrap vlc on OSX with a happy little alias
 if ! hash nvlc 2>/dev/null; then
