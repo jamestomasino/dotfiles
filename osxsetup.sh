@@ -100,6 +100,7 @@ gem install bundler
 
 # perl
 \\curl -L http://install.perlbrew.pl | bash
+# shellcheck disable=SC1090
 source ~/perl5/perlbrew/etc/bashrc
 perlbrew install perl-5.16.0
 perlbrew switch perl-5.16.0

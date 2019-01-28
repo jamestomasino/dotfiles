@@ -342,6 +342,7 @@ if has('persistent_undo')
 endif
 " }}}
 
+
 " Statusline {{{
 if has('statusline')
     set laststatus=2
@@ -352,6 +353,7 @@ if has('statusline')
     set statusline+=%#CursorLine#
     set statusline+=\ %f\ 
     set statusline+=%h%m%r%w
+    set statusline+=%{coc#status()}
     set statusline+=%=
     set statusline+=\ %y\ 
     set statusline+=%#Menu#
