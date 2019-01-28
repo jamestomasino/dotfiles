@@ -70,6 +70,12 @@ apt install -y wicd-curses                        # network manager
 
 # Languages
 apt install -y nodejs nodejs-dev build-essentials # js development
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt update && apt install -y yarn
+yarn global add eslint
+yarn global add bash-language-server
+
 apt install -y rbenv                              # ruby development
 curl https://sh.rustup.rs -sSf | sh               # rustup for rust development
 apt install -y python-pygments                    # syntax highlighting

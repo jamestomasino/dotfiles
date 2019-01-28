@@ -50,7 +50,7 @@ fi
 ################################################################################
 
 # Reset permissions on /usr/local
-sudo chown -R $USER /usr/local
+sudo chown -R "$USER" /usr/local
 
 # Try uninstalling homebrew first in case the system shipped with something stupid
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
@@ -105,10 +105,10 @@ perlbrew install perl-5.16.0
 perlbrew switch perl-5.16.0
 
 # javascript
-# Install using website install package
-# Reset permissions for node modules to current user
+brew install node
 brew install yarn --without-node
 yarn global add eslint
+yarn global add bash-language-server
 
 # bash
 brew install shellcheck
