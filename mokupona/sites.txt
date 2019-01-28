@@ -120,3 +120,4 @@
 1spring	/~spring/phlog/	republic.circumlunar.space	70
 0jynx atom	/phlog.atom	1436.ninja	70
 0kensanata	do/rss	alexschroeder.ch	70
+1zach	/~zach/phlog/	tilde.team	70
