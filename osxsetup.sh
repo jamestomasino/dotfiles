@@ -236,6 +236,8 @@ cd ~/Sites/system/dotfiles && make
 
 vim -c ":PlugInstall|q|q" # auto install plugins
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
+# Language server protocol installs
+nvim -c ":CocInstall coc-json coc-tsserver coc-html coc-css coc-solargraph coc-yaml coc-highlight coc-dictionary coc-eslint coc-stylelint|q" # auto install plugins
 
 ################################################################################
 ###########################  iTerm Colors   ####################################
