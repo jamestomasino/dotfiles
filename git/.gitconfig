@@ -353,3 +353,4 @@
 
   pconfig = config -f .git/config
   up = "!git remote update -p; git merge --ff-only @{u}"
+  mkrepo = "!github-newrepo $1"
