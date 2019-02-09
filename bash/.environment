@@ -22,8 +22,7 @@ export WWW_HOME="gopher://gopher.black"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # path vars
-export SPIDEROAK_PATH="$HOME/.spideroak"
-export NEXTCLOUD_PATH="$HOME/.nextcloud"
+export SYNCTHING_PATH="$HOME/.syncthing"
 export SSH_ENV="$HOME/.ssh/environment"
 export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:${HOME}/.yarn/bin:/usr/bin/npm"
 export ANDROID_HOME="$HOME/sdk"
@@ -33,10 +32,10 @@ export LPASS_HOME="$HOME/.lpass"
 export LPASS_DISABLE_PINENTRY=1
 
 # personal app storage paths
-export TODO="$NEXTCLOUD_PATH/todo/personal.txt"
-export NOTE_DIR="$NEXTCLOUD_PATH/notes"
-export CONTACTS_DIR="$NEXTCLOUD_PATH/contacts"
-export TRACK_DIR="$NEXTCLOUD_PATH/track"
+export TODO="$SYNCTHING_PATH/todo/personal.txt"
+export NOTE_DIR="$SYNCTHING_PATH/notes"
+export CONTACTS_DIR="$SYNCTHING_PATH/contacts"
+export TRACK_DIR="$SYNCTHING_PATH/track"
 
 # ruby
 export GEM_HOME="$HOME/.gem"
