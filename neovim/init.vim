@@ -273,6 +273,10 @@ let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --n
 let g:ale_javascript_prettier_use_local_config = 1
 " }}}
 
+" coc.nvim {{{
+nmap <silent> gd <Plug>(coc-definition)
+" }}}
+
 " ag support {{{
 if executable("ag")
     set grepprg=ag\ --ignore\ --nogroup\ --nocolor\ --ignore-case\ --column
