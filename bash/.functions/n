@@ -19,9 +19,7 @@ n() {
       fzf \
         --multi \
         --select-1 \
-        --exit-0 \
-        --preview="cat ${NOTE_DIR}/{}.md" \
-        --preview-window=right:70%:wrap)
+        --exit-0)
     [[ -n $file ]] && \
       ${EDITOR:-vim} "${NOTE_DIR}/${file}.md"
   else
