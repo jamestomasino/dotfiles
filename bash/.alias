@@ -36,7 +36,7 @@ alias weight='track -ca weight | jp -input csv -height 25 -width 67 -canvas brai
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption -x'
-alias vimr='vim -u NONE'
+alias vimr='vim -u DEFAULTS -U NONE -i NONE'
 alias ideas="vim +'normal Go' +'r!date' ~/ideas.txt"
 
 # git
@@ -64,6 +64,7 @@ alias showdeskicons="defaults write com.apple.finder CreateDesktop -bool true &&
 alias hidedeskicons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
+alias beat='echo "x = (`date +%s` + 3600) % 86400; scale=3; x / 86.4" | bc'
 
 # Ubuntu specific
 alias hibernate='sh -c "dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock && dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"'
