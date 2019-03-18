@@ -1,5 +1,0 @@
-function randline() {
-	if [ $# -eq 1 ]; then
-		head -$(( ((RANDOM<<15)|RANDOM) % `wc -l < "$1"` + 1)) "$1" | tail -1
-	fi
-}

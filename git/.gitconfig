@@ -41,8 +41,8 @@
   ui = auto
 
 [pager]
-  diff = diff-so-fancy | less --tabs=1,5 -RFX
-  show = diff-so-fancy | less --tabs=1,5 -RFX
+  diff = diff-so-fancy | less --tabs=4 -RFX
+  show = diff-so-fancy | less --tabs=4 -RFX
 
 [diff]
   tool = vimdiff
@@ -108,6 +108,15 @@
 [url "https://bitbucket.org/"]
   insteadOf = bb:
 
+[credential]
+  helper = cache --timeout=3600
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
 [color]
   diff = auto
   status = auto
@@ -121,18 +130,29 @@
   remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta
+  meta = yellow
+  frag = magenta bold
   plain = white bold
   old = red bold
   new = green bold
   commit = yellow bold
   func = green dim
+  whitespace = red reverse
 
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[diff-so-fancy]
+  markEmptyLines = false
+  changeHunkIndicators = false
 
 [alias]
 
@@ -333,10 +353,4 @@
 
   pconfig = config -f .git/config
   up = "!git remote update -p; git merge --ff-only @{u}"
-[credential]
-  helper = cache --timeout=3600
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  mkrepo = "!github-newrepo $1"

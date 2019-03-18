@@ -50,7 +50,7 @@ fi
 ################################################################################
 
 # Reset permissions on /usr/local
-sudo chown -R $USER /usr/local
+sudo chown -R "$USER" /usr/local
 
 # Try uninstalling homebrew first in case the system shipped with something stupid
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
@@ -100,15 +100,16 @@ gem install bundler
 
 # perl
 \\curl -L http://install.perlbrew.pl | bash
+# shellcheck disable=SC1090
 source ~/perl5/perlbrew/etc/bashrc
 perlbrew install perl-5.16.0
 perlbrew switch perl-5.16.0
 
 # javascript
-# Install using website install package
-# Reset permissions for node modules to current user
+brew install node
 brew install yarn --without-node
 yarn global add eslint
+yarn global add bash-language-server
 
 # bash
 brew install shellcheck
@@ -236,6 +237,8 @@ cd ~/Sites/system/dotfiles && make
 
 vim -c ":PlugInstall|q|q" # auto install plugins
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"
+# Language server protocol installs
+nvim -c ":CocInstall coc-json coc-tsserver coc-html coc-css coc-solargraph coc-yaml coc-highlight coc-dictionary coc-eslint coc-stylelint|q" # auto install plugins
 
 ################################################################################
 ###########################  iTerm Colors   ####################################

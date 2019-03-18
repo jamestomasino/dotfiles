@@ -19,40 +19,37 @@ endif
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim sc-im khal vdirsyncer
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura sc-im alacritty weechat khal vdirsyncer
-Windows: bash git news R utils zsh bin vim tmux
-Other: bash git utils zsh vim cmus surfraw
+OSX:   sh git news R utils zsh bin vim tmux cmus surfraw neovim sc-im khal vdirsyncer
+Linux: sh git news R utils zsh bin vim tmux cmus surfraw neovim sc-im zathura alacritty weechat khal vdirsyncer i3 
+Windows: sh git news R utils zsh bin vim tmux
+Other: sh git utils zsh vim cmus surfraw
 
 clean:
 	@printf "$(RED)--- clean -----------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" -D bash
+	stow -t "$$HOME" -D sh
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D newsbeuter
 	stow -t "$$HOME" -D R
-	stow -t "$$HOME" -D slate
 	stow -t "$$HOME" -D utils
 	stow -t "$$HOME" -D zsh
-	stow -t "$$HOME" -D mintty
-	stow -t "$$HOME" -D notmuch
 	stow -t "$$HOME/bin" -D bin
 	stow -t "$$HOME" -D vim
-	stow -t "$$HOME/.config/nvim/" -D neovim
 	stow -t "$$HOME" -D tmux
-	stow -t "$$HOME" -D surfraw
 	stow -t "$$HOME/.cmus/" -D cmus
-	stow -t "$$HOME/.config/i3/" -D i3
-	stow -t "$$HOME" -D i3status
-	stow -t "$$HOME/.config/zathura" -D zathura
+	stow -t "$$HOME" -D surfraw
+	stow -t "$$HOME/.config/nvim/" -D neovim
 	stow -t "$$HOME" -D sc-im
+	stow -t "$$HOME/.config/zathura" -D zathura
 	stow -t "$$HOME" -D alacritty
 	stow -t "$$HOME/.weechat" -D weechat
 	stow -t "$$HOME/.config/khal" -D khal
 	stow -t "$$HOME/.config/vdirsyncer" -D vdirsyncer
+	stow -t "$$HOME/.config/i3/" -D i3
+	stow -t "$$HOME" -D i3status
 
-bash:
-	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" bash
+sh:
+	@printf "$(YELLOW)--- sh ------------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" sh
 
 weechat:
 	@printf "$(YELLOW)--- weechat ---------------------------------------------\n$(RESET)"
@@ -86,17 +83,6 @@ R:
 	@printf "$(YELLOW)--- R ---------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" R
 
-slate:
-	@printf "$(YELLOW)--- slate -----------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" slate
-	if [ -f "$$HOME/Library/Application Support/Karabiner/private.xml" ]; then \
-		rm "$$HOME/Library/Application Support/Karabiner/private.xml"; \
-	fi
-	mkdir -p "$$HOME/Library/Application Support/Karabiner"
-	stow -t "$$HOME/Library/Application Support/Karabiner" karabiner
-	@printf "    $(GREEN)Set Caps Lock to no action in system settings\n"
-	@printf "    $(GREEN)Bind Caps Lcok to key code 80 in Seil\n$(RESET)"
-
 utils:
 	@printf "$(YELLOW)--- utils -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" utils
@@ -104,10 +90,6 @@ utils:
 zsh:
 	@printf "$(YELLOW)--- zsh -------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" zsh
-
-mintty:
-	@printf "$(YELLOW)--- mintty ----------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" mintty
 
 i3:
 	@printf "$(YELLOW)--- i3 --------------------------------------------------\n$(RESET)"
@@ -118,10 +100,6 @@ i3:
 mutt:
 	@printf "$(YELLOW)--- mutt ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" mutt
-
-notmuch:
-	@printf "$(YELLOW)--- notmuch ---------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" notmuch
 
 bin:
 	@printf "$(YELLOW)--- bin -------------------------------------------------\n$(RESET)"
@@ -181,4 +159,4 @@ sc-im:
 	@printf "$(YELLOW)--- sc-im -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" sc-im
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im alacritty weechat vdirsyncer khal
+.PHONY: sh git news R utils zsh bin vim tmux mutt cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im alacritty weechat vdirsyncer khal

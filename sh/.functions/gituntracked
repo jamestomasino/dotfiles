@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Return number of untracked files in folder
+gituntracked () {
+  u="$(git ls-files --exclude-standard --others 2> /dev/null | wc -l)"
+  if [ "0" = "${u}" ]; then
+    u=""
+  else
+    u="${u} "
+  fi
+  echo "${u}"
+}

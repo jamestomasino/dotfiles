@@ -70,6 +70,12 @@ apt install -y wicd-curses                        # network manager
 
 # Languages
 apt install -y nodejs nodejs-dev build-essentials # js development
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt update && apt install -y yarn
+yarn global add eslint
+yarn global add bash-language-server
+
 apt install -y rbenv                              # ruby development
 curl https://sh.rustup.rs -sSf | sh               # rustup for rust development
 apt install -y python-pygments                    # syntax highlighting
@@ -161,4 +167,5 @@ cd ~/Sites/system/dotfiles && ./make
 
 vim -c ":PlugInstall|q|q" # auto install plugins
 nvim -c ":PlugInstall|q|q" # auto install plugins
+nvim -c ":CocInstall coc-json coc-tsserver coc-html coc-css coc-solargraph coc-yaml coc-highlight coc-dictionary coc-eslint coc-stylelint|q"
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"

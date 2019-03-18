@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# Move file to a backup ".old" version
-old() {
-    mv "$1"{,.old}
-}
