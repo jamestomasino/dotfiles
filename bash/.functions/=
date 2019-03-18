@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# calculator
+=() {
+	python -c "from math import *; print($@)"
+}

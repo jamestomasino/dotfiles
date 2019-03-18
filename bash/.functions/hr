@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Create a horizontal rule, hr style
+function hr() {
+	set -f
+	if [[ -n $1 ]]; then
+		space_character=$( echo "$1" | head -c 1)
+	else
+		space_character='='
+	fi
+	for i in $(seq 1 "$(tput cols)");
+	do
+		echo -n "${space_character}";
+	done
+	echo ""
+}

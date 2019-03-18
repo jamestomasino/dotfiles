@@ -1,8 +1,16 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+_contact() {
+  local lis cur
+  lis=$(ls -1 "${CONTACTS_DIR}")
+  cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$lis" -- "$cur") )
+}
 
 contact() {
   : "${CONTACTS_DIR:?'CONTACTS_DIR ENV Var not set'}"
   if [ $# -eq 0 ]; then
+    local file
     file=$(ls -1 "${CONTACTS_DIR}" | \
       fzf \
         --multi \
@@ -10,9 +18,7 @@ contact() {
         --exit-0 \
         --preview="cat ${CONTACTS_DIR}/{}" \
         --preview-window=right:70%:wrap)
-    if [ -n "$file" ]; then 
-      ${EDITOR:-vim} "${CONTACTS_DIR}/${file}"
-    fi
+    [[ -n $file ]] && ${EDITOR:-vim} "${CONTACTS_DIR}/${file}"
   else
     case "$1" in
       "-d")
@@ -24,3 +30,4 @@ contact() {
     esac
   fi
 }
+complete -F _contact contact

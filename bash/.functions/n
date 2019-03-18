@@ -1,9 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Note taking function and command completion
-n () {
+_n() {
+  local lis cur
+  lis=$(find "${NOTE_DIR}" -name "*.md" | \
+    sed -e "s|${NOTE_DIR}/||" | \
+    sed -e 's/\.md$//')
+  cur=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=( $(compgen -W "$lis" -- "$cur") )
+}
+n() {
   : "${NOTE_DIR:?'NOTE_DIR ENV Var not set'}"
   if [ $# -eq 0 ]; then
+    local file
     file=$(find "${NOTE_DIR}" -name "*.md" | \
       sed -e "s|${NOTE_DIR}/||" | \
       sed -e 's/\.md$//' | \
@@ -11,9 +20,8 @@ n () {
         --multi \
         --select-1 \
         --exit-0)
-    if [ -n "$file" ]; then
+    [[ -n $file ]] && \
       ${EDITOR:-vim} "${NOTE_DIR}/${file}.md"
-    fi
   else
     case "$1" in
       "-d")
@@ -25,3 +33,4 @@ n () {
     esac
   fi
 }
+complete -F _n n

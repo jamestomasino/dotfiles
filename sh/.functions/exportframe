@@ -1,4 +1,0 @@
-#!/bin/sh
-exportframe () {
-  ffmpeg -ss 0 -i "$1" -qscale:v 2 -vframes 1 "$1".jpg
-}

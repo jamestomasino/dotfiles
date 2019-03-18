@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+function mem() {
+  free -m | awk '/Mem:/{printf "Memory: %.0f%%\n", ($3/$2) * 100}'
+}

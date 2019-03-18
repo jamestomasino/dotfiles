@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# R language
+function knit() {
+	Rscript -e "rmarkdown::render(\"$1\")"
+}

@@ -121,14 +121,3 @@
 0jynx atom	/phlog.atom	1436.ninja	70
 0kensanata	do/rss	alexschroeder.ch	70
 1zach	/~zach/phlog/	tilde.team	70
-1snowcrash	/users/snowcrash/phlog	sdf.org	70
-1developer	/users/developer/PHLOG	sdf.org	70
-1cmccabe - colorfield	/~cmccabe	colorfield.space	70
-1leot	/phlog	tccr.it	70
-1cardboard	/~cardboard64/phlog	zaibatsu.circumlunar.space	70
-0matto	/gopherindex.rss	box.matto.nl	70
-1cdmnky - seedy	/phlog/	seedy.xyz	70
-1the unix zoo	/phlog/2019/	theunixzoo.co.uk	70
-1antirez	/My_Phlog/	gopher.antirez.com	70
-1katolaz	/~katolaz/phlog	republic.circumlunar.space	70
-1shroom party	/phlog	shroom.party	70
