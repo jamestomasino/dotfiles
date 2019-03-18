@@ -1,8 +1,3 @@
-###############################################################################
-################################### environment ###############################
-###############################################################################
-
-# vars
 if hash nvim 2>/dev/null; then
   export EDITOR="nvim"
 else
@@ -46,23 +41,19 @@ export TZ="America/New_York"
 
 # colors
 export TERM=screen-256color
-export DIRECTORY_COLOR="$(tput setaf 222)"
-export GIT_COLOR="$(tput setaf 240)"
-export STAGED_COLOR="$(tput setaf 11)"
-export MODIFIED_COLOR="$(tput setaf 64)"
-export UNTRACKED_COLOR="$(tput setaf 4)"
-export PROMPT_COLOR="$(tput setaf 226)"
-export USER_COLOR="$(tput setaf 87)"
-export BEAT_COLOR="$(tput setaf 195)"
-export ROOT_COLOR="$(tput setaf 160)"
-export AT_COLOR="$(tput setaf 240)"
-export HOST_COLOR="$(tput setaf 213)"
-export TIME_COLOR="$(tput setaf 60)"
-export RESET_COLOR="$(tput sgr0)"
+DIRECTORY_COLOR="$(tput setaf 222)"
+GIT_COLOR="$(tput setaf 240)"
+STAGED_COLOR="$(tput setaf 11)"
+MODIFIED_COLOR="$(tput setaf 64)"
+UNTRACKED_COLOR="$(tput setaf 4)"
+PROMPT_COLOR="$(tput setaf 226)"
+ROOT_COLOR="$(tput setaf 160)"
+AT_COLOR="$(tput setaf 240)"
+HOST_COLOR="$(tput setaf 213)"
+RESET_COLOR="$(tput sgr0)"
 
 # Base16 Tomorrow Night
 _gen_fzf_default_opts() {
-
   color00='#1d1f21'
   color01='#282a2e'
   color02='#373b41'
@@ -79,7 +70,6 @@ _gen_fzf_default_opts() {
   color0D='#81a2be'
   color0E='#b294bb'
   color0F='#a3685a'
-
   export FZF_DEFAULT_OPTS="
   --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
   --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C
@@ -93,9 +83,9 @@ export PAGER=less
 
 # path
 PATH=/usr/local/bin
-PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}" # homebrew gnu versions
-PATH=${HOME}/.yarn/bin:${PATH}
-PATH=${HOME}/.config/yarn/global/node_modules/.bin:${PATH}
+PATH=${PATH}:/usr/local/opt/coreutils/libexec/gnubin
+PATH=${PATH}:${HOME}/.yarn/bin
+PATH=${PATH}:${HOME}/.config/yarn/global/node_modules/.bin
 PATH=${PATH}:/usr/pkg/bin
 PATH=${PATH}:${HOME}/bin
 PATH=${PATH}:${HOME}/.node/bin
@@ -115,12 +105,12 @@ PATH=${PATH}:/sbin
 PATH=${PATH}:.
 PATH=${PATH}:${HOME}/.local/bin
 PATH=${PATH}:/sys/sdf/bin
+PATH=${PATH}:${HOME}/.fzf/bin
 # android sdk
 PATH=${PATH}:${HOME}/sdk/tools
 PATH=${PATH}:${HOME}/sdk/tools/bin
 PATH=${PATH}:${HOME}/sdk/platform-tools
 PATH=${PATH}:${HOME}/sdk/build-tools/25.0.3
-PATH=${PATH}:${HOME}/.fzf/bin
 
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH" # homebrew gnu versions
 
@@ -135,7 +125,7 @@ set -o vi
 
 # Load functions
 for f in "${HOME}/.functions/"*; do
-  source "$f"
+  . "$f"
 done
 
 # Use "z" helper for folder nav
