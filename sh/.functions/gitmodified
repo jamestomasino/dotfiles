@@ -2,7 +2,7 @@
 
 # Return number of modified files in folder
 gitmodified() {
-  m=$(trimspace "$(git diff --numstat 2> /dev/null | wc -l)" )
+  m="$(git diff --numstat 2> /dev/null | wc -l)"
   if [ "0" = "${m}" ]; then
     m=""
   else

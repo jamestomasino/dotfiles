@@ -137,6 +137,9 @@ for f in "${HOME}/.functions/"*; do
   source "$f"
 done
 
+# Use "z" helper for folder nav
+. ~/.zsh
+
 # basic shell aliases
 alias ls='ls --color'
 alias lsd='ls -Gl | grep "^d"'

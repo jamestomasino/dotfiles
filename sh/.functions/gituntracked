@@ -2,7 +2,7 @@
 
 # Return number of untracked files in folder
 gituntracked () {
-  u=$(trimspace "$(git ls-files --exclude-standard --others 2> /dev/null | wc -l)" )
+  u="$(git ls-files --exclude-standard --others 2> /dev/null | wc -l)"
   if [ "0" = "${u}" ]; then
     u=""
   else

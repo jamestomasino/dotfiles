@@ -2,7 +2,7 @@
 
 # Return number of staged files in folder
 gitstaged () {
-  s=$(trimspace "$(git diff --cached --numstat 2> /dev/null | wc -l)" )
+  s="$(git diff --cached --numstat 2> /dev/null | wc -l)"
   if [ "0" = "${s}" ]; then
     s=""
   else
