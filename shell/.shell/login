@@ -1,0 +1,30 @@
+# Put your environment variables here
+
+# Personal information
+#export NAME='Bob McBob'
+#export EMAIL='bob@example.com'
+
+# Preferred programs
+#export PAGER=less
+#export EDITOR=vim
+#export VISUAL=$EDITOR
+
+# Language
+#export LANG='en_AU.UTF-8'
+#export LC_ALL=$LANG
+#export LC_COLLATE=$LANG
+#export LC_CTYPE=$LANG
+#export LC_MESSAGES=$LANG
+#export LC_MONETARY=$LANG
+#export LC_NUMERIC=$LANG
+#export LC_TIME=$LANG
+
+# Path settings
+#pathprepend ~/bin PATH
+#pathprepend ~/lib LD_LIBRARY_PATH
+#pathprepend ~/include CPATH
+
+# The current directory should never be in $PATH
+#pathremove . PATH
+#pathremove "" PATH
+

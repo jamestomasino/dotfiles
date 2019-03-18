@@ -1,0 +1,4 @@
+# WARNING: this will not be run for non-login, non-interactive shells.
+
+# Also, you must run ~/.shell/env, to get $ENV.
+. ~/.shell/env
