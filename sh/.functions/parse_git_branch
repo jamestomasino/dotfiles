@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Return current git branch
-parse_git_branch () {
-  B=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')
-  echo "${B}"
-}

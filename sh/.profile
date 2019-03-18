@@ -42,10 +42,6 @@ export TZ="America/New_York"
 # colors
 export TERM=screen-256color
 DIRECTORY_COLOR="$(tput setaf 222)"
-GIT_COLOR="$(tput setaf 240)"
-STAGED_COLOR="$(tput setaf 11)"
-MODIFIED_COLOR="$(tput setaf 64)"
-UNTRACKED_COLOR="$(tput setaf 4)"
 PROMPT_COLOR="$(tput setaf 226)"
 ROOT_COLOR="$(tput setaf 160)"
 AT_COLOR="$(tput setaf 240)"
@@ -128,9 +124,6 @@ for f in "${HOME}/.functions/"*; do
   . "$f"
 done
 
-# Use "z" helper for folder nav
-. ~/.zsh
-
 # basic shell aliases
 alias ls='ls --color'
 alias lsd='ls -Gl | grep "^d"'
@@ -190,9 +183,5 @@ if hash nvim 2>/dev/null; then
   alias vim='nvim'
 fi
 
-run_user=$(id -u)
-if [ "$run_user" -eq 0 ]; then
-  PS1="\[$DIRECTORY_COLOR\]\w \[$GIT_COLOR\]\$(parse_git_branch) \[$STAGED_COLOR\]\$(gitstaged)\[$MODIFIED_COLOR\]\$(gitmodified)\[$UNTRACKED_COLOR\]\$(gituntracked)\[$RESET_COLOR\]\n\[$ROOT_COLOR\]\u\[$AT_COLOR\]@\[$HOST_COLOR\]$(hostname -f)\[$PROMPT_COLOR\]-> \[$RESET_COLOR\]"
-else
-  PS1="\[$DIRECTORY_COLOR\]\w \[$GIT_COLOR\]\$(parse_git_branch) \[$STAGED_COLOR\]\$(gitstaged)\[$MODIFIED_COLOR\]\$(gitmodified)\[$UNTRACKED_COLOR\]\$(gituntracked)\[$RESET_COLOR\]\n\[$HOST_COLOR\]$(hostname -f)\[$PROMPT_COLOR\]-> \[$RESET_COLOR\]"
-fi
+HOSTNAME=$(hostname -f)
+PS1="\${HOST_COLOR}${HOSTNAME}\${RESET_COLOR}:\${DIRECTORY_COLOR}\${PWD##*/}\${RESET_COLOR} $ "
