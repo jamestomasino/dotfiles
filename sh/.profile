@@ -120,6 +120,7 @@ PATH=${PATH}:${HOME}/sdk/tools
 PATH=${PATH}:${HOME}/sdk/tools/bin
 PATH=${PATH}:${HOME}/sdk/platform-tools
 PATH=${PATH}:${HOME}/sdk/build-tools/25.0.3
+PATH=${PATH}:${HOME}/.fzf/bin
 
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH" # homebrew gnu versions
 
