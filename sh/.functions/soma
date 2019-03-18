@@ -1,0 +1,4 @@
+#!/bin/sh
+soma() {
+  mplayer -playlist "http://somafm.com/${1}.pls"
+}

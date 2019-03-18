@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Start an HTTP server from a directory, optionally specifying the port
+server () {
+  port="${1:-8000}"
+  sleep 1 && open "http://localhost:${port}/" &
+  python3 -m http.server "${port}"
+}

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# find todo notes in current project
-function todos {
-	#local m=$(trimspace $(git diff --numstat 2> /dev/null | wc -l))
-	LOCAL_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
-	LOCAL_DIR=${LOCAL_DIR:-.}
-	ag '(TODO|FIX(ME)?):' "${LOCAL_DIR}" 
-}

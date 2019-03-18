@@ -1,0 +1,26 @@
+#!/bin/sh
+
+contact() {
+  : "${CONTACTS_DIR:?'CONTACTS_DIR ENV Var not set'}"
+  if [ $# -eq 0 ]; then
+    file=$(ls -1 "${CONTACTS_DIR}" | \
+      fzf \
+        --multi \
+        --select-1 \
+        --exit-0 \
+        --preview="cat ${CONTACTS_DIR}/{}" \
+        --preview-window=right:70%:wrap)
+    if [ -n "$file" ]; then 
+      ${EDITOR:-vim} "${CONTACTS_DIR}/${file}"
+    fi
+  else
+    case "$1" in
+      "-d")
+        rm "${CONTACTS_DIR}"/"$2"
+        ;;
+      *)
+        ${EDITOR:-vim} "${CONTACTS_DIR}"/"$*"
+        ;;
+    esac
+  fi
+}
