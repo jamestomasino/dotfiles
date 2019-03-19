@@ -1,11 +1,6 @@
-# Platform specific settings
-
 if [ "$(uname)" == "Darwin" ]; then
-	alias clip='pbcopy'
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-	alias clip='xsel --clipboard'
-	alias open='xdg-open'
-elif [ "$(expr substr $(uname -s) 1 6)" == "CYGWIN" ] || [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-	alias clip='getclip'
-	alias open='cygstart'
+  alias clip='pbcopy'
+else
+  alias clip='xsel --clipboard'
+  alias open='xdg-open'
 fi

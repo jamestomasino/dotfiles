@@ -26,11 +26,11 @@ alias lynx='lynx -display_charset=utf8 --lss=/dev/null'
 alias utc='date -u +%H:%M:%S'
 alias audiobook='mpv --save-position-on-quit'
 alias weight='track -ca weight | jp -input csv -height 25 -width 67 -canvas braille'
+alias beat='echo "x = (`date +%s` + 3600) % 86400; scale=3; x / 86.4" | bc'
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption -x'
 alias vimr='vim -u DEFAULTS -U NONE -i NONE'
-alias ideas="vim +'normal Go' +'r!date' ~/ideas.txt"
 
 # git
 alias gs="git status"
@@ -44,9 +44,6 @@ alias flushdns='dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias iplocal="ipconfig getifaddr en1"
-
-# Swatch internet time
-alias beat='echo "x = (`date +%s` + 3600) % 86400; scale=3; x / 86.4" | bc'
 
 # Cosmic Voyage
 alias qec="lynx -display_charset=utf8 --lss=/dev/null gopher://cosmic.voyage"
