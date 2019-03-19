@@ -1,49 +1,13 @@
-# bashrc
-if [ -f "$HOME/.bashrc" ] ; then
-    . ~/.bashrc
-fi
+[ -f "$HOME/.bashrc" ] && . ~/.bashrc
+[ -f "$HOME/.zsh" ] && . "$HOME/.zsh"
+[ -f "$HOME/.func" ] && . "$HOME/.func"
+[ -f "$HOME/.alias" ] && . "$HOME/.alias"
+[ -f "$HOME/.platform" ] && . "$HOME/.platform"
+[ -f "$HOME/.scripts" ] && . "$HOME/.scripts"
+[ -f "$HOME/.bash_local" ] && . "$HOME/.bash_local"
 
-# z.sh
-if [ -f "$HOME/.zsh" ] ; then
-    . "$HOME/.zsh"
-fi
-
-# functions
-if [ -f "$HOME/.func" ] ; then
-    . "$HOME/.func"
-fi
-
-# alias
-if [ -f "$HOME/.alias" ] ; then
-    . "$HOME/.alias"
-fi
-
-# platform specific aliases
-if [ -f "$HOME/.platform" ] ; then
-    . "$HOME/.platform"
-fi
-
-# git-completion
 if exists brew; then
-    if [ -f "$(brew --prefix)/etc/bash_completion" ] ; then
-        . "$(brew --prefix)/etc/bash_completion"
-    fi
-fi
-
-# git flow completion
-if [ -f "$HOME/bin/.git-flow-completion.sh" ] ; then
-    . "$HOME/bin/.git-flow-completion.sh"
-fi
-
-
-# scripts
-if [ -f "$HOME/.scripts" ] ; then
-    . "$HOME/.scripts"
-fi
-
-# local overrides
-if [ -f "$HOME/.bash_local" ] ; then
-    . "$HOME/.bash_local"
+  [ -f "$(brew --prefix)/etc/bash_completion" ] && . "$(brew --prefix)/etc/bash_completion"
 fi
 
 if test $UID = 0; then
