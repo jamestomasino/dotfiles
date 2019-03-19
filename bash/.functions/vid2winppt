@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function vid2winppt () {
+vid2winppt () {
   if [ $# -eq 0 ]; then
     echo "Missing video to convert as argument."
   else
@@ -22,18 +22,18 @@ function vid2winppt () {
           -y \
           "$(basename "${1%.*}")-720p".mpg
       else
-          ffmpeg -i "$1" \
-            -r 25 \
-            -f mpeg \
-            -vcodec mpeg1video \
-            -ar 48000 \
-            -b:v 5000k \
-            -b:a 128k \
-            -acodec mp2 \
-            -ar 44100 \
-            -ac 1 \
-            -y \
-            "$(basename "${1%.*}")".mpg
+        ffmpeg -i "$1" \
+          -r 25 \
+          -f mpeg \
+          -vcodec mpeg1video \
+          -ar 48000 \
+          -b:v 5000k \
+          -b:a 128k \
+          -acodec mp2 \
+          -ar 44100 \
+          -ac 1 \
+          -y \
+          "$(basename "${1%.*}")".mpg
       fi
     else
       echo "Video file does not exist"

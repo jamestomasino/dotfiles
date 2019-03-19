@@ -17,9 +17,9 @@ n() {
       sed -e "s|${NOTE_DIR}/||" | \
       sed -e 's/\.md$//' | \
       fzf \
-        --multi \
-        --select-1 \
-        --exit-0)
+      --multi \
+      --select-1 \
+      --exit-0)
     [[ -n $file ]] && \
       ${EDITOR:-vim} "${NOTE_DIR}/${file}.md"
   else

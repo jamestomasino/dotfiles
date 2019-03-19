@@ -6,6 +6,6 @@ fkill() {
 
   if [ "x$pid" != "x" ]
   then
-    kill -${1:-9} $pid
+    kill -"${1:-9}" "$pid"
   fi
 }

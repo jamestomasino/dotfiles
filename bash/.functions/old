@@ -2,5 +2,5 @@
 
 # Move file to a backup ".old" version
 old() {
-    mv "$1"{,.old}
+  mv "$1"{,.old}
 }
