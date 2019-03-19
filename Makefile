@@ -19,8 +19,8 @@ endif
 install:
 	@make $(UNAME)
 
-OSX:     bash git news R utils zsh bin vim tmux cmus neovim sc-im
-Linux:   bash git news R utils zsh bin vim tmux cmus neovim sc-im alacritty weechat i3
+OSX:     bash git news utils zsh bin vim tmux cmus neovim sc-im
+Linux:   bash git news utils zsh bin vim tmux cmus neovim sc-im alacritty weechat i3
 Other:   bash git utils zsh vim cmus surfraw
 
 clean:
@@ -28,7 +28,6 @@ clean:
 	stow -t "$$HOME" -D bash
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D newsbeuter
-	stow -t "$$HOME" -D R
 	stow -t "$$HOME" -D utils
 	stow -t "$$HOME" -D zsh
 	stow -t "$$HOME/bin" -D bin
@@ -62,10 +61,6 @@ git:
 news:
 	@printf "$(YELLOW)--- news ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" newsbeuter
-
-R:
-	@printf "$(YELLOW)--- R ---------------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" R
 
 utils:
 	@printf "$(YELLOW)--- utils -----------------------------------------------\n$(RESET)"
@@ -134,4 +129,4 @@ sc-im:
 	@printf "$(YELLOW)--- sc-im -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" sc-im
 
-.PHONY: bash git news R utils zsh bin vim tmux mutt cmus clean install OSX Linux Other i3 neovim mokupona sc-im alacritty weechat
+.PHONY: bash git news utils zsh bin vim tmux mutt cmus clean install OSX Linux Other i3 neovim mokupona sc-im alacritty weechat
