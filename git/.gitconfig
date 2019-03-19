@@ -11,6 +11,7 @@
 
 [tag]
   gpgsign = true
+  forceSignAnnotated = true
 
 [core]
   whitespace = trailing-space, space-before-tab, cr-at-eol
@@ -66,9 +67,6 @@
 [mergetool "fugitive"]
   cmd = vim -f -c "Gvdiff" "$MERGED"
 
-[mergetool "vimdiff3"]
-  cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-
 [branch]
   autosetupmerge = true
 
@@ -78,38 +76,11 @@
 [fetch]
   prune = true
 
-[rerere]
-  enabled = true
-  autoupdate = true
-
 [rebase]
   autosquash = true
 
 [advice]
   statusHints = true
-
-[http]
-  postBuffer = 524288000
-  sslVerify = false
-
-[gitflow "prefix"]
-  feature = feature/
-  release = release/
-  hotfix = hotfix/
-  support = support/
-  versiontag = v
-
-[url "https://github.com/"]
-  insteadOf = gh:
-
-[url "https://gist.github.com/"]
-  insteadOf = gist:
-
-[url "https://bitbucket.org/"]
-  insteadOf = bb:
-
-[credential]
-  helper = cache --timeout=3600
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
@@ -156,9 +127,6 @@
 
 [alias]
 
-  # Gitlab merge requests
-  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
-
   # squash entire repo to a single commit (requires --force to push)
   squash = "!git reset $(git commit-tree HEAD^{tree} -m 'initial commit') "
 
@@ -170,14 +138,6 @@
 
   # remove a file or folder from git history. Will require a push -f
   balefire = "!f() { git filter-branch --index-filter \"git rm -rf --cached --ignore-unmatch $1\" HEAD; rm -rf .git/refs/original/ ; git reflog expire --all ; git gc --aggressive --prune; }; f"
-
-  l = log --no-merges
-
-  # shotcuts
-  m = checkout master
-
-  # remove from repo but not filesystem
-  removefromrepo = rm --cached
 
   # remove all remote branches that have been merged
   removeallmerged = "!git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d"
@@ -191,71 +151,9 @@
   # What has changed since...
   changelist = "!git whatchanged --since='$1' --oneline | awk '/^:/ {print $6}' | sort -u; #"
 
-  # because I always typo git commit --ammend, er, amend
-  amend = commit --amend
-  ammend = amend
-
-  send-note = send-email --annotate
-
   # various pretty loggers from various places
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   lp = log --pretty=format:'%Cblue%h%Creset %Cgreen%<(15)%ad%Creset | %s%d [%C(yellow)%an%Creset] %C(cyan)%d%Creset' --date=relative --no-merges
-  lc = log ORIG_HEAD.. --stat --no-merges
-  # from http://blog.kfish.org/2010/04/git-lola.html
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  ll = log --graph --date=short
-
-  # git flow
-  fs = !git flow feature start 
-  ff = !git flow feature finish $1 && git pull && git push && echo
-
-  # from https://git.wiki.kernel.org/index.php/Aliases
-  whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
-  whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
-
-  # ignore po files in "git log", sorry translators ;-<
-  slog = "!sh -c 'git log --no-merges $1 `ls | grep -v ^po`' -"
-
-  # typo
-  rbanch = branch
-
-  # commits not pushed to $1
-  unpushed = cherry -v
-
-  # what tag contains the sha
-  whatrelease = name-rev --name-only
-
-  # what branch contains the sha
-  contains = branch --contains
-
-  #from http://serverfault.com/questions/175052/how-to-tell-which-local-branch-is-tracking-which-remote-branch-in-git
-  upstream = rev-parse --symbolic-full-name --abbrev-ref HEAD@{upstream}
-
-  #also from http://serverfault.com/questions/175052/how-to-tell-which-local-branch-is-tracking-which-remote-branch-in-git
-  tbranch = branch -vv
-
-  # what got pushed to master in the last hour
-  #  based on http://stackoverflow.com/questions/3357219/expose-the-date-a-commit-was-pushed-to-a-repository
-  justpushed = log origin/master@{\"1 hour ago\"}..origin/master --
-
-  # log everything with $1 string in the diff
-  timegrep = log -S
-
-  # like above, but show the diff
-  diffgrep = log -p -S
-
-  # search logs for a bugzilla like number
-  findbug = "!sh -c 'git log --grep ^$1:' -"
-
-  # edit from list of git modified files
-  edit-changed = "!vim `git status -u --porcelain | cut -b4- | fzf`"
-
-  # show what tag/release a bug was part of
-  bugrelease = "!sh -c 'git name-rev --tags --name-only  $(git log --grep ^$1: --pretty=\"format:%H\n\")' -"
-
-  # from https://gist.github.com/492227
-  lost = "!git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Creset %f' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
 
   # List remote Git branches and the last commit date for each branch. Sort by most recent commit date.
   latestremote = "!git for-each-ref refs/remotes/ --format=\"%(color:green)%(committerdate:short)%(color:reset) %(color:yellow)%(refname:short)%(color:reset)\" --sort -committerdate"
@@ -264,50 +162,18 @@
   rawlog = log --format=\"format:commit %H%nAuthor:%an%n%n%B%n\"
 
   # show a list of branches sorted by time of last commit
-  brage = "!f() { git for-each-ref --sort=committerdate refs/heads $1  --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset  $C\" \"$C\" -- ; done; }; g "
+  branchage = "!f() { git for-each-ref --sort=committerdate refs/heads $1  --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset  $C\" \"$C\" -- ; done; }; g "
 
   # show remote branches as well
-  brageall = !git brage refs/remotes
-
-  tbrage = "!f() { git for-each-ref --sort=committerdate refs/heads $1  --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do UP="$(git rev-parse --symbolic-full-name --abbrev-ref $C@{upstream} 2> /dev/null)"; TRACKING=$?; UP=\""-> $UP \""; if [ $TRACKING -ne 0 ] ; then UP=\"\"; fi;  git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset  $C $UP\" \"$C\" -- ; done; }; g "
-
-  tbrageall = !git tbrage refs/remotes
-
-  # show a list of tags sorted by when they were tagged
-  tagage = "!sh -c 'git for-each-ref --sort=taggerdate refs/tags --format=\"%(refname:short)\"'"
+  branchageall = !git brage refs/remotes
 
   # show a list of every branch and show their latests commit, sorted by last commit
-  brlog = "!sh -c 'for C in $(git for-each-ref --sort=committerdate refs/heads --format=\"%(refname:short)\") ; do git show  -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset  $C\" \"$C\" -- ; git show --stat -s $C ; echo; done'"
-
-  # show a list of last change in each branch of a given path
-  # roly poly fileheads
-  fileheads = "!sh  -c 'for C in $(git for-each-ref --sort=committerdate refs/heads --format=\"%(refname:short)\"| tac) ; do git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset  $C\" \"$C\" -- ; git --no-pager log  -p -1 $C -- $0; echo; done'"
-
-  # not useful itself, but handy to remember for use in scripts
-  thisbranch = rev-parse --abbrev-ref HEAD
-
-  # remove a file from index
-  unadd = !git reset HEAD
-
-  # url of origin, about 99% of what I use git config --list for
-  cloneurl = config --get remote.origin.url
+  branchlog = "!sh -c 'for C in $(git for-each-ref --sort=committerdate refs/heads --format=\"%(refname:short)\") ; do git show  -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset  $C\" \"$C\" -- ; git show --stat -s $C ; echo; done'"
 
   # from https://github.com/cypher/dotfiles/blob/master/gitconfig
   ls-ignored = ls-files --exclude-standard --ignored --others
 
-  # based on "buggyfiles" above and https://github.com/cypher/dotfiles/blob/master/bin/git-churn
-  churn = "!git log -M -C --name-only --format=\"format:%n\" | grep . | sort | uniq -c | sort -n"
-
-  # uh, don't do this. list authors by numbers of commits. probably needs a .mailmap
-  churners = shortlog -sn --
-
-  # who reverts the most. Totally useless, but I like the name
-  poppers = !"git log -M -C --format=\"format:%aN\" --grep \"Revert\" | sort | uniq -c | sort -n"
-
-  # shorter alias
-  lsg = ls-github
-
-  # ignore local changes to a  file
+  # ignore local changes to a file
   ignore = update-index --assume-unchanged
 
   # https://github.com/wadey/dotfiles/blob/master/gitconfig
@@ -320,37 +186,7 @@
   # show tags and any tag annotation (tito adds tag annotations for example)
   tags = tag -n1 -l
 
-  # https://github.com/aspiers/git-config/blob/master/bin/git-cdup
-  # could be useful for scripts
-  cdup = rev-parse --show-cdup
+  # Poor man's force-gpg-sign-tags
+  tag = tag -s
 
-  # https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig-alias.txt
-  # Show the date of the first commit
-  log-first-date = !"git log --date-order --date=iso --pretty=\"format:%ad\" --reverse | head -1"
-
-  # https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig-alias.txt
-  # Editing and adding conflicted files: when we get many merge conflicts
-  # and want to quickly solve them using an editor, then add the  files.
-  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; $EDITOR `f`"
-  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-
-  # from https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig-alias.txt
-  # Thanks to jtolds on stackoverflow
-  remote-ref = "!bash -c ' \
-    local_ref=$(git symbolic-ref HEAD); \
-    local_name=${local_ref##refs/heads/}; \
-    remote=$(git config branch.\"#local_name\".remote || echo origin); \
-    remote_ref=$(git config branch.\"$local_name\".merge); \
-    remote_name=${remote_ref##refs/heads/}; \
-    echo remotes/$remote/$remote_name'"
-
-  # also from https://github.com/SixArm/sixarm_git_gitconfig/blob/master/gitconfig-alias.txt
-  # Thanks to jtolds on stackoverflow
-  rebase-recent = !git rebase -i $(git remote-ref)
-
-  # from http://blog.blindgaenger.net/advanced_git_aliases.html
-  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ =  \\2/' | sort
-
-  pconfig = config -f .git/config
-  up = "!git remote update -p; git merge --ff-only @{u}"
   mkrepo = "!github-newrepo $1"
