@@ -1,7 +1,3 @@
-###############################################################################
-################################### environment ###############################
-###############################################################################
-
 # vars
 if hash nvim 2>/dev/null; then
   export EDITOR="nvim"
@@ -62,7 +58,6 @@ export RESET_COLOR="$(tput sgr0)"
 
 # Base16 Tomorrow Night
 _gen_fzf_default_opts() {
-
   local color00='#1d1f21'
   local color01='#282a2e'
   local color02='#373b41'
@@ -92,15 +87,16 @@ _gen_fzf_default_opts
 export PAGER=less
 
 # path
-PATH=/usr/local/bin
-PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}" # homebrew gnu versions
-PATH=${HOME}/.yarn/bin:${PATH}
-PATH=${HOME}/.config/yarn/global/node_modules/.bin:${PATH}
-PATH=${PATH}:/usr/pkg/bin
-PATH=${PATH}:${HOME}/bin
+PATH=${HOME}/bin
+PATH=${PATH}:${HOME}/.yarn/bin
+PATH=${PATH}:${HOME}/.config/yarn/global/node_modules/.bin
 PATH=${PATH}:${HOME}/.node/bin
 PATH=${PATH}:${HOME}/.gem/bin
 PATH=${PATH}:${HOME}/.rbenv/bin
+PATH=${PATH}:${HOME}/.local/bin
+PATH=${PATH}:/usr/local/bin
+PATH=${PATH}:/usr/local/opt/coreutils/libexec/gnubin
+PATH=${PATH}:/usr/pkg/bin
 PATH=${PATH}:/opt/local/bin
 PATH=${PATH}:/opt/local/sbin
 PATH=${PATH}:/usr/local/sbin
@@ -112,9 +108,9 @@ PATH=${PATH}:/usr/games
 PATH=${PATH}:/bin
 PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/sbin
+PATH=${PATH}:/sys/sdf/bin # sdf specific
 PATH=${PATH}:.
-PATH=${PATH}:${HOME}/.local/bin
-PATH=${PATH}:/sys/sdf/bin
+
 # android sdk
 PATH=${PATH}:${HOME}/sdk/tools
 PATH=${PATH}:${HOME}/sdk/tools/bin
