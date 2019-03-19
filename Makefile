@@ -8,21 +8,20 @@ ifeq ($(OS),Windows_NT)
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
-		UNAME = Linux
-	endif
-	ifeq ($(UNAME_S),Darwin)
-		UNAME = OSX
-	endif
-	UNAME ?= Other
+	UNAME = Linux
+endif
+ifeq ($(UNAME_S),Darwin)
+	UNAME = OSX
+endif
+UNAME ?= Other
 endif
 
 install:
 	@make $(UNAME)
 
-OSX: bash git news R slate utils zsh bin vim tmux cmus surfraw neovim sc-im khal vdirsyncer
-Linux: bash git news R utils zsh bin vim tmux cmus surfraw i3 neovim zathura sc-im alacritty weechat khal vdirsyncer
-Windows: bash git news R utils zsh bin vim tmux
-Other: bash git utils zsh vim cmus surfraw
+OSX:     bash git news R utils zsh bin vim tmux cmus neovim sc-im khal
+Linux:   bash git news R utils zsh bin vim tmux cmus neovim sc-im alacritty weechat i3
+Other:   bash git utils zsh vim cmus surfraw
 
 clean:
 	@printf "$(RED)--- clean -----------------------------------------------\n$(RESET)"
@@ -30,25 +29,17 @@ clean:
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D newsbeuter
 	stow -t "$$HOME" -D R
-	stow -t "$$HOME" -D slate
 	stow -t "$$HOME" -D utils
 	stow -t "$$HOME" -D zsh
-	stow -t "$$HOME" -D mintty
-	stow -t "$$HOME" -D notmuch
 	stow -t "$$HOME/bin" -D bin
 	stow -t "$$HOME" -D vim
 	stow -t "$$HOME/.config/nvim/" -D neovim
 	stow -t "$$HOME" -D tmux
-	stow -t "$$HOME" -D surfraw
 	stow -t "$$HOME/.cmus/" -D cmus
 	stow -t "$$HOME/.config/i3/" -D i3
 	stow -t "$$HOME" -D i3status
-	stow -t "$$HOME/.config/zathura" -D zathura
-	stow -t "$$HOME" -D sc-im
 	stow -t "$$HOME" -D alacritty
 	stow -t "$$HOME/.weechat" -D weechat
-	stow -t "$$HOME/.config/khal" -D khal
-	stow -t "$$HOME/.config/vdirsyncer" -D vdirsyncer
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
@@ -58,16 +49,6 @@ weechat:
 	@printf "$(YELLOW)--- weechat ---------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/.weechat"
 	stow -t "$$HOME/.weechat" weechat
-
-vdirsyncer:
-	@printf "$(YELLOW)--- khal ------------------------------------------------\n$(RESET)"
-	mkdir -p "$$HOME/.config/vdirsyncer"
-	stow -t "$$HOME/.config/vdirsyncer" vdirsyncer
-
-khal:
-	@printf "$(YELLOW)--- khal ------------------------------------------------\n$(RESET)"
-	mkdir -p "$$HOME/.config/khal"
-	stow -t "$$HOME/.config/khal" khal
 
 alacritty:
 	@printf "$(YELLOW)--- alacritty -------------------------------------------\n$(RESET)"
@@ -86,17 +67,6 @@ R:
 	@printf "$(YELLOW)--- R ---------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" R
 
-slate:
-	@printf "$(YELLOW)--- slate -----------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" slate
-	if [ -f "$$HOME/Library/Application Support/Karabiner/private.xml" ]; then \
-		rm "$$HOME/Library/Application Support/Karabiner/private.xml"; \
-	fi
-	mkdir -p "$$HOME/Library/Application Support/Karabiner"
-	stow -t "$$HOME/Library/Application Support/Karabiner" karabiner
-	@printf "    $(GREEN)Set Caps Lock to no action in system settings\n"
-	@printf "    $(GREEN)Bind Caps Lcok to key code 80 in Seil\n$(RESET)"
-
 utils:
 	@printf "$(YELLOW)--- utils -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" utils
@@ -104,10 +74,6 @@ utils:
 zsh:
 	@printf "$(YELLOW)--- zsh -------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" zsh
-
-mintty:
-	@printf "$(YELLOW)--- mintty ----------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" mintty
 
 i3:
 	@printf "$(YELLOW)--- i3 --------------------------------------------------\n$(RESET)"
@@ -119,10 +85,6 @@ mutt:
 	@printf "$(YELLOW)--- mutt ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" mutt
 
-notmuch:
-	@printf "$(YELLOW)--- notmuch ---------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" notmuch
-
 bin:
 	@printf "$(YELLOW)--- bin -------------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/bin"
@@ -133,8 +95,8 @@ vim:
 	stow -t "$$HOME" vim
 	if [ ! -f "$$HOME/.vim/autoload/plug.vim" ]; then \
 		curl -sfLo "$$HOME/.vim/autoload/plug.vim" --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
-	fi
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
+		fi
 	@printf "    $(GREEN)Launch vim and run :PlugInstall\n"
 
 neovim:
@@ -143,8 +105,8 @@ neovim:
 	stow -t "$$HOME/.config/nvim/" neovim
 	if [ ! -f "$$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then \
 		curl -sfLo "$$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
-	fi
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
+		fi
 	@printf "    $(GREEN)Launch nvim and run :PlugInstall\n"
 
 cmus:
@@ -152,25 +114,16 @@ cmus:
 	mkdir -p "$$HOME/.cmus"
 	stow -t "$$HOME/.cmus/" cmus
 
-surfraw:
-	@printf "$(YELLOW)--- surfraw ---------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" surfraw
-
 tmux:
 	@printf "$(YELLOW)--- tmux ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" tmux
 	if [ ! -d "$$HOME/.tmux/plugins/tpm" ]; then \
 		git clone https://github.com/tmux-plugins/tpm "$$HOME/.tmux/plugins/tpm" --quiet; \
 		if ! { [ "$$TERM" = "screen" ] && [ -n "$$TMUX" ]; } then \
-			tmux source-file "$$HOME/.tmux.conf"; \
+		tmux source-file "$$HOME/.tmux.conf"; \
 		fi \
-	fi
+		fi
 	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n$(RESET)"
-
-zathura:
-	@printf "$(YELLOW)--- zathura----------------------------------------------\n$(RESET)"
-	mkdir -p "$$HOME/.config/zathura"
-	stow -t "$$HOME/.config/zathura" zathura
 
 mokupona:
 	@printf "$(YELLOW)--- moku-pona -------------------------------------------\n$(RESET)"
@@ -181,4 +134,4 @@ sc-im:
 	@printf "$(YELLOW)--- sc-im -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" sc-im
 
-.PHONY: bash git news R slate utils zsh bin vim tmux mintty mutt notmuch cmus surfraw clean install OSX Windows Linux Other i3 neovim zathura mokupona sc-im alacritty weechat vdirsyncer khal
+.PHONY: bash git news R utils zsh bin vim tmux mutt cmus clean install OSX Linux Other i3 neovim mokupona sc-im alacritty weechat
