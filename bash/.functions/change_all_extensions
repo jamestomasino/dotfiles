@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# batch rename
-function change_all_extensions() {
-	for old in *."$1"; do mv $old `basename $old ."$1"`."$2"; done
-}

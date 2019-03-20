@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 # Return number of modified files in folder
-function gitmodified() {
-	local m=$(trimspace "$(git diff --numstat 2> /dev/null | wc -l)" )
-	if [ "0" == "${m}" ]; then
-		m=""
-	else
-		m="${m} "
-	fi
-	echo "${m}"
+gitmodified() {
+  local m
+  m=$(trimspace "$(git diff --numstat 2> /dev/null | wc -l)" )
+  if [ "0" == "${m}" ]; then
+    m=""
+  else
+    m="${m} "
+  fi
+  echo "${m}"
 }

@@ -1,3 +1,4 @@
-function lastpass {
-  lpass show -c --password $(lpass ls | fzf | awk '{print $(NF)}' | sed 's/\]//g')
+#!/bin/sh
+lastpass() {
+  lpass show -c --password "$(lpass ls | fzf | awk '{print $(NF)}' | sed 's/\]//g')"
 }

@@ -1,1 +1,0 @@
-export FLAGS_GETOPT_CMD="$(brew --prefix gnu-getopt)/bin/getopt"

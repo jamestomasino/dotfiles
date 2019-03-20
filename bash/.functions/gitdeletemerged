@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-function gitdeletemerged () {
-  git branch --merged | egrep -v "(master|develop)" | xargs git branch -d
-  git branch -r --merged | egrep -v "(master|dev)" | sed 's/origin\///' | xargs git push --delete origin
-}

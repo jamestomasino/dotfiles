@@ -5,8 +5,6 @@
 # basic shell aliases
 alias ls='ls --color'
 alias lsd='ls -Gl | grep "^d"'
-alias lsort='echo "========== Newest ==========" && ls -At1 && echo "========== Oldest =========="'
-alias reload="source ~/.bash_profile && clear"
 alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
@@ -22,22 +20,17 @@ alias mkdir='mkdir -p'
 # utils
 alias imgsz='sips -g pixelWidth -g pixelHeight'
 alias pubkey="more ~/.ssh/id_rsa.pub | clip | printf '=> Public key copied to pasteboard.\n'"
-alias cl="fc -e -| pbcopy" # copy output of last command to clipboard
-alias cpwd='pwd|tr -d "\n"|pbcopy' # copy working directory path to clipboard
-alias chess='cd ~ && /Applications/Chess.app/Contents/Resources/sjeng.ChessEngine && rm *.lrn && cd -'
-alias gempurge='gem uninstall -aIx'
-alias imagemagick='convert' # I always forget the name of the app for imagemagick
 alias figlet='figlet -c -w 204 -f univers'
 alias figletfonts='ls -1 `figlet -I2` | grep "\.flf$" | cut -f 1 -d "." | sort -u'
 alias lynx='lynx -display_charset=utf8 --lss=/dev/null'
 alias utc='date -u +%H:%M:%S'
 alias audiobook='mpv --save-position-on-quit'
 alias weight='track -ca weight | jp -input csv -height 25 -width 67 -canvas braille'
+alias beat='echo "x = (`date +%s` + 3600) % 86400; scale=3; x / 86.4" | bc'
 
 # vim
 alias vime='vim -u ~/.vimrc.encryption -x'
 alias vimr='vim -u DEFAULTS -U NONE -i NONE'
-alias ideas="vim +'normal Go' +'r!date' ~/ideas.txt"
 
 # git
 alias gs="git status"
@@ -51,23 +44,6 @@ alias flushdns='dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias iplocal="ipconfig getifaddr en1"
-
-# view http traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
-# Mac Specific
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-alias showdotfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-alias showdeskicons="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-alias hidedeskicons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
-alias ss='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
-alias beat='echo "x = (`date +%s` + 3600) % 86400; scale=3; x / 86.4" | bc'
-
-# Ubuntu specific
-alias hibernate='sh -c "dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock && dbus-send --system --print-reply --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend"'
 
 # Cosmic Voyage
 alias qec="lynx -display_charset=utf8 --lss=/dev/null gopher://cosmic.voyage"
@@ -90,6 +66,7 @@ alias tilderadio='mplayer https://radio.tildeverse.org/radio/8000/radio.ogg'
 alias sleepbot='mplayer -playlist "http://www.sleepbot.com/ambience/cgi/listen.cgi/listen.pls"'
 alias wrti="mplayer http://playerservices.streamtheworld.com/api/livestream-redirect/WRTI_CLASSICAL.mp3"
 
+# youtube-dl to get music
 alias getmusic="youtube-dl -x --audio-quality 0 --audio-format mp3"
 
 # Wrap vlc on OSX with a happy little alias
