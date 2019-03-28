@@ -125,6 +125,9 @@
   markEmptyLines = false
   changeHunkIndicators = false
 
+[http "https://git.gsw.agency"]
+  sslVerify = false
+
 [alias]
 
   # squash entire repo to a single commit (requires --force to push)
