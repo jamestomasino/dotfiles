@@ -108,12 +108,9 @@ endfunction
 
 function! LinterStatus() abort
    let l:counts = ale#statusline#Count(bufnr(''))
-   let l:all_errors = l:counts.error + l:counts.style_error
-   let l:all_non_errors = l:counts.total - l:all_errors
    return l:counts.total == 0 ? '' : printf(
-   \ 'W:%d E:%d',
-   \ l:all_non_errors,
-   \ l:all_errors
+   \ ' %d ',
+   \ l:counts.total
    \)
 endfunction
 
@@ -123,7 +120,7 @@ endfunction
 
 if has('autocmd')
 
-    autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif 
+    autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
     augroup fzf
         autocmd! FileType fzf
@@ -360,25 +357,30 @@ endif
 " }}}
 
 " Statusline {{{
-if has('statusline')
-    set laststatus=2
-    set statusline=
-    set statusline+=%#Search#\ %n\ 
-    set statusline+=%#PmenuSel#
-    set statusline+=%#CursorLine#
-    set statusline+=\ %f\ 
-    set statusline+=%h%m%r%w
-    set statusline+=\ %{LinterStatus()}
-    set statusline+=%=
-    set statusline+=\ %y\ 
-    set statusline+=%#Menu#
-    set statusline+=%{&fileencoding?&fileencoding:&encoding}
-    set statusline+=\ [%{&fileformat}\]\ 
-    set statusline+=%#PmenuSel#
-    set statusline+=\ %p%%
-    set statusline+=\ %l:%c
-    set statusline+=\ 
-endif
+au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta
+au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
+hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
+
+set laststatus=2
+set noshowmode
+set statusline=
+set statusline+=%0*\ %n\                                    " Buffer number
+set statusline+=%1*\ %<%F%m%r%h%w\                          " File path, modified, readonly, helpfile, preview
+set statusline+=%3*│                                        " Separator
+set statusline+=%5*%{LinterStatus()}
+set statusline+=%3*│                                        " Separator
+set statusline+=%=                                          " Right Side
+set statusline+=%2*%y                                       " FileType
+set statusline+=\ [%{&ff}:                                  " FileFormat (dos/unix..)
+set statusline+=%2*%{''.(&fenc!=''?&fenc:&enc).''}]         " Encoding
+set statusline+=%3*│                                        " Separator
+set statusline+=%1*\ %02v×%02l/%L\                          " Column×Line Number/Total Lines
+
+hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad
+hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
+hi User3 ctermfg=236 ctermbg=236 guibg=#303030 guifg=#303030
+hi User4 ctermfg=239 ctermbg=239 guibg=#4e4e4e guifg=#4e4e4e
+hi User5 ctermfg=255 ctermbg=009 guibg=#e10000 guifg=#ffffff
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
