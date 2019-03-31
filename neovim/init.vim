@@ -12,7 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Styling
-Plug 'reedes/vim-colors-pencil'
+Plug 'reedes/vim-colors-pencil'           " A soft, pretty theme
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things
@@ -29,8 +29,9 @@ Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    \ }                                   " Language Server Protocol
+Plug 'roxma/nvim-yarp'                    " dependency on ncm2
+Plug 'ncm2/ncm2'                          " autocompletion smarty thing
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
@@ -39,7 +40,6 @@ Plug 'othree/yajs.vim'                    " javascript syntax
 Plug 'othree/es.next.syntax.vim'          " es.next support
 Plug 'posva/vim-vue'                      " vue specific syntax support
 Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
-Plug 'terryma/vim-multiple-cursors'       " multiple cursor support
 Plug 'leafgarland/typescript-vim'         " typescript syntax
 Plug 'junegunn/vim-easy-align'            " align code on characters
 
@@ -88,14 +88,6 @@ function! StripTrailingWhitespace()
         %s/\s\+$//e
         normal 'yz<CR>
         normal `z
-    endif
-endfunction
-
-function! CleverTab()
-    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-        return "\<Tab>"
-    else
-        return "\<C-N>"
     endif
 endfunction
 
@@ -318,6 +310,7 @@ set background=dark             " Use dark theme
 set backup                      " Backups are nice ...
 set clipboard^=unnamed,unnamedplus
 set colorcolumn=80
+set completeopt=noinsert,menuone,noselect
 set cursorline                  " Highlight current line
 set expandtab
 set fileencoding=utf-8
@@ -341,7 +334,7 @@ set relativenumber number       " Use relative line numbers
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 set shiftwidth=2
-set shortmess+=aoOtTI           " Abbrev. of messages (avoids 'hit enter')
+set shortmess+=caoOtTI           " Abbrev. of messages (avoids 'hit enter')
 set showmatch                   " Show matching brackets/parenthesis
 set showmode                    " Display the current mode
 set softtabstop=2
@@ -429,8 +422,9 @@ nnoremap <leader>w :bd<CR>
 " }}}
 
 " Tab Completion {{{
-" inoremap <Tab> <C-R>=CleverTab()<CR>
-let g:deoplete#enable_at_startup = 1
+autocmd BufEnter  *  call ncm2#enable_for_buffer()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " }}}
 
 " Make {{{
