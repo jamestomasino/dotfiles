@@ -288,6 +288,7 @@ let g:ale_sign_warning = '-'
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['pyls'],
     \ 'sh': ['bash-language-server', 'start'],
     \ 'html': ['html-languageserver', '--stdio'],
     \ 'scss': ['css-languageserver --stdio'],

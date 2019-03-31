@@ -85,6 +85,7 @@ pip3 install --upgrade pip setuptools wheel
 pip install --upgrade pip setuptools
 pip3 install --user pyyaml colorama
 pip3 install rtv qrcode csvkit
+pip3 install python-language-server
 
 # haskell
 # Install haskell-platform full via official package installer. Don't use homebrew
