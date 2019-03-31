@@ -19,7 +19,7 @@ EOD
 
 # If that didn't work, install command line tools for relevant version of xcode & macOS
 #   https://developer.apple.com/download/more/
-#   MacOS 10.12.6 & XCode 9.2 => 
+#   MacOS 10.12.6 & XCode 9.2 =>
 #     https://download.developer.apple.com/Developer_Tools/Command_Line_Tools_macOS_10.12_for_Xcode_9.2/Command_Line_Tools_macOS_10.12_for_Xcode_9.2.dmg
 
 ################################################################################
@@ -81,9 +81,9 @@ brew cask install java
 # python
 brew install python --with-brewed-openssl
 brew install python@2
-pip3 install --upgrade pip setuptools wheel 
+pip3 install --upgrade pip setuptools wheel
 pip install --upgrade pip setuptools
-pip3 install --user pyyaml colorama 
+pip3 install --user pyyaml colorama
 pip3 install rtv qrcode csvkit
 
 # haskell
@@ -109,14 +109,16 @@ perlbrew switch perl-5.16.0
 brew install node
 brew install yarn --without-node
 yarn global add eslint
-yarn global add bash-language-server
+yarn global add javascript-typescript-langserver
 
 # bash
 brew install shellcheck
+yarn global add bash-language-server
 
 # css
 yarn global add stylelint
 yarn global add caniuse-cmd
+yarn global add vscode-css-languageserver-bin
 
 # html
 brew install tidy-html5

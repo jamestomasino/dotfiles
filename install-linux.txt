@@ -69,17 +69,29 @@ apt install -y dict dictd dict-gcide              # local dictionary
 apt install -y wicd-curses                        # network manager
 
 # Languages
+
+# javascript
 apt install -y nodejs nodejs-dev build-essentials # js development
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt update && apt install -y yarn
 yarn global add eslint
+yarn global add javascript-typescript-langserver
+
+# bash
+apt install shellcheck
 yarn global add bash-language-server
 
-apt install -y rbenv                              # ruby development
-curl https://sh.rustup.rs -sSf | sh               # rustup for rust development
-apt install -y python-pygments                    # syntax highlighting
+# ctags
 apt install -y exuberant-ctags                    # tag management for code hinting
+
+# css
+yarn global add stylelint
+yarn global add caniuse-cmd
+yarn global add vscode-css-languageserver-bin
+
+# html
+brew install tidy-html5
 
 # Other development
 apt install -y pngquant                           # image compression

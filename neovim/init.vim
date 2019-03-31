@@ -26,6 +26,10 @@ Plug 'reedes/vim-wordy'                   " Weasel words and passive voice
 Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 
 " Development Tools
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
@@ -285,6 +289,18 @@ let g:ale_lint_delay = 1000
 let g:ale_sign_error = '×'
 let g:ale_sign_warning = '-'
 let g:ale_completion_enabled = 1
+" }}}
+
+" LSP {{{
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'sh': ['bash-language-server', 'start'],
+    \ 'css': ['css-languageserver --stdio'],
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 " }}}
 
 " ag support {{{
