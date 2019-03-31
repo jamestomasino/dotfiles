@@ -30,8 +30,9 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }                                   " Language Server Protocol
-Plug 'roxma/nvim-yarp'                    " dependency on ncm2
-Plug 'ncm2/ncm2'                          " autocompletion smarty thing
+Plug 'neitanod/vim-clevertab'             " simple tab chains
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
@@ -421,10 +422,17 @@ nnoremap <Leader>s :b#<CR>
 nnoremap <leader>w :bd<CR>
 " }}}
 
-" Tab Completion {{{
-autocmd BufEnter  *  call ncm2#enable_for_buffer()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" TabChain {{{
+inoremap <silent><tab> <c-r>=CleverTab#Complete('start')<cr>
+                      \<c-r>=CleverTab#Complete('tab')<cr>
+                      \<c-r>=CleverTab#Complete('omni')<cr>
+                      \<c-r>=CleverTab#Complete('ultisnips')<cr>
+                      \<c-r>=CleverTab#Complete('keyword')<cr>
+                      \<c-r>=CleverTab#Complete('stop')<cr>
+inoremap <silent><s-tab> <c-r>=CleverTab#Complete('prev')<cr>
+let g:UltiSnipsExpandTrigger=":leader>u"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " }}}
 
 " Make {{{
