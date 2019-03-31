@@ -30,6 +30,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
@@ -295,7 +296,8 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'sh': ['bash-language-server', 'start'],
-    \ 'css': ['css-languageserver --stdio'],
+    \ 'html': ['html-languageserver', '--stdio'],
+    \ 'scss': ['css-languageserver --stdio'],
     \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -427,7 +429,8 @@ nnoremap <leader>w :bd<CR>
 " }}}
 
 " Tab Completion {{{
-inoremap <Tab> <C-R>=CleverTab()<CR>
+" inoremap <Tab> <C-R>=CleverTab()<CR>
+let g:deoplete#enable_at_startup = 1
 " }}}
 
 " Make {{{
