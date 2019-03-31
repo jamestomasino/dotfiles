@@ -92,6 +92,7 @@ yarn global add vscode-css-languageserver-bin
 
 # html
 brew install tidy-html5
+yarn global add vscode-html-languageserver-bin
 
 # Other development
 apt install -y pngquant                           # image compression
