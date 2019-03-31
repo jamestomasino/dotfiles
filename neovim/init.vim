@@ -106,6 +106,17 @@ function! Print()
     !rm %:r.ps
 endfunction
 
+function! LinterStatus() abort
+   let l:counts = ale#statusline#Count(bufnr(''))
+   let l:all_errors = l:counts.error + l:counts.style_error
+   let l:all_non_errors = l:counts.total - l:all_errors
+   return l:counts.total == 0 ? '' : printf(
+   \ 'W:%d E:%d',
+   \ l:all_non_errors,
+   \ l:all_errors
+   \)
+endfunction
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""" AUTOCMD """""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -267,9 +278,16 @@ let g:vue_disable_pre_processors=1
 " }}}
 
 " Ale {{{
-let b:ale_linters = {'javascript': ['eslint','prettier']}
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5 --no-semi'
-let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let b:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'vue': ['eslint', 'vls']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_delay = 1000
+let g:ale_sign_error = '×'
+let g:ale_sign_warning = '-'
+let g:ale_completion_enabled = 1
 " }}}
 
 " ag support {{{
@@ -341,21 +359,20 @@ if has('persistent_undo')
 endif
 " }}}
 
-
 " Statusline {{{
 if has('statusline')
     set laststatus=2
-
     set statusline=
     set statusline+=%#Search#\ %n\ 
     set statusline+=%#PmenuSel#
     set statusline+=%#CursorLine#
     set statusline+=\ %f\ 
     set statusline+=%h%m%r%w
+    set statusline+=\ %{LinterStatus()}
     set statusline+=%=
     set statusline+=\ %y\ 
     set statusline+=%#Menu#
-    set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+    set statusline+=%{&fileencoding?&fileencoding:&encoding}
     set statusline+=\ [%{&fileformat}\]\ 
     set statusline+=%#PmenuSel#
     set statusline+=\ %p%%
