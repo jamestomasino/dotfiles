@@ -275,8 +275,10 @@ let g:vue_disable_pre_processors=1
 " Ale {{{
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let b:ale_linters = {'javascript': ['eslint']}
+let b:ale_linters = {'scss': ['stylelint']}
 let g:ale_linters = {'vue': ['eslint', 'vls']}
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+let b:ale_fixers = {'scss': ['stylelint']}
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_delay = 1000
