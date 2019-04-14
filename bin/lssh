@@ -1,13 +1,27 @@
 #!/bin/sh
 
+# This program takes 1 argument: a key name
+# If that keyname is found in the probable locations then we check
+# with lastpass to see if there's a password stored for that key
+# on file. If so, we grab it, apply it, and load the key to ssh-agent.
+# If no password is found we attempt to load it to ssh-agent regardless
+# and hopefully it works.
+
 KEY_NAME=$1
 
+# This whole thing is built on top of lastpass's lpass command
 if ! command -v lpass > /dev/null; then
   printf "LastPass CLI is required.\n"
   exit 2
 fi
 
-# Require something to be passed to this command
+# There's likely a better way to use the LPASS_ASKPASS feature to do
+# this instead of using "expect"
+if ! command -v expect > /dev/null; then
+  printf "'expect' is required.\n"
+  exit 2
+fi
+
 if [ -z "${KEY_NAME}" ]; then
   printf "You need to specify a key name.\n"
   exit 2
@@ -37,7 +51,7 @@ PWD=$(lpass show --password "SSH: ${KEY_NAME}")
 
 # In case LastPass exitted non-zero we have no password
 if [ $? -eq 0 ]; then
-# Fill password to ssh-add utility
+# Fill password to ssh-add utility using expect
 expect <<EOF >/dev/null
 spawn ssh-add ${KEY_ID}
 expect "Enter passphrase"
