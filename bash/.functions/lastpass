@@ -1,4 +1,8 @@
 #!/bin/sh
 lastpass() {
-  lpass show -c --password "$(lpass ls | fzf | awk '{print $(NF)}' | sed 's/\]//g')"
+  if lpass status -q; then
+    lpass show -c --password "$(lpass ls | fzf | awk '{print $(NF)}' | sed 's/\]//g')"
+  else
+    lpass login lastpass@jamestomasino.com
+  fi
 }
