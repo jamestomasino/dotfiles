@@ -15,19 +15,15 @@ fi
 
 # Try to find the passed key path / name
 # TODO: move these paths to a list & loop
-if [ -e "${KEY_NAME}" ]; then
-  KEY_ID="${KEY_NAME}"
+if [ -e "${HOME}/.ssh/${KEY_NAME}" ]; then
+  KEY_ID="${HOME}/.ssh/${KEY_NAME}"
+elif [ -e "${HOME}/.spideroak/Documents/Keys/personal/ssh/${KEY_NAME}/id_rsa" ]; then
+  KEY_ID="${HOME}/.spideroak/Documents/Keys/personal/ssh/${KEY_NAME}/id_rsa"
+elif [ -e "${HOME}/.spideroak/Documents/Keys/work/ssh/${KEY_NAME}/id_rsa" ]; then
+  KEY_ID="${HOME}/.spideroak/Documents/Keys/work/ssh/${KEY_NAME}/id_rsa"
 else
-  if [ -e "${HOME}/.ssh/${KEY_NAME}" ]; then
-    KEY_ID="${HOME}/.ssh/${KEY_NAME}"
-  elif [ -e "${HOME}/.spideroak/Documents/Keys/personal/ssh/${KEY_NAME}/id_rsa" ]; then
-    KEY_ID="${HOME}/.spideroak/Documents/Keys/personal/ssh/${KEY_NAME}/id_rsa"
-  elif [ -e "${HOME}/.spideroak/Documents/Keys/work/ssh/${KEY_NAME}/id_rsa" ]; then
-    KEY_ID="${HOME}/.spideroak/Documents/Keys/work/ssh/${KEY_NAME}/id_rsa"
-  else
-    printf "Could not find key file.\n"
-    exit 1
-  fi
+  printf "Could not find key file.\n"
+  exit 1
 fi
 
 # If this key is already in the agent we don't need to do anything
