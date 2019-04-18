@@ -1,92 +1,138 @@
 #!/bin/sh
 
-# This program takes 1 argument: a key name
-# If that keyname is found in the probable locations then we check
-# with lastpass to see if there's a password stored for that key
-# on file. If so, we grab it, apply it, and load the key to ssh-agent.
-# If no password is found we attempt to load it to ssh-agent regardless
-# and hopefully it works.
+# ENV Variables Used:
+#   SSH_KEY_LOCATIONS
+#   LASTPASS_USER
 
-# Keys are activated for 3600s (1hr)
+version="2019.04.18"
+arg_options="hv"
 
-KEY_NAME=$1
-key_locations="${SSH_KEY_LOCATIONS:-$HOME/.ssh/}"
-
-# This whole thing is built on top of lastpass's lpass command
+# Required: lpass (lastpass cli)
 if ! command -v lpass > /dev/null; then
   printf "LastPass CLI is required.\n"
   exit 2
 fi
 
-# There's likely a better way to use the LPASS_ASKPASS feature to do
-# this instead of using "expect"
+# Required: expect
 if ! command -v expect > /dev/null; then
   printf "'expect' is required.\n"
   exit 2
 fi
 
-if [ -z "${KEY_NAME}" ]; then
-  printf "You need to specify a key name.\n"
-  exit 2
-fi
+show_help () {
+  cat > /dev/stdout << END
+lssh [options] [ssh-key]
 
-# Try to find the passed key path / name from possible key locations.
-# Add space-separated path locations for your keys to $SSH_KEY_LOCATIONS
-# env variable.
-for path in $key_locations; do
-  if [ -f "${path}${KEY_NAME}" ]; then
-    printf "Found key at: %s\\n" "${path}${KEY_NAME}"
-    KEY_ID="${path}${KEY_NAME}"
-    break;
+OPTIONAL FLAGS:
+  -h                          Show this help
+  -v                          Show current version info
+
+END
+}
+
+parse_input () {
+  if ! parsed=$(getopt $arg_options "$@"); then
+    printf "Invalid input\\n"
+    exit 2
   fi
-  if [ -d "${path}${KEY_NAME}" ]; then
-    if [ -f "${path}${KEY_NAME}/id_rsa" ]; then
-      printf "Found key at: %s\\n" "${path}${KEY_NAME}/id_rsa"
-      KEY_ID="${path}${KEY_NAME}/id_rsa"
+
+  eval set -- "$parsed"
+
+  while true; do
+    case "$1" in
+      -h)
+        show_help
+        exit 0
+        shift
+        ;;
+      -v)
+        printf "%s\\n" "$version"
+        exit 0
+        shift
+        ;;
+      --)
+        shift
+        break
+        ;;
+      *)
+        printf "Internal error."
+        exit 3
+        ;;
+    esac
+  done
+}
+
+main () {
+  parse_input "$@"
+  key=$1
+  key_locations="${SSH_KEY_LOCATIONS:-$HOME/.ssh/}"
+
+  if [ -z "${key}" ]; then
+    printf "You need to specify a key name.\n"
+    exit 2
+  fi
+
+  # Try to find the passed key path / name from possible key locations.
+  # Add space-separated path locations for your keys to $SSH_KEY_LOCATIONS
+  # env variable.
+  for path in $key_locations; do
+    if [ -f "${path}${key}" ]; then
+      printf "Found key at: %s\\n" "${path}${key}"
+      KEY_ID="${path}${key}"
       break;
     fi
+    if [ -d "${path}${key}" ]; then
+      if [ -f "${path}${key}/id_rsa" ]; then
+        printf "Found key at: %s\\n" "${path}${key}/id_rsa"
+        KEY_ID="${path}${key}/id_rsa"
+        break;
+      fi
+    fi
+  done
+
+  # If no key is found there's nothing to activate. End script
+  if [ -z "$KEY_ID" ]; then
+    printf "Could not find key file.\n"
+    exit 1
   fi
-done
 
-if [ -z "$KEY_ID" ]; then
-  printf "Could not find key file.\n"
-  exit 1
-fi
+  # If this key is already in the agent we don't need to do anything
+  if ssh-add -l | grep -q "${KEY_ID}"; then
+    printf "Key already present.\n"
+    exit 0
+  fi
 
-# If this key is already in the agent we don't need to do anything
-if ( ssh-add -l | grep -q "${KEY_ID}" ); then
-  printf "Key already present.\n"
-  exit 0
-fi
+  # If not logged into lastpass, do so now
+  if ! lpass status -q; then
+    lpass login "${LASTPASS_USER}"
+  fi
 
-# If not logged into lastpass, do so now
-if ! lpass status -q; then
-  lpass login "${LASTPASS_USER}"
-fi
+  # Retrieve key from LastPass. If logged in but not recently authenticated
+  # lastpass will prompt with pinentry. If no entry found, suppress error.
+  password=$(lpass show --password "SSH: ${key}" 2> /dev/null)
 
-# Retrieve key from LastPass. If logged in but not recently authenticated
-# lastpass will prompt with pinentry
-PWD=$(lpass show --password "SSH: ${KEY_NAME}" 2> /dev/null)
-
-# In case LastPass exitted non-zero we have no password
-if [ -n "$PWD" ]; then
-# Fill password to ssh-add utility using expect
-  expect <<EOF >/dev/null
-  spawn ssh-add -t 3600 ${KEY_ID}
-  expect "Enter passphrase"
-  send "$PWD\n"
-  expect eof
+  # If we found a password, apply it to the key
+  if [ -n "$password" ]; then
+    # awkward tabbing due to EOF structure
+expect <<EOF >/dev/null
+spawn ssh-add -t 3600 ${KEY_ID}
+expect "Enter passphrase"
+send "$password\n"
+expect eof
 EOF
-else
-  printf "Unable to get password. Adding without password.\n"
-  ssh-add -t 3600 "${KEY_ID}"
-fi
+  else
+    printf "Unable to get password. Activating key without password.\n"
+    ssh-add -t 3600 "${KEY_ID}"
+  fi
 
-# Check whether the key was added to the agent
-if ( ssh-add -l | grep -q "${KEY_ID}" ); then
-  printf "Key successfully added.\n"
-  exit 0
-else
-  printf "Found passphrase but could not add key.\n"
-  exit 1
-fi
+  # Double-check whether the key was added to the agent
+  if ssh-add -l | grep -q "${KEY_ID}"; then
+    printf "Key successfully activated.\n"
+    exit 0
+  else
+    printf "Found passphrase but could not activate key.\n"
+    exit 1
+  fi
+}
+
+main "$@"
