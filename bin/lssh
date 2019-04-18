@@ -71,11 +71,11 @@ PWD=$(lpass show --password "SSH: ${KEY_NAME}" 2> /dev/null)
 # In case LastPass exitted non-zero we have no password
 if [ -n "$PWD" ]; then
 # Fill password to ssh-add utility using expect
-expect <<EOF >/dev/null
-spawn ssh-add -t 3600 ${KEY_ID}
-expect "Enter passphrase"
-send "$PWD\n"
-expect eof
+  expect <<EOF >/dev/null
+  spawn ssh-add -t 3600 ${KEY_ID}
+  expect "Enter passphrase"
+  send "$PWD\n"
+  expect eof
 EOF
 else
   printf "Unable to get password. Adding without password.\n"
