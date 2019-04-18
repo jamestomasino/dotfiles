@@ -59,11 +59,17 @@ if ( ssh-add -l | grep -q "${KEY_ID}" ); then
   exit 0
 fi
 
-# Retrieve key from LastPass
-PWD=$(lpass show --password "SSH: ${KEY_NAME}")
+# If not logged into lastpass, do so now
+if ! lpass status -q; then
+  lpass login "${LASTPASS_USER}"
+fi
+
+# Retrieve key from LastPass. If logged in but not recently authenticated
+# lastpass will prompt with pinentry
+PWD=$(lpass show --password "SSH: ${KEY_NAME}" 2> /dev/null)
 
 # In case LastPass exitted non-zero we have no password
-if [ $? -eq 0 ]; then
+if [ -n "$PWD" ]; then
 # Fill password to ssh-add utility using expect
 expect <<EOF >/dev/null
 spawn ssh-add -t 3600 ${KEY_ID}
