@@ -98,7 +98,6 @@
 1moji	/~moji/phlog	circumlunar.space	70
 1tengu	/~tengu	circumlunar.space	70
 1heavysquare	/noise/	heavysquare.com	70
-1simple	/%7emeta4/Phlog	devio.us	70
 1tekmav	/phlogs/	solarbaby.tekmav.space	70
 1cmccabe - circumlunar	/~cmccabe/	circumlunar.space	70
 1sloum	/~sloum/phlog/	circumlunar.space	70
@@ -119,6 +118,13 @@
 1lro	/users/lro/phlog/technical/	sdf.org	70
 1spring	/~spring/phlog/	republic.circumlunar.space	70
 0jynx atom	/phlog.atom	1436.ninja	70
-0kensanata	do/rss	alexschroeder.ch	70
+1kensanata	/	alexschroeder.ch	70
 1zach	/~zach/phlog/	tilde.team	70
 1payphone	/users/payphone/phlog	sdf.org	70
+1onna.be	/phlog	onna.be	70
+1demure	/md.dcgi?/blog	demu.red	70
+1retreaux	/users/retreaux/cgi-bin/phlash.cgi	sdf.org	70
+1meta4	/users/mmeta4/Phlog	sdf.org	70
+1ransondrew	/users/ransondrew/Phlog	sdf.org	70
+1fallingknife	/users/fallingknife/phlog	sdf.org	70
+1raymii feed	/feed.xml	raymii.org	70
