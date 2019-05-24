@@ -59,7 +59,6 @@
 1deftly	/articles/	deftly.net	70
 1kroovy	/phlog	kroovy.de	70
 1tfurrows - vernunftzentrum	/tfurrows/phlog	vernunftzentrum.de	70
-1ze libertine gamer	/phlog	zlg.space	70
 1f6k	/users/f6k	sdf.org	70
 1keiya	/users/keiya/phlog	sdf.org	70
 1kirch	/users/kirch/phlog	sdf.org	70
@@ -91,7 +90,6 @@
 1krixano	/~krixano/phlog	circumlunar.space	70
 1slugmax - slerm	/~slugmax/cgi-bin/slerm	circumlunar.space	70
 1bradfonseca	/users/bradfonseca/phlog	sdf.org	70
-1inpefess	/gopherlog	boris.shminke.me	70
 1solobsd	/phlog/	gopher.solobsd.org	70
 1kvothe	/~kvothe/	circumlunar.space	70
 1luke	/~luke/	circumlunar.space	70
@@ -111,7 +109,6 @@
 1losthalo	/~losthalo/nusuth	zaibatsu.circumlunar.space	70
 0ulcer atom	/users/ulcer/atom.xml	sdf.org	70
 1slackz	/blog	gopher.orghub.co	70
-1lich	/musings	desolate.k.vu	70
 0bitreich	/news.atom.xml	bitreich.org	70
 1cosmic voyage	/log	cosmic.voyage	70
 1hardmous	/users/hardmous/Phlog	sdf.org	70
@@ -128,5 +125,14 @@
 1ransondrew	/users/ransondrew/Phlog	sdf.org	70
 1fallingknife	/users/fallingknife/phlog	sdf.org	70
 1raymii feed	/feed.xml	raymii.org	70
-
 1grey area	/phlog	ascraeus.org	70
+1cdmnky - seedy	/phlog	seedy.xyz	70
+1kagu-tsuchi	/phlog/	kagu-tsuchi.com	70
+1gallowsgryph	/users/gallowsgryph/phlog/	sdf.org	70
+1mateusz notes	/notes/	gopher.viste.fr	70
+1brendantcc	/~brendantcc/phlog/	aussies.space	70
+1philmacfly	/users/philmacfly/phlog/	sdf.org	70
+1lich	/~lich	dataswamp.org	70
+1mhj - colorfield	/~mhj	colorfield.space	70
+1jboverf	/~jboverf	colorfield.space	70
+1inpefess	/gopherlog	boris.shminke.ml	70
