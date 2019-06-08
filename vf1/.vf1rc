@@ -1,0 +1,1 @@
+handler text/plain lolcat -f %s
