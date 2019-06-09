@@ -31,8 +31,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }                                   " Language Server Protocol
 Plug 'neitanod/vim-clevertab'             " simple tab chains
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper

@@ -136,3 +136,8 @@
 1mhj - colorfield	/~mhj	colorfield.space	70
 1jboverf	/~jboverf	colorfield.space	70
 1inpefess	/gopherlog	boris.shminke.ml	70
+1aliasless	/~aliasless	colorfield.space	70
+1cmccabe - colorfield	/~cmccabe	colorfield.space	70
+1sloum - colorfield	/~sloum/phlog/	colorfield.space	70
+1lambda lab	/phlog/	lambda.icytree.org	70
+1rain1	/~rain1/phlog/	tilde.team	70
