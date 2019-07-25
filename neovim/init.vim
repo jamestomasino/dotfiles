@@ -13,6 +13,7 @@ Plug 'junegunn/fzf.vim'
 
 " Styling
 Plug 'reedes/vim-colors-pencil'           " A soft, pretty theme
+Plug 'pgdouyon/vim-yin-yang'              " A minimalist b+w theme
 
 " Writing/Authoring Tools
 Plug 'reedes/vim-pencil'                  " Super-powered writing things

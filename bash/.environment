@@ -40,7 +40,7 @@ export GEM_HOME="$HOME/.gem"
 export GEM_PATH="$HOME/.gem"
 
 # system
-export TZ="America/New_York"
+export TZ="Atlantic/Reykjavik"
 
 # colors
 export TERM=screen-256color
@@ -96,6 +96,7 @@ PATH=${PATH}:${HOME}/.node/bin
 PATH=${PATH}:${HOME}/.gem/bin
 PATH=${PATH}:${HOME}/.rbenv/bin
 PATH=${PATH}:${HOME}/.local/bin
+PATH=${PATH}:${HOME}/.cargo/bin
 PATH=${PATH}:/usr/local/bin
 PATH=${PATH}:/usr/local/opt/coreutils/libexec/gnubin
 PATH=${PATH}:/usr/pkg/bin
