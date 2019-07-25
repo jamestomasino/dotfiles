@@ -180,5 +180,4 @@ cd ~/Sites/system/dotfiles && ./make
 
 vim -c ":PlugInstall|q|q" # auto install plugins
 nvim -c ":PlugInstall|q|q" # auto install plugins
-nvim -c ":CocInstall coc-json coc-tsserver coc-html coc-css coc-solargraph coc-yaml coc-highlight coc-dictionary coc-eslint coc-stylelint|q"
 "$HOME/.tmux/plugins/tpm/bin/install_plugins"

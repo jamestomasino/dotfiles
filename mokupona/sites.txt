@@ -95,7 +95,7 @@
 1luke	/~luke/	circumlunar.space	70
 1moji	/~moji/phlog	circumlunar.space	70
 1tengu	/~tengu	circumlunar.space	70
-1heavysquare	/noise/	heavysquare.com	70
+1heavysquare	/	heavysquare.com	70
 1tekmav	/phlogs/	solarbaby.tekmav.space	70
 1cmccabe - circumlunar	/~cmccabe/	circumlunar.space	70
 1sloum	/~sloum/phlog/	circumlunar.space	70
@@ -136,3 +136,18 @@
 1mhj - colorfield	/~mhj	colorfield.space	70
 1jboverf	/~jboverf	colorfield.space	70
 1inpefess	/gopherlog	boris.shminke.ml	70
+1aliasless	/~aliasless	colorfield.space	70
+1cmccabe - colorfield	/~cmccabe	colorfield.space	70
+1sloum - colorfield	/~sloum/phlog/	colorfield.space	70
+1lambda lab	/phlog/	thelambdalab.xyz	70
+1rain1	/~rain1/phlog/	tilde.team	70
+1henrycase	/users/henrycase	sdf.org	70
+1aliasless	/~aliasless/phlog	republic.circumlunar.space	70
+1emar	/~emar/phlog/	republic.circumlunar.space	70
+1katolaz	/~katolaz/phlog/	republic.circumlunar.space	70
+1nermagermalous	/~nermagermalous/phlog/	republic.circumlunar.space	70
+1oldfolio	/~oldfolio/phlog	republic.circumlunar.space	70
+1rak	/~rak/phlog	republic.circumlunar.space	70
+1solderpunk - project gemini	/~solderpunk/gemini	zaibatsu.circumlunar.space	70
+1shane	/shane/	ascendingcreations.com	70
+1trnslts	/users/trnslts/feels/	sdf.org	70
