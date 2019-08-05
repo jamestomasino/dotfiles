@@ -1,2 +1,2 @@
-handler text/plain lolcat -f %s
+handler text/plain goph %s
 go gopher.black
