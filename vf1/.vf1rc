@@ -1,2 +1,3 @@
-handler text/plain lolcat -f %s
+handler text/plain goph %s
+set color_menus true
 go gopher.black

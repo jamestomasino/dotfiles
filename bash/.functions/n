@@ -27,6 +27,9 @@ n() {
       "-d")
         rm "${NOTE_DIR}"/"$2".md
         ;;
+      "-r")
+        cat "${NOTE_DIR}"/"$2".md
+        ;;
       *)
         ${EDITOR:-vim} "${NOTE_DIR}"/"$*".md
         ;;

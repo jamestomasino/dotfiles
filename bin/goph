@@ -1,0 +1,3 @@
+#!/bin/sh
+FIN=${1:-"/dev/stdin"}
+fold -sw 80 "$FIN" | lolcat -f
