@@ -4,7 +4,8 @@
 1sparcipx	/users/sparcipx/phlog	sdf.org	70
 1gunnarfrost	/users/gunnarfrost	sdf.org	70
 1solderpunk	/~solderpunk/phlog	circumlunar.space	70
-1slugmax - circumlunar	/~slugmax/phlog	circumlunar.space	70
+1slugmax - zaibatsu	/~slugmax/phlog	zaibatsu.circumlunar.space	70
+1slugmax - republic	/~slugmax/phlog	republic.circumlunar.space	70
 1slugmax - sdf	/users/slugmax/phlog	sdf.org	70
 1pet84rik	/users/pet84rik/BLOG	sdf.org	70
 1xmanmonk	/users/xmanmonk	sdf.org	70
@@ -88,7 +89,6 @@
 1thesaint	/users/theesaint/Phlog/	sdf.org	70
 1tty	/users/tty/phlog/	sdf.org	70
 1krixano	/~krixano/phlog	circumlunar.space	70
-1slugmax - slerm	/~slugmax/cgi-bin/slerm	circumlunar.space	70
 1bradfonseca	/users/bradfonseca/phlog	sdf.org	70
 1solobsd	/phlog/	gopher.solobsd.org	70
 1kvothe	/~kvothe/	circumlunar.space	70
@@ -151,3 +151,4 @@
 1solderpunk - project gemini	/~solderpunk/gemini	zaibatsu.circumlunar.space	70
 1shane	/shane/	ascendingcreations.com	70
 1trnslts	/users/trnslts/feels/	sdf.org	70
+1fosslinux	/~fosslinux/phlog/	aussies.space	70
