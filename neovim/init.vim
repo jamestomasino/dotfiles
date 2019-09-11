@@ -173,7 +173,7 @@ if has('autocmd')
 
     augroup type_json
         autocmd!
-        autocmd filetype json setlocal equalprg=python\ -m\ json.tool
+        autocmd filetype json setlocal equalprg=python3\ -m\ json.tool
     augroup END
 
     augroup type_make
