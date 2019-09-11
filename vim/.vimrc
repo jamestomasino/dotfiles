@@ -29,7 +29,7 @@ Plug 'nelstrom/vim-markdown-folding'      " Smart folding for markdown
 Plug 'tpope/vim-commentary'               " gcc to toggle comments
 Plug 'airblade/vim-gitgutter'             " git changes
 Plug 'tpope/vim-fugitive'                 " git wrapper
-Plug 'w0rp/ale'                           " linting
+Plug 'dense-analysis/ale'                 " linting
 Plug 'othree/yajs.vim'                    " javascript syntax
 Plug 'othree/es.next.syntax.vim'          " es.next support
 Plug 'posva/vim-vue'                      " vue specific syntax support
