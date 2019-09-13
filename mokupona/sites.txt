@@ -109,7 +109,6 @@
 1losthalo	/~losthalo/nusuth	zaibatsu.circumlunar.space	70
 0ulcer atom	/users/ulcer/atom.xml	sdf.org	70
 1slackz	/blog	gopher.orghub.co	70
-0bitreich	/news.atom.xml	bitreich.org	70
 1cosmic voyage	/log	cosmic.voyage	70
 1hardmous	/users/hardmous/Phlog	sdf.org	70
 1lro	/users/lro/phlog/technical/	sdf.org	70
@@ -152,3 +151,8 @@
 1shane	/shane/	ascendingcreations.com	70
 1trnslts	/users/trnslts/feels/	sdf.org	70
 1fosslinux	/~fosslinux/phlog/	aussies.space	70
+1verisimilitudes		verisimilitudes.net	70
+1fox - black	/users/fox/phlog	tilde.black	70
+1fc03cf - pink	/~fc03cf/phlog	tilde.pink	70
+1JR's Notes		sawv.org	70
+1hexDSL	/blogs	gopher.xpenguin.club	70
