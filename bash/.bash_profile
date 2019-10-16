@@ -1,17 +1,18 @@
+# STARTUP SEQUENCE INSPIRED BY rc.d
+#
+# scripts are prefixed for order of startup by the following pattern
+# 00 - must run first
+# 10 - aliases
+# 20 - shell functions
+# 30 - programming languges
+# 40 - development environments
+# 50 - shell utilities / bins
+# 60 - 
+# 70 - 
+# 80 - 
+# 90 - must run last
+
 [ -f "$HOME/.bashrc" ] && . ~/.bashrc
-[ -f "$HOME/.zsh" ] && . "$HOME/.zsh"
-[ -f "$HOME/.func" ] && . "$HOME/.func"
-[ -f "$HOME/.alias" ] && . "$HOME/.alias"
-[ -f "$HOME/.platform" ] && . "$HOME/.platform"
-[ -f "$HOME/.scripts" ] && . "$HOME/.scripts"
-[ -f "$HOME/.bash_local" ] && . "$HOME/.bash_local"
-
-if exists brew; then
-  [ -f "$(brew --prefix)/etc/bash_completion" ] && . "$(brew --prefix)/etc/bash_completion"
-fi
-
-if test $UID = 0; then
-  PS1="\[$DIRECTORY_COLOR\]\w \[$GIT_COLOR\]\$(parse_git_branch) \[$STAGED_COLOR\]\$(gitstaged)\[$MODIFIED_COLOR\]\$(gitmodified)\[$UNTRACKED_COLOR\]\$(gituntracked)\[$RESET_COLOR\]\n\[$ROOT_COLOR\]\u\[$AT_COLOR\]@\[$HOST_COLOR\]$(hostname -f)\[$PROMPT_COLOR\]-> \[$RESET_COLOR\]"
-else
-  PS1="\[$DIRECTORY_COLOR\]\w \[$GIT_COLOR\]\$(parse_git_branch) \[$STAGED_COLOR\]\$(gitstaged)\[$MODIFIED_COLOR\]\$(gitmodified)\[$UNTRACKED_COLOR\]\$(gituntracked)\[$RESET_COLOR\]\n\[$HOST_COLOR\]$(hostname -f)\[$PROMPT_COLOR\]-> \[$RESET_COLOR\]"
-fi
+for FN in $HOME/.bash_profile.d/*.sh ; do
+    . "$FN"
+done

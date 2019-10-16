@@ -78,3 +78,10 @@ fi
 if hash nvim 2>/dev/null; then
   alias vim='nvim'
 fi
+
+if [ "$(uname)" == "Darwin" ]; then
+  alias clip='pbcopy'
+else
+  alias clip='xsel --clipboard'
+  alias open='xdg-open'
+fi

@@ -1,11 +1,17 @@
-[ -f "$HOME/.environment" ] && . "$HOME/.environment"
-[ -f "$HOME/perl5/perlbrew/etc/bashrc" ] && . "$HOME/perl5/perlbrew/etc/bashrc"
-[ -f ~/.fzf.bash ] && . ~/.fzf.bash
-[ -f "$HOME/.bash_private" ] && . "$HOME/.bash_private"
-hash rbenv 2>/dev/null && eval "$(rbenv init -)"
+# STARTUP SEQUENCE INSPIRED BY rc.d
+#
+# scripts are prefixed for order of startup by the following pattern
+# 00 - must run first
+# 10 - aliases
+# 20 - shell functions
+# 30 - programming languges
+# 40 - development environments
+# 50 - shell utilities / bins
+# 60 -
+# 70 -
+# 80 -
+# 90 - must run last
 
-PATH="/home/tomasino/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/tomasino/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/tomasino/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/tomasino/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/tomasino/perl5"; export PERL_MM_OPT;
+for FN in $HOME/.bashrc.d/*.sh ; do
+  . "$FN"
+done
