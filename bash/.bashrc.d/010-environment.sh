@@ -10,9 +10,6 @@ export HISTSIZE=10000
 export HISTIGNORE="clear:keybase*"
 export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
-export R_LIBS="$HOME/.rlib"
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .sass-cache --ignore npm_modules -g ""'
-export FZF_DEFAULT_OPTS=""
 export LYNX_CFG="$HOME/.lynxrc"
 export WWW_HOME="gopher://gopher.black"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -20,8 +17,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # path vars
 export SYNCTHING_PATH="$HOME/.syncthing"
 export SSH_ENV="$HOME/.ssh/environment"
-export NODE_PATH="/usr/local/lib/jsctags:/usr/local/lib/node:${HOME}/.yarn/bin:/usr/bin/npm"
-export ANDROID_HOME="$HOME/sdk"
 
 # lastpass
 export LPASS_HOME="$HOME/.lpass"
@@ -44,59 +39,26 @@ export TZ="Atlantic/Reykjavik"
 
 # colors
 export TERM=screen-256color
-export DIRECTORY_COLOR="$(tput setaf 222)"
-export GIT_COLOR="$(tput setaf 240)"
-export STAGED_COLOR="$(tput setaf 11)"
-export MODIFIED_COLOR="$(tput setaf 64)"
-export UNTRACKED_COLOR="$(tput setaf 4)"
-export PROMPT_COLOR="$(tput setaf 226)"
-export USER_COLOR="$(tput setaf 87)"
-export BEAT_COLOR="$(tput setaf 195)"
-export ROOT_COLOR="$(tput setaf 160)"
-export AT_COLOR="$(tput setaf 240)"
-export HOST_COLOR="$(tput setaf 213)"
-export TIME_COLOR="$(tput setaf 60)"
-export RESET_COLOR="$(tput sgr0)"
-
-# Base16 Tomorrow Night
-_gen_fzf_default_opts() {
-  local color00='#1d1f21'
-  local color01='#282a2e'
-  local color02='#373b41'
-  local color03='#969896'
-  local color04='#b4b7b4'
-  local color05='#c5c8c6'
-  local color06='#e0e0e0'
-  local color07='#ffffff'
-  local color08='#cc6666'
-  local color09='#de935f'
-  local color0A='#f0c674'
-  local color0B='#b5bd68'
-  local color0C='#8abeb7'
-  local color0D='#81a2be'
-  local color0E='#b294bb'
-  local color0F='#a3685a'
-
-  export FZF_DEFAULT_OPTS="
-  --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
-  --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C
-  --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D
-  "
-}
-_gen_fzf_default_opts
+DIRECTORY_COLOR="$(tput setaf 222)"; export DIRECTORY_COLOR
+GIT_COLOR="$(tput setaf 240)"; export GIT_COLOR
+STAGED_COLOR="$(tput setaf 11)"; export STAGED_COLOR
+MODIFIED_COLOR="$(tput setaf 64)"; export MODIFIED_COLOR
+UNTRACKED_COLOR="$(tput setaf 4)"; export UNTRACKED_COLOR
+PROMPT_COLOR="$(tput setaf 226)"; export PROMPT_COLOR
+USER_COLOR="$(tput setaf 87)"; export USER_COLOR
+BEAT_COLOR="$(tput setaf 195)"; export BEAT_COLOR
+ROOT_COLOR="$(tput setaf 160)"; export ROOT_COLOR
+AT_COLOR="$(tput setaf 240)"; export AT_COLOR
+HOST_COLOR="$(tput setaf 213)"; export HOST_COLOR
+TIME_COLOR="$(tput setaf 60)"; export TIME_COLOR
+RESET_COLOR="$(tput sgr0)"; export RESET_COLOR
 
 # less settings
 export PAGER=less
 
 # path
-PATH=${HOME}/bin
-PATH=${PATH}:${HOME}/.yarn/bin
-PATH=${PATH}:${HOME}/.config/yarn/global/node_modules/.bin
-PATH=${PATH}:${HOME}/.node/bin
-PATH=${PATH}:${HOME}/.gem/bin
-PATH=${PATH}:${HOME}/.rbenv/bin
-PATH=${PATH}:${HOME}/.local/bin
-PATH=${PATH}:${HOME}/.cargo/bin
+[ -d "$HOME/bin" ] && PATH=${HOME}/bin
+[ -d "$HOME/.local/bin" ] && PATH=${PATH}:${HOME}/.local/bin
 PATH=${PATH}:/usr/local/bin
 PATH=${PATH}:/usr/local/opt/coreutils/libexec/gnubin
 PATH=${PATH}:/usr/pkg/bin
@@ -112,14 +74,7 @@ PATH=${PATH}:/bin
 PATH=${PATH}:/snap/bin
 PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/sbin
-PATH=${PATH}:/sys/sdf/bin # sdf specific
-PATH=${PATH}:.
-
-# android sdk
-PATH=${PATH}:${HOME}/sdk/tools
-PATH=${PATH}:${HOME}/sdk/tools/bin
-PATH=${PATH}:${HOME}/sdk/platform-tools
-PATH=${PATH}:${HOME}/sdk/build-tools/25.0.3
+[ -d "/sys/sdf/bin" ] && PATH=${PATH}:/sys/sdf/bin # sdf specific
 
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH" # homebrew gnu versions
 
