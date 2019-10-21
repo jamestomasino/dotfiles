@@ -42,6 +42,7 @@ Plug 'posva/vim-vue'                      " vue specific syntax support
 Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
 Plug 'leafgarland/typescript-vim'         " typescript syntax
 Plug 'junegunn/vim-easy-align'            " align code on characters
+Plug 'ollykel/v-vim'                      " v programming language
 
 call plug#end()
 
