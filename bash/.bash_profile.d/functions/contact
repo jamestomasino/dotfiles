@@ -11,7 +11,7 @@ contact() {
   : "${CONTACTS_DIR:?'CONTACTS_DIR ENV Var not set'}"
   if [ $# -eq 0 ]; then
     local file
-    file=$(ls -1 "${CONTACTS_DIR}" | \
+    file=$(ls --color=never -1 "${CONTACTS_DIR}" | \
       fzf \
       --multi \
       --select-1 \
