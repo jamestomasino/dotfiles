@@ -167,3 +167,4 @@
 1ddc	/users/ddc/phlog	sdf.org	70
 1rusty	/users/rusty/	gopher.club	70
 1fr. robert	/users/frrobert/GopherBlog	gopher.club	70
+1tiwesdaeg	/~tiwesdaeg/phlog/	tilde.pink	70
