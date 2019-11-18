@@ -8,7 +8,6 @@ export HISTCONTRAL=ignoredups
 export HISTFILESIZE=10000
 export HISTSIZE=10000
 export HISTIGNORE="clear:keybase*"
-export LSCOLORS=gxfxcxdxbxggedabagacad
 export CLICOLOR=1
 export LYNX_CFG="$HOME/.lynxrc"
 export WWW_HOME="gopher://gopher.black"

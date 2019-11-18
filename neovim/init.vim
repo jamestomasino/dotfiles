@@ -39,9 +39,10 @@ Plug 'dense-analysis/ale'                 " linting
 Plug 'othree/yajs.vim'                    " javascript syntax
 Plug 'othree/es.next.syntax.vim'          " es.next support
 Plug 'posva/vim-vue'                      " vue specific syntax support
-Plug 'https://gitlab.com/jamestomasino/vim-conceal.git' " conceal formatting for js/py
+Plug 'https://github.com/jamestomasino/vim-conceal' " conceal formatting for js/py
 Plug 'leafgarland/typescript-vim'         " typescript syntax
 Plug 'junegunn/vim-easy-align'            " align code on characters
+Plug 'ollykel/v-vim'                      " v programming language
 
 call plug#end()
 
@@ -370,8 +371,6 @@ endif
 " }}}
 
 " Statusline {{{
-au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=magenta
-au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
 hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=cyan
 
 set laststatus=2
@@ -431,9 +430,6 @@ inoremap <silent><tab> <c-r>=CleverTab#Complete('start')<cr>
                       \<c-r>=CleverTab#Complete('keyword')<cr>
                       \<c-r>=CleverTab#Complete('stop')<cr>
 inoremap <silent><s-tab> <c-r>=CleverTab#Complete('prev')<cr>
-let g:UltiSnipsExpandTrigger="<leader>u"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " }}}
 
 " Make {{{
@@ -497,11 +493,6 @@ cnoremap cd. lcd %:p:h
 
 " clear search results {{{
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
-" }}}
-
-" easy-align {{{
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
