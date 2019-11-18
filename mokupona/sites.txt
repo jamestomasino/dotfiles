@@ -157,3 +157,12 @@
 1JR's Notes		sawv.org	70
 1hexDSL	/blogs	gopher.xpenguin.club	70
 1yam655		yam655.com	70
+1jb55	/phlog	jb55.com	70
+1prosthetic conscience	/blog/	jfm.carcosa.net	70
+1kc3ntg	/~kc3ntg	radiofreqs.space	70
+1mnw	/users/mnw/	gopher.club	70
+1mmww	/users/mmww/phlog	sdf.org	70
+1johngodlee	/users/johngodlee/	gopher.club	70
+1nynergy	/users/nynergy/phlog	sdf.org	70
+1ddc	/users/ddc/phlog	sdf.org	70
+1rusty	/users/rusty/	gopher.club	70
