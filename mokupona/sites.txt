@@ -162,9 +162,10 @@
 1kc3ntg	/~kc3ntg	radiofreqs.space	70
 1mnw	/users/mnw/	gopher.club	70
 1mmww	/users/mmww/phlog	sdf.org	70
-1johngodlee	/users/johngodlee/	gopher.club	70
 1nynergy	/users/nynergy/phlog	sdf.org	70
 1ddc	/users/ddc/phlog	sdf.org	70
 1rusty	/users/rusty/	gopher.club	70
 1fr. robert	/users/frrobert/GopherBlog	gopher.club	70
 1tiwesdaeg	/~tiwesdaeg/phlog/	tilde.pink	70
+1kiwi	/phlog	kiwidev.xyz	70
+1johngodlee	/users/johngodlee/posts	gopher.club	70
