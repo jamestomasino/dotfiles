@@ -14,7 +14,6 @@
 1jirka	/users/jirka/Phlog	sdf.org	70
 1jebug29	/users/jebug29/log	sdf.org	70
 1nydel	/users/nydel/phlog	sdf.org	70
-1auzymoto	/glog	auzymoto.net	70
 1cat	/phlog	baud.baby	70
 1snowdusk	/users/snowdusk/phlog	sdf.org	70
 1logout	/phlog	i-logout.cz	70
@@ -55,7 +54,6 @@
 1alberti	/users/alberti/phlog	sdf.org	70
 1jakob	/phlog	jakob.space	70
 1cmccabe	/users/cmccabe/	sdf.org	70
-0selmar	/blog.txt	cloudb.zapto.org	70
 1tomasino	/phlog	gopher.black	70
 1deftly	/articles/	deftly.net	70
 1kroovy	/phlog	kroovy.de	70
@@ -100,15 +98,12 @@
 1cmccabe - circumlunar	/~cmccabe/	circumlunar.space	70
 1sloum	/~sloum/phlog/	circumlunar.space	70
 1visiblink	/~visiblink/phlog/	circumlunar.space	70
-1bitsrearranged	/phlog	bitsrearranged.com	70
 11436 Files	/1436_Files	1436.ninja	70
 1schroeder	/users/schroeder/	sdf.org	70
 1xiled	/users/xiled/phlog/	sdf.org	70
 1cpj	/~cpj/phlog	zaibatsu.circumlunar.space	70
-1ubergeek	/~ubergeek/feels	gopher.yourtilde.com	70
 1losthalo	/~losthalo/nusuth	zaibatsu.circumlunar.space	70
 0ulcer atom	/users/ulcer/atom.xml	sdf.org	70
-1slackz	/blog	gopher.orghub.co	70
 1cosmic voyage	/log	cosmic.voyage	70
 1hardmous	/users/hardmous/Phlog	sdf.org	70
 1lro	/users/lro/phlog/technical/	sdf.org	70
@@ -117,7 +112,7 @@
 1kensanata	/	alexschroeder.ch	70
 1zach	/~zach/phlog/	tilde.team	70
 1payphone	/users/payphone/phlog	sdf.org	70
-1onna.be	/phlog	onna.be	70
+1erxeto	/phlog	e1e0.net	70
 1demure	/md.dcgi?/blog	demu.red	70
 1retreaux	/users/retreaux/cgi-bin/phlash.cgi	sdf.org	70
 1meta4	/users/mmeta4/Phlog	sdf.org	70
