@@ -115,11 +115,6 @@ tmux:
 		fi
 	@printf "    $(GREEN)Launch tmux and run \`I to install plugins\n$(RESET)"
 
-mokupona:
-	@printf "$(YELLOW)--- moku-pona -------------------------------------------\n$(RESET)"
-	mkdir -p "$$HOME/.moku-pona"
-	stow -t "$$HOME/.moku-pona" mokupona
-
 sc-im:
 	@printf "$(YELLOW)--- sc-im -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" sc-im
@@ -128,4 +123,4 @@ vf1:
 	@printf "$(YELLOW)--- vf1 -------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" vf1
 
-.PHONY: bash git news utils zsh bin vim tmux mutt cmus clean install OSX Linux Other i3 neovim mokupona sc-im alacritty vf1
+.PHONY: bash git news utils zsh bin vim tmux mutt cmus clean install OSX Linux Other i3 neovim sc-im alacritty vf1
