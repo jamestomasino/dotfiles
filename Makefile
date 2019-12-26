@@ -20,7 +20,7 @@ install:
 	@make $(UNAME)
 
 OSX:     bash git news utils zsh bin vim tmux cmus neovim sc-im
-Linux:   bash git news utils zsh bin vim tmux cmus neovim sc-im alacritty weechat i3 vf1
+Linux:   bash git news utils zsh bin vim tmux cmus neovim sc-im alacritty i3 vf1
 Other:   bash git utils zsh vim cmus surfraw
 
 clean:
@@ -39,16 +39,10 @@ clean:
 	stow -t "$$HOME" -D i3status
 	stow -t "$$HOME" -D alacritty
 	stow -t "$$HOME" -D vf1
-	stow -t "$$HOME/.weechat" -D weechat
 
 bash:
 	@printf "$(YELLOW)--- bash ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" bash
-
-weechat:
-	@printf "$(YELLOW)--- weechat ---------------------------------------------\n$(RESET)"
-	mkdir -p "$$HOME/.weechat"
-	stow -t "$$HOME/.weechat" weechat
 
 alacritty:
 	@printf "$(YELLOW)--- alacritty -------------------------------------------\n$(RESET)"
@@ -134,4 +128,4 @@ vf1:
 	@printf "$(YELLOW)--- vf1 -------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME/" vf1
 
-.PHONY: bash git news utils zsh bin vim tmux mutt cmus clean install OSX Linux Other i3 neovim mokupona sc-im alacritty weechat vf1
+.PHONY: bash git news utils zsh bin vim tmux mutt cmus clean install OSX Linux Other i3 neovim mokupona sc-im alacritty vf1
