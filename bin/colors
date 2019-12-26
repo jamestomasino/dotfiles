@@ -1,22 +1,23 @@
-#!/usr/bin/env bash
-for c in {0..255} ; do
-  echo "$(tput setaf ${c})tput setaf ${c}"
+#!/bin/sh
+c=0; while test $c -lt 255; do
+  echo "$(tput setaf ${c} 0 0)tput setaf ${c} 0 0"
+  c=$((c + 1))
 done
 
 echo "
-$(tput setaf 226)tput setab {num}  $(tput sgr0)– Set a background color using ANSI escape
-$(tput setaf 226)tput setb {num}   $(tput sgr0)– Set a background color
-$(tput setaf 226)tput setaf {num}  $(tput sgr0)– Set a foreground color using ANSI escape
-$(tput setaf 226)tput setf {num}   $(tput sgr0)– Set a foreground color
+$(tput setaf 226 0 0)tput setab {num}  $(tput sgr0)– Set a background color using ANSI escape
+$(tput setaf 226 0 0)tput setb {num}   $(tput sgr0)– Set a background color
+$(tput setaf 226 0 0)tput setaf {num}  $(tput sgr0)– Set a foreground color using ANSI escape
+$(tput setaf 226 0 0)tput setf {num}   $(tput sgr0)– Set a foreground color
 
 tput Text Mode Capabilities:
 
-$(tput setaf 226)tput bold         $(tput sgr0)– Set bold mode
-$(tput setaf 226)tput dim          $(tput sgr0)– turn on half-bright mode
-$(tput setaf 226)tput smul         $(tput sgr0)– begin underline mode
-$(tput setaf 226)tput rmul         $(tput sgr0)– exit underline mode
-$(tput setaf 226)tput rev          $(tput sgr0)– Turn on reverse mode
-$(tput setaf 226)tput smso         $(tput sgr0)– Enter standout mode (bold on rxvt)
-$(tput setaf 226)tput rmso         $(tput sgr0)– Exit standout mode
-$(tput setaf 226)tput sgr0         $(tput sgr0)– Turn off all attributes
+$(tput setaf 226 0 0)tput bold         $(tput sgr0)– Set bold mode
+$(tput setaf 226 0 0)tput dim          $(tput sgr0)– turn on half-bright mode
+$(tput setaf 226 0 0)tput smul         $(tput sgr0)– begin underline mode
+$(tput setaf 226 0 0)tput rmul         $(tput sgr0)– exit underline mode
+$(tput setaf 226 0 0)tput rev          $(tput sgr0)– Turn on reverse mode
+$(tput setaf 226 0 0)tput smso         $(tput sgr0)– Enter standout mode (bold on rxvt)
+$(tput setaf 226 0 0)tput rmso         $(tput sgr0)– Exit standout mode
+$(tput setaf 226 0 0)tput sgr0         $(tput sgr0)– Turn off all attributes
 "
